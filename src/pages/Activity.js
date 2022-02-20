@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function Activity() {
   return (
-    <div>Activity</div>
-  )
+    <div>
+      <h4 className="hello">สวัสดี, นี่คือกิจกรรมของคุณ</h4>
+    </div>
+  );
 }
 
-export default Activity
+export default Activity;
