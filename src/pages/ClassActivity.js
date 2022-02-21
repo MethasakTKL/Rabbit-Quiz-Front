@@ -4,7 +4,7 @@ function ClassActivity() {
   return (
     <div>
         <h1 className="classname">ห้องเรียน 240-124</h1>
-        ClassActivity Test 01
+        ClassActivity Test git
         </div>
   )
 }
