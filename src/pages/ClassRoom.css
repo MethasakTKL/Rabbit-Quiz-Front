@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
+
+.classname {
+    font-family: 'Prompt', sans-serif;
+    color: #856FB4;
+    text-align: left;
+    padding-left: 45;
+    font-size: 36px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@200;400&display=swap');
+
+.button1 {
+    font-family: 'Prompt', sans-serif;
+}
+
+.button2 {
+    font-family: 'Prompt', sans-serif;
+}
