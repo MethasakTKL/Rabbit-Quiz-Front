@@ -3,17 +3,27 @@
 .classname {
     font-family: 'Prompt', sans-serif;
     color: #856FB4;
-    text-align: left;
-    padding-left: 45;
-    font-size: 36px;
+    text-align: center;
+    font-size: 100px;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@200;400&display=swap');
 
 .button1 {
     font-family: 'Prompt', sans-serif;
 }
-
 .button2 {
+    font-family: 'Prompt', sans-serif;
+}
+.post {
+    font-family: 'Prompt', sans-serif;
+    color: #6d5e8f;
+}
+.center{
+    margin-left: auto;
+    margin-left: auto;
+    padding-left: 8%;
+}
+.postbutton{
+    padding-left: 70%;
+    padding-right: 10%;
     font-family: 'Prompt', sans-serif;
 }

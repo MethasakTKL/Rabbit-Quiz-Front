@@ -1,5 +1,5 @@
-import { Button, Paper, Stack } from "@mui/material";
-import { Box } from "@mui/system";
+import { Button, Grid, Paper, Stack, TextField } from "@mui/material";
+import { Box, grid, spacing } from "@mui/system";
 import React from "react";
 import "./ClassRoom.css";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
@@ -9,8 +9,10 @@ import { Link } from "react-router-dom";
 function Classroom() {
   return (
     <div>
-      <h1 className="classname">ห้องเรียน 240-124</h1>
-      <Stack direction="row" spacing={2} paddingLeft={2.5} paddingBottom={1}>
+      <h1 className="classname" style={{ paddingLeft: "10%", fontSize: 36 }}>
+        ห้องเรียน 240-124
+      </h1>
+      <Stack direction="row" spacing={2} paddingLeft={"10%"} paddingBottom={1}>
         <Button
           className="button1"
           variant="contained"
@@ -40,14 +42,40 @@ function Classroom() {
             m: 1,
 
             width: "90%",
-            height: 220,
+            height: "auto",
             borderRadius: 3,
             marginLeft: "auto",
             marginRight: "auto",
+            paddingBottom: 2
           },
         }}
       >
-        <Paper elevation={3}></Paper>
+        <Paper elevation={3}>
+          <h1 className="post" style={{ paddingLeft: 40, fontSize: 24 }}>
+            ประกาศข้อความของคุณ
+          </h1>
+          <Grid  direction="row" spacing={2} direction='row'>
+            <Grid item className="center" >
+            <TextField
+              label="สร้างโพสต์"
+              placeholder="พิมพ์ข้อความที่ต้องการบอกสมาชิกในห้องเรียน"
+              margin="normal"
+              style={{ width: "90%" }}
+              multiline
+            />
+            </Grid>
+            <Grid className="postbutton">
+            <Button
+              className="postbutton"
+              variant="contained"
+              sx={{ width: '100%', height: 50, borderRadius: 4 }}
+              style={{ background: "#5F498C" }}
+            >
+              โพสต์
+            </Button>
+            </Grid>
+          </Grid>
+        </Paper>
       </Box>
       <Box
         sx={{
@@ -57,7 +85,7 @@ function Classroom() {
             m: 1,
 
             width: "90%",
-            height: 700,
+            height: 200,
             borderRadius: 3,
             marginLeft: "auto",
             marginRight: "auto",
