@@ -1,9 +1,12 @@
 import React from 'react'
 import "./Login.css"
 import { Link } from "react-router-dom";
+import { Box } from "@mui/material";
 
 function Login() {
   return (
+    <Box 
+    style={{background: "#5f498c"}}>
       <div class="login-page">
         <div class="logo">
         <img src="https://www.img.in.th/images/f4de721891268e159ad5acd5b6a7a64d.png" ></img>
@@ -24,6 +27,7 @@ function Login() {
           </form>
         </div>
       </div>
+    </Box>
   )
 }
 

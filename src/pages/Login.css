@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
-
+html, body {
+    background: #5f498c;
+}
 .login-page {
     width: 360px;
     padding: 0 0 0;
@@ -21,6 +23,7 @@ div.logo img {
     max-width: 200px;
 }
 .form {
+    background: #ffffff;
     position: relative;
     z-index: 1;
     max-width: 360px;
