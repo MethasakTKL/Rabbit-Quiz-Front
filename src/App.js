@@ -18,12 +18,12 @@ import Login from "./pages/Login";
 function App() {
   return (
     <div className="App">
-      
-        <Switch>
-          <Route exact path="/login" component={Login} />
-          <div>
-            <AppHeader />
-            <AppNavBar />
+      <Switch>
+        <Route exact path="/login" component={Login} />
+        <div>
+          <AppHeader />
+          <AppNavBar />
+          <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/activity" component={Activity} />
             <Route path="/profile" component={Profile} />
@@ -31,8 +31,9 @@ function App() {
             <Route path="/classroom-member" component={ClassMember} />
             <Route path="/classroom-activity" component={ClassActivity} />
             <Route path="*" component={Falsepage} />
-          </div>
-        </Switch>
+          </Switch>
+        </div>
+      </Switch>
     </div>
   );
 }
