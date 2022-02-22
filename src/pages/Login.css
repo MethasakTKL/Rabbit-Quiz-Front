@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
 
 .login-page {
-    background: #ffffff;
+    background: #5f498c;
     width: 90%;
     max-width: 500px;
     padding: 0 0 0;
@@ -24,7 +24,7 @@ div.logo img {
     max-width: 200px;
 }
 .form {
-    background: #ffffff;
+    background: #fcfcfc;
     z-index: 1;
     max-width: 360px;
     margin: 0 auto 100px;
@@ -35,7 +35,7 @@ div.logo img {
 .form input {
     font-family: "Prompt", sans-serif;
     outline: 0;
-    background: #f2f2f2;
+    background: #e0ccff;
     width: 100%;
     border: 0;
     margin: 0 0 15px;
@@ -46,12 +46,13 @@ div.logo img {
 .head {
     font-size: 32px;
     font-family: "Prompt", sans-serif;
+    color:#f4eeff;
 }
 .form button[type="login"] {
     font-family: "Prompt", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #4d88f5;
+    background: #5281d8;
     width: 100%;
     border: 0;
     padding: 15px;
@@ -65,7 +66,7 @@ div.logo img {
     font-family: "Prompt", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #56c75a;
+    background: #8ae78d;
     width: 100%;
     border: 0;
     padding: 15px;
@@ -78,7 +79,7 @@ div.logo img {
 .form button[type="login"]:hover,
 .form button:active,
 .form button:focus {
-    background: #3d73d9;
+    background: #4572c7;
 }
 .form button[type="register"]:hover,
 .form button:active,
