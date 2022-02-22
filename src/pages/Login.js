@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Login.css"
+import { Link } from "react-router-dom";
 
 function Login() {
   return (
@@ -12,8 +13,14 @@ function Login() {
             <h1 class='head'>ลงชื่อเข้าใช้งาน</h1>
             <input type="text" placeholder="ชื่อผู้ใช้" />
             <input type="password" placeholder="รหัสผ่าน" />
-            <button type="login">เข้าสู่ระบบ</button>
-            <p><button type="register">สร้างบัญชีใหม่</button></p>
+            <Link to="/">
+              <button type="login">เข้าสู่ระบบ</button>
+            </Link>
+            <p>
+            <Link to="/register">
+              <button type="register">สร้างบัญชีใหม่</button>
+            </Link>
+            </p>
           </form>
         </div>
       </div>
