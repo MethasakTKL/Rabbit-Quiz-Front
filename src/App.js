@@ -14,12 +14,14 @@ import Classroom from "./pages/ClassRoom";
 import ClassMember from "./pages/ClassMember";
 import ClassActivity from "./pages/ClassActivity";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
     <div className="App">
       <Switch>
         <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
         <div>
           <AppHeader />
           <AppNavBar />
