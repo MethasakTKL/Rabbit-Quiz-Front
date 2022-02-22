@@ -17,6 +17,15 @@
 }
 
 .center{
-
+    font-family: 'Prompt', sans-serif;
     color: white;
+}
+
+
+.centertext{
+    font-family: 'Prompt', sans-serif;
+    color: rgb(54, 54, 54);
+    font-size: 14pt;
+    font-weight: 600;
+    padding-left: 20px;
 }

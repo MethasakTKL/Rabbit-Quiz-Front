@@ -1,6 +1,7 @@
 import { Button, Box, Paper } from "@mui/material";
 import React from "react";
 import "./ClassMember.css";
+import Card from '@mui/material/Card';
 
 function ClassMember() {
   return (
@@ -24,20 +25,45 @@ function ClassMember() {
       </Paper>
       <Box
         sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          "& > :not(style)": {
-            m: 1,
-
-            width: "90%",
-            height: 200,
-            borderRadius: 3,
+            width: "80%",
+            height: 40,
+            borderRadius: 20,
             marginLeft: "auto",
             marginRight: "auto",
-          },
+            paddingTop: 2,
         }}
       >
-        <Paper elevation={3}></Paper>
+        <Card variant="contained" style={{ background: "#CACACE"}} sx={{borderRadius:4}}>
+          <p className="centertext">นายชนาวัฒน์ ทั้วสุภาพ</p>
+        </Card>
+      </Box>
+      <Box
+        sx={{
+            width: "80%",
+            height: 40,
+            borderRadius: 20,
+            marginLeft: "auto",
+            marginRight: "auto",
+            paddingTop: 6,
+        }}
+      >
+        <Card variant="contained" style={{ background: "#CACACE"}} sx={{borderRadius:4}}>
+          <p className="centertext">นายเมธาศักดิ์ ทิพย์กองลาศ </p>
+        </Card>
+      </Box>
+      <Box
+        sx={{
+            width: "80%",
+            height: 40,
+            borderRadius: 20,
+            marginLeft: "auto",
+            marginRight: "auto",
+            paddingTop: 9,
+        }}
+      >
+        <Card variant="contained" style={{ background: "#CACACE"}} sx={{borderRadius:4}}>
+          <p className="centertext">นายชนาวัฒน์ ทั้วสุภาพ</p>
+        </Card>
       </Box>
     </div>
   );
