@@ -9,29 +9,29 @@ import { Link } from "react-router-dom";
 function Classroom() {
   return (
     <div>
-      <h1 className="classname" style={{ paddingLeft: "10%", fontSize: 36 }}>
+      <h1 className="classname" style={{ paddingLeft: "5%", fontSize: 36 }}>
         ห้องเรียน 240-124
       </h1>
-      <Stack direction="row" spacing={2} paddingLeft={"10%"} paddingBottom={1}>
+      <Stack direction="row" spacing={2} paddingLeft={"5%"} paddingBottom={1}>
         <Button
           className="button1"
           variant="contained"
           sx={{ borderRadius: 3, width: 120 }}
           style={{ background: "#F19528" }}
-          to="/classroom-activity"
+          to="/classroom-member"
           component={Link}
         >
-          <PeopleAltIcon /> กิจกรรม
+          <PeopleAltIcon /> สมาชิก
         </Button>
         <Button
           className="button2"
           variant="contained"
           sx={{ borderRadius: 3, width: 120 }}
           style={{ background: "#51D87A" }}
-          to="/classroom-member"
+          to="/classroom-activity"
           component={Link}
         >
-          <QuizIcon /> สมาชิก
+          <QuizIcon /> กิจกรรม
         </Button>
       </Stack>
       <Box
