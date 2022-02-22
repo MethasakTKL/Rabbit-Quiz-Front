@@ -1,12 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
-html, body {
-    background: #5f498c;
-}
+
 .login-page {
-    width: 360px;
+    background: #ffffff;
+    width: 90%;
+    max-width: 500px;
     padding: 0 0 0;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 20%;
+
+
     border-radius: 10px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }

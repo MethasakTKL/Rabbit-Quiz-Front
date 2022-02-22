@@ -5,8 +5,7 @@ import { Box } from "@mui/material";
 
 function Login() {
   return (
-    <Box 
-    style={{background: "#5f498c"}}>
+    <Box>
       <div class="login-page">
         <div class="logo">
         <img src="https://www.img.in.th/images/f4de721891268e159ad5acd5b6a7a64d.png" ></img>
