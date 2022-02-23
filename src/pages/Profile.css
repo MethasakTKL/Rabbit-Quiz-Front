@@ -27,4 +27,17 @@
 
 .saveButton{
     font-family:'Prompt', sans-serif;
+    padding-left: 10px;
 }
+
+.saveButtonIcon{
+    padding-top: 5px;
+}
+.logoutIcon{
+    padding-top: 5px;
+}
+.logout{
+    font-family:'Prompt', sans-serif;
+    padding-left: 10px;
+}
+
