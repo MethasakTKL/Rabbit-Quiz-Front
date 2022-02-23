@@ -26,7 +26,7 @@ function Home() {
       >
         <Paper elevation={3}>
           <typography>
-            <h1 className="title" sx={{}}>
+            <h1 className="titleclass" sx={{}}>
               ห้องเรียน <ClassIcon sx={{ fontSize: "50" }} />
             </h1>
           </typography>

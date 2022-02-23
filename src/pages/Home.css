@@ -7,9 +7,9 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@200;400&display=swap');
-.title {
+.titleclass {
     font-family: 'Prompt', sans-serif;
-    color: #3E3257;
+    color: #5d4e7c;
     padding-left: 20px;
 }
 
