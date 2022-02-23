@@ -49,7 +49,7 @@ function ClassMember() {
             paddingLeft={3}
             sx={{ background: "#E4E4E5" }}
           >
-            <AccountCircleIcon sx={{ fontSize: 40 }} />
+            <AccountCircleIcon sx={{ fontSize: 40 , color:'#9C2431'}} />
             <p className="centertext">อาจารย์ อารีย์ มีสุข</p>
           </Grid>
         </Card>
@@ -74,7 +74,7 @@ function ClassMember() {
             paddingLeft={3}
             sx={{ background: "#E4E4E5" }}
           >
-            <FaceIcon sx={{ fontSize: 40 }} />
+            <FaceIcon sx={{ fontSize: 30 , color:'#F19528'}} />
             <p className="centertext">ชนาวัฒน์ ทั้วสุภาพ</p>
           </Grid>
         </Card>
@@ -99,7 +99,7 @@ function ClassMember() {
             paddingLeft={3}
             sx={{ background: "#E4E4E5" }}
           >
-            <FaceIcon sx={{ fontSize: 40 }} />
+            <FaceIcon sx={{ fontSize: 30, color:'#F19528' }} />
             <p className="centertext">เมธาศักดิ์ ทิพย์กองลาศ</p>
           </Grid>
         </Card>
@@ -124,7 +124,7 @@ function ClassMember() {
             paddingLeft={3}
             sx={{ background: "#E4E4E5" }}
           >
-            <FaceIcon sx={{ fontSize: 40 }} />
+            <FaceIcon sx={{ fontSize: 30 , color:'#F19528'}} />
             <p className="centertext">นัฏฐวัฒน์ สิงห์อินทร์</p>
           </Grid>
         </Card>
@@ -149,7 +149,7 @@ function ClassMember() {
             paddingLeft={3}
             sx={{ background: "#E4E4E5" }}
           >
-            <FaceIcon sx={{ fontSize: 40 }} />
+            <FaceIcon sx={{ fontSize: 30 , color:'#F19528'}} />
             <p className="centertext">อิฟฟาฮาน สุขสุวรรณ</p>
           </Grid>
         </Card>
@@ -174,7 +174,7 @@ function ClassMember() {
             paddingLeft={3}
             sx={{ background: "#E4E4E5" }}
           >
-            <FaceIcon sx={{ fontSize: 40 }} />
+            <FaceIcon sx={{ fontSize: 30 , color:'#F19528' }} />
             <p className="centertext">ธรรมาธิป ชิตพงศ์</p>
           </Grid>
         </Card>
