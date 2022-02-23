@@ -34,7 +34,7 @@ function Profile() {
           <h1 className="editTitle" style={{ paddingLeft: 40, fontSize: 24 }}>
             แก้ไขข้อมูลส่วนตัว
           </h1>
-          <Grid width={'50%'} margin='auto'>
+          <Grid width={'70%'} margin='auto'>
             <TextField
               fullWidth
               id="standard-basic"
@@ -44,7 +44,7 @@ function Profile() {
               variant="filled"
             />
           </Grid>
-          <Grid width={'50%'} margin='auto' paddingTop={2} paddingBottom={2}>
+          <Grid width={'70%'} margin='auto' paddingTop={2} paddingBottom={2}>
             <TextField
               fullWidth
               id="standard-basic"
@@ -54,8 +54,8 @@ function Profile() {
 
             />
           </Grid>
-          <Grid paddingLeft={65} paddingBottom={2}>
-            <Button variant="contained" sx={{width:100}}>
+          <Grid paddingBottom={2} sx={{marginLeft:'60%'}}>
+            <Button variant="contained" sx={{width:'60%'}}>
               <div className="saveButton">บันทึก</div>
             </Button>
           </Grid>
