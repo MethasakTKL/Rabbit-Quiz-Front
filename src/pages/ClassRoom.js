@@ -14,24 +14,24 @@ function Classroom() {
       </h1>
       <Stack direction="row" spacing={2} paddingLeft={"5%"} paddingBottom={1}>
         <Button
-          className="button1"
           variant="contained"
           sx={{ borderRadius: 3, width: 120 }}
           style={{ background: "#F19528" }}
           to="/classroom-member"
           component={Link}
         >
-          <PeopleAltIcon /> สมาชิก
+          <PeopleAltIcon /> 
+          <div className="button1">สมาชิก</div>
         </Button>
         <Button
-          className="button2"
           variant="contained"
           sx={{ borderRadius: 3, width: 120 }}
           style={{ background: "#51D87A" }}
           to="/classroom-activity"
           component={Link}
         >
-          <QuizIcon /> กิจกรรม
+          <QuizIcon /> 
+          <div className="button2">กิจกรรม</div>
         </Button>
       </Stack>
       <Box
@@ -71,7 +71,7 @@ function Classroom() {
               sx={{ width: '100%', height: 50, borderRadius: 4 }}
               style={{ background: "#5F498C" }}
             >
-              โพสต์
+              <div className="postbuttontext">โพสต์</div>
             </Button>
             </Grid>
           </Grid>

@@ -17,6 +17,7 @@
     font-family: 'Prompt', sans-serif;
     color: #6d5e8f;
 }
+
 .center{
     margin-left: auto;
     margin-left: auto;
@@ -26,4 +27,9 @@
     padding-left: 70%;
     padding-right: 10%;
     font-family: 'Prompt', sans-serif;
+}
+
+.postbuttontext {
+    font-family: 'Prompt', sans-serif;
+    color: #ffffff;
 }
