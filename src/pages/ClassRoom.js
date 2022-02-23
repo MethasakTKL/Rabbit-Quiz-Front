@@ -94,7 +94,7 @@ function Classroom() {
           },
         }}
       >
-        <Paper elevation={3}>
+        <Paper elevation={3} paddingBottom={10}>
           <h1 className="post" style={{ paddingLeft: 40, fontSize: 24 }}>
             โพสต์ล่าสุด
           </h1>
