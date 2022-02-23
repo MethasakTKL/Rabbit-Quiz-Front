@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
+.screen{
+    height: 1000px;
+}
 
 .classname {
     font-family: 'Prompt', sans-serif;
@@ -32,4 +35,20 @@
 .postbuttontext {
     font-family: 'Prompt', sans-serif;
     color: #ffffff;
+
+}
+
+.postername {
+    font-family: 'Prompt', sans-serif;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 13pt;
+    font-weight: 900;
+
+}
+
+.postinfo{
+    font-family: 'Prompt', sans-serif;
+    padding-left: 30px;
+    padding-bottom: 20px;
 }
