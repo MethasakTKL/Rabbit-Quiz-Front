@@ -7,3 +7,11 @@
     padding-left: 20px;
     font-size: 36px;
 }
+
+.activityclass{
+    font-family: 'Prompt', sans-serif;
+    font-weight: 500;
+    color: rgb(158, 144, 170);
+    text-align: center;
+    padding-top: 25%;
+}

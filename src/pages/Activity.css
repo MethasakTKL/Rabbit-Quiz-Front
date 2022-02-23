@@ -9,6 +9,14 @@
     padding-top: 10px;
 }
 
+.yourActivitytext {
+    font-family: 'Prompt', sans-serif;
+    font-weight: 500;
+    color: rgb(158, 144, 170);
+    text-align: center;
+    padding-top: 25%;
+}
+
 .Class{
     font-family: 'Prompt', sans-serif;
     color: #84729f;

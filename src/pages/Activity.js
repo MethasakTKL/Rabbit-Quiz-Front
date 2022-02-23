@@ -10,12 +10,12 @@ function Activity() {
       <Grid>
         <Paper
           elevation={4}
-          sx={{ width: "90%",height:500, marginLeft: "auto", marginRight: "auto" }}
+          sx={{ width: "90%",height:300, marginLeft: "auto", marginRight: "auto" }}
         >
           <Grid>
             <div className="yourActivity">กิจกรรมของคุณ</div>
           </Grid>
-
+          <div className="yourActivitytext">ยังไม่มีกิจกรรม</div>
 
 
         </Paper>

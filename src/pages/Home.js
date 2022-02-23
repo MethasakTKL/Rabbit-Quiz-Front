@@ -3,6 +3,7 @@ import { Box, Button, Paper } from "@mui/material";
 import ClassIcon from "@mui/icons-material/Class";
 import "./Home.css";
 import { Link } from "react-router-dom";
+import kid from '../Static/image/kid.png'
 
 function Home() {
   return (
@@ -51,6 +52,7 @@ function Home() {
           </Box>
         </Paper>
       </Box>
+      <img src={kid} width={'100%'} /> 
     </div>
   );
 }

@@ -1,12 +1,12 @@
 import React from 'react'
 import { Button, Box, Paper } from "@mui/material";
-
-import './ClassActivity'
+import './ClassActivity.css'
 function ClassActivity() {
+
   return (
     <div>
       <h1 className="classname" style={{ paddingLeft: "5%", fontSize: 36 }}>
-        ห้องเรียน 240-124
+        ห้องเรียนการเกษตร
       </h1>
       <Paper
         className="membertopic"
@@ -37,7 +37,9 @@ function ClassActivity() {
           },
         }}
       >
-        <Paper elevation={3}></Paper>
+        <Paper elevation={3}>
+          <div className='activityclass'>ยังไม่มีกิจกรรม</div>
+        </Paper>
       </Box>
     </div>
   );

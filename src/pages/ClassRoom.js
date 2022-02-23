@@ -12,7 +12,7 @@ function Classroom() {
   return (
     <div className="screen">
       <h1 className="classname" style={{ paddingLeft: "5%", fontSize: 36 }}>
-        ห้องเรียน 240-124
+        ห้องเรียนการเกษตร
       </h1>
       <Stack direction="row" spacing={2} paddingLeft={"5%"} paddingBottom={1}>
         <Button
