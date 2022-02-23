@@ -30,7 +30,7 @@ function ClassActivity() {
             m: 1,
 
             width: "90%",
-            height: 200,
+            height: 'auto',
             borderRadius: 3,
             marginLeft: "auto",
             marginRight: "auto",

@@ -52,7 +52,6 @@ function Home() {
           </Box>
         </Paper>
       </Box>
-      <img src={kid} width={'100%'} /> 
     </div>
   );
 }
