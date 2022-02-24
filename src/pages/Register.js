@@ -21,10 +21,11 @@ function Register() {
             <input type="email" placeholder="อีเมล" />
             <input type="text" placeholder="ชื่อผู้ใช้" />
             <input type="password" placeholder="รหัสผ่าน" />
-            <div class="cate-reg">
-              <input type="radio" name="reg-category" value="teacher" checked /> คุณครู
-              <input type="radio" name="reg-category" value="student" /> นักเรียน
-            </div>
+            <box class="cate-reg">
+              <div type="choose-role"> เลือกหน้าที่</div>
+              <input type="radio" name="reg" value="teacher" checked /> คุณครู
+              <input type="radio" name="reg" value="student" /> นักเรียน
+            </box>
             <Link to="/login">
               <p><button type="register">สร้างบัญชีใหม่</button></p>
               <button type="backtologin">กลับเข้าสู่ระบบ</button>

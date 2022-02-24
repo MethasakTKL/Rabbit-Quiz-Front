@@ -20,7 +20,7 @@ body.background-reg {
     height: 130px;
     border-radius: 10px 10px 0 0;
     text-align: center;
-    background: #f5d64d;
+    background: #f5df4d;
     display: block;
 }
 div.logo img {
@@ -64,12 +64,19 @@ div.logo img {
     background: #4caf50;
 }
 
-div.cate-reg {
+.cate-reg {
     font-family: "Prompt", sans-serif;
     display: flex;
     background: #ffffff;
-    padding: 10px;
     align-items: center;
+    width: 80%;
+    padding: 5px;
+    /* border: 1px solid red; */
+}
+.cate-reg div[type="choose-role"] {
+    align-items: left;
+    padding-left: 10px;
+    width: 200%;
 }
 .form input[type="radio"] {
     margin: 0;

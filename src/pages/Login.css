@@ -10,16 +10,16 @@ body.background-log {
 .login-page {
     background: #ffffff;
     width: 90%;
-    max-width: 500px;
+    max-width: 30rem;
     padding: 0 0 0;
     margin: auto;
-    margin-top: 8rem;
+    margin-top: 8%;
     border-radius: 10px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 
 }
 .logo {
-    height: 130px;
+    height: 6%;
     border-radius: 10px 10px 0 0;
     text-align: center;
     background: #f5df4d;
@@ -39,16 +39,17 @@ div.logo img {
 .form {
     background: #ffffff;
     z-index: 1;
-    max-width: 360px;
-    margin: 0 auto 100px;
-    padding: 45px;
+    max-width: 100%;
+    padding: 10%;
+    padding-top: 0%;
     text-align: center;
     border-radius: 0 0 10px 10px;
+    /* border: 1px solid red; */
 }
 .form input {
     font-family: "Prompt", sans-serif;
     outline: 0;
-    background: #e6e6e6;
+    background: #f0f0f0;
     width: 100%;
     border: 0;
     margin: 0 0 15px;
