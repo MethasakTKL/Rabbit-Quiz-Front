@@ -33,7 +33,7 @@ function AppNavBar() {
           <Tabs
             value={value}
             onChange={handleChange}
-            TabIndicatorProps={{ style: { background: "#f5df4d", height: 5 } }}
+            TabIndicatorProps={{ style: { background: "#ffdd44", height: 5 } }}
             textColor="#f5df4d"
           >
             <Tab

@@ -1,7 +1,7 @@
 import React from "react";
 import { AppBar, Box, Button, Grid, Toolbar } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 //image
 import logo from "../../Static/image/logo.png";
 
@@ -16,7 +16,9 @@ function AppHeader() {
               <ArrowBackIosIcon sx={{ fontSize: 40, color: "white" }} />
             </Button>
             <Grid sx={{ marginLeft: "auto", marginRight: 0 }}>
-              <img src={logo} width={"70"} />
+              <Link to="/">
+                <img src={logo} width={"70"} />
+              </Link>
             </Grid>
             <Grid></Grid>
           </Toolbar>
