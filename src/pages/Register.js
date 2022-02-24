@@ -1,35 +1,38 @@
 import "./Register.css"
 import { Link } from "react-router-dom";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import React from 'react';
 
 function Register() {
   return (
-    <div class="register-page">
-      <div class="logo">
-        <logo>
-          <img src="https://www.img.in.th/images/f4de721891268e159ad5acd5b6a7a64d.png" />
-        </logo>
-      </div>
-      <div class="form">
-        <h1 class="head">สร้างบัญชี</h1>
-        <div type="namebox">
-          <input type="name" placeholder="ชื่อ" />
-          <input type="surname" placeholder="นามสกุล" />
+    <html>
+      <body class="background-reg">
+        <div class="register-page">
+          <div class="logo">
+            <logo>
+              <img src="https://www.img.in.th/images/f4de721891268e159ad5acd5b6a7a64d.png" />
+            </logo>
+          </div>
+          <div class="form">
+            <h1 class="head">สร้างบัญชี</h1>
+            <div type="namebox">
+              <input type="name" placeholder="ชื่อ" />
+              <input type="surname" placeholder="นามสกุล" />
+            </div>
+            <input type="email" placeholder="อีเมล" />
+            <input type="text" placeholder="ชื่อผู้ใช้" />
+            <input type="password" placeholder="รหัสผ่าน" />
+            <div class="cate-reg">
+              <input type="radio" name="reg-category" value="teacher" checked /> คุณครู
+              <input type="radio" name="reg-category" value="student" /> นักเรียน
+            </div>
+            <Link to="/login">
+              <p><button type="register">สร้างบัญชีใหม่</button></p>
+              <button type="backtologin">กลับเข้าสู่ระบบ</button>
+            </Link>
+          </div>
         </div>
-        <input type="email" placeholder="อีเมล" />
-        <input type="text" placeholder="ชื่อผู้ใช้" />
-        <input type="password" placeholder="รหัสผ่าน" />
-        <div class="cate-reg">
-          <input type="radio" name="reg-category" value="teacher" checked /> คุณครู
-          <input type="radio" name="reg-category" value="student" /> นักเรียน
-        </div>
-        <Link to="/login">
-          <p><button type="register">สร้างบัญชีใหม่</button></p>
-          <button type="backtologin">กลับเข้าสู่ระบบ</button>
-        </Link>
-      </div>
-    </div>
+      </body>
+    </html>
   )
 }
 

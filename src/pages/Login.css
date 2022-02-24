@@ -1,7 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
 
+body.background-log {
+    display: table;
+    width: 100%;
+    height: 100%;
+    background-color: #5f498c;
+    background-image: linear-gradient(#5f498c, white)
+}
 .login-page {
-    background: #5f498c;
+    background: #ffffff;
     width: 90%;
     max-width: 500px;
     padding: 0 0 0;
@@ -23,8 +30,14 @@ div.logo img {
     max-height: 200px;
     max-width: 200px;
 }
+.head {
+    font-size: 36px;
+    margin-bottom: 10%;
+    font-family: "Prompt", sans-serif;
+    color:#4b3c6b;
+}
 .form {
-    background: #fcfcfc;
+    background: #ffffff;
     z-index: 1;
     max-width: 360px;
     margin: 0 auto 100px;
@@ -35,7 +48,7 @@ div.logo img {
 .form input {
     font-family: "Prompt", sans-serif;
     outline: 0;
-    background: #e0ccff;
+    background: #e6e6e6;
     width: 100%;
     border: 0;
     margin: 0 0 15px;
@@ -61,7 +74,7 @@ div.logo img {
     font-family: "Prompt", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #8ae78d;
+    background: #56d35b;
     width: 100%;
     border: 0;
     padding: 15px;
@@ -72,12 +85,12 @@ div.logo img {
     cursor: pointer;
 }
 .form button[type="login"]:hover,
-.form button:active,
-.form button:focus {
+.form button[type="login"]:active,
+.form button[type="login"]:focus {
     background: #4572c7;
 }
 .form button[type="register"]:hover,
-.form button:active,
-.form button:focus {
+.form button[type="register"]:active,
+.form button[type="register"]:focus {
     background: #4caf50;
 }
