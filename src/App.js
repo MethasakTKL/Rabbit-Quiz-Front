@@ -3,7 +3,7 @@ import "./App.css";
 //components
 import AppHeader from "./components/Bars/AppHeader";
 import AppNavBar from "./components/Bars/AppNavBar";
-import { BrowserRouter as Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 //pages
 import Falsepage from "./pages/Falsepage";
