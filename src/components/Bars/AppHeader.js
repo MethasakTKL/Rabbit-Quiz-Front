@@ -4,6 +4,8 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Link, useHistory } from "react-router-dom";
 //image
 import logo from "../../Static/image/logo.png";
+//css
+import "./AppHeader.css";
 
 function AppHeader() {
   const history = useHistory();
@@ -15,6 +17,7 @@ function AppHeader() {
             <Button onClick={() => history.goBack()}>
               <ArrowBackIosIcon sx={{ fontSize: 40, color: "white" }} />
             </Button>
+            <div class="Headbar-Header">Rabbit Quiz</div>
             <Grid sx={{ marginLeft: "auto", marginRight: 0 }}>
               <Link to="/">
                 <img src={logo} width={"70"} />
