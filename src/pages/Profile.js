@@ -1,7 +1,6 @@
 import { Button, Grid, Paper, TextField } from "@mui/material";
 import React from "react";
 import FaceIcon from "@mui/icons-material/Face";
-import { Box } from "@mui/system";
 import "./Profile.css";
 import { Link } from "react-router-dom";
 import LogoutIcon from '@mui/icons-material/Logout';

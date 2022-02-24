@@ -43,11 +43,6 @@ div.logo img {
     box-sizing: border-box;
     font-size: 14px;
 }
-.head {
-    font-size: 32px;
-    font-family: "Prompt", sans-serif;
-    color:#f4eeff;
-}
 .form button[type="login"] {
     font-family: "Prompt", sans-serif;
     text-transform: uppercase;
