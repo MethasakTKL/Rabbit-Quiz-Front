@@ -13,23 +13,25 @@ function Register() {
             </logo>
           </div>
           <div class="form">
-            <h1 class="head">สร้างบัญชี</h1>
+            <h1 class="head">สร้างบัญชีใหม่</h1>
             <div type="namebox">
               <input type="name" placeholder="ชื่อ" />
               <input type="surname" placeholder="นามสกุล" />
             </div>
             <input type="email" placeholder="อีเมล" />
-            <input type="text" placeholder="ชื่อผู้ใช้" />
+            <input type="text" placeholder="ชื่อบัญชี" />
             <input type="password" placeholder="รหัสผ่าน" />
             <box class="cate-reg">
-              <div type="choose-role"> เลือกหน้าที่</div>
+              <div type="choose-role"> เลือกบทบาท</div>
               <input type="radio" name="reg" value="teacher" checked /> คุณครู
               <input type="radio" name="reg" value="student" /> นักเรียน
             </box>
+            <p><button type="register">สร้างบัญชี</button></p>
+            <div class="text-backtologin">มีบัญชีอยู่แล้วใช่ไหม
             <Link to="/login">
-              <p><button type="register">สร้างบัญชีใหม่</button></p>
-              <button type="backtologin">กลับเข้าสู่ระบบ</button>
+              <button type="backtologin">เข้าสู่ระบบ</button>
             </Link>
+            </div>
           </div>
         </div>
       </body>

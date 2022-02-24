@@ -17,13 +17,15 @@ function AppHeader() {
             <Button onClick={() => history.goBack()}>
               <ArrowBackIosIcon sx={{ fontSize: 40, color: "white" }} />
             </Button>
-            <div class="Headbar-Header">Rabbit Quiz</div>
-            <Grid sx={{ marginLeft: "auto", marginRight: 0 }}>
-              <Link to="/">
-                <img src={logo} width={"70"} />
-              </Link>
+            <Link to="/">
+                  <img src={logo} width={"70"} />
+            </Link>
+            <Grid sx={{ marginLeft: "auto", marginRight: 0 }} >
+            <Link to="/profile">
+            <div class="name">นักเรียน</div>
+            <div class="namee">ชนาวัฒน์ ทั้วสุภาพ</div>
+            </Link>
             </Grid>
-            <Grid></Grid>
           </Toolbar>
         </AppBar>
       </Box>

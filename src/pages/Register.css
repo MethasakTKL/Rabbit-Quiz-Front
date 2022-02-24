@@ -34,10 +34,14 @@ div.logo img {
 .form input[type="name"] {
     margin-right: 10px;
 }
+.text-backtologin {
+    font-family: "Prompt", sans-serif; 
+    color: #808080;
+}
 .form button[type="backtologin"] {
     font-family: "Prompt", sans-serif;
-    font-size: 14px;
-    color: #808080;
+    font-size: 16px;
+    color: #077bff;
     cursor: pointer;
     background: #ffffff;
     outline: 0;
@@ -81,4 +85,3 @@ div.logo img {
 .form input[type="radio"] {
     margin: 0;
 }
-

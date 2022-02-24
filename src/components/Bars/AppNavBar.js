@@ -2,7 +2,7 @@ import React from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import HistoryIcon from "@mui/icons-material/History";
 import FaceIcon from "@mui/icons-material/Face";
-
+import "./AppNavBar.css";
 import { AppBar, Box, Tab, Tabs, Toolbar } from "@mui/material";
 import { Link } from "react-router-dom";
 
@@ -43,7 +43,7 @@ function AppNavBar() {
               sx={{ color: "#f3e5f5" }}
               to="/"
               component={Link}
-              
+
             />
             <Tab
               className="navtext"
@@ -52,7 +52,7 @@ function AppNavBar() {
               sx={{ color: "#f3e5f5" }}
               to="/activity"
               component={Link}
-              
+
             />
             <Tab
               className="navtext"
@@ -61,7 +61,7 @@ function AppNavBar() {
               sx={{ color: "#f3e5f5" }}
               to="/profile"
               component={Link}
-              
+
             />
           </Tabs>
         </Toolbar>

@@ -13,7 +13,7 @@ function Login() {
           <div class="form">
             <form class="login-form">
               <h1 class='head'>ลงชื่อเข้าใช้งาน</h1>
-              <input type="text" placeholder="ชื่อผู้ใช้" />
+              <input type="text" placeholder="ชื่อบัญชี" />
               <input type="password" placeholder="รหัสผ่าน" />
               <Link to="/">
                 <button type="login">เข้าสู่ระบบ</button>
