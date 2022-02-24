@@ -6,7 +6,7 @@ function Falsepage() {
   return (
     <div> 
         <br/>
-        <img className='pic' src={Error} width={'50%'}/>
+        <img className='pic' src={Error} width={'25%'}/>
         <div className='body'>ขออภัย ไม่พบหน้าที่คุณกำลังค้นหา</div>
     </div>
   )
