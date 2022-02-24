@@ -11,7 +11,7 @@ function ClassMember() {
   return (
     <div>
       <h1 className="classname" style={{ paddingLeft: "5%", fontSize: 36 }}>
-        หห้องเรียนการเกษตร
+        ห้องเรียนการเกษตร
       </h1>
       <Paper
         className="membertopic"

@@ -1,7 +1,11 @@
-import "./Register.css"
+import "./Register.css";
 import { Link } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import React from 'react';
+import React from "react";
+import { FormControl, FormControlLabel, RadioGroup } from "@mui/material";
+import Radio from '@mui/material/Radio';
+import { Box } from "@mui/system";
+
 
 function Register() {
   return (
@@ -20,17 +24,41 @@ function Register() {
         <input type="email" placeholder="อีเมล" />
         <input type="text" placeholder="ชื่อผู้ใช้" />
         <input type="password" placeholder="รหัสผ่าน" />
-        <div class="cate-reg">
-          <input type="radio" name="reg-category" value="teacher" checked /> คุณครู
-          <input type="radio" name="reg-category" value="student" /> นักเรียน
-        </div>
+        <Box sx={{background:'#E0CCFF'}}> 
+        <FormControl >
+          
+          <RadioGroup
+            row
+            aria-labelledby="demo-row-radio-buttons-group-label"
+            name="row-radio-buttons-group"
+          >
+            <FormControlLabel
+              value="student"
+              control={<Radio />}
+              label="นักเรียน"
+              color="default"
+              sx={{color:'#7F7F7F'}}
+            />
+            <FormControlLabel
+              value="teacher"
+              control={<Radio />}
+              label="คุณครู"
+              color="default"
+              sx={{color:'#7F7F7F'}}
+
+            />
+          </RadioGroup>
+        </FormControl>
+        </Box>
         <Link to="/login">
-          <p><button type="register">สร้างบัญชีใหม่</button></p>
+          <p>
+            <button type="register">สร้างบัญชีใหม่</button>
+          </p>
           <button type="backtologin">กลับเข้าสู่ระบบ</button>
         </Link>
       </div>
     </div>
-  )
+  );
 }
 
-export default Register
+export default Register;
