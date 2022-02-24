@@ -5,11 +5,12 @@ body.background-log {
     width: 100%;
     height: 100%;
     background-color: #5f498c;
-    background-image: linear-gradient(#5f498c, white)
+    background-image: linear-gradient(#5f498c, white);
 }
 .login-page {
     background: #ffffff;
     width: 90%;
+    max-height: 90%;
     max-width: 30rem;
     padding: 0 0 0;
     margin: auto;

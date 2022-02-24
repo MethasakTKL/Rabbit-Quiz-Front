@@ -9,7 +9,7 @@ function Register() {
         <div class="register-page">
           <div class="logo">
             <logo>
-              <img src="https://www.img.in.th/images/f4de721891268e159ad5acd5b6a7a64d.png" />
+              <img src="https://www.img.in.th/images/f4de721891268e159ad5acd5b6a7a64d.png" alt="logorabbit" />
             </logo>
           </div>
           <div class="form">

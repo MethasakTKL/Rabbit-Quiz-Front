@@ -1,5 +1,5 @@
 import { Button, Grid, Paper, Stack, TextField } from "@mui/material";
-import { Box, grid, spacing } from "@mui/system";
+import { Box } from "@mui/system";
 import React from "react";
 import "./ClassRoom.css";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
@@ -56,7 +56,7 @@ function Classroom() {
           <h1 className="post" style={{ paddingLeft: 40, fontSize: 24 }}>
             ประกาศข้อความของคุณ
           </h1>
-          <Grid direction="row" spacing={2} direction="row">
+          <Grid direction="row" spacing={2}>
             <Grid item className="center">
               <TextField
                 label="สร้างโพสต์"

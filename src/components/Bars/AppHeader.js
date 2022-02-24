@@ -18,7 +18,7 @@ function AppHeader() {
               <ArrowBackIosIcon sx={{ fontSize: 40, color: "white" }} />
             </Button>
             <Link to="/">
-                  <img src={logo} width={"70"} />
+                  <img src={logo} alt="logorabbit" width={"70"} />
             </Link>
             <Grid sx={{ marginLeft: "auto", marginRight: 0 }} >
             <Link to="/profile">
