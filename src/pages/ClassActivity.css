@@ -16,3 +16,32 @@
     padding-top: 10%;
     padding-bottom: 10%;
 }
+
+.titledialog{
+    font-family: 'Prompt', sans-serif;
+    font-weight: 600;
+}
+
+.dialogtext{
+    font-family: 'Prompt', sans-serif;
+    padding-left: 22%;
+    font-size: 20pt;
+}
+
+.buttonyes{
+    font-family: 'Prompt', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.buttonno{
+    font-family: 'Prompt', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.activitybutton{
+    font-family: 'Prompt', sans-serif;
+}
