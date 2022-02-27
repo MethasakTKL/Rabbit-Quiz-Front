@@ -85,3 +85,13 @@ div.logo img {
 .form input[type="radio"] {
     margin: 0;
 }
+
+.accounttype{
+    font-family: 'Prompt', sans-serif;
+    font-size: 14pt;
+    color: #4d4d4d;
+}
+
+.choices{
+    font-family: 'Prompt', sans-serif;
+}
