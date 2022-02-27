@@ -27,7 +27,7 @@ function Register() {
             <h1 class="head">สร้างบัญชีใหม่</h1>
             <Stack spacing={1} paddingBottom={2}>
               <TextField
-                id="outlined-basic"
+                id="name"
                 label="ชื่อ"
                 variant="outlined"
                 inputProps={{ style: { fontFamily: "Prompt" } }}
@@ -35,7 +35,7 @@ function Register() {
                 required
               />
               <TextField
-                id="outlined-basic"
+                id="lastname"
                 label="นามสกุล"
                 variant="outlined"
                 inputProps={{ style: { fontFamily: "Prompt" } }}
@@ -43,7 +43,7 @@ function Register() {
                 required
               />
               <TextField
-                id="outlined-basic"
+                id="username"
                 label="ชื่อบัญชี"
                 variant="outlined"
                 inputProps={{ style: { fontFamily: "Prompt" } }}
@@ -51,7 +51,7 @@ function Register() {
                 required
               />
               <TextField
-                id="outlined-basic"
+                id="email"
                 label="อีเมล"
                 variant="outlined"
                 inputProps={{ style: { fontFamily: "Prompt" } }}
@@ -59,7 +59,7 @@ function Register() {
                 required
               />
               <TextField
-                id="outlined-basic"
+                id="password"
                 type="password"
                 label="รหัสผ่าน"
                 variant="outlined"
@@ -68,7 +68,7 @@ function Register() {
                 required
               />
               <TextField
-                id="outlined-basic"
+                id="password-confirm"
                 type="password"
                 label="ยืนยันรหัสผ่าน"
                 variant="outlined"

@@ -22,7 +22,6 @@ function Login() {
                 variant="outlined" 
                 inputProps={{style:{fontFamily:"Prompt"}}}
                 InputLabelProps={{style:{fontFamily:"Prompt"}}}
-                required 
               />
               <TextField 
                 id="outlined-basic" 
@@ -31,7 +30,6 @@ function Login() {
                 variant="outlined" 
                 inputProps={{style:{fontFamily:"Prompt"}}}
                 InputLabelProps={{style:{fontFamily:"Prompt"}}}
-                required 
               />
               </Stack>
               <Link to="/">
