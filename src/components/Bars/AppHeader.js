@@ -24,13 +24,13 @@ function AppHeader() {
             <Box sx={{ marginLeft: "auto" }}>
               <div class="pc-header">
                 <Link to="/">
-                  <div>Home</div>
-                </Link>
-                <Link to="/profile">
-                  <div>Profile</div>
+                  <div>หน้าเเรก</div>
                 </Link>
                 <Link to="/activity">
-                  <div>Activity</div>
+                  <div>กิจกรรม</div>
+                </Link>
+                <Link to="/profile">
+                  <div>โปรไฟล์</div>
                 </Link>
               </div>
             </Box>
