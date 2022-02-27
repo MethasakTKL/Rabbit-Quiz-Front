@@ -18,13 +18,28 @@ function AppHeader() {
               <ArrowBackIosIcon sx={{ fontSize: 40, color: "white" }} />
             </Button>
             <Link to="/">
-                  <img src={logo} alt="logorabbit" width={"70"} />
+              <img src={logo} alt="logorabbit" width={"70"} />
             </Link>
+            {/* PC SECTION */}
+            <Box sx={{ marginLeft: "auto" }}>
+              <div class="pc-header">
+                <Link to="/">
+                  <div>Home</div>
+                </Link>
+                <Link to="/profile">
+                  <div>Profile</div>
+                </Link>
+                <Link to="/activity">
+                  <div>Activity</div>
+                </Link>
+              </div>
+            </Box>
+            {/* PC SECTION */}
             <Grid sx={{ marginLeft: "auto", marginRight: 0 }} >
-            <Link to="/profile">
-            <div class="name">นักเรียน</div>
-            <div class="namee">ชนาวัฒน์ ทั้วสุภาพ</div>
-            </Link>
+              <Link to="/profile">
+                <div class="name">นักเรียน</div>
+                <div class="namee">ชนาวัฒน์ ทั้วสุภาพ</div>
+              </Link>
             </Grid>
           </Toolbar>
         </AppBar>

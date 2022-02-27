@@ -29,44 +29,47 @@ function AppNavBar() {
           marginRight: "auto",
         }}
       >
-        <Toolbar sx={{ justifyContent: "center" }}>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            TabIndicatorProps={{ style: { background: "#ffdd44", height: 5 } }}
-            textColor="#f5df4d"
-          >
-            <Tab
-              className="navtext"
-              icon={<HomeIcon />}
-              label="หน้าแรก"
-              sx={{ color: "#f3e5f5" }}
-              to="/"
-              component={Link}
+        <div class="navbar">
+          <Toolbar sx={{ justifyContent: "center" }}>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              TabIndicatorProps={{ style: { background: "#ffdd44", height: 5 } }}
+              textColor="#f5df4d"
+            >
+              <Tab
+                className="navtext"
+                icon={<HomeIcon />}
+                label="หน้าแรก"
+                sx={{ color: "#f3e5f5" }}
+                to="/"
+                component={Link}
 
-            />
-            <Tab
-              className="navtext"
-              icon={<HistoryIcon />}
-              label="กิจกรรม"
-              sx={{ color: "#f3e5f5" }}
-              to="/activity"
-              component={Link}
+              />
+              <Tab
+                className="navtext"
+                icon={<HistoryIcon />}
+                label="กิจกรรม"
+                sx={{ color: "#f3e5f5" }}
+                to="/activity"
+                component={Link}
 
-            />
-            <Tab
-              className="navtext"
-              icon={<FaceIcon />}
-              label="โปรไฟล์"
-              sx={{ color: "#f3e5f5" }}
-              to="/profile"
-              component={Link}
+              />
+              <Tab
+                className="navtext"
+                icon={<FaceIcon />}
+                label="โปรไฟล์"
+                sx={{ color: "#f3e5f5" }}
+                to="/profile"
+                component={Link}
 
-            />
-          </Tabs>
-        </Toolbar>
+              />
+            </Tabs>
+          </Toolbar>
+        </div>
       </AppBar>
     </Box>
+
   );
 }
 

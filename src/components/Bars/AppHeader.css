@@ -22,3 +22,19 @@ div.profile-name {
     font-family: "Prompt", sans-serif;
     color: aliceblue;
 }
+.pc-header {
+    display: flex;
+}
+.pc-header div {
+    text-align: center;
+    font-family: "Prompt", sans-serif;
+    color: rgb(255, 240, 107);
+    margin-right: 1rem;
+}
+
+@media (max-width: 35em) { 
+    .pc-header {
+        display: none;
+    }
+    
+}
