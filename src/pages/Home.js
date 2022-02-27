@@ -1,15 +1,62 @@
 import React from "react";
-import { Box, Button, Paper } from "@mui/material";
+import { Box, Button, Paper, TextField } from "@mui/material";
 import ClassIcon from "@mui/icons-material/Class";
 import "./Home.css";
 import { Link } from "react-router-dom";
+import { FiPlus } from "react-icons/fi";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
 import kid from '../Static/image/kid.png'
 
 function Home() {
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div>
- 
       <h4 className="hello">สวัสดี, ชนาวัฒน์ ทั้วสุภาพ</h4>
+      {/* เพิ่มห้องเรียน */}
+      <Button
+        variant="outlined"
+        sx={{
+          display: 'block',
+          mt: 3, 
+          ml: "auto",
+          mr: 10,
+          fontFamily: 'Prompt',
+        }}
+        onClick={handleClickOpen}><FiPlus />{' '}ห้องเรียน</Button>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle sx={{fontFamily: "Prompt"}}>เพิ่มห้องเรียน</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="รหัสห้องเรียน"
+            type="name"
+            fullWidth
+            variant="standard"
+            inputProps={{style: {fontFamily: "Prompt"}}}
+            InputLabelProps={{style: {fontFamily: "Prompt"}}}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} sx={{fontFamily: "Prompt" }}>ยกเลิก</Button>
+          <Button onClick={handleClose} sx={{fontFamily: "Prompt" ,color:"green"}}>เพิ่ม</Button>
+        </DialogActions>
+      </Dialog>
+      {/* เพิ่มห้องเรียน */}
       <Box
         sx={{
           display: "flex",

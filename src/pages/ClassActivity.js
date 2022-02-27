@@ -50,7 +50,6 @@ function ClassActivity() {
           flexWrap: "wrap",
           "& > :not(style)": {
             m: 1,
-
             width: "90%",
             maxWidth: 1000,
             height: "auto",
