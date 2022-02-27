@@ -23,20 +23,20 @@ function AppHeader() {
             {/* PC SECTION */}
             <Box sx={{ marginLeft: "auto" }}>
               <div class="pc-header">
-                <Link to="/">
+                <Link to="/" style={{textDecoration: "none"}}>
                   <div>หน้าเเรก</div>
                 </Link>
-                <Link to="/activity">
+                <Link to="/activity" style={{textDecoration: "none"}}>
                   <div>กิจกรรม</div>
                 </Link>
-                <Link to="/profile">
+                <Link to="/profile" style={{textDecoration: "none"}}>
                   <div>โปรไฟล์</div>
                 </Link>
               </div>
             </Box>
             {/* PC SECTION */}
             <Grid sx={{ marginLeft: "auto", marginRight: 0 }} >
-              <Link to="/profile">
+              <Link to="/profile" style={{textDecoration: "none"}}>
                 <div class="name">นักเรียน</div>
                 <div class="namee">ชนาวัฒน์ ทั้วสุภาพ</div>
               </Link>

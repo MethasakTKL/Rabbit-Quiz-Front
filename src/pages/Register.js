@@ -89,12 +89,12 @@ function Register() {
                 <FormControlLabel
                   value="female"
                   control={<Radio />}
-                  label={<Typography className="choices">นักเรียน</Typography>}
+                  label={<Typography className="choices" sx={{fontFamily:"Prompt"}}>นักเรียน</Typography>}
                 />
                 <FormControlLabel
                   value="male"
                   control={<Radio />}
-                  label={<Typography className="choices">คุณครู</Typography>}
+                  label={<Typography className="choices" sx={{fontFamily:"Prompt"}}>คุณครู</Typography>}
                 />
               </RadioGroup>
             </FormControl>
