@@ -17,15 +17,12 @@
     padding-bottom: 10%;
 }
 
-.titledialog{
-    font-family: 'Prompt', sans-serif;
-    font-weight: 600;
-}
 
 .dialogtext{
     font-family: 'Prompt', sans-serif;
-    padding-left: 22%;
-    font-size: 20pt;
+    font-size: 16pt;
+    text-align: center;
+    font-weight: 500;
 }
 
 .buttonyes{
@@ -41,7 +38,22 @@
     margin-right: auto;
 }
 
-
 .activitybutton{
     font-family: 'Prompt', sans-serif;
+    font-size: 16pt;
+}
+
+.activityNo{
+    font-family: 'Prompt', sans-serif;
+    text-align: center;
+    color: #856FB4;
+    font-weight: 600;
+}
+
+.imgwater{
+    display: block;
+    padding-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
 }

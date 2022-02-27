@@ -7,7 +7,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { height } from "@mui/system";
+import { height, maxWidth } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
 //import image
 import waterplant from "../Static/image/waterplant.png";
@@ -21,6 +21,10 @@ function ClassActivity() {
   };
 
   const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleCloseYes = () => {
     setOpen(false);
   };
   return (
@@ -38,7 +42,7 @@ function ClassActivity() {
           marginLeft: "5%",
           marginRight: 0,
         }}
-        style={{ background: "#51D87A", fontFamily: "Prompt" }}
+        style={{ background: "#51D87A" }}
       >
         <h3 className="center" style={{ paddingLeft: "30%", paddingTop: 5 }}>
           กิจกรรม
@@ -50,22 +54,28 @@ function ClassActivity() {
           flexWrap: "wrap",
           "& > :not(style)": {
             m: 1,
+
             width: "90%",
             maxWidth: 1000,
             height: "auto",
             borderRadius: 3,
             marginLeft: "auto",
             marginRight: "auto",
-            fontFamily: "Prompt",
           },
         }}
       >
         <Paper elevation={3}>
-          <Grid paddingTop={2} paddingBottom={2} paddingLeft={"20%"}>
+          <Grid paddingTop={2} paddingBottom={2}>
             <Button
               variant="outlined"
               onClick={handleClickOpen}
-              sx={{ width: 500, height: 100 }}
+              style={{
+                display: "flex",
+                marginRight: "auto",
+                marginLeft: "auto",
+                bottom: 10,
+                top:1
+              }}
             >
               <h1 className="activitybutton">
                 กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1
@@ -73,28 +83,25 @@ function ClassActivity() {
             </Button>
           </Grid>
           <Dialog open={open} onClose={handleClose} fullWidth={fullWidth}>
-            <DialogTitle className="titledialog" >
-              <a className="activityNo">กิจกรรมที่ 1</a>
+            <DialogTitle>
+              <Grid paddingLeft={'90%'}>
+                <IconButton onClick={handleClose}>
+                  <CloseIcon />
+                </IconButton>
+              </Grid>
+              <div className="activityNo">กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1</div>
             </DialogTitle>
             <DialogContent>
               <DialogContentText className="dialogtext">
-                ต้องการจะรดน้ำต้นไม้หรือไม่
+                ต้องการจะรดน้ำต้นไม้หรือไม่ ?
               </DialogContentText>
               <img
+                className="imgwater"
                 src={waterplant}
-                style={{ width: 400, paddingLeft: "30%", paddingTop: 30 }}
               />
             </DialogContent>
             <Grid paddingTop={2} paddingBottom={2}>
-              <DialogActions>
-                <Button
-                  variant="contained"
-                  onClick={handleClose}
-                  className="buttonno"
-                  style={{ width: 150, height: 50, background: "#D9534F" }}
-                >
-                  ไม่รดน้ำ
-                </Button>
+              <DialogActions className="centerbutton">
                 <Button
                   variant="contained"
                   onClick={handleClose}
@@ -102,6 +109,14 @@ function ClassActivity() {
                   style={{ width: 150, height: 50, background: "#5BC0DE" }}
                 >
                   รดน้ำ
+                </Button>
+                <Button
+                  variant="contained"
+                  onClick={handleClose}
+                  className="buttonno"
+                  style={{ width: 150, height: 50, background: "#D9534F" }}
+                >
+                  ไม่รดน้ำ
                 </Button>
               </DialogActions>
             </Grid>
