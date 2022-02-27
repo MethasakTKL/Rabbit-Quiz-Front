@@ -49,6 +49,8 @@ function Profile() {
               label="ชื่อ"
               defaultValue="ชนาวัฒน์"
               variant="filled"
+              inputProps={{style: {fontFamily: "Prompt"}}}
+              InputLabelProps={{style: {fontFamily: "Prompt"}}}
             />
           </Grid>
           <Grid width={"70%"} margin="auto" paddingTop={2} paddingBottom={2}>
@@ -58,6 +60,8 @@ function Profile() {
               label="นามสกุล"
               defaultValue="ทั้วสุภาพ"
               variant="filled"
+              inputProps={{style: {fontFamily: "Prompt"}}}
+              InputLabelProps={{style: {fontFamily: "Prompt"}}}
             />
           </Grid>
           <Grid paddingBottom={2} sx={{ marginLeft: "60%" }}>

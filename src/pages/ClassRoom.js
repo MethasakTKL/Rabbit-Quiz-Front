@@ -64,6 +64,8 @@ function Classroom() {
                 margin="normal"
                 style={{ width: "90%" }}
                 multiline
+                inputProps={{style: {fontFamily: "Prompt"}}}
+                InputLabelProps={{style: {fontFamily: "Prompt"}}}
               />
             </Grid>
             <Grid className="postbutton">
