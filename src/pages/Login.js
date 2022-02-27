@@ -1,6 +1,8 @@
 import React from 'react'
 import "./Login.css"
 import { Link } from "react-router-dom";
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
 
 function Login() {
   return (
@@ -13,8 +15,25 @@ function Login() {
           <div class="form">
             <form class="login-form">
               <h1 class='head'>ลงชื่อเข้าใช้งาน</h1>
-              <input type="text" placeholder="ชื่อบัญชี" />
-              <input type="password" placeholder="รหัสผ่าน" />
+              <Stack spacing={3} paddingBottom={2}>
+              <TextField
+                id="outlined-basic"
+                label="ชื่อบัญชี" 
+                variant="outlined" 
+                inputProps={{style:{fontFamily:"Prompt"}}}
+                InputLabelProps={{style:{fontFamily:"Prompt"}}}
+                required 
+              />
+              <TextField 
+                id="outlined-basic" 
+                type="password" 
+                label="รหัสผ่าน" 
+                variant="outlined" 
+                inputProps={{style:{fontFamily:"Prompt"}}}
+                InputLabelProps={{style:{fontFamily:"Prompt"}}}
+                required 
+              />
+              </Stack>
               <Link to="/">
                 <button type="login">เข้าสู่ระบบ</button>
               </Link>
