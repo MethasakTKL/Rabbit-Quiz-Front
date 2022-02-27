@@ -38,7 +38,7 @@ function ClassActivity() {
           marginLeft: "5%",
           marginRight: 0,
         }}
-        style={{ background: "#51D87A" }}
+        style={{ background: "#51D87A", fontFamily: "Prompt" }}
       >
         <h3 className="center" style={{ paddingLeft: "30%", paddingTop: 5 }}>
           กิจกรรม
@@ -57,6 +57,7 @@ function ClassActivity() {
             borderRadius: 3,
             marginLeft: "auto",
             marginRight: "auto",
+            fontFamily: "Prompt",
           },
         }}
       >

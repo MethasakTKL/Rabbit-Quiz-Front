@@ -27,6 +27,7 @@ function AppNavBar() {
           justifyContent: "center",
           marginLeft: "auto",
           marginRight: "auto",
+          fontFamily: "Prompt"
         }}
       >
         <div class="navbar">
@@ -41,7 +42,7 @@ function AppNavBar() {
                 className="navtext"
                 icon={<HomeIcon />}
                 label="หน้าแรก"
-                sx={{ color: "#f3e5f5" }}
+                sx={{ color: "#f3e5f5", fontFamily: "Prompt"}}
                 to="/"
                 component={Link}
 
@@ -50,7 +51,7 @@ function AppNavBar() {
                 className="navtext"
                 icon={<HistoryIcon />}
                 label="กิจกรรม"
-                sx={{ color: "#f3e5f5" }}
+                sx={{ color: "#f3e5f5", fontFamily: "Prompt"}}
                 to="/activity"
                 component={Link}
 
@@ -59,7 +60,7 @@ function AppNavBar() {
                 className="navtext"
                 icon={<FaceIcon />}
                 label="โปรไฟล์"
-                sx={{ color: "#f3e5f5" }}
+                sx={{ color: "#f3e5f5", fontFamily: "Prompt"}}
                 to="/profile"
                 component={Link}
 

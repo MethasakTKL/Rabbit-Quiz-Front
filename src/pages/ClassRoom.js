@@ -17,7 +17,7 @@ function Classroom() {
       <Stack direction="row" spacing={2} paddingLeft={"5%"} paddingBottom={1}>
         <Button
           variant="contained"
-          sx={{ borderRadius: 3, width: 120 }}
+          sx={{ borderRadius: 3, width: 120, }}
           style={{ background: "#F19528" }}
           to="/classroom-member"
           component={Link}
@@ -57,7 +57,7 @@ function Classroom() {
             ประกาศข้อความของคุณ
           </h1>
           <Grid direction="row" spacing={2}>
-            <Grid item className="center">
+            <Grid item className="center" >
               <TextField
                 label="สร้างโพสต์"
                 placeholder="พิมพ์ข้อความที่ต้องการบอกสมาชิกในห้องเรียน"
