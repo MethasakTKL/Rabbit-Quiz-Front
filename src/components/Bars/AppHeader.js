@@ -21,9 +21,11 @@ function AppHeader() {
       <Box>
         <AppBar position="static" style={{ background: "#5F498C" }}>
           <Toolbar>
-            {/* <Button onClick={() => history.goBack()}>
-              <ArrowBackIosIcon sx={{ fontSize: 40, color: "white" }} />
-            </Button> */}
+            <div className="goback-button">
+              <Button onClick={() => history.goBack()}>
+                <ArrowBackIosIcon sx={{ fontSize: 40, color: "white" }} />
+              </Button>
+            </div>
             <Link to="/">
               <img src={logo} alt="logorabbit" width={"70"} />
             </Link>
