@@ -4,8 +4,28 @@ import { Link } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import ax from "../config/ax";
+import React, { useEffect, useState } from "react";
 
 function Login() {
+
+  const [userResultList, setUserResultList] = useState([])
+  const [loginconst, setLoginconst] = useState()
+
+  const loginpress = async () => { 
+    useEffect(async () => {
+      let result = await ax.post('/auth/login/', {
+        params: {
+          username: usernameinput,
+          password: passwordinput
+          }
+          })
+          console.log('login success')
+          console.log(result.data.access)
+      },[loginconst])
+    },
+  
+
+
   return (
     <html class="html-log">
       <body class="background-log">
@@ -21,7 +41,7 @@ function Login() {
                 id="outlined-basic"
                 label="ชื่อบัญชี" 
                 variant="outlined" 
-                value={username}
+                value={usernameinput}
                 inputProps={{style:{fontFamily:"Prompt"}}}
                 InputLabelProps={{style:{fontFamily:"Prompt"}}}
               />
@@ -30,13 +50,13 @@ function Login() {
                 type="password" 
                 label="รหัสผ่าน" 
                 variant="outlined" 
-                value={password}
+                value={passwordinput}
                 inputProps={{style:{fontFamily:"Prompt"}}}
                 InputLabelProps={{style:{fontFamily:"Prompt"}}}
               />
               </Stack>
               <Link to="/">
-                <button type="login" onClick={pass}>เข้าสู่ระบบ</button>
+                <button type="login" onClick={loginpress}>เข้าสู่ระบบ</button>
               </Link>
               <p>
                 <Link to="/register">
