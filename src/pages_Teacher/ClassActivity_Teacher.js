@@ -78,6 +78,7 @@ function ClassActivity_Teacher() {
             </DialogTitle>
             <DialogContent>
               <TextField
+                required
                 margin="dense"
                 id="nameactivity"
                 label="ชื่อกิจกรรม"
@@ -87,6 +88,7 @@ function ClassActivity_Teacher() {
                 InputLabelProps={{ style: { fontFamily: "Prompt" } }}
               />
               <TextField
+                required
                 margin="dense"
                 id="nameactivity"
                 label="คำถาม"
@@ -96,6 +98,7 @@ function ClassActivity_Teacher() {
                 InputLabelProps={{ style: { fontFamily: "Prompt" } }}
               />
               <TextField
+                required
                 margin="dense"
                 id="nameactivity"
                 label="ตัวเลือกที่ 1"
@@ -106,6 +109,7 @@ function ClassActivity_Teacher() {
                 InputLabelProps={{ style: { fontFamily: "Prompt" } }}
               />
               <TextField
+                required
                 margin="dense"
                 id="nameactivity"
                 label="ตัวเลือกที่ 2"
@@ -117,27 +121,29 @@ function ClassActivity_Teacher() {
               />
               <Grid paddingTop={3}>
                 <TextField
+                  required
                   id="datetime-local"
                   label="กำหนดวันที่ส่ง"
                   type="datetime-local"
                   sx={{ width: 250 }}
+                  inputProps={{ style: { fontFamily: "Prompt" } }}
                   InputLabelProps={{
                     shrink: true,
+                    style: { fontFamily: "Prompt" },
                   }}
                 />
               </Grid>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose} className="cancelbutton">
-                ยกเลิก
+              <Button onClick={handleClose}>
+                <div className="cancelbutton">ยกเลิก</div>
               </Button>
               <Button
                 onClick={handleClose}
-                className="createbutton"
                 variant="contained"
                 style={{ width: 150 }}
               >
-                สร้าง
+                <div className="createbutton">สร้าง</div>
               </Button>
             </DialogActions>
           </Dialog>
