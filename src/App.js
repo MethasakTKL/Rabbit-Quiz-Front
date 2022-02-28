@@ -17,7 +17,9 @@ import ClassActivity from "./pages/ClassActivity";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Activity_Complete from "./pages/Activity_Complete";
-
+//pages teacher
+import Home_teacher from "./pages_Teacher/Home_Teacher";
+import AppHeaderTeacher from "./components_teacher/Bars/AppHeader_Teacher";
 function App() {
   return (
     <div className="App">
@@ -29,6 +31,7 @@ function App() {
           <AppNavBar />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/teacher" component={Home_teacher} />
             <Route path="/profile" component={Profile} />
             <Route path="/classroom" component={Classroom} />
             <Route path="/classroom-member" component={ClassMember} />
@@ -39,9 +42,13 @@ function App() {
               <Route path="/complete" component={Activity_Complete} />
             </div>
             <div class="FalsePage">
-            <Route path="*" component={Falsepage} />
+              <Route path="*" component={Falsepage} />
             </div>
           </Switch>
+        </div>
+        <div>
+          <AppHeaderTeacher />
+          <Route exact path="/teacher" component={Home_teacher} />
         </div>
       </Switch>
     </div>

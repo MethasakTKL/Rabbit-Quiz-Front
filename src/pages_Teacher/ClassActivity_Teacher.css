@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
+
+.classname {
+    font-family: 'Prompt', sans-serif;
+    color: #856FB4;
+    text-align: left;
+    padding-left: 20px;
+    font-size: 36px;
+}
+
+.activityclass{
+    font-family: 'Prompt', sans-serif;
+    font-weight: 500;
+    color: rgb(158, 144, 170);
+    text-align: center;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+
+.Question{
+    font-family: 'Prompt', sans-serif;
+    text-align: center;
+    color: #4d4d4d;
+    font-weight: 600;
+}
+
+.buttonyes{
+    font-family: 'Prompt', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.buttonno{
+    font-family: 'Prompt', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.activitybutton{
+    font-family: 'Prompt', sans-serif;
+    font-size: 16pt;
+}
+
+.ActivityTitle{
+    font-family: 'Prompt', sans-serif;
+    text-align: center;
+    color: #856FB4;
+    font-weight: 600;
+}
+
+.imgwater{
+    display: block;
+    padding-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+.centerbutton{
+    display: block;
+    padding-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150;
+}

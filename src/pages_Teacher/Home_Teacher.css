@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
+
+.hello {
+    font-family: 'Prompt', sans-serif;
+    color: #311b92;
+    text-align: center;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@200;400&display=swap');
+.titleclass {
+    font-family: 'Prompt', sans-serif;
+    color: #5d4e7c;
+    padding-left: 20px;
+}
+
+.roomname {
+    font-family: 'Prompt', sans-serif;
+    color: white;
+    text-align: left;
+}
