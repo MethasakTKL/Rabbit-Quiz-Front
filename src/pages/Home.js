@@ -30,9 +30,8 @@ function Home() {
         variant="outlined"
         sx={{
           display: 'block',
-          mt: 3, 
-          ml: "auto",
-          mr: 10,
+          marginLeft:'auto',
+          marginRight:'auto',
           fontFamily: 'Prompt',
         }}
         onClick={handleClickOpen}><FiPlus />{' '}ห้องเรียน</Button>

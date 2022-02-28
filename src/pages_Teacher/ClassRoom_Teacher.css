@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
 .screen{
-    height: 1080px;
+    height: 1400px;
 }
 
 .classname {
@@ -52,4 +52,11 @@
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 20px;
+}
+
+.buttondelete{
+    font-family: 'Prompt', sans-serif;
+}
+.buttonedit{
+    font-family: 'Prompt', sans-serif;
 }

@@ -38,5 +38,29 @@
     font-family: 'Prompt', sans-serif;
     color: rgb(96, 81, 179);
     font-size: 17pt;
+    margin-left: 1rem;
     text-align: center;
+}
+.assignment-detail div[type="time-activity"] {
+    display: flex;
+    justify-content: center;
+    
+}
+
+@media (max-width: 41em) { 
+    .activity {
+        font-size: 16px;
+    }
+    .assignment-detail {
+        display: block;
+        text-align: center;
+
+    }
+    .assignment-detail div[type="time-activity"] {
+        display: flex;
+        justify-content: center;
+        
+    }
+    
+    
 }
