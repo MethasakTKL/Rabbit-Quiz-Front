@@ -8,22 +8,30 @@ import { useEffect, useState } from "react";
 
 function Login() {
 
-  const [userResultList, setUserResultList] = useState([])
-  const [loginconst, setLoginconst] = useState()
+
+
+  // const [userResultList, setUserResultList] = useState([])
+  // const [loginconst, setLoginconst] = useState()
   const [namefill, setNamefill] = useState('')
   const [passfill, setPassfill] = useState('')
 
+  const body = {
+    username: {namefill},
+    password: {passfill},
+  };
+
 
   const loginpress = async () => { 
-      let result = await ax.post('/auth/login/', {
-        params: {
-          username: {namefill},
-          password: {passfill}
-          }
-          })
+      console.log(namefill)
+      console.log(passfill)
+      let result = await ax.post('/auth/login/',{
+        username: namefill,
+        password: passfill,
+      })
           console.log('login success')
-          console.log(result.access)
+          console.log(result.data.access)
       }
+
     
   
 
