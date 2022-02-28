@@ -21,6 +21,8 @@ import { createTheme, height, maxWidth } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
+import AddIcon from '@mui/icons-material/Add';
 //import image
 import waterplant from "../Static/image/waterplant.png";
 
@@ -41,26 +43,29 @@ function ClassActivity_Teacher() {
   };
 
   return (
-    <div>
+    <Box sx={{ height: 1050 }}>
       <h1 className="classname" style={{ paddingLeft: "5%", fontSize: 36 }}>
-        ห้องเรียนการเกษตร Test
+        ห้องเรียนการเกษตร
       </h1>
-      <Paper
-        className="membertopic"
-        variant="contained"
-        sx={{
-          borderRadius: 3,
-          width: 150,
-          height: 40,
-          marginLeft: "5%",
-          marginRight: 0,
-        }}
-        style={{ background: "#51D87A" }}
+      <Stack
+        marginLeft={"auto"}
+        marginRight={"auto"}
+        direction="row"
+        spacing={2}
+        justifyContent="center"
+        alignItems="center"
+        paddingBottom={1}
       >
-        <h3 className="center" style={{ paddingLeft: "30%", paddingTop: 5 }}>
-          กิจกรรม
-        </h3>
-      </Paper>
+        <Grid>
+          <Button
+            variant="contained"
+            style={{ background: "#EFBA44", width: 150 }}
+          >
+            <AddIcon/>
+            <div className="createactivity">สร้างกิจกรรม</div>
+          </Button>
+        </Grid>
+      </Stack>
       <Box
         sx={{
           display: "flex",
@@ -79,6 +84,7 @@ function ClassActivity_Teacher() {
       >
         <Paper elevation={3}>
           <Grid paddingTop={2} paddingBottom={2}>
+            {/* ------------------------------------------------------------------------------------------------------------------- */}
             <Box
               style={{
                 display: "flex",
@@ -87,8 +93,9 @@ function ClassActivity_Teacher() {
                 background: "#5F498C",
                 width: "95%",
                 paddingBottom: 10,
-                paddingLeft:'5%',
+                paddingLeft: "5%",
                 paddingTop: 10,
+                borderRadius: 15,
               }}
             >
               <Grid
@@ -125,6 +132,12 @@ function ClassActivity_Teacher() {
                 <Grid item xs={6}>
                   <div className="textinbutton">3</div>
                 </Grid>
+                <Grid item xs={6}>
+                  <div className="textinbutton">ยังไม่ส่ง</div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="textinbutton">-</div>
+                </Grid>
                 <Stack
                   marginLeft={"auto"}
                   marginRight={"auto"}
@@ -160,12 +173,121 @@ function ClassActivity_Teacher() {
                     </Button>
                   </Grid>
                 </Stack>
+                <Stack marginLeft={"auto"} marginRight={"auto"} direction="row">
+                  <Grid className="status">
+                    <AccessTimeFilledIcon />
+                  </Grid>
+                  <Grid className="status">
+                    <div>หมดเวลาเเล้ว</div>
+                  </Grid>
+                </Stack>
+              </Grid>
+            </Box>
+          </Grid>
+          {/* ------------------------------------------------------------------------------------------------------------------- */}
+          <Grid paddingBottom={3}>
+            <Box
+              style={{
+                display: "flex",
+                marginRight: "auto",
+                marginLeft: "auto",
+                background: "#5F498C",
+                width: "95%",
+                paddingBottom: 10,
+                paddingLeft: "5%",
+                paddingTop: 10,
+                borderRadius: 15,
+              }}
+            >
+              <Grid
+                container
+                rowSpacing={1}
+                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                paddingTop={2}
+              >
+                <Grid item xs={6}>
+                  <div className="activityname">
+                    กิจกรรมที่ 2 รดน้ำต้นไม้วันที่ 2
+                  </div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="activityduedate">
+                    สิ้นสุด 1 มีนาคม 2022 22.00 PM
+                  </div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="textinbutton">ทั้งหมด</div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="textinbutton">5</div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="textinbutton">รดน้ำต้นไม้</div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="textinbutton">4</div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="textinbutton">ไม่รดน้ำต้นไม้</div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="textinbutton">-</div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="textinbutton">ยังไม่ส่ง</div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="textinbutton">1</div>
+                </Grid>
+                <Stack
+                  marginLeft={"auto"}
+                  marginRight={"auto"}
+                  direction="row"
+                  spacing={1}
+                  paddingTop={3}
+                  paddingBottom={2}
+                >
+                  <Grid>
+                    <Button
+                      variant="contained"
+                      style={{ background: "#D64A55" }}
+                    >
+                      <DeleteIcon />
+                      <div className="deletebutton">ลบ</div>
+                    </Button>
+                  </Grid>
+                  <Grid>
+                    <Button
+                      variant="contained"
+                      style={{ background: "#EFBA44" }}
+                    >
+                      <EditIcon />
+                      <div className="editbutton">แก้ไข</div>
+                    </Button>
+                  </Grid>
+                  <Grid>
+                    <Button
+                      variant="contained"
+                      style={{ background: "#7AD400" }}
+                    >
+                      <div className="editbutton">เพิ่มเติม</div>
+                    </Button>
+                  </Grid>
+                </Stack>
+                <Stack marginLeft={"auto"} marginRight={"auto"} direction="row">
+                  <Grid className="statusactive">
+                    <AccessTimeFilledIcon />
+                  </Grid>
+                  <Grid className="statusactive">
+                    <div>อยู่ในระยะเวลา</div>
+                  </Grid>
+                </Stack>
               </Grid>
             </Box>
           </Grid>
         </Paper>
       </Box>
-    </div>
+    </Box>
   );
 }
 export default ClassActivity_Teacher;

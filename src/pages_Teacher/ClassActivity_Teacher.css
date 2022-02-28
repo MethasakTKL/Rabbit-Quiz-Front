@@ -88,3 +88,27 @@
 .editbutton{
     font-family: 'Prompt', sans-serif;
 }
+
+.status{
+    font-family: 'Prompt', sans-serif;
+    color: rgb(255, 101, 101);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.statusactive{
+    font-family: 'Prompt', sans-serif;
+    color: #7AD400;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.disablebutton{
+    font-family: 'Prompt', sans-serif;
+    color: #ffffff;
+}
+
+.createactivity{
+    font-family: 'Prompt', sans-serif;
+    color: #ffffff;
+}
