@@ -4,14 +4,13 @@ import ClassIcon from "@mui/icons-material/Class";
 import "./Home_Teacher.css";
 import { Link } from "react-router-dom";
 import { FiPlus } from "react-icons/fi";
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import kid from '../Static/image/kid.png'
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import kid from "../Static/image/kid.png";
 
 function Home_Teacher() {
-
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -24,36 +23,57 @@ function Home_Teacher() {
 
   return (
     <div>
-      <h4 className="hello">สวัสดี, อารีย์  มีสุข</h4>
+      <h4 className="hello">สวัสดี, อารีย์ มีสุข</h4>
       {/* เพิ่มห้องเรียน */}
       <Button
         variant="outlined"
         sx={{
-          display: 'block',
-          mt: 3, 
+          display: "block",
+          mt: 3,
           ml: "auto",
           mr: 10,
-          fontFamily: 'Prompt',
+          fontFamily: "Prompt",
         }}
-        onClick={handleClickOpen}><FiPlus />{' '}ห้องเรียน</Button>
+        onClick={handleClickOpen}
+      >
+        <FiPlus /> สร้างห้องเรียน
+      </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle sx={{fontFamily: "Prompt"}}>เพิ่มห้องเรียน</DialogTitle>
+        <DialogTitle sx={{ fontFamily: "Prompt" }}>สร้างห้องเรียน</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
             margin="dense"
-            id="name"
+            id="nameclass"
+            label="ชื่อห้องเรียน"
+            type="name"
+            fullWidth
+            variant="standard"
+            inputProps={{ style: { fontFamily: "Prompt" } }}
+            InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="codeclass"
             label="รหัสห้องเรียน"
             type="name"
             fullWidth
             variant="standard"
-            inputProps={{style: {fontFamily: "Prompt"}}}
-            InputLabelProps={{style: {fontFamily: "Prompt"}}}
+            inputProps={{ style: { fontFamily: "Prompt" } }}
+            InputLabelProps={{ style: { fontFamily: "Prompt" } }}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} sx={{fontFamily: "Prompt" }}>ยกเลิก</Button>
-          <Button onClick={handleClose} sx={{fontFamily: "Prompt" ,color:"green"}}>เพิ่ม</Button>
+          <Button onClick={handleClose} sx={{ fontFamily: "Prompt" }}>
+            ยกเลิก
+          </Button>
+          <Button
+            onClick={handleClose}
+            sx={{ fontFamily: "Prompt", color: "green" }}
+          >
+            สร้าง
+          </Button>
         </DialogActions>
       </Dialog>
       {/* เพิ่มห้องเรียน */}
@@ -82,7 +102,7 @@ function Home_Teacher() {
             <Button
               style={{
                 display: "flex",
-                background: 'linear-gradient(135deg, #33C58E 20%, #63FD88 90%)',
+                background: "linear-gradient(135deg, #33C58E 20%, #63FD88 90%)",
                 marginRight: "auto",
                 marginLeft: "auto",
                 bottom: 10,
