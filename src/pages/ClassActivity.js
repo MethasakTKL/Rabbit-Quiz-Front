@@ -20,6 +20,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { height, maxWidth } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 //import image
 import waterplant from "../Static/image/waterplant.png";
 
@@ -79,7 +81,7 @@ function ClassActivity() {
           {/* ------------------------------------------------------------------------------------------------------------------------------------------------- */}
           <Grid paddingTop={2} paddingBottom={2}>
             <Button
-              // disabled
+              disabled
               variant="contained"
               onClick={handleClickOpen}
               style={{
@@ -92,7 +94,6 @@ function ClassActivity() {
                 background: "#5F498C",
                 borderRadius: 15,
                 paddingBottom: 15,
-                
               }}
             >
               <Stack>
@@ -103,9 +104,16 @@ function ClassActivity() {
                   <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
                   <div>สิ้นสุด</div>
                   <div className="duetimeactivity">
-                      28 กุมภาพันธ์ 2022 22.00 PM
+                    28 กุมภาพันธ์ 2022 22.00 PM
                   </div>
                 </div>
+                <Grid className="status">
+                    <div>หมดเวลาเเล้ว</div>
+                </Grid>
+                <Grid className="statussent">
+                    <CheckCircleIcon/>
+                    <div>ส่งเเล้ว</div>
+                </Grid>
               </Stack>
             </Button>
           </Grid>
@@ -181,10 +189,15 @@ function ClassActivity() {
                 <div className="assignment-detail-activity">
                   <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
                   <div>สิ้นสุด</div>
-                  <div className="duetimeactivity">
-                    1 มีนาคม 2022 22.00 PM
-                  </div>
+                  <div className="duetimeactivity">1 มีนาคม 2022 22.00 PM</div>
                 </div>
+                <Grid className="statusactive">
+                  <div>อยู่ในระยะเวลา</div>
+                </Grid>
+                <Grid className="statussent">
+                    <CheckCircleOutlineIcon/>
+                    <div>ยังไม่ส่ง</div>
+                </Grid>
               </Stack>
             </Button>
           </Grid>
