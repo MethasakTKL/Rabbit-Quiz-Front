@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Grid, Paper } from "@mui/material";
 import "./Activity.css";
 import { Box } from "@mui/system";
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 function Activity() {
   const [open, setOpen] = React.useState(false);
@@ -20,28 +21,54 @@ function Activity() {
   };
 
   return (
-    <div>
-      <Paper
-        elevation={4}
+    <body>
+      <Box
         sx={{
+          bgcolor: "gainsboro",
+          height: "500px",
+          width: "100%",
           display: "block",
           flexWrap: "wrap",
-          "& > :not(style)": {
-            m: 1,
-          }
+          "& > :not(style)": { mb: 2, ml: 4, mr: 4 }
         }}>
-        <Button paddingTop={2} paddingBottom={2}>
+        <Box sx={{paddingTop: 1}}></Box>
+        {/* Detail Information */}
+        <Button sx={{
+          color: "black",
+          width: "95%",
+          display: "block",
+          border: 0,
+          paddingBottom: 1.5,
+        }}
+          style={{ backgroundColor: 'white' }}>
           <h1 className="activitybutton">
             กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1
           </h1>
+          <div className="assignment-detail">
+          <div>240-124 การเกษตร</div>
+          <AccessTimeIcon sx={{ml:1, mr:1}}/>
+          <div>สิ้นสุด</div><div type="duetime">28 กุมภาพันธ์ 2020 22.00 PM</div>
+          </div>
         </Button>
-        <Button paddingTop={2} paddingBottom={2}>
+        <Button sx={{
+          color: "black",
+          width: "95%",
+          display: "block",
+          border: 0,
+          paddingBottom: 1.5,
+        }}
+          style={{ backgroundColor: 'white' }}>
           <h1 className="activitybutton">
             กิจกรรมที่ 2 รดน้ำต้นไม้วันที่ 2
           </h1>
+          <div className="assignment-detail">
+          <div>240-124 การเกษตร</div>
+          <AccessTimeIcon sx={{ml:1, mr:1}}/>
+          <div>สิ้นสุด</div><div type="duetime">1 มีนาคม 2020 22.00 PM</div>
+          </div>
         </Button>
-      </Paper>
-    </div >
+      </Box>
+    </body >
   );
 }
 

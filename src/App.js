@@ -24,6 +24,7 @@ import Classroom_Teacher from "./pages_Teacher/ClassRoom_Teacher";
 import ClassMember_Teacher from "./pages_Teacher/ClassMember_Teacher";
 import ClassActivity_Teacher from "./pages_Teacher/ClassActivity_Teacher";
 import Home_Teacher from "./pages_Teacher/Home_Teacher";
+import { Box } from "@mui/system";
 
 
 function App() {
@@ -47,14 +48,12 @@ function App() {
             <Route path="/classroom-teacher" component={Classroom_Teacher} />
             <Route path="/classroom-member-teacher" component={ClassMember_Teacher} />
             <Route path="/classroom-activity-teacher" component={ClassActivity_Teacher} />
-            <div class="Activity-Page">
+            <Box>
               <AssignNavBar />
               <Route path="/activity" component={Activity} />
               <Route path="/complete" component={Activity_Complete} />
-            </div>
-            <div class="FalsePage">
-              <Route path="*" component={Falsepage} />
-            </div>
+            </Box>
+            <Route path="*" component={Falsepage} />
           </Switch>
         </div>
       </Switch>
