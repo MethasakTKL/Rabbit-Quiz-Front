@@ -42,6 +42,8 @@
 .activitybutton{
     font-family: 'Prompt', sans-serif;
     font-size: 16pt;
+    font-weight: 500;
+    color: #f5df4d;
 }
 
 .ActivityTitle{
@@ -65,4 +67,19 @@
     margin-left: auto;
     margin-right: auto;
     width: 150;
+}
+
+.duedatetime{
+    font-family: 'Prompt', sans-serif;
+}
+
+.duetimeactivity{
+    font-family: 'Prompt', sans-serif;
+    color: aliceblue;
+}
+
+.assignment-detail-activity{
+    justify-content: center;
+    display: flex;
+    font-family: 'Prompt', sans-serif;
 }

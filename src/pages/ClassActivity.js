@@ -19,6 +19,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { height, maxWidth } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 //import image
 import waterplant from "../Static/image/waterplant.png";
 
@@ -77,19 +78,30 @@ function ClassActivity() {
         <Paper elevation={3}>
           <Grid paddingTop={2} paddingBottom={2}>
             <Button
-              variant="outlined"
+              variant="contained"
               onClick={handleClickOpen}
               style={{
+                width: "70%",
                 display: "flex",
                 marginRight: "auto",
                 marginLeft: "auto",
                 bottom: 10,
                 top: 1,
+                background: "#5F498C",
+                borderRadius:15,
+                paddingBottom:15
               }}
             >
-              <h1 className="activitybutton">
-                กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1
-              </h1>
+              <Stack>
+                <h1 className="activitybutton">
+                  กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1
+                </h1>
+                <div className="assignment-detail-activity">
+                  <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
+                  <div>สิ้นสุด</div>
+                  <div className="duetimeactivity">28 กุมภาพันธ์ 2020 22.00 PM</div>
+                </div>
+              </Stack>
             </Button>
           </Grid>
           <Dialog open={open} onClose={handleClose} fullWidth={fullWidth}>
@@ -110,8 +122,13 @@ function ClassActivity() {
               <img className="imgwater" src={waterplant} />
             </DialogContent>
             <Grid paddingTop={2} paddingBottom={2}>
-              <DialogActions >
-                <Stack marginLeft={'auto'} marginRight={'auto'}  direction="row" spacing={1}>
+              <DialogActions>
+                <Stack
+                  marginLeft={"auto"}
+                  marginRight={"auto"}
+                  direction="row"
+                  spacing={1}
+                >
                   <Grid>
                     <Button
                       variant="contained"
