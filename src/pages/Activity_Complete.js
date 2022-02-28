@@ -1,7 +1,5 @@
 import { Grid, Stack } from '@mui/material'
 import React from 'react'
-import { AccessTimeIcon } from "@mui/icons-material/AccessTime";
-import { CheckCircleIcon } from "@mui/icons-material/CheckCircle";
 import { Button } from "@mui/material";
 
 function Activity_Complete() {
@@ -19,7 +17,7 @@ function Activity_Complete() {
     const handleCloseYes = () => {
         setOpen(false);
     };
-    
+
     return (
         <div>
             <Grid paddingTop={2} paddingBottom={2}>
@@ -44,7 +42,6 @@ function Activity_Complete() {
                             กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1
                         </h1>
                         <div className="assignment-detail-activity">
-                            <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
                             <div>สิ้นสุด</div>
                             <div className="duetimeactivity">
                                 28 กุมภาพันธ์ 2022 10.00 PM
@@ -54,7 +51,6 @@ function Activity_Complete() {
                             <div>หมดเวลาเเล้ว</div>
                         </Grid>
                         <Grid className="statussent">
-                            <CheckCircleIcon />
                             <div>ส่งเเล้ว</div>
                         </Grid>
                     </Stack>
