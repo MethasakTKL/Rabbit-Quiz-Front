@@ -60,4 +60,4 @@ function Activity_Complete() {
     )
 }
 
-export default Activity_Complete
+export default Activity_Complete;
