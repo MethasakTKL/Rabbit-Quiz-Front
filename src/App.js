@@ -18,8 +18,14 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Activity_Complete from "./pages/Activity_Complete";
 //pages teacher
-import Home_teacher from "./pages_Teacher/Home_Teacher";
-import AppHeaderTeacher from "./components_teacher/Bars/AppHeader_Teacher";
+import Activity_Teacher from "./pages_Teacher/Activity_Teacher";
+import Profile_Teacher from "./pages_Teacher/Profile_Teacher";
+import Classroom_Teacher from "./pages_Teacher/ClassRoom_Teacher";
+import ClassMember_Teacher from "./pages_Teacher/ClassMember_Teacher";
+import ClassActivity_Teacher from "./pages_Teacher/ClassActivity_Teacher";
+import Home_Teacher from "./pages_Teacher/Home_Teacher";
+
+
 function App() {
   return (
     <div className="App">
@@ -31,11 +37,16 @@ function App() {
           <AppNavBar />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/teacher" component={Home_teacher} />
             <Route path="/profile" component={Profile} />
             <Route path="/classroom" component={Classroom} />
             <Route path="/classroom-member" component={ClassMember} />
             <Route path="/classroom-activity" component={ClassActivity} />
+
+            <Route exact path="/teacher" component={Home_Teacher} />
+            <Route path="/profile-teacher" component={Profile_Teacher} />
+            <Route path="/classroom-teacher" component={Classroom_Teacher} />
+            <Route path="/classroom-member-teacher" component={ClassMember_Teacher} />
+            <Route path="/classroom-activity-teacher" component={ClassActivity_Teacher} />
             <div class="Activity-Page">
               <AssignNavBar />
               <Route path="/activity" component={Activity} />
@@ -45,10 +56,6 @@ function App() {
               <Route path="*" component={Falsepage} />
             </div>
           </Switch>
-        </div>
-        <div>
-          <AppHeaderTeacher />
-          <Route exact path="/teacher" component={Home_teacher} />
         </div>
       </Switch>
     </div>

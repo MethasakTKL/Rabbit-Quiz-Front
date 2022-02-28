@@ -5,8 +5,10 @@ import "./Profile_Teacher.css";
 import { Link } from "react-router-dom";
 import LogoutIcon from '@mui/icons-material/Logout';
 import SaveIcon from '@mui/icons-material/Save';
+import AccountCircle from "@mui/icons-material/AccountCircle";
 
-function Profile() {
+
+function Profile_Teacher() {
   return (
     <div>
       <h4 className="hello">สวัสดี, นี่คือโปรไฟล์ของคุณ</h4>{" "}
@@ -17,10 +19,10 @@ function Profile() {
         >
           <Grid direction="row" spacing={2} direction="row" paddingBottom={5}>
             <div className="centerIcon">
-              <FaceIcon sx={{ fontSize: 100, color: "#F19528" }} />
+              <AccountCircle sx={{ fontSize: 100, color: "#F19528" }} />
             </div>
-            <div className="centerName">ชนาวัฒน์ ทั้วสุภาพ</div>
-            <div className="centerAccount">ประเภทบัญชี : นักเรียน</div>
+            <div className="centerName">อารีย์  มีสุข</div>
+            <div className="centerAccount">ประเภทบัญชี : คุณครู</div>
           </Grid>
           <Grid textAlign='center' paddingBottom={2}>
             <Button variant="contained" style={{background:'#CD0049'}} to='/login' component={Link}>
@@ -47,7 +49,7 @@ function Profile() {
               fullWidth
               id="standard-basic"
               label="ชื่อ"
-              defaultValue="ชนาวัฒน์"
+              defaultValue="อารีย์"
               variant="filled"
               inputProps={{style: {fontFamily: "Prompt"}}}
               InputLabelProps={{style: {fontFamily: "Prompt"}}}
@@ -58,7 +60,7 @@ function Profile() {
               fullWidth
               id="standard-basic"
               label="นามสกุล"
-              defaultValue="ทั้วสุภาพ"
+              defaultValue="มีสุข"
               variant="filled"
               inputProps={{style: {fontFamily: "Prompt"}}}
               InputLabelProps={{style: {fontFamily: "Prompt"}}}
@@ -76,4 +78,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default Profile_Teacher;

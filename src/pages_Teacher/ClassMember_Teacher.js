@@ -1,17 +1,17 @@
 import { Button, Box, Paper, Grid } from "@mui/material";
 import React from "react";
-import "./ClassMember_Teachers.css";
+import "./ClassMember_Teacher.css";
 import Card from "@mui/material/Card";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FaceIcon from "@mui/icons-material/Face";
 import IconButton from "@mui/material/IconButton";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
-function ClassMember() {
+function ClassMember_Teacher() {
   return (
     <div>
       <h1 className="classname" style={{ paddingLeft: "5%", fontSize: 36 }}>
-        ห้องเรียนการเกษตร
+        ห้องเรียนการเกษตร Test
       </h1>
       <Paper
         className="membertopic"
@@ -183,4 +183,4 @@ function ClassMember() {
   );
 }
 
-export default ClassMember;
+export default ClassMember_Teacher;

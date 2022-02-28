@@ -22,7 +22,7 @@ import CloseIcon from "@mui/icons-material/Close";
 //import image
 import waterplant from "../Static/image/waterplant.png";
 
-function ClassActivity() {
+function ClassActivity_Teacher() {
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
 
@@ -40,7 +40,7 @@ function ClassActivity() {
   return (
     <div>
       <h1 className="classname" style={{ paddingLeft: "5%", fontSize: 36 }}>
-        ห้องเรียนการเกษตร
+        ห้องเรียนการเกษตร Test
       </h1>
       <Paper
         className="membertopic"
@@ -139,4 +139,4 @@ function ClassActivity() {
     </div>
   );
 }
-export default ClassActivity;
+export default ClassActivity_Teacher;

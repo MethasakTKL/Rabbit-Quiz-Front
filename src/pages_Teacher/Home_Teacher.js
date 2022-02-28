@@ -10,7 +10,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import kid from '../Static/image/kid.png'
 
-function Home() {
+function Home_Teacher() {
 
   const [open, setOpen] = React.useState(false);
 
@@ -89,7 +89,7 @@ function Home() {
               }}
               variant="contained"
               sx={{ width: "90%", height: 100, borderRadius: 3 }}
-              to="/classroom/"
+              to="/classroom-teacher"
               component={Link}
             >
               <typography>
@@ -103,4 +103,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Home_Teacher;

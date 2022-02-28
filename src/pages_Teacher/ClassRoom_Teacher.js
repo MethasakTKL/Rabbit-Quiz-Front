@@ -8,18 +8,18 @@ import { Link } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FaceIcon from "@mui/icons-material/Face";
 
-function Classroom() {
+function Classroom_Teacher() {
   return (
     <div className="screen">
       <h1 className="classname" style={{ paddingLeft: "5%", fontSize: 36 }}>
-        ห้องเรียนการเกษตร
+        ห้องเรียนการเกษตร Test
       </h1>
       <Stack direction="row" spacing={2} paddingLeft={"5%"} paddingBottom={1}>
         <Button
           variant="contained"
           sx={{ borderRadius: 3, width: 120, }}
           style={{ background: "#F19528" }}
-          to="/classroom-member"
+          to="/classroom-member-teacher"
           component={Link}
         >
           <PeopleAltIcon />
@@ -29,7 +29,7 @@ function Classroom() {
           variant="contained"
           sx={{ borderRadius: 3, width: 120 }}
           style={{ background: "#51D87A" }}
-          to="/classroom-activity"
+          to="/classroom-activity-teacher"
           component={Link}
         >
           <QuizIcon />
@@ -158,4 +158,4 @@ function Classroom() {
   );
 }
 
-export default Classroom;
+export default Classroom_Teacher;

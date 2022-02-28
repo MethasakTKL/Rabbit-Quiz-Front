@@ -3,7 +3,7 @@ import { Button, Grid, Paper } from "@mui/material";
 import "./Activity_Teacher.css";
 import { Box } from "@mui/system";
 
-function Activity() {
+function Activity_Teacher() {
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
 
@@ -45,4 +45,4 @@ function Activity() {
   );
 }
 
-export default Activity;
+export default Activity_Teacher;
