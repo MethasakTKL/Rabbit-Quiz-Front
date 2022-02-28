@@ -18,11 +18,11 @@
 }
 
 
-.dialogtext{
+.Question{
     font-family: 'Prompt', sans-serif;
-    font-size: 16pt;
     text-align: center;
-    font-weight: 500;
+    color: #4d4d4d;
+    font-weight: 600;
 }
 
 .buttonyes{
@@ -36,6 +36,7 @@
     font-family: 'Prompt', sans-serif;
     margin-left: auto;
     margin-right: auto;
+
 }
 
 .activitybutton{
@@ -43,7 +44,7 @@
     font-size: 16pt;
 }
 
-.activityNo{
+.ActivityTitle{
     font-family: 'Prompt', sans-serif;
     text-align: center;
     color: #856FB4;
@@ -56,4 +57,12 @@
     margin-left: auto;
     margin-right: auto;
     width: 60%;
+}
+
+.centerbutton{
+    display: block;
+    padding-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150;
 }

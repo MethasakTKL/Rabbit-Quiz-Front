@@ -1,5 +1,15 @@
 import React from "react";
-import { Button, Box, Paper, Grid, Fab, IconButton } from "@mui/material";
+import {
+  Button,
+  Box,
+  Paper,
+  Grid,
+  Fab,
+  IconButton,
+  Stack,
+  Snackbar,
+  Alert,
+} from "@mui/material";
 import "./ClassActivity.css";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -74,7 +84,7 @@ function ClassActivity() {
                 marginRight: "auto",
                 marginLeft: "auto",
                 bottom: 10,
-                top:1
+                top: 1,
               }}
             >
               <h1 className="activitybutton">
@@ -84,40 +94,43 @@ function ClassActivity() {
           </Grid>
           <Dialog open={open} onClose={handleClose} fullWidth={fullWidth}>
             <DialogTitle>
-              <Grid paddingLeft={'90%'}>
+              <Grid paddingLeft={"90%"}>
                 <IconButton onClick={handleClose}>
                   <CloseIcon />
                 </IconButton>
               </Grid>
-              <div className="activityNo">กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1</div>
+              <div className="ActivityTitle">
+                กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1
+              </div>
             </DialogTitle>
             <DialogContent>
-              <DialogContentText className="dialogtext">
-                ต้องการจะรดน้ำต้นไม้หรือไม่ ?
+              <DialogContentText>
+                <div className="Question">ต้องการจะรดน้ำต้นไม้หรือไม่ ?</div>
               </DialogContentText>
-              <img
-                className="imgwater"
-                src={waterplant}
-              />
+              <img className="imgwater" src={waterplant} />
             </DialogContent>
             <Grid paddingTop={2} paddingBottom={2}>
-              <DialogActions className="centerbutton">
-                <Button
-                  variant="contained"
-                  onClick={handleClose}
-                  className="buttonyes"
-                  style={{ width: 150, height: 50, background: "#5BC0DE" }}
-                >
-                  รดน้ำ
-                </Button>
-                <Button
-                  variant="contained"
-                  onClick={handleClose}
-                  className="buttonno"
-                  style={{ width: 150, height: 50, background: "#D9534F" }}
-                >
-                  ไม่รดน้ำ
-                </Button>
+              <DialogActions >
+                <Stack marginLeft={'auto'} marginRight={'auto'}  direction="row" spacing={1}>
+                  <Grid>
+                    <Button
+                      variant="contained"
+                      onClick={handleClose}
+                      style={{ width: 150, height: 50, background: "#5BC0DE" }}
+                    >
+                      <div className="buttonyes">รดน้ำ</div>
+                    </Button>
+                  </Grid>
+                  <Grid>
+                    <Button
+                      variant="contained"
+                      onClick={handleClose}
+                      style={{ width: 150, height: 50, background: "#D9534F" }}
+                    >
+                      <div className="buttonno">ไม่รดน้ำ</div>
+                    </Button>
+                  </Grid>
+                </Stack>
               </DialogActions>
             </Grid>
           </Dialog>
