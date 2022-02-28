@@ -29,7 +29,7 @@ function Login() {
         password: passfill,
       })
           console.log('login success')
-          console.log(result.data.access)
+          console.log(result.data)
       }
 
     
