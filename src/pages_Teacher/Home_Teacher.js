@@ -29,9 +29,8 @@ function Home_Teacher() {
         variant="outlined"
         sx={{
           display: "block",
-          mt: 3,
-          ml: "auto",
-          mr: 10,
+          marginLeft:'auto',
+          marginRight:'auto',
           fontFamily: "Prompt",
         }}
         onClick={handleClickOpen}
@@ -69,8 +68,9 @@ function Home_Teacher() {
             ยกเลิก
           </Button>
           <Button
+            variant="contained"
             onClick={handleClose}
-            sx={{ fontFamily: "Prompt", color: "green" }}
+            sx={{ fontFamily: "Prompt", color: "white" }}
           >
             สร้าง
           </Button>
