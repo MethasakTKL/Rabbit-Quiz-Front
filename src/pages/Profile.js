@@ -5,6 +5,7 @@ import "./Profile.css";
 import { Link } from "react-router-dom";
 import LogoutIcon from '@mui/icons-material/Logout';
 import SaveIcon from '@mui/icons-material/Save';
+import { Box } from "@mui/system";
 
 function Profile() {
   return (
@@ -72,6 +73,7 @@ function Profile() {
           </Grid>
         </Paper>
       </Grid>
+      <Box sx={{ height:"5rem" }}></Box>
     </div>
   );
 }

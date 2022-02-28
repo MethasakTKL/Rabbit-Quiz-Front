@@ -28,9 +28,17 @@ div.profile-name {
 }
 
 
-@media (max-width: 36em) { 
+@media (max-width: 41em) { 
     .header-menu {
         display: none;
     }
     
 }
+
+/* ปิดปุ่มย้อนกลับบนคอม */
+/* @media (min-width: 36em) { 
+    .goback-button {
+        display: none;
+    }
+    
+} */
