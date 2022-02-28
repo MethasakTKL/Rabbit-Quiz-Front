@@ -3,6 +3,7 @@ import "./Login.css"
 import { Link } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
+import ax from "../config/ax";
 
 function Login() {
   return (
@@ -20,6 +21,7 @@ function Login() {
                 id="outlined-basic"
                 label="ชื่อบัญชี" 
                 variant="outlined" 
+                value={username}
                 inputProps={{style:{fontFamily:"Prompt"}}}
                 InputLabelProps={{style:{fontFamily:"Prompt"}}}
               />
@@ -28,12 +30,13 @@ function Login() {
                 type="password" 
                 label="รหัสผ่าน" 
                 variant="outlined" 
+                value={password}
                 inputProps={{style:{fontFamily:"Prompt"}}}
                 InputLabelProps={{style:{fontFamily:"Prompt"}}}
               />
               </Stack>
               <Link to="/">
-                <button type="login">เข้าสู่ระบบ</button>
+                <button type="login" onClick={pass}>เข้าสู่ระบบ</button>
               </Link>
               <p>
                 <Link to="/register">
