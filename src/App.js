@@ -25,7 +25,6 @@ import ClassMember_Teacher from "./pages_Teacher/ClassMember_Teacher";
 import ClassActivity_Teacher from "./pages_Teacher/ClassActivity_Teacher";
 import Home_Teacher from "./pages_Teacher/Home_Teacher";
 
-
 function App() {
   return (
     <div className="App">
@@ -45,8 +44,8 @@ function App() {
             <Route exact path="/teacher" component={Home_Teacher} />
             <Route path="/profile-teacher" component={Profile_Teacher} />
             <Route path="/classroom-teacher" component={Classroom_Teacher} />
-            <Route path="/classroom-member-teacher" component={ClassMember_Teacher} />
-            <Route path="/classroom-activity-teacher" component={ClassActivity_Teacher} />
+            <Route path="/classroom-member-teacher" component={ClassMember_Teacher}/>
+            <Route path="/classroom-activity-teacher" component={ClassActivity_Teacher}/>
             <div class="Activity-Page">
               <AssignNavBar />
               <Route path="/activity" component={Activity} />
