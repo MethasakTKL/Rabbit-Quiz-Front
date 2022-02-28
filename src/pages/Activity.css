@@ -33,3 +33,9 @@
 .assignment-detail div[type="duetime"] {
     margin-left: 10px;
 }
+
+.activity{
+    font-family: 'Prompt', sans-serif;
+    color: rgb(96, 81, 179);
+    font-size: 17pt;
+}

@@ -76,8 +76,10 @@ function ClassActivity() {
         }}
       >
         <Paper elevation={3}>
+          {/* ------------------------------------------------------------------------------------------------------------------------------------------------- */}
           <Grid paddingTop={2} paddingBottom={2}>
             <Button
+              // disabled
               variant="contained"
               onClick={handleClickOpen}
               style={{
@@ -88,8 +90,9 @@ function ClassActivity() {
                 bottom: 10,
                 top: 1,
                 background: "#5F498C",
-                borderRadius:15,
-                paddingBottom:15
+                borderRadius: 15,
+                paddingBottom: 15,
+                
               }}
             >
               <Stack>
@@ -99,7 +102,9 @@ function ClassActivity() {
                 <div className="assignment-detail-activity">
                   <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
                   <div>สิ้นสุด</div>
-                  <div className="duetimeactivity">28 กุมภาพันธ์ 2020 22.00 PM</div>
+                  <div className="duetimeactivity">
+                      28 กุมภาพันธ์ 2022 22.00 PM
+                  </div>
                 </div>
               </Stack>
             </Button>
@@ -113,6 +118,85 @@ function ClassActivity() {
               </Grid>
               <div className="ActivityTitle">
                 กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1
+              </div>
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                <div className="Question">ต้องการจะรดน้ำต้นไม้หรือไม่ ?</div>
+              </DialogContentText>
+              <img className="imgwater" src={waterplant} />
+            </DialogContent>
+            <Grid paddingTop={2} paddingBottom={2}>
+              <DialogActions>
+                <Stack
+                  marginLeft={"auto"}
+                  marginRight={"auto"}
+                  direction="row"
+                  spacing={1}
+                >
+                  <Grid>
+                    <Button
+                      variant="contained"
+                      onClick={handleClose}
+                      style={{ width: 150, height: 50, background: "#5BC0DE" }}
+                    >
+                      <div className="buttonyes">รดน้ำ</div>
+                    </Button>
+                  </Grid>
+                  <Grid>
+                    <Button
+                      variant="contained"
+                      onClick={handleClose}
+                      style={{ width: 150, height: 50, background: "#D9534F" }}
+                    >
+                      <div className="buttonno">ไม่รดน้ำ</div>
+                    </Button>
+                  </Grid>
+                </Stack>
+              </DialogActions>
+            </Grid>
+          </Dialog>
+
+          {/* ------------------------------------------------------------------------------------------------------------------------------------------------- */}
+          <Grid paddingTop={2} paddingBottom={2}>
+            <Button
+              variant="contained"
+              onClick={handleClickOpen}
+              style={{
+                width: "70%",
+                display: "flex",
+                marginRight: "auto",
+                marginLeft: "auto",
+                bottom: 10,
+                top: 1,
+                background: "#5F498C",
+                borderRadius: 15,
+                paddingBottom: 15,
+              }}
+            >
+              <Stack>
+                <h1 className="activitybutton">
+                  กิจกรรมที่ 2 รดน้ำต้นไม้วันที่ 2
+                </h1>
+                <div className="assignment-detail-activity">
+                  <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
+                  <div>สิ้นสุด</div>
+                  <div className="duetimeactivity">
+                    1 มีนาคม 2022 22.00 PM
+                  </div>
+                </div>
+              </Stack>
+            </Button>
+          </Grid>
+          <Dialog open={open} onClose={handleClose} fullWidth={fullWidth}>
+            <DialogTitle>
+              <Grid paddingLeft={"90%"}>
+                <IconButton onClick={handleClose}>
+                  <CloseIcon />
+                </IconButton>
+              </Grid>
+              <div className="ActivityTitle">
+                กิจกรรมที่ 2 รดน้ำต้นไม้วันที่ 2
               </div>
             </DialogTitle>
             <DialogContent>

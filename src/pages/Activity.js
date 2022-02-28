@@ -36,16 +36,17 @@ function Activity() {
         >
         <Box sx={{paddingTop: 1}}></Box>
         {/* Detail Information */}
-        <Button sx={{
+        <Button 
+        sx={{
           color: "black",
           width: "100%",
           display: "block",
           border: 0,
           paddingBottom: 1.5,
           boxShadow: 3,
-        }}
+        }}        
           style={{ backgroundColor: 'white' }}>
-          <h1 className="activitybutton">
+          <h1 className="activity">
             กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1
           </h1>
           <div className="assignment-detail">
@@ -63,7 +64,7 @@ function Activity() {
           boxShadow: 3,
         }}
           style={{ backgroundColor: 'white' }}>
-          <h1 className="activitybutton">
+          <h1 className="activity">
             กิจกรรมที่ 2 รดน้ำต้นไม้วันที่ 2
           </h1>
           <div className="assignment-detail">
