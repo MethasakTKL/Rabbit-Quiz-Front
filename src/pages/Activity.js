@@ -24,21 +24,25 @@ function Activity() {
     <body>
       <Box
         sx={{
-          bgcolor: "gainsboro",
+          bgcolor: "white",
           height: "500px",
           width: "100%",
           display: "block",
           flexWrap: "wrap",
-          "& > :not(style)": { mb: 2, ml: 4, mr: 4 }
-        }}>
+          paddingLeft: 3,
+          paddingRight: 3,
+          "& > :not(style)": { mb: 2 }
+        }}
+        >
         <Box sx={{paddingTop: 1}}></Box>
         {/* Detail Information */}
         <Button sx={{
           color: "black",
-          width: "95%",
+          width: "100%",
           display: "block",
           border: 0,
           paddingBottom: 1.5,
+          boxShadow: 3,
         }}
           style={{ backgroundColor: 'white' }}>
           <h1 className="activitybutton">
@@ -52,10 +56,11 @@ function Activity() {
         </Button>
         <Button sx={{
           color: "black",
-          width: "95%",
+          width: "100%",
           display: "block",
           border: 0,
           paddingBottom: 1.5,
+          boxShadow: 3,
         }}
           style={{ backgroundColor: 'white' }}>
           <h1 className="activitybutton">
