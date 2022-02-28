@@ -4,25 +4,27 @@ import { Link } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import ax from "../config/ax";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function Login() {
 
   const [userResultList, setUserResultList] = useState([])
   const [loginconst, setLoginconst] = useState()
+  const [namefill, setNamefill] = useState('')
+  const [passfill, setPassfill] = useState('')
+
 
   const loginpress = async () => { 
-    useEffect(async () => {
       let result = await ax.post('/auth/login/', {
         params: {
-          username: usernameinput,
-          password: passwordinput
+          username: {namefill},
+          password: {passfill}
           }
           })
           console.log('login success')
-          console.log(result.data.access)
-      },[loginconst])
-    },
+          console.log(result.access)
+      }
+    
   
 
 
@@ -41,7 +43,7 @@ function Login() {
                 id="outlined-basic"
                 label="ชื่อบัญชี" 
                 variant="outlined" 
-                value={usernameinput}
+                onChange={event => setNamefill(event.target.value)}
                 inputProps={{style:{fontFamily:"Prompt"}}}
                 InputLabelProps={{style:{fontFamily:"Prompt"}}}
               />
@@ -50,7 +52,7 @@ function Login() {
                 type="password" 
                 label="รหัสผ่าน" 
                 variant="outlined" 
-                value={passwordinput}
+                onChange={event => setPassfill(event.target.value)}
                 inputProps={{style:{fontFamily:"Prompt"}}}
                 InputLabelProps={{style:{fontFamily:"Prompt"}}}
               />
