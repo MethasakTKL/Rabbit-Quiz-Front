@@ -112,3 +112,18 @@
     font-family: 'Prompt', sans-serif;
     color: #ffffff;
 }
+
+.cancelbutton{
+    font-family: 'Prompt', sans-serif;
+}
+
+.createbutton{
+    font-family: 'Prompt', sans-serif;
+    color: #ffffff;
+}
+.titledialog{
+    font-family: 'Prompt', sans-serif;
+    font-size: 18pt;
+    font-weight: 500;
+    color: #856FB4;
+}

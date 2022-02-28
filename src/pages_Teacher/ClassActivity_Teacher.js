@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {
   Button,
   Box,
@@ -22,7 +22,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from "@mui/icons-material/Add";
+
 //import image
 import waterplant from "../Static/image/waterplant.png";
 
@@ -42,6 +43,11 @@ function ClassActivity_Teacher() {
     setOpen(false);
   };
 
+  const [value, setValue] = React.useState(new Date("2014-08-18T21:11:54"));
+
+  const handleChange = (newValue) => {
+    setValue(newValue);
+  };
   return (
     <Box sx={{ height: 1050 }}>
       <h1 className="classname" style={{ paddingLeft: "5%", fontSize: 36 }}>
@@ -60,10 +66,82 @@ function ClassActivity_Teacher() {
           <Button
             variant="contained"
             style={{ background: "#EFBA44", width: 150 }}
+            onClick={handleClickOpen}
           >
-            <AddIcon/>
+            <AddIcon />
             <div className="createactivity">สร้างกิจกรรม</div>
           </Button>
+          {/* ----------------------------------------------------------------------------------------------------------------------- */}
+          <Dialog open={open} onClose={handleClose}>
+            <DialogTitle>
+              <div className="titledialog">สร้างกิจกรรม</div>
+            </DialogTitle>
+            <DialogContent>
+              <TextField
+                margin="dense"
+                id="nameactivity"
+                label="ชื่อกิจกรรม"
+                fullWidth
+                variant="standard"
+                inputProps={{ style: { fontFamily: "Prompt" } }}
+                InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+              />
+              <TextField
+                margin="dense"
+                id="nameactivity"
+                label="คำถาม"
+                fullWidth
+                variant="standard"
+                inputProps={{ style: { fontFamily: "Prompt" } }}
+                InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+              />
+              <TextField
+                margin="dense"
+                id="nameactivity"
+                label="ตัวเลือกที่ 1"
+                defaultValue="ใช่"
+                fullWidth
+                variant="standard"
+                inputProps={{ style: { fontFamily: "Prompt" } }}
+                InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+              />
+              <TextField
+                margin="dense"
+                id="nameactivity"
+                label="ตัวเลือกที่ 2"
+                defaultValue="ไม่ใช่"
+                fullWidth
+                variant="standard"
+                inputProps={{ style: { fontFamily: "Prompt" } }}
+                InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+              />
+              <Grid paddingTop={3}>
+                <TextField
+                  id="datetime-local"
+                  label="กำหนดวันที่ส่ง"
+                  type="datetime-local"
+                  sx={{ width: 250 }}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Grid>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} className="cancelbutton">
+                ยกเลิก
+              </Button>
+              <Button
+                onClick={handleClose}
+                className="createbutton"
+                variant="contained"
+                style={{ width: 150 }}
+              >
+                สร้าง
+              </Button>
+            </DialogActions>
+          </Dialog>
+          {/* --------------------------------------------------------------------------------------------------------------------------------------- */}
         </Grid>
       </Stack>
       <Box
