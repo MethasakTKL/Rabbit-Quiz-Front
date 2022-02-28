@@ -195,7 +195,7 @@ function ClassActivity_Teacher() {
                 </Grid>
                 <Grid item xs={6}>
                   <div className="activityduedate">
-                    สิ้นสุด 28 กุมภาพันธ์ 2022 22.00 PM
+                    สิ้นสุด 28 กุมภาพันธ์ 2022 10.00 PM
                   </div>
                 </Grid>
                 <Grid item xs={6}>
@@ -296,7 +296,7 @@ function ClassActivity_Teacher() {
                 </Grid>
                 <Grid item xs={6}>
                   <div className="activityduedate">
-                    สิ้นสุด 1 มีนาคม 2022 22.00 PM
+                    สิ้นสุด 1 มีนาคม 2022 10.00 PM
                   </div>
                 </Grid>
                 <Grid item xs={6}>

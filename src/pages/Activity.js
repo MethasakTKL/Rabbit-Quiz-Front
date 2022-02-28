@@ -55,7 +55,7 @@ function Activity() {
           <div className="assignment-detail">
           <div>240-124 การเกษตร</div>
           <AccessTimeIcon sx={{ml:1, mr:1}}/>
-          <div>สิ้นสุด</div><div type="duetime">28 กุมภาพันธ์ 2020 22.00 PM</div>
+          <div>สิ้นสุด</div><div type="duetime">28 กุมภาพันธ์ 2020 10.00 PM</div>
           </div>
         </Button> */}
         <Button 
@@ -78,7 +78,7 @@ function Activity() {
           <div className="assignment-detail">
           <div>240-124 การเกษตร</div>
           <AccessTimeIcon sx={{ml:1, mr:1}}/>
-          <div>สิ้นสุด</div><div type="duetime">1 มีนาคม 2020 22.00 PM</div>
+          <div>สิ้นสุด</div><div type="duetime">1 มีนาคม 2020 10.00 PM</div>
           </div>
         </Button>
       </Box>

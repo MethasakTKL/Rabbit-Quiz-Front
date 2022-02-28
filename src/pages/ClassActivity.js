@@ -107,7 +107,7 @@ function ClassActivity() {
                   <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
                   <div>สิ้นสุด</div>
                   <div className="duetimeactivity">
-                    28 กุมภาพันธ์ 2022 22.00 PM
+                    28 กุมภาพันธ์ 2022 10.00 PM
                   </div>
                 </div>
                 <Grid className="status">
@@ -192,7 +192,7 @@ function ClassActivity() {
                 <div className="assignment-detail-activity">
                   <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
                   <div>สิ้นสุด</div>
-                  <div className="duetimeactivity">1 มีนาคม 2022 22.00 PM</div>
+                  <div className="duetimeactivity">1 มีนาคม 2022 10.00 PM</div>
                 </div>
                 <Grid className="statusactive">
                   <div>อยู่ในระยะเวลา</div>
