@@ -39,9 +39,17 @@
 
 }
 
-.activitybutton{
+.activityname{
     font-family: 'Prompt', sans-serif;
     font-size: 16pt;
+    color:#f5df4d;
+    font-weight: 500;
+}
+.activityduedate{
+    font-family: 'Prompt', sans-serif;
+    font-size: 14pt;
+    color: rgb(237, 211, 255);
+    font-weight: 400;
 }
 
 .ActivityTitle{
@@ -65,4 +73,18 @@
     margin-left: auto;
     margin-right: auto;
     width: 150;
+}
+
+.textinbutton{
+    font-family: 'Prompt', sans-serif;
+    color: white;
+
+}
+
+.deletebutton{
+    font-family: 'Prompt', sans-serif;
+}
+
+.editbutton{
+    font-family: 'Prompt', sans-serif;
 }

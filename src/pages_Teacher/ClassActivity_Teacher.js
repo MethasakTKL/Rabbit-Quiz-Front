@@ -17,8 +17,10 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { height, maxWidth } from "@mui/system";
+import { createTheme, height, maxWidth } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 //import image
 import waterplant from "../Static/image/waterplant.png";
 
@@ -37,6 +39,7 @@ function ClassActivity_Teacher() {
   const handleCloseYes = () => {
     setOpen(false);
   };
+
   return (
     <div>
       <h1 className="classname" style={{ paddingLeft: "5%", fontSize: 36 }}>
@@ -76,64 +79,90 @@ function ClassActivity_Teacher() {
       >
         <Paper elevation={3}>
           <Grid paddingTop={2} paddingBottom={2}>
-            <Button
-              variant="outlined"
-              onClick={handleClickOpen}
+            <Box
               style={{
                 display: "flex",
                 marginRight: "auto",
                 marginLeft: "auto",
-                bottom: 10,
-                top: 1,
+                background: "#5F498C",
+                width: "95%",
+                paddingBottom: 10,
+                paddingLeft:'5%',
+                paddingTop: 10,
               }}
             >
-              <h1 className="activitybutton">
-                กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1
-              </h1>
-            </Button>
-          </Grid>
-          <Dialog open={open} onClose={handleClose} fullWidth={fullWidth}>
-            <DialogTitle>
-              <Grid paddingLeft={"90%"}>
-                <IconButton onClick={handleClose}>
-                  <CloseIcon />
-                </IconButton>
-              </Grid>
-              <div className="ActivityTitle">
-                กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1
-              </div>
-            </DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                <div className="Question">ต้องการจะรดน้ำต้นไม้หรือไม่ ?</div>
-              </DialogContentText>
-              <img className="imgwater" src={waterplant} />
-            </DialogContent>
-            <Grid paddingTop={2} paddingBottom={2}>
-              <DialogActions >
-                <Stack marginLeft={'auto'} marginRight={'auto'}  direction="row" spacing={1}>
+              <Grid
+                container
+                rowSpacing={1}
+                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                paddingTop={2}
+              >
+                <Grid item xs={6}>
+                  <div className="activityname">
+                    กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1
+                  </div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="activityduedate">
+                    สิ้นสุด 28 กุมภาพันธ์ 2022 22.00 PM
+                  </div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="textinbutton">ทั้งหมด</div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="textinbutton">5</div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="textinbutton">รดน้ำต้นไม้</div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="textinbutton">2</div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="textinbutton">ไม่รดน้ำต้นไม้</div>
+                </Grid>
+                <Grid item xs={6}>
+                  <div className="textinbutton">3</div>
+                </Grid>
+                <Stack
+                  marginLeft={"auto"}
+                  marginRight={"auto"}
+                  direction="row"
+                  spacing={1}
+                  paddingTop={3}
+                  paddingBottom={2}
+                >
                   <Grid>
                     <Button
                       variant="contained"
-                      onClick={handleClose}
-                      style={{ width: 150, height: 50, background: "#5BC0DE" }}
+                      style={{ background: "#D64A55" }}
                     >
-                      <div className="buttonyes">รดน้ำ</div>
+                      <DeleteIcon />
+                      <div className="deletebutton">ลบ</div>
                     </Button>
                   </Grid>
                   <Grid>
                     <Button
                       variant="contained"
-                      onClick={handleClose}
-                      style={{ width: 150, height: 50, background: "#D9534F" }}
+                      style={{ background: "#EFBA44" }}
                     >
-                      <div className="buttonno">ไม่รดน้ำ</div>
+                      <EditIcon />
+                      <div className="editbutton">แก้ไข</div>
+                    </Button>
+                  </Grid>
+                  <Grid>
+                    <Button
+                      variant="contained"
+                      style={{ background: "#7AD400" }}
+                    >
+                      <div className="editbutton">เพิ่มเติม</div>
                     </Button>
                   </Grid>
                 </Stack>
-              </DialogActions>
-            </Grid>
-          </Dialog>
+              </Grid>
+            </Box>
+          </Grid>
         </Paper>
       </Box>
     </div>
