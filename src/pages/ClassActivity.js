@@ -20,8 +20,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { height, maxWidth } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 //import image
 import waterplant from "../Static/image/waterplant.png";
 
@@ -41,26 +41,29 @@ function ClassActivity() {
     setOpen(false);
   };
   return (
-    <div>
+    <Box height={800}>
       <h1 className="classname" style={{ paddingLeft: "5%", fontSize: 36 }}>
         ห้องเรียนการเกษตร
       </h1>
-      <Paper
-        className="membertopic"
-        variant="contained"
-        sx={{
-          borderRadius: 3,
-          width: 150,
-          height: 40,
-          marginLeft: "5%",
-          marginRight: 0,
-        }}
-        style={{ background: "#51D87A" }}
+      <Stack
+        marginLeft={"auto"}
+        marginRight={"auto"}
+        direction="row"
+        spacing={2}
+        justifyContent="center"
+        alignItems="center"
+        paddingBottom={1}
       >
-        <h3 className="center" style={{ paddingLeft: "30%", paddingTop: 5 }}>
-          กิจกรรม
-        </h3>
-      </Paper>
+        <Grid>
+          <Button
+            disabled
+            variant="contained"
+            style={{ background: "#51D87A", width: 150 }}
+          >
+            <div className="createactivity">กิจกรรม</div>
+          </Button>
+        </Grid>
+      </Stack>
       <Box
         sx={{
           display: "flex",
@@ -108,11 +111,11 @@ function ClassActivity() {
                   </div>
                 </div>
                 <Grid className="status">
-                    <div>หมดเวลาเเล้ว</div>
+                  <div>หมดเวลาเเล้ว</div>
                 </Grid>
                 <Grid className="statussent">
-                    <CheckCircleIcon/>
-                    <div>ส่งเเล้ว</div>
+                  <CheckCircleIcon />
+                  <div>ส่งเเล้ว</div>
                 </Grid>
               </Stack>
             </Button>
@@ -195,8 +198,8 @@ function ClassActivity() {
                   <div>อยู่ในระยะเวลา</div>
                 </Grid>
                 <Grid className="statussent">
-                    <CheckCircleOutlineIcon/>
-                    <div>ยังไม่ส่ง</div>
+                  <CheckCircleOutlineIcon />
+                  <div>ยังไม่ส่ง</div>
                 </Grid>
               </Stack>
             </Button>
@@ -250,7 +253,7 @@ function ClassActivity() {
           </Dialog>
         </Paper>
       </Box>
-    </div>
+    </Box>
   );
 }
 export default ClassActivity;
