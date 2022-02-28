@@ -110,22 +110,27 @@ function ClassActivity() {
               <img className="imgwater" src={waterplant} />
             </DialogContent>
             <Grid paddingTop={2} paddingBottom={2}>
-              <DialogActions className="centerbutton">
-                <Button
-                  variant="contained"
-                  onClick={handleClose}
-                  style={{ width: 150, height: 50, background: "#5BC0DE" }}
-                >
-                  <div className="buttonyes">รดน้ำ</div>
-                </Button>
-
-                <Button
-                  variant="contained"
-                  onClick={handleClose}
-                  style={{ width: 150, height: 50, background: "#D9534F" }}
-                >
-                  <div className="buttonno">ไม่รดน้ำ</div>
-                </Button>
+              <DialogActions >
+                <Stack marginLeft={'auto'} marginRight={'auto'}  direction="row" spacing={1}>
+                  <Grid>
+                    <Button
+                      variant="contained"
+                      onClick={handleClose}
+                      style={{ width: 150, height: 50, background: "#5BC0DE" }}
+                    >
+                      <div className="buttonyes">รดน้ำ</div>
+                    </Button>
+                  </Grid>
+                  <Grid>
+                    <Button
+                      variant="contained"
+                      onClick={handleClose}
+                      style={{ width: 150, height: 50, background: "#D9534F" }}
+                    >
+                      <div className="buttonno">ไม่รดน้ำ</div>
+                    </Button>
+                  </Grid>
+                </Stack>
               </DialogActions>
             </Grid>
           </Dialog>
