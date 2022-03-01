@@ -19,8 +19,6 @@ import CloseIcon from "@mui/icons-material/Close";
 function Register() {
   const [open, setOpen] = React.useState(false);
   const handleClickClose = () => { setOpen(false) };
-  const handleClickOpen = () => { setOpen(true) };
-
 
   const [namefill, setNamefill] = useState('')
   const [passfill, setPassfill] = useState('')
@@ -30,7 +28,8 @@ function Register() {
   const [firstnamefill, setFirstnamefill] = useState('')
   const [surnamefill, setSurnamefill] = useState('')
 
-  const registpress = async () => { 
+  const registpress = async () => {
+    setOpen(true) 
     console.log(namefill)
     console.log(passfill)
     console.log(stafffill)
@@ -148,7 +147,7 @@ function Register() {
               </RadioGroup>
             </FormControl>
             <p>
-              <button type="register" onClick={registpress} onClick={handleClickOpen}>สร้างบัญชี</button>
+              <button type="register" onClick={registpress} >สร้างบัญชี</button>
             </p>
             <div class="text-backtologin">
               มีบัญชีอยู่แล้วใช่ไหม
