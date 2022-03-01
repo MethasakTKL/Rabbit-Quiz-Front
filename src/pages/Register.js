@@ -29,7 +29,6 @@ function Register() {
   const [surnamefill, setSurnamefill] = useState('')
 
   const registpress = async () => {
-    setOpen(true) 
     console.log(namefill)
     console.log(passfill)
     console.log(stafffill)
@@ -37,7 +36,7 @@ function Register() {
     console.log(firstnamefill)
     console.log(surnamefill)
 
-    let result = await ax.post('/auth/register/',{
+    let result = await ax.post('/auth/register/', {
       username: namefill,
       password: passfill,
       password2: pass2fill,
@@ -47,9 +46,10 @@ function Register() {
       last_name: surnamefill,
 
     })
-        console.log('Register success')
-        console.log(result.data)
-    }
+    console.log('Register success')
+    console.log(result.data)
+    setOpen(true)
+  }
 
   return (
     <html>
@@ -172,7 +172,7 @@ function Register() {
                 </DialogContentText>
               </DialogContent>
               <Grid>
-                <Box sx={{display: "flex"}}>
+                <Box sx={{ display: "flex" }}>
                   <div
                     className="reg-close"
                     onClick={handleClickClose}>ปิด
