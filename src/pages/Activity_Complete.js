@@ -1,6 +1,8 @@
-import { Grid, Stack } from '@mui/material'
+import { Box, Grid, Stack } from '@mui/material'
 import React from 'react'
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 function Activity_Complete() {
     const [open, setOpen] = React.useState(false);
@@ -19,44 +21,47 @@ function Activity_Complete() {
     };
 
     return (
-        <div>
-            <Grid paddingTop={2} paddingBottom={2}>
+        <body>
+            <Box
+                sx={{
+                    bgcolor: "white",
+                    height: "500px",
+                    width: "100%",
+                    display: "block",
+                    flexWrap: "wrap",
+                    paddingLeft: 3,
+                    paddingRight: 3,
+                    "& > :not(style)": { mb: 2 }
+                }}
+            >
+                <Box sx={{ paddingTop: 1 }}></Box>
                 <Button
-                    disabled
-                    variant="contained"
-                    onClick={handleClickOpen}
-                    style={{
-                        width: "70%",
-                        display: "flex",
-                        marginRight: "auto",
-                        marginLeft: "auto",
-                        bottom: 10,
-                        top: 1,
-                        background: "#5F498C",
-                        borderRadius: 15,
-                        paddingBottom: 15,
+                    sx={{
+                        color: "black",
+                        width: "100%",
+                        display: "block",
+                        border: 0,
+                        paddingBottom: 1.5,
+                        boxShadow: 3
                     }}
+                    style={{ backgroundColor: 'white' }}
+                    to='/classroom-activity'
+                    component={Link}
                 >
-                    <Stack>
-                        <h1 className="activitybutton">
-                            กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1
-                        </h1>
-                        <div className="assignment-detail-activity">
-                            <div>สิ้นสุด</div>
-                            <div className="duetimeactivity">
-                                28 กุมภาพันธ์ 2022 10.00 PM
-                            </div>
+
+                    <h1 className="activity">
+                        กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1
+                    </h1>
+                    <div className="assignment-detail">
+                        <div>240-124 การเกษตร</div>
+                        <div type="time-activity">
+                            <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
+                            <div>หมดเวลาเเล้ว</div><div type="duetime">ส่งเเล้ว</div>
                         </div>
-                        <Grid className="status">
-                            <div>หมดเวลาเเล้ว</div>
-                        </Grid>
-                        <Grid className="statussent">
-                            <div>ส่งเเล้ว</div>
-                        </Grid>
-                    </Stack>
+                    </div>
                 </Button>
-            </Grid>
-        </div>
+            </Box>
+        </body >
     )
 }
 

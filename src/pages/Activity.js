@@ -37,27 +37,6 @@ function Activity() {
         }}
       >
         <Box sx={{ paddingTop: 1 }}></Box>
-        {/* Detail Information */}
-        {/* <Button 
-
-        sx={{
-          color: "black",
-          width: "100%",
-          display: "block",
-          border: 0,
-          paddingBottom: 1.5,
-          boxShadow: 3,
-        }}        
-          style={{ backgroundColor: 'white' }}>
-          <h1 className="activity">
-            กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1
-          </h1>
-          <div className="assignment-detail">
-          <div>240-124 การเกษตร</div>
-          <AccessTimeIcon sx={{ml:1, mr:1}}/>
-          <div>สิ้นสุด</div><div type="duetime">28 กุมภาพันธ์ 2020 10.00 PM</div>
-          </div>
-        </Button> */}
         <Button
           sx={{
             color: "black",

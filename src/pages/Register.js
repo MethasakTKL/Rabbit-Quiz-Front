@@ -3,14 +3,25 @@ import { Link } from "react-router-dom";
 import React from "react";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
-import { Box, Typography } from "@mui/material";
+import { Dialog, DialogContent, DialogContentText, DialogTitle, Typography, Grid, Button } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import CloseIcon from "@mui/icons-material/Close";
+import IconButton from "@mui/material/IconButton";
+import { Box } from "@mui/system";
 
 function Register() {
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClickClose = () => {
+    setOpen(false);
+  };
+
   return (
     <html>
       <body class="background-reg">
@@ -89,17 +100,21 @@ function Register() {
                 <FormControlLabel
                   value="female"
                   control={<Radio />}
-                  label={<Typography className="choices" sx={{fontFamily:"Prompt"}}>นักเรียน</Typography>}
+                  label={<Typography className="choices" sx={{ fontFamily: "Prompt" }}>นักเรียน</Typography>}
                 />
                 <FormControlLabel
                   value="male"
                   control={<Radio />}
-                  label={<Typography className="choices" sx={{fontFamily:"Prompt"}}>คุณครู</Typography>}
+                  label={<Typography className="choices" sx={{ fontFamily: "Prompt" }}>คุณครู</Typography>}
                 />
               </RadioGroup>
             </FormControl>
             <p>
-              <button type="register">สร้างบัญชี</button>
+              <button
+                type="register"
+                variant="contained"
+                onClick={handleClickOpen}
+              >สร้างบัญชี</button>
             </p>
             <div class="text-backtologin">
               มีบัญชีอยู่แล้วใช่ไหม
@@ -107,6 +122,35 @@ function Register() {
                 <button type="backtologin">เข้าสู่ระบบ</button>
               </Link>
             </div>
+            <Dialog open={open} onClose={handleClickClose}>
+              <DialogTitle>
+                <Grid>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <div className="reg-header-congrat">สร้างบัญชีเสร็จสิ้น</div>
+                    <IconButton sx={{ display: 'flex' }}>
+                      <CloseIcon onClick={handleClickClose} />
+                    </IconButton>
+                  </Box>
+                </Grid>
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                  <div className="reg-congrat">ยินดีด้วยคุณได้สร้างบัญชีเสร็จเรียบร้อยแล้ว</div>
+                </DialogContentText>
+              </DialogContent>
+              <Grid>
+                <Box sx={{display: "flex"}}>
+                  <div
+                    className="reg-close"
+                    onClick={handleClickClose}>ปิด
+                  </div>
+                  <Link to="/login" style={{ textDecoration: "none" }}>
+                    <div className="reg-login">เข้าสู่ระบบ
+                    </div>
+                  </Link>
+                </Box>
+              </Grid>
+            </Dialog>
           </div>
         </div>
       </body>
