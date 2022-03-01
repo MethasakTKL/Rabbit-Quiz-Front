@@ -132,3 +132,18 @@ div.logo img {
     cursor: pointer;
     color: #0084ff;
 }
+.reg-password {
+    font-family: "Prompt", sans-serif;
+    font-size: 14px;
+    text-align: left;
+}
+
+@media (max-width: 41em) { 
+    .reg-password {
+        font-family: "Prompt", sans-serif;
+        font-size: 12px;
+        text-align: left;
+    }
+    
+    
+}

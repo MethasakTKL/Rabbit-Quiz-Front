@@ -122,6 +122,7 @@ function Register() {
                 InputLabelProps={{ style: { fontFamily: "Prompt" } }}
                 required
               />
+              <div className="reg-password"password><div type="reg-header">ข้อกำหนด</div><div></div>รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร <div>ประกอบด้วย ตัวอักษร (a-z A-z) ตัวเลข (0-9) และอักขระพิเศษ</div></div>
             </Stack>
             <FormControl>
               <FormLabel id="demo-row-radio-buttons-group-label">
