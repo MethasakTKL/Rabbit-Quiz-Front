@@ -52,7 +52,7 @@ function Home() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} sx={{fontFamily: "Prompt" }}>ยกเลิก</Button>
-          <Button onClick={handleClose} sx={{fontFamily: "Prompt" ,color:"green"}}>เพิ่ม</Button>
+          <Button onClick={handleClose} sx={{fontFamily: "Prompt" ,color:"white"}} variant='contained'>เพิ่ม</Button>
         </DialogActions>
       </Dialog>
       {/* เพิ่มห้องเรียน */}

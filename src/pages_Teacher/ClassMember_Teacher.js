@@ -34,9 +34,9 @@ function ClassMember_Teacher() {
         </Grid>
       </Stack>
       {/* // Mockup data----------------------------------------------------------------------------------------------------------------------- */}
-      <Box sx={{ width: "70%", marginLeft: "auto", marginRight: "auto" }}>
+      <Box sx={{ width: "90%", marginLeft: "auto", marginRight: "auto" }}>
         <Paper elevation={3} sx={{ height: "auto", borderRadius: 5 }}>
-          <Stack sx={{ paddingBottom: "15%" }}>
+          <Stack sx={{ paddingBottom: "25%" }}>
             <Grid>
               <Box
                 sx={{
