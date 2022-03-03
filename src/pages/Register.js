@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import { Box } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
+import logo from "../Static/image/Rabbitquiz_05.png";
 
 
 function Register() {
@@ -58,7 +59,7 @@ function Register() {
           <div class="logo">
             <logo>
               <img
-                src="https://www.img.in.th/images/f4de721891268e159ad5acd5b6a7a64d.png"
+                src={logo}
                 alt="logorabbit"
               />
             </logo>

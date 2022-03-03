@@ -6,7 +6,7 @@ import { AppBar, Box, Button, Grid, Tab, Tabs, Toolbar } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Link, useHistory } from "react-router-dom";
 //image
-import logo from "../../Static/image/logo.png";
+import logo from "../../Static/image/Rabbitquiz_04.png";
 //css
 import "./AppHeader.css";
 
@@ -27,7 +27,7 @@ function AppHeader() {
               </Button>
             </div>
             <Link to="/">
-              <img src={logo} alt="logorabbit" width={"70"} />
+              <img src={logo} alt="logorabbit" width={'120'} />
             </Link>
             {/* PC SECTION */}
             <div class="header-menu">
