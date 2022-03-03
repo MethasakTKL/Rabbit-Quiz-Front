@@ -18,3 +18,11 @@
     color: white;
     text-align: left;
 }
+
+.cardcontent{
+    font-family: 'Prompt', sans-serif;
+    font-size: 23pt;
+    font-weight:600 ;
+    color: #4d4a53;
+
+}

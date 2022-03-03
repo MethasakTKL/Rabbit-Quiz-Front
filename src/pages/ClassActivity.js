@@ -230,7 +230,7 @@ function ClassActivity() {
                 <DialogContentText>
                   <div className="Question">ต้องการจะรดน้ำต้นไม้หรือไม่ ?</div>
                 </DialogContentText>
-                <img className="imgwater" src={waterplant} />
+                <img className="imgwater" src={waterplant}  />
               </DialogContent>
               <Grid paddingTop={2} paddingBottom={2}>
                 <DialogActions>
