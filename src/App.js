@@ -3,7 +3,6 @@ import "./App.css";
 //components
 import AppHeader from "./components/Bars/AppHeader";
 import AppNavBar from "./components/Bars/AppNavBar";
-import AssignNavBar from "./components/Bars/AssignNavBar";
 import { Route, Switch } from "react-router-dom";
 
 //pages
@@ -16,7 +15,7 @@ import ClassMember from "./pages/ClassMember";
 import ClassActivity from "./pages/ClassActivity";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Activity_Complete from "./pages/Activity_Complete";
+import MyPointsPage from "./pages/MyPointsPage";
 
 //pages teacher
 import Activity_Teacher from "./pages_Teacher/Activity_Teacher";
@@ -44,6 +43,7 @@ function App() {
             <Route path="/classroom-member" component={ClassMember} />
             <Route path="/classroom-activity" component={ClassActivity} />
             <Route path="/activity" component={TabActivityTest} />
+            <Route path="/mypoints" component={MyPointsPage} />
 
             <Route exact path="/teacher" component={Home_Teacher} />
             <Route path="/profile-teacher" component={Profile_Teacher} />
