@@ -60,7 +60,7 @@ function AppNavBar() {
               <Tab
                 className="navtext"
                 icon={<EmojiEvents />}
-                label="คะแนนของฉัน"
+                label="คะแนน"
                 sx={{ color: "#f3e5f5", fontFamily: "Prompt" }}
                 to="/mypoints"
                 component={Link}
