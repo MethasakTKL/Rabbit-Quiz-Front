@@ -8,7 +8,6 @@ import { Route, Switch } from "react-router-dom";
 //pages
 import Falsepage from "./pages/Falsepage";
 import Home from "./pages/Home";
-import Activity from "./pages/Activity";
 import Profile from "./pages/Profile";
 import Classroom from "./pages/ClassRoom";
 import ClassMember from "./pages/ClassMember";
@@ -16,6 +15,7 @@ import ClassActivity from "./pages/ClassActivity";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import MyPointsPage from "./pages/MyPointsPage";
+import Activity from "./pages/Activity";
 
 //pages teacher
 import Activity_Teacher from "./pages_Teacher/Activity_Teacher";
@@ -24,7 +24,7 @@ import Classroom_Teacher from "./pages_Teacher/ClassRoom_Teacher";
 import ClassMember_Teacher from "./pages_Teacher/ClassMember_Teacher";
 import ClassActivity_Teacher from "./pages_Teacher/ClassActivity_Teacher";
 import Home_Teacher from "./pages_Teacher/Home_Teacher";
-import TabActivityTest from "./pages/TabActivityTest";
+
 
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
             <Route path="/classroom" component={Classroom} />
             <Route path="/classroom-member" component={ClassMember} />
             <Route path="/classroom-activity" component={ClassActivity} />
-            <Route path="/activity" component={TabActivityTest} />
+            <Route path="/activity" component={Activity} />
             <Route path="/mypoints" component={MyPointsPage} />
 
             <Route exact path="/teacher" component={Home_Teacher} />
