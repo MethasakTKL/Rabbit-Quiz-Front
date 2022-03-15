@@ -24,13 +24,17 @@ function Login() {
   const loginpress = async () => { 
       console.log(namefill)
       console.log(passfill)
-      let result = await ax.post('/auth/login/',{
-        username: namefill,
-        password: passfill,
-      })
+      try{
+        let result = await ax.post('/auth/login/',{
+          username: namefill,
+          password: passfill,
+      });
           console.log('login success')
           console.log(result.data)
+      } catch(error){
+        console.log(error.respone)
       }
+        }
 
     
   
