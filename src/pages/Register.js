@@ -46,6 +46,7 @@ function Register() {
     console.log(firstnamefill);
     console.log(surnamefill);
 
+    try{
     let RegistResult = await ax.post("/auth/register/", {
       username: namefill,
       password: passfill,
@@ -58,7 +59,12 @@ function Register() {
     console.log("Register success");
     console.log(RegistResult.data);
     setOpen(true);
-  };
+  } catch(error){
+    if (error.response) {
+      console.log(error.response.data)
+    }
+  }
+}
 
   return (
     <html>
