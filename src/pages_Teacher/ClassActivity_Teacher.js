@@ -17,7 +17,6 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { createTheme, height, maxWidth } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
@@ -26,6 +25,9 @@ import AddIcon from "@mui/icons-material/Add";
 
 //import image
 import waterplant from "../Static/image/waterplant.png";
+
+//import component
+import EditActivity from "../components_teacher/ClassActivityTeacher/EditActivity";
 
 function ClassActivity_Teacher() {
   const [open, setOpen] = React.useState(false);
@@ -167,7 +169,7 @@ function ClassActivity_Teacher() {
         }}
       >
         <Paper elevation={3}>
-          <Stack direction={'column-reverse'}>
+          <Stack direction={"column-reverse"}>
             <Grid paddingTop={2} paddingBottom={2}>
               {/* ------------------------------------------------------------------------------------------------------------------- */}
               <Box
@@ -241,13 +243,7 @@ function ClassActivity_Teacher() {
                       </Button>
                     </Grid>
                     <Grid>
-                      <Button
-                        variant="contained"
-                        style={{ background: "#EFBA44" }}
-                      >
-                        <EditIcon />
-                        <div className="editbutton">แก้ไข</div>
-                      </Button>
+                      <EditActivity/>
                     </Grid>
                     <Grid>
                       <Button
@@ -346,13 +342,7 @@ function ClassActivity_Teacher() {
                       </Button>
                     </Grid>
                     <Grid>
-                      <Button
-                        variant="contained"
-                        style={{ background: "#EFBA44" }}
-                      >
-                        <EditIcon />
-                        <div className="editbutton">แก้ไข</div>
-                      </Button>
+                      <EditActivity/>
                     </Grid>
                     <Grid>
                       <Button
