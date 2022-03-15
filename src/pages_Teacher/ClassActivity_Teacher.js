@@ -254,7 +254,7 @@ function ClassActivity_Teacher() {
                         variant="contained"
                         style={{ background: "#7AD400" }}
                       >
-                        <div className="editbutton">เพิ่มเติม</div>
+                        <div className="editbutton">รายละเอียด</div>
                       </Button>
                     </Grid>
                   </Stack>
@@ -359,7 +359,7 @@ function ClassActivity_Teacher() {
                         variant="contained"
                         style={{ background: "#7AD400" }}
                       >
-                        <div className="editbutton">เพิ่มเติม</div>
+                        <div className="editbutton">รายละเอียด</div>
                       </Button>
                     </Grid>
                   </Stack>

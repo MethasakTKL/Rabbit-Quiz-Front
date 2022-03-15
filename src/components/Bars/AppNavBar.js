@@ -5,6 +5,7 @@ import FaceIcon from "@mui/icons-material/Face";
 import "./AppNavBar.css";
 import { AppBar, Box, Tab, Tabs, Toolbar } from "@mui/material";
 import { Link } from "react-router-dom";
+import { EmojiEvents, Logout } from "@mui/icons-material";
 
 function AppNavBar() {
   const [value, setValue] = React.useState(0);
@@ -27,7 +28,7 @@ function AppNavBar() {
           justifyContent: "center",
           marginLeft: "auto",
           marginRight: "auto",
-          fontFamily: "Prompt"
+          fontFamily: "Prompt",
         }}
       >
         <div class="navbar">
@@ -35,42 +36,48 @@ function AppNavBar() {
             <Tabs
               value={value}
               onChange={handleChange}
-              TabIndicatorProps={{ style: { background: "#ffdd44", height: 5 } }}
+              TabIndicatorProps={{
+                style: { background: "#ffdd44", height: 5 },
+              }}
               textColor="#f5df4d"
             >
               <Tab
                 className="navtext"
                 icon={<HomeIcon />}
                 label="หน้าแรก"
-                sx={{ color: "#f3e5f5", fontFamily: "Prompt"}}
+                sx={{ color: "#f3e5f5", fontFamily: "Prompt" }}
                 to="/"
                 component={Link}
-
               />
               <Tab
                 className="navtext"
                 icon={<HistoryIcon />}
                 label="กิจกรรม"
-                sx={{ color: "#f3e5f5", fontFamily: "Prompt"}}
+                sx={{ color: "#f3e5f5", fontFamily: "Prompt" }}
                 to="/activity"
                 component={Link}
-
+              />
+              <Tab
+                className="navtext"
+                icon={<EmojiEvents />}
+                label="คะแนน"
+                sx={{ color: "#f3e5f5", fontFamily: "Prompt" }}
+                to="/mypoints"
+                component={Link}
               />
               <Tab
                 className="navtext"
                 icon={<FaceIcon />}
                 label="โปรไฟล์"
-                sx={{ color: "#f3e5f5", fontFamily: "Prompt"}}
+                sx={{ color: "#f3e5f5", fontFamily: "Prompt" }}
                 to="/profile"
                 component={Link}
-
               />
             </Tabs>
           </Toolbar>
         </div>
       </AppBar>
     </Box>
-
   );
 }
 

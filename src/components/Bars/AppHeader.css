@@ -27,6 +27,9 @@ div.profile-name {
     margin-top: auto;
 }
 
+.menubar{
+    font-family: "Prompt", sans-serif;
+}
 
 @media (max-width: 41em) { 
     .header-menu {
@@ -34,6 +37,7 @@ div.profile-name {
     }
     
 }
+
 
 /* ปิดปุ่มย้อนกลับบนคอม */
 /* @media (min-width: 36em) { 

@@ -14,23 +14,12 @@ body.background-log {
     max-width: 30rem;
     padding: 0 0 0;
     margin: auto;
-    margin-top: 8%;
     border-radius: 10px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 
 }
-.logo {
-    height: 6%;
-    border-radius: 10px 10px 0 0;
-    text-align: center;
-    background: #f5df4d;
-    display: block;
-}
-div.logo img {
-    margin-top: 2%;
-    max-height: 200px;
-    max-width: 200px;
-}
+
+
 .head {
     font-size: 36px;
     margin-bottom: 10%;
@@ -86,3 +75,4 @@ div.logo img {
 .form button[type="register"]:focus {
     background: #4caf50;
 }
+

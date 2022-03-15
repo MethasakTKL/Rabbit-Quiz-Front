@@ -12,7 +12,8 @@ body.background-reg {
     max-width: 500px;
     padding: 0 0 0;
     margin: auto;
-    margin-top: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     border-radius: 10px;
 }
@@ -25,8 +26,7 @@ body.background-reg {
 }
 div.logo img {
     margin-top: 2%;
-    max-height: 200px;
-    max-width: 200px;
+    width: 200px;
 }
 .form div[type="namebox"] {
     display: flex;

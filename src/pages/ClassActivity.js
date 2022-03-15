@@ -24,6 +24,8 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 //import image
 import waterplant from "../Static/image/waterplant.png";
+import { Link } from "react-router-dom";
+import { EmojiEvents } from "@mui/icons-material";
 
 function ClassActivity() {
   const [open, setOpen] = React.useState(false);
@@ -56,11 +58,15 @@ function ClassActivity() {
       >
         <Grid>
           <Button
-            disabled
             variant="contained"
-            style={{ background: "#51D87A", width: 150 }}
+            style={{ background: "#f5df4d", width: 170 }}
+            to="/mypoints"
+            component={Link}
           >
-            <div className="createactivity">กิจกรรม</div>
+            <EmojiEvents className="viewscore" />
+            <Grid>
+              <div className="viewscore">คะแนนของคุณ</div>
+            </Grid>
           </Button>
         </Grid>
       </Stack>
