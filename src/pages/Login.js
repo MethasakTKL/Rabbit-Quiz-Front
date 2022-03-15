@@ -32,7 +32,9 @@ function Login() {
         console.log('login success')
         console.log(result.data)
     } catch(error){
-      console.log(error.respone)
+      if (error.response) {
+        console.log(error.response.data);
+      }
     }
       }
     
