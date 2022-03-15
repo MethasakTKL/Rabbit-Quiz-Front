@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Login.css"
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import ax from "../config/ax";
@@ -16,33 +16,32 @@ function Login() {
   const [passfill, setPassfill] = useState('')
 
   const body = {
-    username: {namefill},
-    password: {passfill},
+    username: { namefill },
+    password: { passfill },
   };
 
-
-  const loginpress = async () => { 
+  const [showError, setShowError] = React.useState(false)
+  const history = useHistory();
+  const loginpress = async () => {
     console.log(namefill)
     console.log(passfill)
     try{
-    let LoginResult = await ax.post('/auth/login/',{
-      username: namefill,
-      password: passfill,
-    });
-        console.log('login success')
-        console.log(LoginResult.data)
-    } catch(error){
-      if (error.response) {
-        if (error.response.data.detail == "No active account found with the given credentials");
-        console.log("ไม่พบบัญชีที่ใช้งานอยู่พร้อมข้อมูลประจำตัวที่ระบุ")
+      let LoginResult = await ax.post('/auth/login/',{
+        username: namefill,
+        password: passfill,
+      });
+          console.log('login success')
+          console.log(LoginResult.data)
+          history.push('/')
+
+    } catch (error) {
+      if (error.response.data.detail == "No active account found with the given credentials");
+        console.log("ไม่พบชื่อบัญชีที่ใช้งานอยู่หรือรหัสผ่านไม่ถูกต้อง")
+        setShowError(true)
       }
     }
-  }
-    
-  
 
-
-  return (
+return (
     <html class="html-log">
       <body class="background-log">
         <div class="login-page">
@@ -52,26 +51,28 @@ function Login() {
           <div class="form">
             <form class="login-form">
               <h1 class='head'>ลงชื่อเข้าใช้งาน</h1>
-              <Stack spacing={3} paddingBottom={2}>
-              <TextField
-                id="outlined-basic"
-                label="ชื่อบัญชี" 
-                variant="outlined" 
-                onChange={event => setNamefill(event.target.value)}
-                inputProps={{style:{fontFamily:"Prompt"}}}
-                InputLabelProps={{style:{fontFamily:"Prompt"}}}
-              />
-              <TextField 
-                id="outlined-basic" 
-                type="password" 
-                label="รหัสผ่าน" 
-                variant="outlined" 
-                onChange={event => setPassfill(event.target.value)}
-                inputProps={{style:{fontFamily:"Prompt"}}}
-                InputLabelProps={{style:{fontFamily:"Prompt"}}}
-              />
+              <Stack spacing={3} paddingBottom={2} className="text-field">
+                {showError ? <div class="login-error">ชื่อบัญชีหรือรหัสผ่านที่คุณได้กรอกไว้ไม่ถูกต้อง</div> : null}
+                <TextField
+                  id="outlined-basic"
+                  label="ชื่อบัญชี"
+                  variant="outlined"
+                  onChange={event => setNamefill(event.target.value)}
+                  inputProps={{ style: { fontFamily: "Prompt" } }}
+                  InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+
+                />
+                <TextField
+                  id="outlined-basic"
+                  type="password"
+                  label="รหัสผ่าน"
+                  variant="outlined"
+                  onChange={event => setPassfill(event.target.value)}
+                  inputProps={{ style: { fontFamily: "Prompt" } }}
+                  InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+                />
               </Stack>
-              <Link to="/">
+              <Link>
                 <button type="login" onClick={loginpress}>เข้าสู่ระบบ</button>
               </Link>
               <p>
