@@ -33,7 +33,8 @@ function Login() {
         console.log(result.data)
     } catch(error){
       if (error.response) {
-        console.log(error.response.data);
+        if (error.response.data.detail == "No active account found with the given credentials");
+        console.log("ไม่พบบัญชีที่ใช้งานอยู่พร้อมข้อมูลประจำตัวที่ระบุ")
       }
     }
       }
