@@ -46,7 +46,7 @@ function Register() {
     console.log(firstnamefill);
     console.log(surnamefill);
 
-    let result = await ax.post("/auth/register/", {
+    let RegistResult = await ax.post("/auth/register/", {
       username: namefill,
       password: passfill,
       password2: pass2fill,
@@ -56,7 +56,7 @@ function Register() {
       last_name: surnamefill,
     });
     console.log("Register success");
-    console.log(result.data);
+    console.log(RegistResult.data);
     setOpen(true);
   };
 

@@ -25,12 +25,12 @@ function Login() {
     console.log(namefill)
     console.log(passfill)
     try{
-    let result = await ax.post('/auth/login/',{
+    let LoginResult = await ax.post('/auth/login/',{
       username: namefill,
       password: passfill,
     });
         console.log('login success')
-        console.log(result.data)
+        console.log(LoginResult.data)
     } catch(error){
       if (error.response) {
         if (error.response.data.detail == "No active account found with the given credentials");
