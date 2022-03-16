@@ -6,8 +6,8 @@ import Stack from '@mui/material/Stack';
 import ax from "../config/ax";
 import { useEffect, useState } from "react";
 
-function Login() {
 
+function Login() {
 
 
   // const [userResultList, setUserResultList] = useState([])
@@ -33,7 +33,8 @@ function Login() {
       });
           console.log('login success')
           console.log(LoginResult.data)
-          history.push('/') 
+          history.push('/')
+
     }
 
     catch (error) {
