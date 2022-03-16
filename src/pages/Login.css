@@ -79,5 +79,6 @@ body.background-log {
 .login-error {
     font-family: "Prompt";
     color: rgba(220, 0, 0, 0.9);
-    border: 1px solid rgba(220, 0, 0, 0.9);
+    border: 2px solid rgba(220, 0, 0, 0.9);
+    background-color: rgb(255, 244, 249);
 }

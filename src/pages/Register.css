@@ -147,3 +147,14 @@ div.logo img {
     
     
 }
+
+.register-error {
+    font-size: 14px;
+    font-family: "Prompt";
+    border: 2px solid rgba(220, 0, 0, 0.9);
+    color: rgba(220, 0, 0, 0.9);
+    background-color: rgb(255, 249, 249);
+    margin-bottom: 1em;
+    padding: 0.8em;
+    text-align: left;
+}
