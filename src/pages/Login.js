@@ -15,21 +15,25 @@ function Login() {
   const [namefill, setNamefill] = useState('')
   const [passfill, setPassfill] = useState('')
 
-  const body = {
-    username: { namefill },
-    password: { passfill },
-  };
-
   const [showError, setShowError] = React.useState(false)
   const history = useHistory();
+
+  const [isAuthenticated, setisAuthenticated] = useState(false)
+  const [accessToken, setAccessToken] = useState(null)
+  const [refreshToken, setrefreshToken] = useState(null)
+
+
+
   const loginpress = async () => {
     console.log(namefill)
     console.log(passfill)
+    
     try{
       let LoginResult = await ax.post('/auth/login/',{
         username: namefill,
         password: passfill,
       });
+          setisAuthenticated(true)
           console.log('login success')
           console.log(LoginResult.data)
           history.push('/')
