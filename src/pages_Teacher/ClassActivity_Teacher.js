@@ -23,11 +23,10 @@ import EditIcon from "@mui/icons-material/Edit";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import AddIcon from "@mui/icons-material/Add";
 
-//import image
-import waterplant from "../Static/image/waterplant.png";
 
 //import component
 import EditActivity from "../components_teacher/ClassActivityTeacher/EditActivity";
+import DetailActivity from "../components_teacher/ClassActivityTeacher/DetailActivity";
 
 function ClassActivity_Teacher() {
   const [open, setOpen] = React.useState(false);
@@ -246,12 +245,7 @@ function ClassActivity_Teacher() {
                       <EditActivity/>
                     </Grid>
                     <Grid>
-                      <Button
-                        variant="contained"
-                        style={{ background: "#7AD400" }}
-                      >
-                        <div className="editbutton">รายละเอียด</div>
-                      </Button>
+                      <DetailActivity/>
                     </Grid>
                   </Stack>
                   <Stack
@@ -345,12 +339,7 @@ function ClassActivity_Teacher() {
                       <EditActivity/>
                     </Grid>
                     <Grid>
-                      <Button
-                        variant="contained"
-                        style={{ background: "#7AD400" }}
-                      >
-                        <div className="editbutton">รายละเอียด</div>
-                      </Button>
+                      <DetailActivity/>
                     </Grid>
                   </Stack>
                   <Stack
