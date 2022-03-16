@@ -1,11 +1,12 @@
 import React from "react";
 import "./DetailActivity.css";
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, IconButton } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { DataGrid } from "@mui/x-data-grid";
+import CloseIcon from "@mui/icons-material/Close";
 
 const rows = [
   { id: 1, col1: 1, col2: "ชนาวัฒน์ ทั้วสุภาพ", col3: "รดน้ำ", col4: 1 },
@@ -42,26 +43,28 @@ function DetailActivity() {
       >
         <div className="editbutton">รายละเอียด</div>
       </Button>
+
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>
-          <div className="titledialog">รายละเอียด</div>
+          <div className="detialtitle">สรุปผลกิจกรรม</div>
         </DialogTitle>
         <DialogContent>
-          <div>ทั้งหมด 5 คน</div>
+          <div className="allstudent">ทั้งหมด 5 คน</div>
           <div style={{ height: 500, width: "auto" }}>
-            <DataGrid rows={rows} columns={columns} />
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              style={{ fontFamily: "prompt" }}
+            />
           </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>
-            <div className="cancelbutton">ยกเลิก</div>
-          </Button>
           <Button
             onClick={handleClose}
             variant="contained"
             style={{ width: 150 }}
           >
-            <div className="createbutton">บันทึก</div>
+            <div className="createbutton">ตกลง</div>
           </Button>
         </DialogActions>
       </Dialog>

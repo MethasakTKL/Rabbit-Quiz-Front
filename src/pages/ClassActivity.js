@@ -22,10 +22,12 @@ import CloseIcon from "@mui/icons-material/Close";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { EmojiEvents } from "@mui/icons-material";
+
+
 //import image
 import waterplant from "../Static/image/waterplant.png";
 import { Link } from "react-router-dom";
-import { EmojiEvents } from "@mui/icons-material";
 
 function ClassActivity() {
   const [open, setOpen] = React.useState(false);

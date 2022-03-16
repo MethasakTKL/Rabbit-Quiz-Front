@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
+
+.detialtitle{
+    font-family: "Prompt", sans-serif;
+    font-size: 20pt;
+    font-weight: 600;
+    color: #44316e;
+    text-align: center;
+}
+
+
+.allstudent {
+    font-family: "Prompt", sans-serif;
+    font-size: large;
+    padding-bottom: 2%;
+}
