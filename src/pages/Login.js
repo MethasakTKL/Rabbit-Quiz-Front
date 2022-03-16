@@ -18,9 +18,7 @@ function Login() {
   const [showError, setShowError] = React.useState(false)
   const history = useHistory();
 
-  const [isAuthenticated, setisAuthenticated] = useState(false)
-  const [accessToken, setAccessToken] = useState(null)
-  const [refreshToken, setrefreshToken] = useState(null)
+
 
 
 
@@ -33,12 +31,12 @@ function Login() {
         username: namefill,
         password: passfill,
       });
-          setisAuthenticated(true)
           console.log('login success')
           console.log(LoginResult.data)
-          history.push('/')
+          history.push('/') 
+    }
 
-    } catch (error) {
+    catch (error) {
       if (error.response.data.detail == "No active account found with the given credentials");
         console.log("ไม่พบชื่อบัญชีที่ใช้งานอยู่หรือรหัสผ่านไม่ถูกต้อง")
         setShowError(true)
