@@ -102,7 +102,7 @@ function Home_Teacher() {
             <Button
               style={{
                 display: "flex",
-                background: "linear-gradient(135deg, #33C58E 20%, #63FD88 90%)",
+                background:"3870BD",//"linear-gradient(135deg, #33C58E 20%, #63FD88 90%)",
                 marginRight: "auto",
                 marginLeft: "auto",
                 bottom: 10,
