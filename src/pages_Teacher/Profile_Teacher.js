@@ -17,19 +17,19 @@ function Profile_Teacher() {
           elevation={4}
           sx={{ width: "90%", marginLeft: "auto", marginRight: "auto" }}
         >
-          <Grid direction="row" spacing={2} direction="row" paddingBottom={5}>
+          <Grid direction="row" spacing={2} paddingBottom={5}>
             <div className="centerIcon">
               <AccountCircle sx={{ fontSize: 100, color: "#F19528" }} />
             </div>
             <div className="centerName">อารีย์  มีสุข</div>
             <div className="centerAccount">ประเภทบัญชี : คุณครู</div>
           </Grid>
-          <Grid textAlign='center' paddingBottom={2}>
+          {/* <Grid textAlign='center' paddingBottom={2}>
             <Button variant="contained" style={{background:'#CD0049'}} to='/login' component={Link}>
               <div className="logoutIcon"><LogoutIcon sx={{fontSize:20}}/></div>
               <div className="logout" >ออกจากระบบ</div>
             </Button>
-          </Grid>
+          </Grid> */}
         </Paper>
       </Grid>
       <Grid paddingTop={2}>
