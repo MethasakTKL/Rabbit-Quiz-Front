@@ -55,7 +55,7 @@ return (
             <form class="login-form">
               <h1 class='head'>ลงชื่อเข้าใช้งาน</h1>
               <Stack spacing={3} paddingBottom={2} className="text-field">
-                {showError ? <div class="login-error">ชื่อบัญชีหรือรหัสผ่านที่คุณได้กรอกไว้ไม่ถูกต้อง</div> : null}
+                {showError ? <div class="login-error">ชื่อบัญชีหรือรหัสผ่านของคุณไม่ถูกต้อง<div>กรุณาลองอีกครั้ง</div></div> : null}
                 <TextField
                   id="outlined-basic"
                   label="ชื่อบัญชี"
