@@ -71,7 +71,10 @@ const rows = [
     Point: 2,
   },
   { id: 5, firstName: "ธรรมาธิป", lastName: "ชิตพงศ์", AllPoint: 2, Point: 1 },
+
+
 ];
+
 
 function ClassMember_Teacher() {
   return (
@@ -98,24 +101,39 @@ function ClassMember_Teacher() {
           </Button>
         </Grid>
         <Grid>
-          <Button disabled variant="contained" style={{ background: "#D64A55" }}>
+          <Button
+            disabled
+            variant="contained"
+            style={{ background: "#D64A55" }}
+          >
             <DeleteOutlineIcon />
             <div className="deletebutton">ลบ</div>
-            
           </Button>
         </Grid>
       </Stack>
-      <div style={{ height: 400, width: "100%" }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-          disableSelectionOnClick
-          style={{ fontFamily: "prompt" }}
-        />
-      </div>
+      <Box>
+        <Paper
+          sx={{
+            width: "98%",
+            maxWidth: 600,
+            height: "auto",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
+          <div style={{ height: 500, width: "100%" }}>
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              pageSize={5}
+              rowsPerPageOptions={[5]}
+              checkboxSelection
+              disableSelectionOnClick
+              style={{ fontFamily: "prompt" }}
+            />
+          </div>
+        </Paper>
+      </Box>
     </div>
   );
 }
