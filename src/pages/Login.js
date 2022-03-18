@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import ax from "../config/ax";
 import { useEffect, useState } from "react";
-
+import Loginlogo from '../Static/image/Rabbitquiz_05.png'
 
 function Login() {
 
@@ -49,7 +49,7 @@ return (
       <body class="background-log">
         <div class="login-page">
           <div class="logo">
-            <img src="https://www.img.in.th/images/f4de721891268e159ad5acd5b6a7a64d.png" alt="logorabbit" ></img>
+            <img src={Loginlogo} alt="logorabbit" ></img>
           </div>
           <div class="form">
             <form class="login-form">
