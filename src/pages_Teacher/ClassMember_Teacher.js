@@ -79,7 +79,7 @@ const rows = [
 function ClassMember_Teacher() {
   return (
     <div>
-      <h1 className="classname" style={{ paddingLeft: "5%", fontSize: 36 }}>
+      <h1 className="classname" >
         ห้องเรียนการเกษตร
       </h1>
       <Stack
@@ -111,6 +111,9 @@ function ClassMember_Teacher() {
           </Button>
         </Grid>
       </Stack>
+      <div className='allstudentmember'>
+        นักเรียน ทั้งหมด 5 คน
+      </div>
       <Box>
         <Paper
           sx={{

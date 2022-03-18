@@ -3,8 +3,7 @@
 .classname {
     font-family: 'Prompt', sans-serif;
     color: #856FB4;
-    text-align: left;
-    padding-left: 20px;
+    text-align: center;
     font-size: 36px;
 }
 
@@ -35,3 +34,9 @@
     color: #ffffff;
 }
 
+.allstudentmember{
+    font-family: 'Prompt', sans-serif;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
