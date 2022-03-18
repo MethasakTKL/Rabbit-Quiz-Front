@@ -7,6 +7,71 @@ import FaceIcon from "@mui/icons-material/Face";
 import IconButton from "@mui/material/IconButton";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import AddIcon from "@mui/icons-material/Add";
+import { DataGrid } from "@mui/x-data-grid";
+
+//import components
+
+const columns = [
+  { field: "id", headerName: "ID", width: 20 },
+  {
+    field: "firstName",
+    headerName: "ชื่อ",
+    width: 100,
+    editable: false,
+  },
+  {
+    field: "lastName",
+    headerName: "นามสกุล",
+    width: 100,
+    editable: false,
+  },
+  {
+    field: "AllPoint",
+    headerName: "คะแนนทั้งหมด",
+    type: "number",
+    width: 110,
+    editable: false,
+  },
+  {
+    field: "Point",
+    headerName: "คะแนนที่ได้",
+    type: "number",
+    width: 110,
+    editable: false,
+  },
+];
+
+const rows = [
+  {
+    id: 1,
+    firstName: "ชนาวัฒน์",
+    lastName: "ทั้วสุภาพ",
+    AllPoint: 2,
+    Point: 2,
+  },
+  {
+    id: 2,
+    firstName: "นัฏฐวัฒน์",
+    lastName: "สิงห์อินทร์",
+    AllPoint: 2,
+    Point: 2,
+  },
+  {
+    id: 3,
+    firstName: "เมธาศักดิ์",
+    lastName: "ทิพย์กองลาศ",
+    AllPoint: 2,
+    Point: 1,
+  },
+  {
+    id: 4,
+    firstName: "อิฟฟาฮาน",
+    lastName: "สุขสุวรรณ",
+    AllPoint: 2,
+    Point: 2,
+  },
+  { id: 5, firstName: "ธรรมาธิป", lastName: "ชิตพงศ์", AllPoint: 2, Point: 1 },
+];
 
 function ClassMember_Teacher() {
   return (
@@ -32,178 +97,25 @@ function ClassMember_Teacher() {
             <div className="buttonAdd">เพิ่มสมาชิก</div>
           </Button>
         </Grid>
+        <Grid>
+          <Button disabled variant="contained" style={{ background: "#D64A55" }}>
+            <DeleteOutlineIcon />
+            <div className="deletebutton">ลบ</div>
+            
+          </Button>
+        </Grid>
       </Stack>
-      {/* // Mockup data----------------------------------------------------------------------------------------------------------------------- */}
-      <Box sx={{ width: "90%", marginLeft: "auto", marginRight: "auto" }}>
-        <Paper elevation={3} sx={{ height: "auto", borderRadius: 5 }}>
-          <Stack sx={{ paddingBottom: "25%" }}>
-            <Grid>
-              <Box
-                sx={{
-                  width: "75%",
-                  height: 40,
-                  borderRadius: 20,
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  paddingTop: 2,
-                }}
-              >
-                <Card variant="contained" sx={{ borderRadius: 4 }}>
-                  <Grid
-                    container
-                    direction="row"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                    paddingLeft={3}
-                    sx={{ background: "#E4E4E5" }}
-                  >
-                    <AccountCircleIcon
-                      sx={{ fontSize: 40, color: "#9C2431" }}
-                    />
-                    <p className="centertext">อาจารย์ อารีย์ มีสุข</p>
-                  </Grid>
-                </Card>
-              </Box>
-            </Grid>
-            {/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */}
-            <Grid>
-              <Box
-                sx={{
-                  width: "75%",
-                  height: 40,
-                  borderRadius: 20,
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  paddingTop: 7,
-                }}
-              >
-                <Card variant="contained" sx={{ borderRadius: 4 }}>
-                  <Grid
-                    container
-                    direction="row"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                    paddingLeft={3}
-                    sx={{ background: "#E4E4E5" }}
-                  >
-                    <FaceIcon sx={{ fontSize: 30, color: "#F19528" }} />
-                    <p className="centertext">ชนาวัฒน์ ทั้วสุภาพ</p>
-                  </Grid>
-                </Card>
-              </Box>
-            </Grid>
-            {/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */}
-            <Grid>
-              <Box
-                sx={{
-                  width: "75%",
-                  height: 40,
-                  borderRadius: 20,
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  paddingTop: 10,
-                }}
-              >
-                <Card variant="contained" sx={{ borderRadius: 4 }}>
-                  <Grid
-                    container
-                    direction="row"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                    paddingLeft={3}
-                    sx={{ background: "#E4E4E5" }}
-                  >
-                    <FaceIcon sx={{ fontSize: 30, color: "#F19528" }} />
-                    <p className="centertext">เมธาศักดิ์ ทิพย์กองลาศ</p>
-                  </Grid>
-                </Card>
-              </Box>
-            </Grid>
-            {/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */}
-            <Grid>
-              <Box
-                sx={{
-                  width: "75%",
-                  height: 40,
-                  borderRadius: 20,
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  paddingTop: 10,
-                }}
-              >
-                <Card variant="contained" sx={{ borderRadius: 4 }}>
-                  <Grid
-                    container
-                    direction="row"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                    paddingLeft={3}
-                    sx={{ background: "#E4E4E5" }}
-                  >
-                    <FaceIcon sx={{ fontSize: 30, color: "#F19528" }} />
-                    <p className="centertext">นัฏฐวัฒน์ สิงห์อินทร์</p>
-                  </Grid>
-                </Card>
-              </Box>
-            </Grid>
-            {/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */}
-            <Grid>
-              <Box
-                sx={{
-                  width: "75%",
-                  height: 40,
-                  borderRadius: 20,
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  paddingTop: 10,
-                }}
-              >
-                <Card variant="contained" sx={{ borderRadius: 4 }}>
-                  <Grid
-                    container
-                    direction="row"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                    paddingLeft={3}
-                    sx={{ background: "#E4E4E5" }}
-                  >
-                    <FaceIcon sx={{ fontSize: 30, color: "#F19528" }} />
-                    <p className="centertext">อิฟฟาฮาน สุขสุวรรณ</p>
-                  </Grid>
-                </Card>
-              </Box>
-            </Grid>
-            {/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */}
-            <Grid>
-              <Box
-                sx={{
-                  width: "75%",
-                  height: 40,
-                  borderRadius: 20,
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  paddingTop: 10,
-                }}
-              >
-                <Card variant="contained" sx={{ borderRadius: 4 }}>
-                  <Grid
-                    container
-                    direction="row"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                    paddingLeft={3}
-                    sx={{ background: "#E4E4E5" }}
-                  >
-                    <FaceIcon sx={{ fontSize: 30, color: "#F19528" }} />
-                    <p className="centertext">ธรรมาธิป ชิตพงศ์</p>
-                  </Grid>
-                </Card>
-              </Box>
-            </Grid>
-            {/* --------------------------------------------------------------------------------- */}
-          </Stack>
-        </Paper>
-      </Box>
+      <div style={{ height: 400, width: "100%" }}>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+          disableSelectionOnClick
+          style={{ fontFamily: "prompt" }}
+        />
+      </div>
     </div>
   );
 }
