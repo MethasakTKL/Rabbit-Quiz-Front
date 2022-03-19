@@ -7,11 +7,16 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Link, useHistory } from "react-router-dom";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+
 //image
 import logo from "../../Static/image/Rabbitquiz_04.png";
+
 //css
 import "./AppHeader.css";
 import { EmojiEvents, MenuTwoTone } from "@mui/icons-material";
+
+//authentic
+import { ax, useAuth } from "../../auth/auth";
 
 function AppHeader() {
   const history = useHistory();
@@ -27,6 +32,29 @@ function AppHeader() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+
+  //วิธีเรียกข้อมูลหริอ fetch data มาใช้
+  const [username, setUserName] = React.useState('') //ตัวแปรใช้ useState ตั้ง
+  const [userrole, setUserRole] = React.useState('')
+  ax.get('/userdetail') //ส่ง api ไปยังข้อมูลที่ต้องการ แล้วใช้ได้เลย
+    .then((response) => {
+      console.log('Fetch date success...')
+      let userdata = response.data
+      setUserName(userdata.first_name + " " + userdata.last_name)
+      console.log('user_detail is :', userdata)
+
+      if (userdata.is_staff) {
+        setUserRole('คุณครู')
+      } else {
+        setUserRole('นักเรียน')
+      }
+
+    })
+    .catch((err) => { console.error(err) });
+
+
+
   return (
     <div>
       <Box>
@@ -119,10 +147,10 @@ function AppHeader() {
 
             {/* PC SECTION */}
             <Grid sx={{ marginLeft: "auto", marginRight: 0 }}>
-              
-                <div class="name">นักเรียน</div>
-                <div class="namee">ชนาวัฒน์ ทั้วสุภาพ</div>
-              
+
+              <div class="name" >{userrole}</div>
+              <div class="namee">{username}</div>
+
             </Grid>
             {/* Other Button */}
             <Button

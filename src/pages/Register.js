@@ -10,15 +10,14 @@ import {
   DialogTitle,
   Typography,
   Grid,
-  Button,
 } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import ax from "../config/ax";
-import { useEffect, useState } from "react";
+import { ax } from "../auth/auth";
+import { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import { Box } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
@@ -69,86 +68,86 @@ function Register() {
         var errorPassWord2 = error.response.data.password2
         var errorIsStaff = error.response.data.is_staff
 
-        if (errorUserName == "This field may not be blank.") {
+        if (errorUserName === "This field may not be blank.") {
           console.log("ไม่พบข้อมูลชื่อบัญชี")
           setErrorUserName("กรุณากรอกข้อมูลชื่อบัญชี")
 
         }
-        if (errorUserName == "A user with that username already exists.") {
+        if (errorUserName === "A user with that username already exists.") {
           console.log("ชื่อบัญชีนี้ซ้ำกับในระบบ")
           setErrorUserName("ชื่อบัญชีนี้มีผู้ใช้แล้ว ลองใช้ชื่ออื่น")
 
         }
-        if (errorUserName == "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.") {
+        if (errorUserName === "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.") {
           console.log("รูปแบบชื่อบัญชีไม่ถูกต้อง")
           setErrorUserName("ชื่อบัญชีต้องเป็นตัวอักษรภาษาอังกฤษ ตัวเลข และอักขระพิเศษ")
 
         }
-        if (errorEmail == "This field may not be blank.") {
+        if (errorEmail === "This field may not be blank.") {
           console.log("ไม่พบข้อมูลในช่องอีเมล")
           setErrorEmail("กรุณากรอกข้อมูลในช่องอีเมล")
 
         }
-        if (errorEmail == "This field must be unique.") {
+        if (errorEmail === "This field must be unique.") {
           console.log("อีเมลนี้ซ้ำกับในระบบ")
           setErrorEmail("อีเมลนี้ได้ถูกลงทะเบียนแล้ว ลองใช้อีเมลอื่น")
 
         }
-        if (errorEmail == "Enter a valid email address.") {
+        if (errorEmail === "Enter a valid email address.") {
           console.log("รูปแบบอีเมลนี้ไม่ถูกต้อง")
           setErrorEmail("กรุณากรอกข้อมูลที่อยู่อีเมลให้ถูกต้อง")
 
         }
-        if (errorPassWord == "This field may not be blank.") {
+        if (errorPassWord === "This field may not be blank.") {
           console.log("ไม่พบข้อมูลในช่องรหัสผ่าน")
           setErrorPassWord("กรุณากรอกข้อมูลในช่องรหัสผ่าน")
 
         }
-        if (errorPassWord == "This password is too short. It must contain at least 8 characters.") {
+        if (errorPassWord === "This password is too short. It must contain at least 8 characters.") {
           console.log("รหัสผ่านสั้นเกินไป")
           setErrorPassWord("รหัสผ่านสั้นเกินไป จะต้องมีความยาวอย่างน้อย 8 ตัวอักษร")
 
         }
-        if (pass2fill != '') {
-          if (passfill != pass2fill) {
+        if (pass2fill !== '') {
+          if (passfill !== pass2fill) {
             console.log("รหัสผ่านไม่ตรงกัน")
             setErrorPassWord("กรุณายืนยันรหัสผ่านให้ตรงกัน")
 
           }
         }
-        if (errorPassWord != undefined) {
+        if (errorPassWord !== undefined) {
           if ("This password is too common." in errorPassWord) {
             console.log("รหัสผ่านคาดเดาง่ายเกินไป")
             setErrorPassWord("โปรดเลือกรหัสผ่านที่ปลอดภัยยิ่งขึ้น ลองใช้ตัวอักษร ตัวเลข และสัญลักษณ์ผสมกัน")
 
           }
         }
-        if (errorPassWord2 == "This field may not be blank.") {
+        if (errorPassWord2 === "This field may not be blank.") {
           console.log("ไม่พบข้อมูลในช่องยืนยันรหัสผ่าน")
           setErrorPassWord2("กรุณากรอกข้อมูลในช่องยืนยันรหัสผ่าน")
 
         }
-        if (errorIsStaff == "This field may not be blank.") {
+        if (errorIsStaff === "This field may not be blank.") {
           console.log("ไม่พบข้อมูลประเภทบัญชีผู้ใช้")
           setErrorIsStaff("กรุณาเลือกประเภทบัญชีผู้ใช้")
 
         }
-        if (errorUserName == undefined) {
+        if (errorUserName === undefined) {
           setErrorUserName("")
 
         }
-        if (errorEmail == undefined) {
+        if (errorEmail === undefined) {
           setErrorEmail("")
 
         }
-        if (errorPassWord == undefined) {
+        if (errorPassWord === undefined) {
           setErrorPassWord("")
 
         }
-        if (errorPassWord2 == undefined) {
+        if (errorPassWord2 === undefined) {
           setErrorPassWord2("")
         }
-        if (errorIsStaff == undefined) {
+        if (errorIsStaff === undefined) {
           setErrorIsStaff("")
         }
         setShowError(true)

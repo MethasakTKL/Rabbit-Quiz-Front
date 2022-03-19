@@ -3,9 +3,12 @@ import "./Login.css"
 import { Link, useHistory } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
-import ax from "../config/ax";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Loginlogo from '../Static/image/Rabbitquiz_05.png'
+
+//authentic
+import { ax, useAuth } from "../auth/auth";
+
 
 function Login() {
 
@@ -18,33 +21,35 @@ function Login() {
   const [showError, setShowError] = React.useState(false)
   const history = useHistory();
 
-
-
-
-
+  const auth = useAuth()
   const loginpress = async () => {
     console.log(namefill)
     console.log(passfill)
-    
-    try{
-      let LoginResult = await ax.post('/auth/login/',{
+    try {
+      var result = await ax.post('/auth/login/', {
         username: namefill,
         password: passfill,
-      });
-          console.log('login success')
-          console.log(LoginResult.data)
-          history.push('/')
-
-    }
-
-    catch (error) {
-      if (error.response.data.detail == "No active account found with the given credentials");
-        console.log("ไม่พบชื่อบัญชีที่ใช้งานอยู่หรือรหัสผ่านไม่ถูกต้อง")
-        setShowError(true)
+      })
+      let authToken = result.data
+      if (result.status === 200 && result.data) {
+        console.log('login complete...')
+        auth.signin(authToken, () => {
+          history.push("/", { replace: true })
+          console.log("Successfully navigate to home")
+        })
       }
     }
+    catch (error) {
+      if (error.response) {
+        if (error.response.data.detail === "No active account found with the given credentials") {
+          console.log("ไม่พบชื่อบัญชีที่ใช้งานอยู่หรือรหัสผ่านไม่ถูกต้อง")
+          setShowError(true)
+        }
+      }
+    }
+  }
 
-return (
+  return (
     <html class="html-log">
       <body class="background-log">
         <div class="login-page">

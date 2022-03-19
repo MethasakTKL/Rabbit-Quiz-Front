@@ -5,7 +5,7 @@ import FaceIcon from "@mui/icons-material/Face";
 import "./AppNavBar.css";
 import { AppBar, Box, Tab, Tabs, Toolbar } from "@mui/material";
 import { Link } from "react-router-dom";
-import { EmojiEvents, Logout } from "@mui/icons-material";
+import { EmojiEvents } from "@mui/icons-material";
 
 function AppNavBar() {
   const [value, setValue] = React.useState(0);
