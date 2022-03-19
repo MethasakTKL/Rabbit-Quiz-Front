@@ -14,6 +14,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import classIMG from "../Static/image/Classroomimg.jpg";
+import { ax, useAuth } from "../auth/auth";
 
 function Home() {
   const [open, setOpen] = React.useState(false);
@@ -26,9 +27,19 @@ function Home() {
     setOpen(false);
   };
 
+  const [username, setUserName] = React.useState(""); //ตัวแปรใช้ useState ตั้ง
+  ax.get("/userdetail") //ส่ง api ไปยังข้อมูลที่ต้องการ แล้วใช้ได้เลย
+    .then((response) => {
+      let userdata = response.data;
+      setUserName(userdata.first_name + " " + userdata.last_name);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
   return (
     <div>
-      <h4 className="hello">สวัสดี, ชนาวัฒน์ ทั้วสุภาพ</h4>
+      <h4 className="hello">สวัสดี, {username}</h4>
       {/* เพิ่มห้องเรียน */}
       <Button
         variant="outlined"
@@ -113,7 +124,12 @@ function Home() {
                 </CardContent>
                 <CardActions>
                   <Box sx={{ marginLeft: "auto" }}>
-                    <Button variant="contained" sx={{ width: 200, height: 50 }} component={Link} to='/classroom'>
+                    <Button
+                      variant="contained"
+                      sx={{ width: 200, height: 50 }}
+                      component={Link}
+                      to="/classroom"
+                    >
                       <div className="roomname">เข้าห้องเรียน</div>
                     </Button>
                   </Box>

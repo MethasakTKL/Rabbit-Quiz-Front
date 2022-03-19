@@ -7,7 +7,29 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import SaveIcon from '@mui/icons-material/Save';
 import { Box } from "@mui/system";
 
+//authentic
+import { ax, useAuth } from "../auth/auth";
+
 function Profile() {
+
+  
+  //วิธีเรียกข้อมูลหริอ fetch data มาใช้
+  const [username, setUserName] = React.useState('') //ตัวแปรใช้ useState ตั้ง
+  const [userrole, setUserRole] = React.useState('')
+  ax.get('/userdetail') //ส่ง api ไปยังข้อมูลที่ต้องการ แล้วใช้ได้เลย
+    .then((response) => {
+      let userdata = response.data
+      setUserName(userdata.first_name + " " + userdata.last_name)
+
+      if (userdata.is_staff) {
+        setUserRole('คุณครู')
+      } else {
+        setUserRole('นักเรียน')
+      }
+
+    })
+    .catch((err) => { console.error(err) });
+
   return (
     <div>
       <h4 className="hello">สวัสดี, นี่คือโปรไฟล์ของคุณ</h4>{" "}
@@ -20,8 +42,8 @@ function Profile() {
             <div className="centerIcon">
               <FaceIcon sx={{ fontSize: 100, color: "#F19528" }} />
             </div>
-            <div className="centerName">ชนาวัฒน์ ทั้วสุภาพ</div>
-            <div className="centerAccount">ประเภทบัญชี : นักเรียน</div>
+            <div className="centerName">{username}</div>
+            <div className="centerAccount">ประเภทบัญชี : {userrole}</div>
           </Grid>
           {/* <Grid textAlign='center' paddingBottom={2}>
             <Button variant="contained" style={{background:'#CD0049'}} to='/login' component={Link}>
