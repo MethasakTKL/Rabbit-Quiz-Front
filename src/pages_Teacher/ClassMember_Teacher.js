@@ -8,6 +8,12 @@ import IconButton from "@mui/material/IconButton";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import AddIcon from "@mui/icons-material/Add";
 import { DataGrid } from "@mui/x-data-grid";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import TextField from "@mui/material/TextField";
 
 //import components
 
@@ -71,17 +77,23 @@ const rows = [
     Point: 2,
   },
   { id: 5, firstName: "ธรรมาธิป", lastName: "ชิตพงศ์", AllPoint: 2, Point: 1 },
-
-
 ];
 
-
 function ClassMember_Teacher() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const [fullWidth, setFullWidth] = React.useState(true);
+
   return (
     <div>
-      <h1 className="classname" >
-        ห้องเรียนการเกษตร
-      </h1>
+      <h1 className="classname">ห้องเรียนการเกษตร</h1>
       <Stack
         marginLeft={"auto"}
         marginRight={"auto"}
@@ -95,10 +107,45 @@ function ClassMember_Teacher() {
           <Button
             variant="contained"
             style={{ background: "#F19528", width: 150 }}
+            onClick={handleClickOpen}
           >
             <AddIcon />
             <div className="buttonAdd">เพิ่มสมาชิก</div>
           </Button>
+
+          <Dialog open={open} onClose={handleClose}>
+        <DialogTitle sx={{ fontFamily: "Prompt" }}>เพิ่มสมาชิก</DialogTitle>
+        <DialogContent>
+          <DialogContentText sx={{ fontFamily: "Prompt" }}>
+            กรุณากรอกอีเมลเพื่อเพิ่มสมาชิกเข้าสู่ห้องเรียน
+          </DialogContentText>
+          
+          <TextField
+            autoFocus
+            margin="dense"
+            id="nameclass"
+            label="อีเมล"
+            type="email"
+            fullWidth
+            variant="standard"
+            inputProps={{ style: { fontFamily: "Prompt" } }}
+            InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+          />
+
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} sx={{ fontFamily: "Prompt" }}>
+            ยกเลิก
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleClose}
+            sx={{ fontFamily: "Prompt", color: "white", width:100 }}
+          >
+            เพิ่ม
+          </Button>
+        </DialogActions>
+      </Dialog>
         </Grid>
         <Grid>
           <Button
@@ -111,9 +158,7 @@ function ClassMember_Teacher() {
           </Button>
         </Grid>
       </Stack>
-      <div className='allstudentmember'>
-        นักเรียน ทั้งหมด 5 คน
-      </div>
+      <div className="allstudentmember">นักเรียน ทั้งหมด 5 คน</div>
       <Box>
         <Paper
           sx={{
