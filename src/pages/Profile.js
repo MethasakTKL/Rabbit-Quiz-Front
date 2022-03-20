@@ -38,7 +38,7 @@ function Profile() {
           elevation={4}
           sx={{ width: "90%", marginLeft: "auto", marginRight: "auto" }}
         >
-          <Grid direction="row" spacing={2} paddingBottom={5}>
+          <Grid spacing={2} paddingBottom={5}>
             <div className="centerIcon">
               <FaceIcon sx={{ fontSize: 100, color: "#F19528" }} />
             </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import HistoryIcon from "@mui/icons-material/History";
 import FaceIcon from "@mui/icons-material/Face";
@@ -35,24 +35,26 @@ function AppHeader() {
 
 
   //วิธีเรียกข้อมูลหริอ fetch data มาใช้
-  const [username, setUserName] = React.useState('') //ตัวแปรใช้ useState ตั้ง
-  const [userrole, setUserRole] = React.useState('')
-  ax.get('/userdetail') //ส่ง api ไปยังข้อมูลที่ต้องการ แล้วใช้ได้เลย
-    .then((response) => {
-      console.log('Fetch date success...')
-      let userdata = response.data
-      setUserName(userdata.first_name + " " + userdata.last_name)
-      console.log('user_detail is :', userdata)
+  const [userDetail, setUserDetail] = React.useState(null) //ตัวแปรใช้ useState ตั้ง
+  const [userRole, setUserRole] = React.useState('')
+  const [userName, setUserName] = React.useState('')
 
-      if (userdata.is_staff) {
+
+  useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
+    async function fetchData() {
+      const response = await ax.get('/userdetail')
+      console.log('.....loading user detail')
+      setUserDetail(response.data)
+      setUserName(response.data.first_name + " " + response.data.last_name)
+
+      if (response.data.is_staff) {
         setUserRole('คุณครู')
       } else {
         setUserRole('นักเรียน')
       }
-
-    })
-    .catch((err) => { console.error(err) });
-
+    }
+    fetchData();
+  }, []);
 
 
   return (
@@ -148,8 +150,8 @@ function AppHeader() {
             {/* PC SECTION */}
             <Grid sx={{ marginLeft: "auto", marginRight: 0 }}>
 
-              <div class="name" >{userrole}</div>
-              <div class="namee">{username}</div>
+              <div class="name" >{userRole}</div>
+              <div class="namee">{userName}</div>
 
             </Grid>
             {/* Other Button */}
