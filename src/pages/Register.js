@@ -37,6 +37,15 @@ function Register() {
   const [firstnamefill, setFirstnamefill] = useState("");
   const [surnamefill, setSurnamefill] = useState("");
 
+  // Error Message Section
+  const [showError, setShowError] = useState(false)
+  const [errorUserName, setErrorUserName] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
+  const [errorPassWord, setErrorPassWord] = useState("");
+  const [errorPassWord2, setErrorPassWord2] = useState("");
+  const [errorIsStaff, setErrorIsStaff] = useState("");
+
+
   const registpress = async () => {
     console.log(namefill);
     console.log(passfill);
@@ -62,12 +71,14 @@ function Register() {
     catch (error) {
       if (error.response) {
         console.log(error.response.data)
-        var errorUserName = error.response.data.username
-        var errorEmail = error.response.data.email
-        var errorPassWord = error.response.data.password
-        var errorPassWord2 = error.response.data.password2
-        var errorIsStaff = error.response.data.is_staff
+        setShowError(true)
+        var errorUserName = error.response.data.username.toString()
+        var errorEmail = error.response.data.email.toString()
+        var errorPassWord = error.response.data.password.toString()
+        var errorPassWord2 = error.response.data.password2.toString()
+        var errorIsStaff = error.response.data.is_staff.toString()
 
+        console.log(errorUserName)
         if (errorUserName === "This field may not be blank.") {
           console.log("ไม่พบข้อมูลชื่อบัญชี")
           setErrorUserName("กรุณากรอกข้อมูลชื่อบัญชี")
@@ -115,12 +126,11 @@ function Register() {
 
           }
         }
-        if (errorPassWord !== undefined) {
-          if ("This password is too common." in errorPassWord) {
-            console.log("รหัสผ่านคาดเดาง่ายเกินไป")
-            setErrorPassWord("โปรดเลือกรหัสผ่านที่ปลอดภัยยิ่งขึ้น ลองใช้ตัวอักษร ตัวเลข และสัญลักษณ์ผสมกัน")
 
-          }
+        if ("This password is too common." === errorPassWord) {
+          console.log("รหัสผ่านคาดเดาง่ายเกินไป")
+          setErrorPassWord("โปรดเลือกรหัสผ่านที่ปลอดภัยยิ่งขึ้น ลองใช้ตัวอักษร ตัวเลข และสัญลักษณ์ผสมกัน")
+
         }
         if (errorPassWord2 === "This field may not be blank.") {
           console.log("ไม่พบข้อมูลในช่องยืนยันรหัสผ่าน")
@@ -150,16 +160,9 @@ function Register() {
         if (errorIsStaff === undefined) {
           setErrorIsStaff("")
         }
-        setShowError(true)
       }
     }
   }
-  const [showError, setShowError] = useState(false)
-  const [errorUserName, setErrorUserName] = useState("");
-  const [errorEmail, setErrorEmail] = useState("");
-  const [errorPassWord, setErrorPassWord] = useState("");
-  const [errorPassWord2, setErrorPassWord2] = useState("");
-  const [errorIsStaff, setErrorIsStaff] = useState("");
 
   return (
     <html>
