@@ -1,6 +1,6 @@
 import { Button, Box, Paper, Grid, Stack } from "@mui/material";
-import React from "react";
-import "./ClassMember_Teacher.css";
+import React, { useState } from "react";
+import "./deletemember.css"
 import Card from "@mui/material/Card";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FaceIcon from "@mui/icons-material/Face";
@@ -15,36 +15,18 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 
-//import components
-import AddMember from "../components_teacher/ClassmemberTeacher/addmember";
-import DeleteMember from "../components_teacher/ClassmemberTeacher/deletemember";
-
 const columns = [
-  { field: "id", headerName: "ID", width: 20 },
+  { field: "id", headerName: "ID", width: 10 },
   {
     field: "firstName",
     headerName: "ชื่อ",
-    width: 100,
+    width: 90,
     editable: false,
   },
   {
     field: "lastName",
     headerName: "นามสกุล",
     width: 100,
-    editable: false,
-  },
-  {
-    field: "AllPoint",
-    headerName: "คะแนนทั้งหมด",
-    type: "number",
-    width: 110,
-    editable: false,
-  },
-  {
-    field: "Point",
-    headerName: "คะแนนที่ได้",
-    type: "number",
-    width: 110,
     editable: false,
   },
 ];
@@ -54,34 +36,29 @@ const rows = [
     id: 1,
     firstName: "ชนาวัฒน์",
     lastName: "ทั้วสุภาพ",
-    AllPoint: 2,
-    Point: 2,
   },
   {
     id: 2,
     firstName: "นัฏฐวัฒน์",
     lastName: "สิงห์อินทร์",
-    AllPoint: 2,
-    Point: 2,
   },
   {
     id: 3,
     firstName: "เมธาศักดิ์",
     lastName: "ทิพย์กองลาศ",
-    AllPoint: 2,
-    Point: 1,
   },
   {
     id: 4,
     firstName: "อิฟฟาฮาน",
     lastName: "สุขสุวรรณ",
-    AllPoint: 2,
-    Point: 2,
   },
-  { id: 5, firstName: "ธรรมาธิป", lastName: "ชิตพงศ์", AllPoint: 2, Point: 1 },
+  { id: 5, 
+    firstName: "ธรรมาธิป", 
+    lastName: "ชิตพงศ์" ,
+  },
 ];
 
-function ClassMember_Teacher() {
+function DeleteMember() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -92,37 +69,25 @@ function ClassMember_Teacher() {
     setOpen(false);
   };
   const [fullWidth, setFullWidth] = React.useState(true);
-
   return (
     <div>
-      <h1 className="classname">ห้องเรียนการเกษตร</h1>
-      <Stack
-        marginLeft={"auto"}
-        marginRight={"auto"}
-        direction="row"
-        spacing={2}
-        justifyContent="center"
-        alignItems="center"
-        paddingBottom={2}
+      <Button
+        onClick={handleClickOpen}
+        variant="contained"
+        style={{ background: "#D64A55" }}
       >
-        <Grid>
-          <AddMember/>
-        </Grid>
-        <Grid>
-          <DeleteMember/>
-        </Grid>
-      </Stack>
-      <div className="allstudentmember">นักเรียน ทั้งหมด 5 คน</div>
-      <Box>
-        <Paper
-          sx={{
-            width: "98%",
-            maxWidth: 600,
-            height: "auto",
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
-        >
+        <DeleteOutlineIcon />
+        <div className="deletebutton">ลบสมาชิก</div>
+      </Button>
+
+      <Dialog open={open} onClose={handleClose} fullWidth sx={{width:'100%', marginLeft:'auto', marginRight:'auto'}}>
+        <DialogTitle>
+          <div className="deletemember">ลบสมาชิก</div>
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText sx={{ fontFamily: "Prompt" }}>
+            กรุณาเลือกสมาชิกที่ต้องลบออกจากห้องเรียน
+          </DialogContentText>
           <div style={{ height: 500, width: "100%" }}>
             <DataGrid
               rows={rows}
@@ -134,10 +99,22 @@ function ClassMember_Teacher() {
               style={{ fontFamily: "prompt" }}
             />
           </div>
-        </Paper>
-      </Box>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} sx={{ fontFamily: "Prompt" ,color: "#7c7c7c"}}>
+            ยกเลิก
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleClose}
+            sx={{ fontFamily: "Prompt", color: "white", width: 100,background:"#D64A55" }}
+          >
+            ลบ
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
 
-export default ClassMember_Teacher;
+export default DeleteMember;
