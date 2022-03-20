@@ -39,6 +39,8 @@ function Register() {
 
   // Error Message Section
   const [showError, setShowError] = useState(false)
+  const [errorFirstName, setErrorFirstName] = useState("");
+  const [errorSurName, setErrorSurName] = useState("");
   const [errorUserName, setErrorUserName] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassWord, setErrorPassWord] = useState("");
@@ -72,6 +74,8 @@ function Register() {
       if (error.response) {
         console.log(error.response.data)
         setShowError(true)
+        var errorFirstName = error.response.data.first_name.toString()
+        var errorSurName = error.response.data.last_name.toString()
         var errorUserName = error.response.data.username.toString()
         var errorEmail = error.response.data.email.toString()
         var errorPassWord = error.response.data.password.toString()
@@ -79,6 +83,16 @@ function Register() {
         var errorIsStaff = error.response.data.is_staff.toString()
 
         console.log(errorUserName)
+        if (errorFirstName === "This field may not be blank.") {
+          console.log("ไม่พบข้อมูลชื่อของผู้ใช้")
+          setErrorFirstName("กรุณากรอกชื่อของท่าน")
+
+        }
+        if (errorSurName === "This field may not be blank.") {
+          console.log("ไม่พบข้อมูลนามสกุลผู้ใช้")
+          setErrorSurName("กรุณากรอกนามสกุลของท่าน")
+
+        }
         if (errorUserName === "This field may not be blank.") {
           console.log("ไม่พบข้อมูลชื่อบัญชี")
           setErrorUserName("กรุณากรอกข้อมูลชื่อบัญชี")
@@ -176,6 +190,8 @@ function Register() {
           <div class="form">
             <h1 class="head">สร้างบัญชีใหม่</h1>
             {showError === true && <div class="register-error">
+              <div />{errorFirstName}
+              <div />{errorSurName}
               <div />{errorUserName}
               <div />{errorEmail}
               <div />{errorPassWord}
