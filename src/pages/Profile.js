@@ -1,5 +1,5 @@
 import { Button, Grid, Paper, TextField } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import FaceIcon from "@mui/icons-material/Face";
 import "./Profile.css";
 import { Link } from "react-router-dom";
@@ -14,21 +14,24 @@ function Profile() {
 
   
   //วิธีเรียกข้อมูลหริอ fetch data มาใช้
-  const [username, setUserName] = React.useState('') //ตัวแปรใช้ useState ตั้ง
-  const [userrole, setUserRole] = React.useState('')
-  ax.get('/userdetail') //ส่ง api ไปยังข้อมูลที่ต้องการ แล้วใช้ได้เลย
-    .then((response) => {
-      let userdata = response.data
-      setUserName(userdata.first_name + " " + userdata.last_name)
+  const [userRole, setUserRole] = React.useState('')
+  const [userName, setUserName] = React.useState('')
 
-      if (userdata.is_staff) {
+
+  useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
+    async function fetchData() {
+      const response = await ax.get('/userdetail')
+      console.log('Fetch data for profile success...')
+      setUserName(response.data.first_name + " " + response.data.last_name)
+
+      if (response.data.is_staff) {
         setUserRole('คุณครู')
       } else {
         setUserRole('นักเรียน')
       }
-
-    })
-    .catch((err) => { console.error(err) });
+    }
+    fetchData();
+  }, []);
 
   return (
     <div>
@@ -42,8 +45,8 @@ function Profile() {
             <div className="centerIcon">
               <FaceIcon sx={{ fontSize: 100, color: "#F19528" }} />
             </div>
-            <div className="centerName">{username}</div>
-            <div className="centerAccount">ประเภทบัญชี : {userrole}</div>
+            <div className="centerName">{userName}</div>
+            <div className="centerAccount">ประเภทบัญชี : {userRole}</div>
           </Grid>
           {/* <Grid textAlign='center' paddingBottom={2}>
             <Button variant="contained" style={{background:'#CD0049'}} to='/login' component={Link}>
