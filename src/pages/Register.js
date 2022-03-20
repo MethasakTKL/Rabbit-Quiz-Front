@@ -74,15 +74,14 @@ function Register() {
       if (error.response) {
         console.log(error.response.data)
         setShowError(true)
-        var errorFirstName = error.response.data.first_name.toString()
-        var errorSurName = error.response.data.last_name.toString()
-        var errorUserName = error.response.data.username.toString()
-        var errorEmail = error.response.data.email.toString()
-        var errorPassWord = error.response.data.password.toString()
-        var errorPassWord2 = error.response.data.password2.toString()
-        var errorIsStaff = error.response.data.is_staff.toString()
-
-        console.log(errorUserName)
+        if (error.response.data.first_name) {var errorFirstName = error.response.data.first_name.toString()}
+        if (error.response.data.last_name) {var errorSurName = error.response.data.last_name.toString()}
+        if (error.response.data.username) {var errorUserName = error.response.data.username.toString()}
+        if (error.response.data.email) {var errorEmail = error.response.data.email.toString()}
+        if (error.response.data.password) {var errorPassWord = error.response.data.password.toString()}
+        if (error.response.data.password2) {var errorPassWord2 = error.response.data.password2.toString()}
+        if (error.response.data.is_staff) {var errorIsStaff = error.response.data.is_staff.toString()}
+        
         if (errorFirstName === "This field may not be blank.") {
           console.log("ไม่พบข้อมูลชื่อของผู้ใช้")
           setErrorFirstName("กรุณากรอกชื่อของท่าน")
