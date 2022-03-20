@@ -73,7 +73,10 @@ function MyPointsPage() {
                   >
                     <Grid item xs={3}>
                       <div className="score">
-                        กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1
+                        กิจกรรมที่ 1
+                      </div>
+                      <div className="score">
+                        รดน้ำต้นไม้วันที่ 1
                       </div>
                     </Grid>
                     <Grid item xs={2.5}>
@@ -115,7 +118,10 @@ function MyPointsPage() {
                   >
                     <Grid item xs={3}>
                       <div className="score">
-                        กิจกรรมที่ 2 รดน้ำต้นไม้วันที่ 2
+                        กิจกรรมที่ 2
+                      </div>
+                      <div className="score">
+                        รดน้ำต้นไม้วันที่ 2
                       </div>
                     </Grid>
                     <Grid item xs={2.5}>

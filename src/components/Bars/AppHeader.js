@@ -64,12 +64,14 @@ function AppHeader() {
           <Toolbar>
             <div className="goback-button">
               <Button onClick={() => history.goBack()}>
-                <ArrowBackIosIcon sx={{ fontSize: 40, color: "white" }} />
+                <ArrowBackIosIcon sx={{ fontSize: 30, color: "white" }} />
               </Button>
             </div>
-            <Link to="/">
-              <img src={logo} alt="logorabbit" width={"120"} />
-            </Link>
+            <div className="appheader-logo">
+              <Link to="/">
+                <img src={logo} alt="logorabbit" width={"120"} />
+              </Link>
+            </div>
             {/* PC SECTION */}
             <div class="header-menu">
               <Box>
@@ -150,21 +152,22 @@ function AppHeader() {
             {/* PC SECTION */}
             <Grid sx={{ marginLeft: "auto", marginRight: 0 }}>
 
-              <div class="name" >{userRole}</div>
-              <div class="namee">{userName}</div>
+              <div class="user-role" >{userRole}</div>
+              <div class="user-name">{userName}</div>
 
             </Grid>
             {/* Other Button */}
-            <Button
-              id="basic-button"
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
-            >
-              <MenuTwoTone sx={{ color: "#FFFFFF" }} />
-            </Button>
-
+            <hambergur>
+              <Button
+                id="basic-button"
+                aria-controls={open ? "basic-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleClick}
+              >
+                <MenuTwoTone sx={{ color: "#FFFFFF" }} />
+              </Button>
+            </hambergur>
             <Menu
               id="basic-menu"
               anchorEl={anchorEl}
@@ -174,6 +177,7 @@ function AppHeader() {
                 "aria-labelledby": "basic-button",
               }}
             >
+
               <Box sx={{ width: 150 }}>
                 <MenuItem onClick={handleClose} to="/profile" component={Link}>
                   <div className="menubar">โปรไฟล์ของคุณ</div>
@@ -183,11 +187,12 @@ function AppHeader() {
                 </MenuItem>
               </Box>
             </Menu>
+
           </Toolbar>
         </AppBar>
       </Box>
       <div></div>
-    </div>
+    </div >
   );
 }
 

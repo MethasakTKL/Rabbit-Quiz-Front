@@ -1,24 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
 
-div.Headbar-Header {
-    font-family: "Prompt", sans-serif;
-    font-size: large;
+.goback-button {
+    /* border: 1px solid red; */
+    max-width: 42px;
 }
 
-div.Headbar-Header div[type="header"] {
-    display: contents;
+.appheader-logo {
+    /* border: 1px solid red; */
+    margin-right: auto;
+    max-width: 100px;
 }
-div.profile-name {
-    align-items: right;
-    text-align: right;
-}
-.name {
+
+.user-role {
     text-align: center;
     font-family: "Prompt", sans-serif;
     color: rgb(255, 240, 107);
     font-size: large;
 }
-.namee {
+.user-name {
     font-family: "Prompt", sans-serif;
     color: aliceblue;
 }
@@ -31,9 +30,21 @@ div.profile-name {
     font-family: "Prompt", sans-serif;
 }
 
+hambergur {
+    /* border: 1px solid red; */
+    max-width: 42px;
+}
+
 @media (max-width: 41em) { 
     .header-menu {
         display: none;
+    }
+
+    .user-role {
+        font-size: 17px;
+    }
+    .user-name {
+        font-size: 15px;
     }
     
 }

@@ -26,3 +26,10 @@
     width: 30%;
     
 }
+
+@media (max-width: 41em) { 
+    .score {
+        font-size: 11pt;
+    }
+    
+}
