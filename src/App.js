@@ -26,40 +26,41 @@ import ClassActivity_Teacher from "./pages_Teacher/ClassActivity_Teacher";
 import Home_Teacher from "./pages_Teacher/Home_Teacher";
 
 //authentic
-import { AuthProvider, RequireAuth } from "./auth/auth";
-
+import { AuthProvider, RequireAuth, AuthGuard } from "./auth/auth";
 
 function App() {
   return (
     <div className="App">
-      <AuthProvider>
-        <Switch>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <div>
-            <AppHeader />
-            <AppNavBar />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/profile" component={Profile} />
-              <Route path="/classroom" component={Classroom} />
-              <Route path="/classroom-member" component={ClassMember} />
-              <Route path="/classroom-activity" component={ClassActivity} />
-              <Route path="/activity" component={Activity} />
-              <Route path="/mypoints" component={MyPointsPage} />
+      <AuthGuard>
+        <AuthProvider>
+          <Switch>
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            <div>
+              <AppHeader />
+              <AppNavBar />
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/profile" component={Profile} />
+                <Route path="/classroom" component={Classroom} />
+                <Route path="/classroom-member" component={ClassMember} />
+                <Route path="/classroom-activity" component={ClassActivity} />
+                <Route path="/activity" component={Activity} />
+                <Route path="/mypoints" component={MyPointsPage} />
 
-              <Route exact path="/teacher" component={Home_Teacher} />
-              <Route path="/profile-teacher" component={Profile_Teacher} />
-              <Route path="/classroom-teacher" component={Classroom_Teacher} />
-              <Route path="/classroom-member-teacher" component={ClassMember_Teacher} />
-              <Route path="/classroom-activity-teacher" component={ClassActivity_Teacher} />
-              <div class="FalsePage">
-                <Route path="*" component={Falsepage} />
-              </div>
-            </Switch>
-          </div>
-        </Switch>
-      </AuthProvider>
+                <Route exact path="/teacher" component={Home_Teacher} />
+                <Route path="/profile-teacher" component={Profile_Teacher} />
+                <Route path="/classroom-teacher" component={Classroom_Teacher} />
+                <Route path="/classroom-member-teacher" component={ClassMember_Teacher} />
+                <Route path="/classroom-activity-teacher" component={ClassActivity_Teacher} />
+                <div class="FalsePage">
+                  <Route path="*" component={Falsepage} />
+                </div>
+              </Switch>
+            </div>
+          </Switch>
+        </AuthProvider>
+      </AuthGuard>
     </div>
   );
 }

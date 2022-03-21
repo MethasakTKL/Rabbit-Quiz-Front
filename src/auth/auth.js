@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const ax = axios.create({
    baseURL: 'http://localhost:8000',
@@ -76,4 +77,16 @@ function RequireAuth({ children }) {
    return children;
 }
 
-export { appAuthProvider, AuthContext, AuthProvider, useAuth, RequireAuth, ax };
+function AuthGuard({ children }) {
+   let auth = useAuth()
+   let navigate = useHistory()
+   useEffect(() => {
+      if (!auth) {
+         navigate.push('/login', { replace: true })
+      }
+   })
+
+   return children
+}
+
+export { appAuthProvider, AuthContext, AuthProvider, useAuth, RequireAuth, ax, AuthGuard };
