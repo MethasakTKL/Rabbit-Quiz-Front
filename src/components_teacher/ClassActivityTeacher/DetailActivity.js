@@ -41,7 +41,7 @@ function DetailActivity() {
         onClick={handleClickOpen}
         style={{ background: "#7AD400" }}
       >
-        <div className="editbutton">รายละเอียด</div>
+        <div className="editbutton">ดูรายละเอียด</div>
       </Button>
 
       <Dialog open={open} onClose={handleClose}>

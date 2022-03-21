@@ -88,7 +88,7 @@ function ClassActivity() {
           },
         }}
       >
-        <Paper elevation={3}>
+        <Paper elevation={4}>
           {/* ------------------------------------------------------------------------------------------------------------------------------------------------- */}
           <Stack direction="column-reverse">
             <Grid paddingTop={2} paddingBottom={2}>
@@ -97,7 +97,7 @@ function ClassActivity() {
                 variant="contained"
                 onClick={handleClickOpen}
                 style={{
-                  width: "70%",
+                  width: "80%",
                   display: "flex",
                   marginRight: "auto",
                   marginLeft: "auto",
@@ -110,11 +110,12 @@ function ClassActivity() {
               >
                 <Stack>
                   <h1 className="activitybutton">
-                    กิจกรรมที่ 1 รดน้ำต้นไม้วันที่ 1
+                    กิจกรรมที่ 1 <div />รดน้ำต้นไม้วันที่ 1
                   </h1>
                   <div className="assignment-detail-activity">
                     <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
-                    <div>สิ้นสุด</div>
+                    <div className="end-time">สิ้น</div>
+                    <div className="end-time">สุด</div>
                     <div className="duetimeactivity">
                       28 กุมภาพันธ์ 2022 10.00 PM
                     </div>
@@ -191,7 +192,7 @@ function ClassActivity() {
                 variant="contained"
                 onClick={handleClickOpen}
                 style={{
-                  width: "70%",
+                  width: "80%",
                   display: "flex",
                   marginRight: "auto",
                   marginLeft: "auto",
@@ -204,11 +205,12 @@ function ClassActivity() {
               >
                 <Stack>
                   <h1 className="activitybutton">
-                    กิจกรรมที่ 2 รดน้ำต้นไม้วันที่ 2
+                    กิจกรรมที่ 2 <div />รดน้ำต้นไม้วันที่ 2
                   </h1>
                   <div className="assignment-detail-activity">
                     <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
-                    <div>สิ้นสุด</div>
+                    <div className="end-time">สิ้น</div>
+                    <div className="end-time">สุด</div>
                     <div className="duetimeactivity">
                       1 มีนาคม 2022 10.00 PM
                     </div>

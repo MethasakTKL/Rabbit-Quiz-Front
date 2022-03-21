@@ -47,6 +47,7 @@
 }
 
 .ActivityTitle{
+    display: inline;
     font-family: 'Prompt', sans-serif;
     text-align: center;
     color: #856FB4;
@@ -75,6 +76,8 @@
 .duetimeactivity{
     font-family: 'Prompt', sans-serif;
     color: aliceblue;
+    width: 130px;
+    padding-left: 2px;
 }
 
 .assignment-detail-activity{
@@ -96,3 +99,17 @@
     color: rgb(119, 99, 11);
 }
 
+.end-time {
+    display: inline-block;
+    padding-right: 0px;
+}
+
+@media (min-width: 42em) {
+
+    .duetimeactivity{
+        font-family: 'Prompt', sans-serif;
+        color: aliceblue;
+        width: 130px;
+        padding-left: 2px;
+    }
+}

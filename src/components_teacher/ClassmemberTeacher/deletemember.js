@@ -86,7 +86,7 @@ function DeleteMember() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ fontFamily: "Prompt" }}>
-            กรุณาเลือกสมาชิกที่ต้องลบออกจากห้องเรียน
+            เลือกสมาชิกที่ต้องการลบออกจากห้องเรียน
           </DialogContentText>
           <div style={{ height: 500, width: "100%" }}>
             <DataGrid

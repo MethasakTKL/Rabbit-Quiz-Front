@@ -18,7 +18,8 @@ function Login() {
   const [namefill, setNamefill] = useState('')
   const [passfill, setPassfill] = useState('')
 
-  const [showError, setShowError] = React.useState(false)
+  const [showLoginError, setShowLoginError] = useState(false)
+  const [showLoginEmpty, setShowLoginEmpty] = useState(false)
   const history = useHistory();
 
   const auth = useAuth()
@@ -43,7 +44,12 @@ function Login() {
       if (error.response) {
         if (error.response.data.detail === "No active account found with the given credentials") {
           console.log("ไม่พบชื่อบัญชีที่ใช้งานอยู่หรือรหัสผ่านไม่ถูกต้อง")
-          setShowError(true)
+          setShowLoginError(true)
+          setShowLoginEmpty(false)
+        }
+         if (namefill === '' || passfill === '') {
+          setShowLoginEmpty(true)
+          setShowLoginError(false)
         }
       }
     }
@@ -60,7 +66,8 @@ function Login() {
             <form class="login-form">
               <h1 class='head'>ลงชื่อเข้าใช้งาน</h1>
               <Stack spacing={3} paddingBottom={2} className="text-field">
-                {showError ? <div class="login-error">ชื่อบัญชีหรือรหัสผ่านของคุณไม่ถูกต้อง<div>กรุณาลองอีกครั้ง</div></div> : null}
+                {showLoginError ? <div class="login-error">ชื่อบัญชีหรือรหัสผ่านของคุณไม่ถูกต้อง<div>กรุณาลองใหม่</div>  </div> : null}
+                {showLoginEmpty ? <div class="login-error">กรุณากรอกชื่อบัญชีและรหัสผ่านให้ครบเพื่อเข้าสู่ระบบ </div> : null}
                 <TextField
                   id="outlined-basic"
                   label="ชื่อบัญชี"

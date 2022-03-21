@@ -18,3 +18,10 @@
     color: white;
     text-align: left;
 }
+
+.teacher-add-room {
+    margin-left: 27px;
+    margin-right: 27px;
+    padding-left: 10px;
+    max-width: auto;
+}

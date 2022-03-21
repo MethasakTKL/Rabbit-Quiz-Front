@@ -10,9 +10,12 @@ import { Box } from "@mui/system";
 //authentic
 import { ax, useAuth } from "../auth/auth";
 
+//components
+import { EditProfilePopup, EditEmailPopup } from "../components/EditProfilePopup"
+
 function Profile() {
 
-  
+
   //วิธีเรียกข้อมูลหริอ fetch data มาใช้
   const [userRole, setUserRole] = React.useState('')
   const [userName, setUserName] = React.useState('')
@@ -65,18 +68,16 @@ function Profile() {
             marginRight: "auto",
           }}
         >
-          <h1 className="editTitle" style={{ paddingLeft: 40, fontSize: 24 }}>
-            แก้ไขข้อมูลส่วนตัว
-          </h1>
-          <Grid width={"70%"} margin="auto">
+          <h1 className="editTitle" style={{ paddingLeft: 40, fontSize: 24, paddingTop: 40 }}>ข้อมูลส่วนตัว</h1>
+          <Grid width={"70%"} margin="auto" paddingTop={3}>
             <TextField
               fullWidth
               id="standard-basic"
               label="ชื่อ"
               defaultValue="ชนาวัฒน์"
               variant="filled"
-              inputProps={{style: {fontFamily: "Prompt"}}}
-              InputLabelProps={{style: {fontFamily: "Prompt"}}}
+              inputProps={{ style: { fontFamily: "Prompt" } }}
+              InputLabelProps={{ style: { fontFamily: "Prompt" } }}
             />
           </Grid>
           <Grid width={"70%"} margin="auto" paddingTop={2} paddingBottom={2}>
@@ -86,19 +87,45 @@ function Profile() {
               label="นามสกุล"
               defaultValue="ทั้วสุภาพ"
               variant="filled"
-              inputProps={{style: {fontFamily: "Prompt"}}}
-              InputLabelProps={{style: {fontFamily: "Prompt"}}}
+              inputProps={{ style: { fontFamily: "Prompt" } }}
+              InputLabelProps={{ style: { fontFamily: "Prompt" } }}
             />
           </Grid>
-          <Grid paddingBottom={2} sx={{ marginLeft: "60%" }}>
-            <Button variant="contained" sx={{ width: "60%" }}>
-              <div className="saveButtonIcon"><SaveIcon/></div>
-              <div className="saveButton">บันทึก</div>
-            </Button>
+
+          <Grid paddingBottom={2} sx={{ marginLeft: "42%"}}>
+            <EditProfilePopup />
           </Grid>
         </Paper>
       </Grid>
-      <Box sx={{ height:"5rem" }}></Box>
+
+      <Grid paddingTop={2}>
+        <Paper
+          elevation={4}
+          sx={{
+            width: "90%",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
+          <h1 className="editTitle" style={{ paddingLeft: 40, fontSize: 24, paddingTop: 40 }}>ที่อยู่อีเมล</h1>
+          <Grid width={"70%"} margin="auto" paddingTop={2} paddingBottom={2}>
+            <TextField
+              fullWidth
+              id="standard-basic"
+              label="อีเมล"
+              defaultValue="Chanawat.T@hotmail.com"
+              variant="filled"
+              inputProps={{ style: { fontFamily: "Prompt" } }}
+              InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+            />
+          </Grid>
+
+          <Grid paddingBottom={2} sx={{ marginLeft: "42%" }}>
+            <EditEmailPopup />
+          </Grid>
+        </Paper>
+      </Grid>
+      <Box sx={{ height: "5rem" }}></Box>
     </div>
   );
 }

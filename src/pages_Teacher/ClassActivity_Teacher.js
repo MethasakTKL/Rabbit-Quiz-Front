@@ -78,6 +78,7 @@ function ClassActivity_Teacher() {
               <div className="titledialog">สร้างกิจกรรม</div>
             </DialogTitle>
             <DialogContent>
+            <error>กรุณากรอกข้อมูลชื่อกิจกรรม</error>
               <TextField
                 required
                 margin="dense"
@@ -233,6 +234,12 @@ function ClassActivity_Teacher() {
                     paddingBottom={2}
                   >
                     <Grid>
+                      <DetailActivity />
+                    </Grid>
+                    <Grid>
+                      <EditActivity />
+                    </Grid>
+                    <Grid>
                       <Button
                         variant="contained"
                         style={{ background: "#D64A55" }}
@@ -240,12 +247,6 @@ function ClassActivity_Teacher() {
                         <DeleteIcon />
                         <div className="deletebutton">ลบ</div>
                       </Button>
-                    </Grid>
-                    <Grid>
-                      <EditActivity/>
-                    </Grid>
-                    <Grid>
-                      <DetailActivity/>
                     </Grid>
                   </Stack>
                   <Stack
@@ -327,6 +328,12 @@ function ClassActivity_Teacher() {
                     paddingBottom={2}
                   >
                     <Grid>
+                      <DetailActivity />
+                    </Grid>
+                    <Grid>
+                      <EditActivity />
+                    </Grid>
+                    <Grid>
                       <Button
                         variant="contained"
                         style={{ background: "#D64A55" }}
@@ -334,12 +341,6 @@ function ClassActivity_Teacher() {
                         <DeleteIcon />
                         <div className="deletebutton">ลบ</div>
                       </Button>
-                    </Grid>
-                    <Grid>
-                      <EditActivity/>
-                    </Grid>
-                    <Grid>
-                      <DetailActivity/>
                     </Grid>
                   </Stack>
                   <Stack

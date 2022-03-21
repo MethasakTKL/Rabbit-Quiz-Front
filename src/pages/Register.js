@@ -81,7 +81,8 @@ function Register() {
         if (error.response.data.password) {var errorPassWord = error.response.data.password.toString()}
         if (error.response.data.password2) {var errorPassWord2 = error.response.data.password2.toString()}
         if (error.response.data.is_staff) {var errorIsStaff = error.response.data.is_staff.toString()}
-        
+
+        console.log(errorPassWord)
         if (errorFirstName === "This field may not be blank.") {
           console.log("ไม่พบข้อมูลชื่อของผู้ใช้")
           setErrorFirstName("กรุณากรอกชื่อของท่าน")
@@ -127,7 +128,8 @@ function Register() {
           setErrorPassWord("กรุณากรอกข้อมูลในช่องรหัสผ่าน")
 
         }
-        if (errorPassWord === "This password is too short. It must contain at least 8 characters.") {
+        if (errorPassWord === "This password is too short. It must contain at least 8 characters." ||
+            errorPassWord === "This password is too short. It must contain at least 8 characters.,This password is too common.,This password is entirely numeric.") {
           console.log("รหัสผ่านสั้นเกินไป")
           setErrorPassWord("รหัสผ่านสั้นเกินไป จะต้องมีความยาวอย่างน้อย 8 ตัวอักษร")
 
@@ -140,10 +142,11 @@ function Register() {
           }
         }
 
-        if ("This password is too common." === errorPassWord) {
+        if (errorPassWord === "This password is too common." ||
+            errorPassWord === "This password is too common.,This password is entirely numeric.") {
           console.log("รหัสผ่านคาดเดาง่ายเกินไป")
           setErrorPassWord("โปรดเลือกรหัสผ่านที่ปลอดภัยยิ่งขึ้น ลองใช้ตัวอักษร ตัวเลข และสัญลักษณ์ผสมกัน")
-
+        
         }
         if (errorPassWord2 === "This field may not be blank.") {
           console.log("ไม่พบข้อมูลในช่องยืนยันรหัสผ่าน")
@@ -153,6 +156,14 @@ function Register() {
         if (errorIsStaff === "This field may not be blank.") {
           console.log("ไม่พบข้อมูลประเภทบัญชีผู้ใช้")
           setErrorIsStaff("กรุณาเลือกประเภทบัญชีผู้ใช้")
+
+        }
+        if (errorFirstName === undefined) {
+          setErrorFirstName("")
+          
+        }
+        if (errorSurName === undefined) {
+          setErrorSurName("")
 
         }
         if (errorUserName === undefined) {

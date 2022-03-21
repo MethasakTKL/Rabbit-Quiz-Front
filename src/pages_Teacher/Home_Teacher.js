@@ -39,6 +39,7 @@ function Home_Teacher() {
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle sx={{ fontFamily: "Prompt" }}>สร้างห้องเรียน</DialogTitle>
+        <error class="teacher-add-room">กรุณากรอกชื่อห้องเรียนและรหัสห้องเรียนให้ครบถ้วน</error>
         <DialogContent>
           <TextField
             autoFocus
