@@ -82,6 +82,7 @@ function AppHeader() {
                     style: { background: "#ffdd44", height: 5 },
                   }}
                   textColor="#f5df4d"
+                 
                 >
                   <Tab
                     className="navtext"
