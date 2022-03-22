@@ -4,6 +4,8 @@
     font-family: 'Prompt', sans-serif;
     color: #311b92;
     text-align: center;
+    font-weight: 600;
+    padding-top: 15px
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@200;400&display=swap');
