@@ -16,6 +16,9 @@ import {
   EditEmailPopup,
 } from "../components/EditProfilePopup";
 
+
+
+
 function Profile() {
   //เรียกข้อมูลหริอ fetch data มาใช้
   const [user, setUser] = useState()
@@ -102,29 +105,6 @@ function Profile() {
               </Grid>
             </Grid>
           </Box>
-          {/* <Grid width={"70%"} margin="auto" paddingTop={3}>
-            <TextField
-              fullWidth
-              id="standard-basic"
-              label="ชื่อ"
-              defaultValue={user.first_name}
-              variant="filled"
-              inputProps={{ style: { fontFamily: "Prompt" } }}
-              InputLabelProps={{ style: { fontFamily: "Prompt" } }}
-            />
-          </Grid>
-          <Grid width={"70%"} margin="auto" paddingTop={2} paddingBottom={2}>
-            <TextField
-              fullWidth
-              id="standard-basic"
-              label="นามสกุล"
-              defaultValue={user.last_name}
-              variant="filled"
-              inputProps={{ style: { fontFamily: "Prompt" } }}
-              InputLabelProps={{ style: { fontFamily: "Prompt" } }}
-            />
-          </Grid> */}
-
           <Grid paddingBottom={2} sx={{ marginLeft: "42%" }}>
             <EditProfilePopup userName={{ userFirstname, userLastname }} />
           </Grid>
@@ -159,19 +139,6 @@ function Profile() {
               </Grid>
             </Grid>
           </Box>
-          {/* <Grid width={"70%"} margin="auto" paddingTop={2} paddingBottom={2}>
-            <TextField
-              disabled
-              fullWidth
-              id="standard-basic"
-              label="อีเมล"
-              defaultValue={user.email}
-              variant="filled"
-              inputProps={{ style: { fontFamily: "Prompt" } }}
-              InputLabelProps={{ style: { fontFamily: "Prompt" } }}
-            />
-          </Grid> */}
-
           <Grid paddingBottom={2} sx={{ marginLeft: "42%" }}>
             <EditEmailPopup userOldEmail={userEmail} />
           </Grid>
