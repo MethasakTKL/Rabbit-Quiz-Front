@@ -3,7 +3,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import HistoryIcon from "@mui/icons-material/History";
 import FaceIcon from "@mui/icons-material/Face";
 import "./AppNavBar.css";
-import { AppBar, Box, Tab, Tabs, Toolbar } from "@mui/material";
+import { AppBar, Box, CssBaseline, Tab, Tabs, Toolbar } from "@mui/material";
 import { Link } from "react-router-dom";
 import { EmojiEvents } from "@mui/icons-material";
 
@@ -31,6 +31,7 @@ function AppNavBar() {
           fontFamily: "Prompt",
         }}
       >
+        <CssBaseline />
         <div class="navbar">
           <Toolbar sx={{ justifyContent: "center" }}>
             <Tabs

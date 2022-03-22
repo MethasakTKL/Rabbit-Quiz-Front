@@ -38,7 +38,7 @@ body.background-log {
     /* border: 1px solid red; */
 }
 
-.form button[type="login"] {
+.login {
     font-family: "Prompt", sans-serif;
     text-transform: uppercase;
     outline: 0;
@@ -52,7 +52,7 @@ body.background-log {
     transition: all 0.3 ease;
     cursor: pointer;
 }
-.form button[type="register"] {
+.register {
     font-family: "Prompt", sans-serif;
     text-transform: uppercase;
     outline: 0;
@@ -66,14 +66,14 @@ body.background-log {
     transition: all 0.3 ease;
     cursor: pointer;
 }
-.form button[type="login"]:hover,
-.form button[type="login"]:active,
-.form button[type="login"]:focus {
+.login:hover,
+.login:active,
+.login:focus {
     background: #4572c7;
 }
-.form button[type="register"]:hover,
-.form button[type="register"]:active,
-.form button[type="register"]:focus {
+.register:hover,
+.register:active,
+.register:focus {
     background: #4caf50;
 }
 

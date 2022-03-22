@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Login.css"
-import { Link, useHistory } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import { useState } from "react";
@@ -17,42 +17,33 @@ function Login() {
   // const [loginconst, setLoginconst] = useState()
   const [namefill, setNamefill] = useState('')
   const [passfill, setPassfill] = useState('')
+  const userdata = {
+    username: namefill,
+    password: passfill,
+  }
 
   const [showLoginError, setShowLoginError] = useState(false)
   const [showLoginEmpty, setShowLoginEmpty] = useState(false)
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const auth = useAuth()
   const loginpress = async () => {
-    console.log(namefill)
-    console.log(passfill)
-    try {
-      var result = await ax.post('/auth/login/', {
-        username: namefill,
-        password: passfill,
-      })
-      let authToken = result.data
-      if (result.status === 200 && result.data) {
-        console.log('login complete...')
-        auth.signin(authToken, () => {
-          history.push("/", { replace: true })
-          console.log("Successfully navigate to home")
-        })
+    console.log("Username:", namefill)
+    console.log("Password:", passfill)
+    await auth.signin(userdata, (response) => {
+      if (response === "valid username or password.") {
+        setShowLoginError(true)
+        setShowLoginEmpty(false)
       }
-    }
-    catch (error) {
-      if (error.response) {
-        if (error.response.data.detail === "No active account found with the given credentials") {
-          console.log("ไม่พบชื่อบัญชีที่ใช้งานอยู่หรือรหัสผ่านไม่ถูกต้อง")
-          setShowLoginError(true)
-          setShowLoginEmpty(false)
-        }
-         if (namefill === '' || passfill === '') {
-          setShowLoginEmpty(true)
-          setShowLoginError(false)
-        }
+      else if (response === "some field is blank.") {
+        setShowLoginError(false)
+        setShowLoginEmpty(true)
       }
-    }
+      else if (typeof response != String) {
+        console.log("Login successfully.")
+        navigate("/", { replace: true });
+      }
+    })
   }
 
   return (
@@ -66,8 +57,8 @@ function Login() {
             <form class="login-form">
               <h1 class='head'>ลงชื่อเข้าใช้งาน</h1>
               <Stack spacing={3} paddingBottom={2} className="text-field">
-                {showLoginError ? <div class="login-error">ชื่อบัญชีหรือรหัสผ่านของคุณไม่ถูกต้อง<div>กรุณาลองใหม่</div>  </div> : null}
-                {showLoginEmpty ? <div class="login-error">กรุณากรอกชื่อบัญชีและรหัสผ่านให้ครบเพื่อเข้าสู่ระบบ </div> : null}
+                {showLoginError ? <div className='login-error'>ชื่อบัญชีหรือรหัสผ่านของคุณไม่ถูกต้อง<div>กรุณาลองใหม่</div>  </div> : null}
+                {showLoginEmpty ? <div className='login-error'>กรุณากรอกชื่อบัญชีและรหัสผ่านให้ครบเพื่อเข้าสู่ระบบ </div> : null}
                 <TextField
                   id="outlined-basic"
                   label="ชื่อบัญชี"
@@ -87,13 +78,9 @@ function Login() {
                   InputLabelProps={{ style: { fontFamily: "Prompt" } }}
                 />
               </Stack>
-              <Link>
-                <button type="login" onClick={loginpress}>เข้าสู่ระบบ</button>
-              </Link>
+              <button type="button" className='login' onClick={loginpress}>เข้าสู่ระบบ</button>
               <p>
-                <Link to="/register">
-                  <button type="register">สร้างบัญชีใหม่</button>
-                </Link>
+                <button type="button" className='register'>สร้างบัญชีใหม่</button>
               </p>
             </form>
           </div>

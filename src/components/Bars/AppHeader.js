@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import HistoryIcon from "@mui/icons-material/History";
 import FaceIcon from "@mui/icons-material/Face";
-import { AppBar, Box, Button, Grid, Tab, Tabs, Toolbar } from "@mui/material";
+import { AppBar, Box, Button, CssBaseline, Grid, Tab, Tabs, Toolbar } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate, useLocation, browserHistory } from "react-router-dom";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
@@ -19,7 +19,7 @@ import { EmojiEvents, MenuTwoTone } from "@mui/icons-material";
 import { ax, useAuth } from "../../auth/auth";
 
 function AppHeader() {
-  const history = useHistory();
+  const auth = useAuth()
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -33,6 +33,12 @@ function AppHeader() {
     setAnchorEl(null);
   };
 
+  const onClickLogout = (event) => {
+    setAnchorEl(null);
+    auth.signout()
+  };
+
+  const navigate = useNavigate();
 
   //วิธีเรียกข้อมูลหริอ fetch data มาใช้
   const [userDetail, setUserDetail] = React.useState(null) //ตัวแปรใช้ useState ตั้ง
@@ -43,7 +49,7 @@ function AppHeader() {
   useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
     async function fetchData() {
       const response = await ax.get('/userdetail')
-      console.log('.....loading user detail')
+      console.log("Fetch data for header success...")
       setUserDetail(response.data)
       setUserName(response.data.first_name + " " + response.data.last_name)
 
@@ -57,13 +63,16 @@ function AppHeader() {
   }, []);
 
 
+
+
   return (
     <div>
       <Box>
         <AppBar position="static" style={{ background: "#5F498C" }}>
+          <CssBaseline />
           <Toolbar>
             <div className="goback-button">
-              <Button onClick={() => history.goBack()}>
+              <Button onClick={() => navigate(-1)}>
                 <ArrowBackIosIcon sx={{ fontSize: 30, color: "white" }} />
               </Button>
             </div>
@@ -82,7 +91,7 @@ function AppHeader() {
                     style: { background: "#ffdd44", height: 5 },
                   }}
                   textColor="#f5df4d"
-                 
+
                 >
                   <Tab
                     className="navtext"
@@ -158,7 +167,7 @@ function AppHeader() {
 
             </Grid>
             {/* Other Button */}
-            <hambergur>
+            <div className="hambergur">
               <Button
                 id="basic-button"
                 aria-controls={open ? "basic-menu" : undefined}
@@ -168,7 +177,7 @@ function AppHeader() {
               >
                 <MenuTwoTone sx={{ color: "#FFFFFF" }} />
               </Button>
-            </hambergur>
+            </div>
             <Menu
               id="basic-menu"
               anchorEl={anchorEl}
@@ -183,7 +192,7 @@ function AppHeader() {
                 <MenuItem onClick={handleClose} to="/profile" component={Link}>
                   <div className="menubar">โปรไฟล์ของคุณ</div>
                 </MenuItem>
-                <MenuItem onClick={handleClose} to="/login" component={Link}>
+                <MenuItem onClick={onClickLogout} to="/login" component={Link}>
                   <div className="menubar">ออกจากระบบ</div>
                 </MenuItem>
               </Box>
