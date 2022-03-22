@@ -1,8 +1,20 @@
 import "./Register.css";
+
+//React
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import React from "react";
+
+//Mui
+import { Box } from "@mui/system";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 import {
   Dialog,
   DialogContent,
@@ -12,18 +24,17 @@ import {
   InputAdornment,
   Grid,
 } from "@mui/material";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import { ax } from "../auth/auth";
-import { useState } from "react";
-import IconButton from "@mui/material/IconButton";
-import { Box } from "@mui/system";
-import CloseIcon from "@mui/icons-material/Close";
-import logo from "../Static/image/Rabbitquiz_05.png";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+
+// authentic
+import { ax } from "../auth/auth";
+
+// Image
+import logo from "../Static/image/Rabbitquiz_05.png";
+
+// text field
+import RegexTextField from "../components/RegexTextField";
+const onlyThaiAlphabet = /[^ก-๛]/gi;
 
 
 function Register() {
@@ -35,7 +46,7 @@ function Register() {
   const [visible, setVisible] = useState(false);
 
   const toggleVisibility = () => {
-   setVisible(!visible);
+    setVisible(!visible);
   };
 
   const [namefill, setNamefill] = useState("");
@@ -81,15 +92,15 @@ function Register() {
     }
     catch (error) {
       if (error.response) {
-        console.log(error.response.data)
+        console.log(error.response)
         setShowError(true)
-        if (error.response.data.first_name) {var errorFirstName = error.response.data.first_name.toString()}
-        if (error.response.data.last_name) {var errorSurName = error.response.data.last_name.toString()}
-        if (error.response.data.username) {var errorUserName = error.response.data.username.toString()}
-        if (error.response.data.email) {var errorEmail = error.response.data.email.toString()}
-        if (error.response.data.password) {var errorPassWord = error.response.data.password.toString()}
-        if (error.response.data.password2) {var errorPassWord2 = error.response.data.password2.toString()}
-        if (error.response.data.is_staff) {var errorIsStaff = error.response.data.is_staff.toString()}
+        if (error.response.data.first_name) { var errorFirstName = error.response.data.first_name.toString() }
+        if (error.response.data.last_name) { var errorSurName = error.response.data.last_name.toString() }
+        if (error.response.data.username) { var errorUserName = error.response.data.username.toString() }
+        if (error.response.data.email) { var errorEmail = error.response.data.email.toString() }
+        if (error.response.data.password) { var errorPassWord = error.response.data.password.toString() }
+        if (error.response.data.password2) { var errorPassWord2 = error.response.data.password2.toString() }
+        if (error.response.data.is_staff) { var errorIsStaff = error.response.data.is_staff.toString() }
 
         console.log(errorPassWord)
         if (errorFirstName === "This field may not be blank.") {
@@ -104,7 +115,7 @@ function Register() {
         }
         if (errorUserName === "This field may not be blank.") {
           console.log("ไม่พบข้อมูลชื่อบัญชี")
-          setErrorUserName("กรุณากรอกข้อมูลชื่อบัญชี")
+          setErrorUserName("กรุณากรอกชื่อบัญชี")
 
         }
         if (errorUserName === "A user with that username already exists.") {
@@ -138,7 +149,7 @@ function Register() {
 
         }
         if (errorPassWord === "This password is too short. It must contain at least 8 characters." ||
-            errorPassWord === "This password is too short. It must contain at least 8 characters.,This password is too common.,This password is entirely numeric.") {
+          errorPassWord === "This password is too short. It must contain at least 8 characters.,This password is too common.,This password is entirely numeric.") {
           console.log("รหัสผ่านสั้นเกินไป")
           setErrorPassWord("รหัสผ่านสั้นเกินไป จะต้องมีความยาวอย่างน้อย 8 ตัวอักษร")
 
@@ -152,10 +163,10 @@ function Register() {
         }
 
         if (errorPassWord === "This password is too common." ||
-            errorPassWord === "This password is too common.,This password is entirely numeric.") {
+          errorPassWord === "This password is too common.,This password is entirely numeric.") {
           console.log("รหัสผ่านคาดเดาง่ายเกินไป")
           setErrorPassWord("โปรดเลือกรหัสผ่านที่ปลอดภัยยิ่งขึ้น ลองใช้ตัวอักษร ตัวเลข และสัญลักษณ์ผสมกัน")
-        
+
         }
         if (errorPassWord2 === "This field may not be blank.") {
           console.log("ไม่พบข้อมูลในช่องยืนยันรหัสผ่าน")
@@ -169,7 +180,7 @@ function Register() {
         }
         if (errorFirstName === undefined) {
           setErrorFirstName("")
-          
+
         }
         if (errorSurName === undefined) {
           setErrorSurName("")
@@ -200,7 +211,7 @@ function Register() {
   return (
     <html>
       <header className="App-header">
-      
+
         <div class="register-page">
           <div class="logo">
             <logo>
@@ -209,6 +220,12 @@ function Register() {
           </div>
           <div class="form">
             <h1 class="head">สร้างบัญชีใหม่</h1>
+            <div className="reg-password" password>
+              <div type="reg-header">ข้อกำหนด</div>
+              <div>• ชื่อ-นามสกุล จะต้องเป็นตัวอักษรภาษาไทยเท่านั้น</div>
+              <div>• รหัสผ่านจะต้องใช้อักขระ 8 ตัวขึ้นไป สามารถมีตัวอักษร (a-z A-z) ตัวเลข (0-9) และสัญลักษณ์ผสมกัน (เช่น ! @ # % & * _ ? , . /)</div>
+              <p />
+            </div>
             {showError === true && <div class="register-error">
               <div />{errorFirstName}
               <div />{errorSurName}
@@ -219,19 +236,22 @@ function Register() {
               <div />{errorIsStaff}</div>
             }
             <Stack spacing={1} paddingBottom={2}>
-              <TextField
+              <RegexTextField
+                helpertext="Hey dude"
                 id="name"
                 label="ชื่อ"
                 variant="outlined"
+                regex={onlyThaiAlphabet}
                 onChange={(event) => setFirstnamefill(event.target.value)}
                 inputProps={{ style: { fontFamily: "Prompt" } }}
                 InputLabelProps={{ style: { fontFamily: "Prompt" } }}
                 required
               />
-              <TextField
+              <RegexTextField
                 id="lastname"
                 label="นามสกุล"
                 variant="outlined"
+                regex={onlyThaiAlphabet}
                 onChange={(event) => setSurnamefill(event.target.value)}
                 inputProps={{ style: { fontFamily: "Prompt" } }}
                 InputLabelProps={{ style: { fontFamily: "Prompt" } }}
@@ -245,9 +265,11 @@ function Register() {
                 inputProps={{ style: { fontFamily: "Prompt" } }}
                 InputLabelProps={{ style: { fontFamily: "Prompt" } }}
                 required
+
               />
               <TextField
                 id="email"
+                type="email"
                 label="อีเมล"
                 variant="outlined"
                 onChange={(event) => setEmailfill(event.target.value)}
@@ -266,13 +288,14 @@ function Register() {
                 InputProps={{
                   style: { fontFamily: "Prompt" },
                   endAdornment: (
-                   <InputAdornment position="end">
-                    <IconButton onClick={toggleVisibility}>
-                     {visible ? <Visibility /> : <VisibilityOff/>}
-                    </IconButton>
-                   </InputAdornment>
+                    <InputAdornment position="end">
+                      <IconButton onClick={toggleVisibility}>
+                        {visible ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
                   )
                 }}
+
 
               />
               <TextField
@@ -286,18 +309,15 @@ function Register() {
                 InputProps={{
                   style: { fontFamily: "Prompt" },
                   endAdornment: (
-                   <InputAdornment position="end">
-                    <IconButton onClick={toggleVisibility}>
-                     {visible ? <Visibility /> : <VisibilityOff/>}
-                    </IconButton>
-                   </InputAdornment>
+                    <InputAdornment position="end">
+                      <IconButton onClick={toggleVisibility}>
+                        {visible ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
                   )
                 }}
               />
-              <div className="reg-password" password>
-                <div type="reg-header">ข้อกำหนด</div>
-                รหัสผ่านจะต้องใช้อักขระ 8 ตัวขึ้นไปที่มีทั้ง ตัวอักษร (a-z A-z) ตัวเลข (0-9) และสัญลักษณ์ผสมกัน (เช่น ! @ # % & * _ ? , . /)
-              </div>
+
             </Stack>
             <FormControl>
               <FormLabel id="demo-row-radio-buttons-group-label">

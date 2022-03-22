@@ -48,7 +48,6 @@ function AppHeader() {
   if (path == "/profile") { if (value != 3) { setValue(3) } }
 
   //วิธีเรียกข้อมูลหริอ fetch data มาใช้
-  const [userDetail, setUserDetail] = React.useState(null) //ตัวแปรใช้ useState ตั้ง
   const [userRole, setUserRole] = React.useState('')
   const [userName, setUserName] = React.useState('')
 
@@ -57,7 +56,7 @@ function AppHeader() {
     async function fetchData() {
       const response = await ax.get('/userdetail')
       console.log("Fetch data for header success...")
-      setUserDetail(response.data)
+      let userDetail = response.data
       setUserName(userDetail.first_name + " " + userDetail.last_name)
 
       if (userDetail.is_staff == true) {

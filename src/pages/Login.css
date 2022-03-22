@@ -69,6 +69,7 @@
     color: rgba(220, 0, 0, 0.9);
     border: 2px solid rgba(220, 0, 0, 0.9);
     background-color: rgb(255, 244, 249);
+    padding: 4px;
 }
 
 error {
@@ -76,4 +77,11 @@ error {
     color: rgba(220, 0, 0, 0.9);
     border: 2px solid rgba(220, 0, 0, 0.9);
     background-color: rgb(255, 244, 249);
+}
+
+@media (max-width: 41em) {
+    .login-error {
+        font-size: 11pt;
+    }
+    
 }
