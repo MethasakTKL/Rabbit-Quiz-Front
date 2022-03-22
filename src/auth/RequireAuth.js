@@ -1,5 +1,5 @@
 import { useLocation, Outlet, Navigate } from "react-router";
-import { useAuth, appA, appAuthProvider } from "./auth";
+import { useAuth, appAuthProvider } from "./auth";
 
 function RequireAuth() {
     let auth = useAuth();

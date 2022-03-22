@@ -1,5 +1,5 @@
 import { Button, Grid, Paper, TextField } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import FaceIcon from "@mui/icons-material/Face";
 import "./Profile.css";
 import { Link } from "react-router-dom";
@@ -18,8 +18,17 @@ import {
 
 function Profile() {
   //เรียกข้อมูลหริอ fetch data มาใช้
-  const auth = useAuth();
-  const user = auth.user;
+  const auth = useAuth()
+  const [user, setUser] = useState(auth.user)
+
+  useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
+    async function fetchData() {
+      const response = await ax.get('/userdetail')
+      setUser(response.data)
+      console.log('Fetch data for profile success...')
+    }
+    fetchData();
+  }, []);
 
   return (
     <div>
