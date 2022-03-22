@@ -26,7 +26,9 @@
 
 
 .head {
-    font-size: 36px;
+    font-size: 22pt;
+    font-weight:bold;
+    padding-top: 20px;
     margin-bottom: 10%;
     font-family: "Prompt", sans-serif;
     color:#4b3c6b;
@@ -63,6 +65,7 @@
 
 .login-error {
     font-family: "Prompt";
+    font-size: 13pt;
     color: rgba(220, 0, 0, 0.9);
     border: 2px solid rgba(220, 0, 0, 0.9);
     background-color: rgb(255, 244, 249);

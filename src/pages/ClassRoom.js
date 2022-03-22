@@ -24,7 +24,7 @@ function Classroom() {
           to="/classroom-member"
           component={Link}
         >
-          <PeopleAltIcon />
+          <PeopleAltIcon sx={{color:"#ffffff"}} />
           <div className="button1">สมาชิก</div>
         </Button>
         <Button
@@ -34,7 +34,7 @@ function Classroom() {
           to="/classroom-activity"
           component={Link}
         >
-          <QuizIcon />
+          <QuizIcon sx={{color:"#ffffff"}} />
           <div className="button2">กิจกรรม</div>
         </Button>
       </Stack>
@@ -134,7 +134,7 @@ function Classroom() {
                 direction="row"
                 justifyContent="flex-end"
                 alignItems="flex-start"
-                spacing={2}
+
               >
                 <Grid>
                   <Button disabled>
@@ -182,7 +182,6 @@ function Classroom() {
                 direction="row"
                 justifyContent="flex-end"
                 alignItems="flex-start"
-                spacing={2}
               >
                 <Grid>
                   <Button disabled>
@@ -230,7 +229,7 @@ function Classroom() {
                 direction="row"
                 justifyContent="flex-end"
                 alignItems="flex-start"
-                spacing={2}
+
               >
                 <Grid>
                   <Button disabled>
