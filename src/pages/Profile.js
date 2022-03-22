@@ -71,7 +71,7 @@ function Profile() {
           </Grid>
 
           <Grid paddingBottom={2} sx={{ marginLeft: "42%" }}>
-            <EditProfilePopup />
+            <EditProfilePopup userDetail={user} />
           </Grid>
         </Paper>
       </Grid>

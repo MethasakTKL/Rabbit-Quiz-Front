@@ -10,9 +10,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import './EditProfilePopup.css';
 import SaveIcon from '@mui/icons-material/Save';
+import RegexTextField from "./RegexTextField";
 
 
-function EditProfilePopup() {
+function EditProfilePopup({ userDetail }) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -22,7 +23,12 @@ function EditProfilePopup() {
   const handleClose = () => {
     setOpen(false);
   };
-  const [fullWidth, setFullWidth] = React.useState(true);
+
+  const onlyAlpha = /[^ก-๛]/gi;
+  const [firstname, setFirstName] = React.useState(userDetail.first_name);
+  const [lastname, setLastName] = React.useState(userDetail.last_name);
+
+
   return (
     <div>
       <Button
@@ -39,30 +45,33 @@ function EditProfilePopup() {
           <div className="edit-profile">แก้ไขข้อมูลส่วนตัว</div>
         </DialogTitle>
         <DialogContent>
-          <DialogContentText sx={{ fontFamily: "Prompt" }}>
-            ต้องกรอกทั้งชื่อและนามสกุลที่ต้องการ เพื่อแก้ไขข้อมูล
+          <DialogContentText sx={{ fontFamily: "Prompt", color: "#231F20" }}>
+            {" "}ชื่อและนามสกุลต้องเป็นภาษาไทยเท่านั้น
           </DialogContentText>
-
-          <TextField
+          <p />
+          <RegexTextField
+            id="firstname"
             autoFocus
-            margin="dense"
-            id="nameclass"
-            label="ชื่อ"
-            type="email"
             fullWidth
             variant="standard"
+            label="ชื่อ"
+            regex={onlyAlpha}
+            value={firstname}
+            onChange={(e) => setFirstName(e.target.value)}
             inputProps={{ style: { fontFamily: "Prompt" } }}
             InputLabelProps={{ style: { fontFamily: "Prompt" } }}
           />
+          <p />
 
-          <TextField
+          <RegexTextField
+            id="surname"
             autoFocus
-            margin="dense"
-            id="nameclass"
-            label="นามสกุล"
-            type="email"
             fullWidth
             variant="standard"
+            label="นามสกุล"
+            regex={onlyAlpha}
+            value={lastname}
+            onChange={(e) => setLastName(e.target.value)}
             inputProps={{ style: { fontFamily: "Prompt" } }}
             InputLabelProps={{ style: { fontFamily: "Prompt" } }}
           />
@@ -77,6 +86,7 @@ function EditProfilePopup() {
             onClick={handleClose}
             sx={{ fontFamily: "Prompt", color: "white", width: 100 }}
           >
+
             <div className="saveButtonIcon"><SaveIcon /></div>
             <div className="saveButton">บันทึก</div>
           </Button>
@@ -89,7 +99,6 @@ function EditProfilePopup() {
 
 function EditEmailPopup() {
   const [open, setOpen] = React.useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -138,6 +147,7 @@ function EditEmailPopup() {
             variant="contained"
             onClick={handleClose}
             sx={{ fontFamily: "Prompt", color: "white", width: 100 }}
+
           >
             <div className="saveButtonIcon"><SaveIcon /></div>
             <div className="saveButton">บันทึก</div>
