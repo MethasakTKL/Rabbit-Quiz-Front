@@ -60,9 +60,10 @@ let AuthContext = React.createContext(null);
 
 
 function AuthProvider({ children }) {
-   let [user, setUser] = React.useState([null]);
+   let [user, setUser] = React.useState(null);
    let navigate = useNavigate()
    let auth = useAuth()
+
 
    let signin = (userdata, callback) => {
       return appAuthProvider.signin(userdata, (response) => {

@@ -16,25 +16,9 @@ import { EditProfilePopup, EditEmailPopup } from "../components/EditProfilePopup
 function Profile() {
 
 
-  //วิธีเรียกข้อมูลหริอ fetch data มาใช้
-  const [userRole, setUserRole] = React.useState('')
-  const [userName, setUserName] = React.useState('')
-
-
-  useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
-    async function fetchData() {
-      const response = await ax.get('/userdetail')
-      console.log('Fetch data for profile success...')
-      setUserName(response.data.first_name + " " + response.data.last_name)
-
-      if (response.data.is_staff) {
-        setUserRole('คุณครู')
-      } else {
-        setUserRole('นักเรียน')
-      }
-    }
-    fetchData();
-  }, []);
+  //เรียกข้อมูลหริอ fetch data มาใช้
+  const auth = useAuth()
+  const user = auth.user
 
   return (
     <div>
@@ -48,15 +32,9 @@ function Profile() {
             <div className="centerIcon">
               <FaceIcon sx={{ fontSize: 100, color: "#F19528" }} />
             </div>
-            <div className="centerName">{userName}</div>
-            <div className="centerAccount">ประเภทบัญชี : {userRole}</div>
+            <div className="centerName">{user.first_name + " " + user.last_name}</div>
+            <div className="centerAccount">ประเภทบัญชี : {user.is_staff ? "คุณครู" : "นักเรียน"}</div>
           </Grid>
-          {/* <Grid textAlign='center' paddingBottom={2}>
-            <Button variant="contained" style={{background:'#CD0049'}} to='/login' component={Link}>
-              <div className="logoutIcon"><LogoutIcon sx={{fontSize:20}}/></div>
-              <div className="logout" >ออกจากระบบ</div>
-            </Button>
-          </Grid> */}
         </Paper>
       </Grid>
       <Grid paddingTop={2}>
@@ -74,7 +52,7 @@ function Profile() {
               fullWidth
               id="standard-basic"
               label="ชื่อ"
-              defaultValue="ชนาวัฒน์"
+              defaultValue={user.first_name}
               variant="filled"
               inputProps={{ style: { fontFamily: "Prompt" } }}
               InputLabelProps={{ style: { fontFamily: "Prompt" } }}
@@ -85,14 +63,14 @@ function Profile() {
               fullWidth
               id="standard-basic"
               label="นามสกุล"
-              defaultValue="ทั้วสุภาพ"
+              defaultValue={user.last_name}
               variant="filled"
               inputProps={{ style: { fontFamily: "Prompt" } }}
               InputLabelProps={{ style: { fontFamily: "Prompt" } }}
             />
           </Grid>
 
-          <Grid paddingBottom={2} sx={{ marginLeft: "42%"}}>
+          <Grid paddingBottom={2} sx={{ marginLeft: "42%" }}>
             <EditProfilePopup />
           </Grid>
         </Paper>
@@ -113,7 +91,7 @@ function Profile() {
               fullWidth
               id="standard-basic"
               label="อีเมล"
-              defaultValue="Chanawat.T@hotmail.com"
+              defaultValue={user.email}
               variant="filled"
               inputProps={{ style: { fontFamily: "Prompt" } }}
               InputLabelProps={{ style: { fontFamily: "Prompt" } }}
