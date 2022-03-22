@@ -4,7 +4,7 @@ import { TextField } from "@mui/material";
 
 export const matchNothingRegex = /(?!)/;
 
-const RegexTextField = ({ id, regex, onChange, ...rest }) => {
+const RegexTextField = ({ regex, onChange, ...rest }) => {
     const handleChange = useCallback(
         (e) => {
             e.currentTarget.value = e.currentTarget.value.replace(regex, "");
@@ -13,7 +13,7 @@ const RegexTextField = ({ id, regex, onChange, ...rest }) => {
         [onChange, regex]
     );
 
-    return <TextField id={id} onChange={handleChange} {...rest} />;
+    return <TextField onChange={handleChange} {...rest} />;
 };
 
 

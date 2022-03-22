@@ -10,11 +10,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import './EditProfilePopup.css';
 import SaveIcon from '@mui/icons-material/Save';
-import { Input } from "antd";
 import RegexTextField from "./RegexTextField";
 
 
-function EditProfilePopup() {
+function EditProfilePopup({ userDetail }) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -25,10 +24,10 @@ function EditProfilePopup() {
     setOpen(false);
   };
 
-
-  const [firstname, setFirstName] = React.useState("");
-  const [lastname, setLastName] = React.useState("");
   const onlyAlpha = /[^ก-๛]/gi;
+  const [firstname, setFirstName] = React.useState(userDetail.first_name);
+  const [lastname, setLastName] = React.useState(userDetail.last_name);
+
 
   return (
     <div>
@@ -46,11 +45,8 @@ function EditProfilePopup() {
           <div className="edit-profile">แก้ไขข้อมูลส่วนตัว</div>
         </DialogTitle>
         <DialogContent>
-          <DialogContentText sx={{ fontFamily: "Prompt" }}>
-            - ต้องกรอกทั้งชื่อและนามสกุลที่ต้องการ เพื่อแก้ไขข้อมูล
-          </DialogContentText>
-          <DialogContentText sx={{ fontFamily: "Prompt" }}>
-            - ชื่อและนามสกุลต้องเป็นภาษาไทยเท่านั้น
+          <DialogContentText sx={{ fontFamily: "Prompt", color: "#231F20" }}>
+            {" "}ชื่อและนามสกุลต้องเป็นภาษาไทยเท่านั้น
           </DialogContentText>
           <p />
           <RegexTextField
@@ -58,7 +54,7 @@ function EditProfilePopup() {
             autoFocus
             fullWidth
             variant="standard"
-            label="ชื่อที่ต้องการเปลี่ยน"
+            label="ชื่อ"
             regex={onlyAlpha}
             value={firstname}
             onChange={(e) => setFirstName(e.target.value)}
@@ -72,7 +68,7 @@ function EditProfilePopup() {
             autoFocus
             fullWidth
             variant="standard"
-            label="นามสกุลที่ต้องการเปลี่ยน"
+            label="นามสกุล"
             regex={onlyAlpha}
             value={lastname}
             onChange={(e) => setLastName(e.target.value)}
@@ -103,7 +99,6 @@ function EditProfilePopup() {
 
 function EditEmailPopup() {
   const [open, setOpen] = React.useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
