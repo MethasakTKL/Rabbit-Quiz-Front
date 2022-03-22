@@ -11,7 +11,9 @@ import TextField from "@mui/material/TextField";
 import './EditProfilePopup.css';
 import SaveIcon from '@mui/icons-material/Save';
 import RegexTextField from "./RegexTextField";
-import { ax } from "../auth/auth";
+import { ax, useAuth } from "../auth/auth";
+import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 
 function EditProfilePopup({ userDetail }) {
@@ -108,10 +110,31 @@ function EditEmailPopup({ userDetail }) {
     setOpen(false);
   };
 
+  const auth = useAuth()
+  const navigate = useNavigate()
   const [userEmail, setUserEmail] = React.useState(userDetail.email)
-  const handleEditEmail = () => {
-    ax
+  const handleEditEmail = async () => {
+    try {
+      var result = await ax.post('/changeEmail', {
+        "email": userEmail
+      })
+      if (result.status === 200 && result.data) {
+        auth.user.email = userEmail
+        console.log(`User ${userDetail.username} has successfully changed email...`)
+        console.log(`From ${userDetail.email} -> ${userEmail}`)
+        handleClose()
+        navigate('/', { replace: true })
+        navigate('/profile', { replace: true })
+        message.success({
+          content: "เปลี่ยนแปลงที่อยู่อีเมลสำเร็จ",
+          style: { fontFamily: "Prompt" },
+        })
+      }
+    } catch (error) {
+      console.error(error)
+    }
   }
+
 
   return (
     <div>

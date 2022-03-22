@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Navigate } from "react-router";
+import { Navigate, Outlet } from "react-router";
 
 const ax = axios.create({
    baseURL: 'http://localhost:8000',
@@ -22,7 +22,7 @@ const appAuthProvider = {
             appAuthProvider.accessToken = result.data.access;
             appAuthProvider.refreshToken = result.data.refresh;
             let user_detail = await ax.get('/userdetail')
-            localStorage.setItem("user_email", JSON.stringify(user_detail.email))
+            localStorage.setItem("user_email", user_detail.data.email)
             localStorage.setItem("user_first_name", user_detail.data.first_name)
             localStorage.setItem("user_last_name", user_detail.data.last_name)
             localStorage.setItem("user_is_staff", JSON.stringify(user_detail.data.is_staff))
@@ -90,45 +90,4 @@ function useAuth() {
    return React.useContext(AuthContext);
 }
 
-function RequireAuth({ children }) {
-   let auth = useAuth();
-   let location = useLocation();
-
-   if ((auth.user).stringify === undefined) {
-      // Redirect them to the /login page, but save the current location they were
-      // trying to go to when they were redirected. This allows us to send them
-      // along to that page after they login, which is a nicer user experience
-      // than dropping them off on the home page.
-      return <Navigate to="/login" state={{ from: location }} replace />;
-   }
-
-   return children;
-}
-
-function AuthGuard({ children }) {
-   let auth = useAuth()
-   let navigate = useNavigate()
-   let location = useLocation()
-
-   useEffect(() => {
-
-      if (!auth.user) {
-         try {
-            let token = (localStorage.getItem('access_token'))
-            auth.signin(token);
-            return children
-            // return children
-         }
-         // If server can't find Access Token --> Back to login page
-         catch (error) {
-            return <Navigate to="/login" state={{ from: location }} replace />, children
-         }
-
-      }
-   })
-
-   return children
-
-}
-
-export { appAuthProvider, AuthContext, AuthProvider, useAuth, RequireAuth, ax, AuthGuard };
+export { appAuthProvider, AuthContext, AuthProvider, useAuth, ax };
