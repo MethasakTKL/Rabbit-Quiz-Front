@@ -38,8 +38,14 @@ function AppHeader() {
     setAnchorEl(null);
     auth.signout()
   };
-
   const navigate = useNavigate();
+
+  // เปลี่ยนสีของ Tabs บน Headers เวลากดเปลี่ยนลิ้ง
+  const path = useLocation().pathname;
+  if (path == "/") { if (value != 0) { setValue(0) } }
+  if (path == "/activity") { if (value != 1) { setValue(1) } }
+  if (path == "/mypoints") { if (value != 2) { setValue(2) } }
+  if (path == "/profile") { if (value != 3) { setValue(3) } }
 
   //วิธีเรียกข้อมูลหริอ fetch data มาใช้
   const [userDetail, setUserDetail] = React.useState(null) //ตัวแปรใช้ useState ตั้ง
@@ -61,14 +67,8 @@ function AppHeader() {
         setUserRole('นักเรียน')
       }
     }
-    fetchData(); s
+    fetchData();
   }, []);
-
-  const path = useLocation().pathname;
-  if (path == "/") { if (value != 0) { setValue(0) } }
-  if (path == "/activity") { if (value != 1) { setValue(1) } }
-  if (path == "/mypoints") { if (value != 2) { setValue(2) } }
-  if (path == "/profile") { if (value != 3) { setValue(3) } }
 
 
   return (
