@@ -16,6 +16,7 @@ function MyPointsPage() {
             marginRight: "auto",
             paddingLeft: "2%",
             paddingRight: "2%",
+            paddingTop:'30px',
           }}
         >
           <Paper elevation={2} sx={{ paddingLeft: 3, paddingBottom: 2 , background:'#f5df4d'}}>
