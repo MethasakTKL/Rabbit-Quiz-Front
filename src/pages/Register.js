@@ -9,6 +9,7 @@ import {
   DialogContentText,
   DialogTitle,
   Typography,
+  InputAdornment,
   Grid,
 } from "@mui/material";
 import Radio from "@mui/material/Radio";
@@ -22,11 +23,19 @@ import IconButton from "@mui/material/IconButton";
 import { Box } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
 import logo from "../Static/image/Rabbitquiz_05.png";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+
 
 function Register() {
   const [open, setOpen] = React.useState(false);
   const handleClickClose = () => {
     setOpen(false);
+  };
+
+  const [visible, setVisible] = useState(false);
+
+  const toggleVisibility = () => {
+   setVisible(!visible);
   };
 
   const [namefill, setNamefill] = useState("");
@@ -248,23 +257,42 @@ function Register() {
               />
               <TextField
                 id="password"
-                type="password"
+                type={visible ? 'text' : 'password'}
                 label="รหัสผ่าน"
                 variant="outlined"
                 onChange={(event) => setPassfill(event.target.value)}
-                inputProps={{ style: { fontFamily: "Prompt" } }}
                 InputLabelProps={{ style: { fontFamily: "Prompt" } }}
                 required
+                InputProps={{
+                  style: { fontFamily: "Prompt" },
+                  endAdornment: (
+                   <InputAdornment position="end">
+                    <IconButton onClick={toggleVisibility}>
+                     {visible ? <Visibility /> : <VisibilityOff/>}
+                    </IconButton>
+                   </InputAdornment>
+                  )
+                }}
+
               />
               <TextField
                 id="password-confirm"
-                type="password"
+                type={visible ? 'text' : 'password'}
                 label="ยืนยันรหัสผ่าน"
                 variant="outlined"
                 onChange={(event) => setPass2fill(event.target.value)}
-                inputProps={{ style: { fontFamily: "Prompt" } }}
                 InputLabelProps={{ style: { fontFamily: "Prompt" } }}
                 required
+                InputProps={{
+                  style: { fontFamily: "Prompt" },
+                  endAdornment: (
+                   <InputAdornment position="end">
+                    <IconButton onClick={toggleVisibility}>
+                     {visible ? <Visibility /> : <VisibilityOff/>}
+                    </IconButton>
+                   </InputAdornment>
+                  )
+                }}
               />
               <div className="reg-password" password>
                 <div type="reg-header">ข้อกำหนด</div>
@@ -281,7 +309,7 @@ function Register() {
                 name="row-radio-buttons-group"
               >
                 <FormControlLabel
-                  value="female"
+                  value="student"
                   onClick={() => setStafffill("False")}
                   control={<Radio />}
                   label={
@@ -294,7 +322,7 @@ function Register() {
                   }
                 />
                 <FormControlLabel
-                  value="male"
+                  value="teacher"
                   onClick={() => setStafffill("True")}
                   control={<Radio />}
                   label={

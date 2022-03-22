@@ -10,7 +10,18 @@ import Loginlogo from "../Static/image/Rabbitquiz_05.png";
 import { ax, useAuth } from "../auth/auth";
 import { message } from "antd";
 import "antd/dist/antd.css";
-import { Box, Button, Grid, Paper } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  IconButton,
+  Input,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  Paper,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 function Login() {
   // const [userResultList, setUserResultList] = useState([])
@@ -48,9 +59,15 @@ function Login() {
     });
   };
 
+  const [visible, setVisible] = useState(false);
+
+  const toggleVisibility = () => {
+   setVisible(!visible);
+  };
+
   return (
-      <html className="bodybackground">
-        <header className="App-header">
+    <html className="bodybackground">
+      <header className="App-header">
         <div class="login-page">
           <div class="logo">
             <img src={Loginlogo} alt="logorabbit"></img>
@@ -79,28 +96,38 @@ function Login() {
                 />
                 <TextField
                   id="outlined-basic"
-                  type="password"
+                  type={visible ? 'text' : 'password'}
                   label="รหัสผ่าน"
                   variant="outlined"
                   onChange={(event) => setPassfill(event.target.value)}
-                  inputProps={{ style: { fontFamily: "Prompt" } }}
+                  InputProps={{
+                    style: { fontFamily: "Prompt" },
+                    endAdornment: (
+                     <InputAdornment position="end">
+                      <IconButton onClick={toggleVisibility}>
+                       {visible ? <Visibility /> : <VisibilityOff/>}
+                      </IconButton>
+                     </InputAdornment>
+                    )
+                  }}
                   InputLabelProps={{ style: { fontFamily: "Prompt" } }}
                 />
+                
               </Stack>
+
               <Stack spacing={2}>
                 <Button
                   variant="contained"
-                  style={{ height:50,background: "#1976D2" }}
+                  style={{ height: 50, background: "#1976D2" }}
                   onClick={loginpress}
                 >
                   <div className="register">เข้าสู่ระบบ</div>
                 </Button>
 
-
                 <Button
                   variant="contained"
-                  style={{ height:50,background: "#56d35b" }}
-                  to='/register'
+                  style={{ height: 50, background: "#56d35b" }}
+                  to="/register"
                   component={Link}
                 >
                   <div className="register">สร้างบัญชีผู้ใช้</div>
@@ -109,9 +136,8 @@ function Login() {
             </form>
           </div>
         </div>
-        </header>
-      </html>
-
+      </header>
+    </html>
   );
 }
 
