@@ -10,6 +10,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import './EditProfilePopup.css';
 import SaveIcon from '@mui/icons-material/Save';
+import { Input } from "antd";
+import RegexTextField from "./RegexTextField";
 
 
 function EditProfilePopup() {
@@ -22,7 +24,12 @@ function EditProfilePopup() {
   const handleClose = () => {
     setOpen(false);
   };
-  const [fullWidth, setFullWidth] = React.useState(true);
+
+
+  const [firstname, setFirstName] = React.useState("");
+  const [lastname, setLastName] = React.useState("");
+  const onlyAlpha = /[^ก-๛]/gi;
+
   return (
     <div>
       <Button
@@ -40,29 +47,35 @@ function EditProfilePopup() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ fontFamily: "Prompt" }}>
-            ต้องกรอกทั้งชื่อและนามสกุลที่ต้องการ เพื่อแก้ไขข้อมูล
+            - ต้องกรอกทั้งชื่อและนามสกุลที่ต้องการ เพื่อแก้ไขข้อมูล
           </DialogContentText>
-
-          <TextField
+          <DialogContentText sx={{ fontFamily: "Prompt" }}>
+            - ชื่อและนามสกุลต้องเป็นภาษาไทยเท่านั้น
+          </DialogContentText>
+          <p />
+          <RegexTextField
+            id="firstname"
             autoFocus
-            margin="dense"
-            id="nameclass"
-            label="ชื่อ"
-            type="email"
             fullWidth
             variant="standard"
+            label="ชื่อที่ต้องการเปลี่ยน"
+            regex={onlyAlpha}
+            value={firstname}
+            onChange={(e) => setFirstName(e.target.value)}
             inputProps={{ style: { fontFamily: "Prompt" } }}
             InputLabelProps={{ style: { fontFamily: "Prompt" } }}
           />
+          <p />
 
-          <TextField
+          <RegexTextField
+            id="surname"
             autoFocus
-            margin="dense"
-            id="nameclass"
-            label="นามสกุล"
-            type="email"
             fullWidth
             variant="standard"
+            label="นามสกุลที่ต้องการเปลี่ยน"
+            regex={onlyAlpha}
+            value={lastname}
+            onChange={(e) => setLastName(e.target.value)}
             inputProps={{ style: { fontFamily: "Prompt" } }}
             InputLabelProps={{ style: { fontFamily: "Prompt" } }}
           />
@@ -77,6 +90,7 @@ function EditProfilePopup() {
             onClick={handleClose}
             sx={{ fontFamily: "Prompt", color: "white", width: 100 }}
           >
+
             <div className="saveButtonIcon"><SaveIcon /></div>
             <div className="saveButton">บันทึก</div>
           </Button>
@@ -138,6 +152,7 @@ function EditEmailPopup() {
             variant="contained"
             onClick={handleClose}
             sx={{ fontFamily: "Prompt", color: "white", width: 100 }}
+
           >
             <div className="saveButtonIcon"><SaveIcon /></div>
             <div className="saveButton">บันทึก</div>
