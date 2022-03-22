@@ -1,4 +1,4 @@
-import { Button, Grid, Paper, TextField } from "@mui/material";
+import { Button, Container, Grid, Paper, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import FaceIcon from "@mui/icons-material/Face";
 import "./Profile.css";
@@ -24,6 +24,8 @@ function Profile() {
   const [userEmail, setUserEmail] = useState('')
   const [userIsStaff, setUserIsStaff] = useState(null)
 
+  
+
   useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
     async function fetchData() {
       const response = await ax.get('/userdetail')
@@ -38,6 +40,7 @@ function Profile() {
   }, []);
 
   console.log(userEmail)
+
   return (
     <div>
       <h4 className="hello">สวัสดี, นี่คือโปรไฟล์ของคุณ</h4>{" "}
@@ -79,7 +82,7 @@ function Profile() {
               <Grid item xs={4} md={2}>
                 <div className="titlename">ชื่อ</div>
               </Grid>
-              <Grid item xs={10} md={4}>
+              <Grid item xs={11.5} md={4}>
                 <Box
                   className='boxname'
                 >
@@ -93,7 +96,7 @@ function Profile() {
               <Grid item xs={4} md={2}>
                 <div className="titlename">นามสกุล</div>
               </Grid>
-              <Grid item xs={10} md={4}>
+              <Grid item xs={11.5} md={4}>
                 <Box
                   className='boxname'
                 >
@@ -145,14 +148,15 @@ function Profile() {
           >
             ที่อยู่อีเมล
           </h1>
-          <Box className="boxprofile">
-            <Grid container spacing={0.5}>
-              <Grid item xs={3} md={2}>
+          <Box className="boxEmail" >
+            <Grid container spacing={0.5} alignItems="center" >
+              <Grid item xs={4} md={2}>
                 <div className="titlename">อีเมล</div>
               </Grid>
-              <Grid item xs={10} md={4}>
+              <Grid item xs={11.5} md={4}>
                 <Box
-                  className='boxname'
+                  className='boxemail'
+                  sx={{}}
                 >
                   <div className="name">{userEmail}</div>
                 </Box>

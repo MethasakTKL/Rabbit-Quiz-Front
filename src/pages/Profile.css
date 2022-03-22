@@ -42,9 +42,20 @@
 }
 
 .boxprofile{
-    padding-left: 15%;
+    padding-left: 10%;
     padding-right: 2%;
     padding-bottom: 20px;
+    align-items: center;
+
+}
+
+.boxEmail{
+    padding-left: 10%;
+    padding-right: 2%;
+    padding-bottom: 20px;
+
+
+
     
 }
 .titlename{
@@ -65,4 +76,13 @@
     width: 100%;
     background-color: #e7daf8ea;
     border-radius: 2px;
+}
+.boxemail{
+    height: 40px;
+    width: 100%;
+    background-color: #e7daf8ea;
+    border-radius: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
