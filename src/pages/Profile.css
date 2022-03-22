@@ -21,6 +21,8 @@
 
 .editTitle{
     font-family:'Prompt', sans-serif;
+    font-weight: 600;
+    color: #693aa0;
 }
 
 .saveButton{
