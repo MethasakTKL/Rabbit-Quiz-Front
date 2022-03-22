@@ -28,13 +28,11 @@ function Home() {
     setOpen(false);
   };
 
-  const [userName, setUserName] = useState('')
   const [userFirstName, setUserFirstName] = useState('')
   useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
     async function fetchData() {
       const response = await ax.get('/userdetail')
       setUserFirstName(response.data.first_name)
-      setUserName(response.data.first_name + " " + response.data.last_name)
       console.log('Fetch data for home success...')
     }
     fetchData();
@@ -42,7 +40,7 @@ function Home() {
 
   return (
     <div>
-      <h4 className="hello">สวัสดี, {localStorage.getItem('user_first_name')}</h4>
+      <h4 className="hello">สวัสดี, {userFirstName}</h4>
       {/* เพิ่มห้องเรียน */}
       <Button
         variant="outlined"

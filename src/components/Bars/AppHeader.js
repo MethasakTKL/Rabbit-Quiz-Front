@@ -18,6 +18,7 @@ import { EmojiEvents, MenuTwoTone } from "@mui/icons-material";
 //authentic
 import { ax, useAuth } from "../../auth/auth";
 
+
 function AppHeader() {
   const auth = useAuth()
   const [value, setValue] = React.useState(0);
@@ -51,18 +52,23 @@ function AppHeader() {
       const response = await ax.get('/userdetail')
       console.log("Fetch data for header success...")
       setUserDetail(response.data)
-      setUserName(response.data.first_name + " " + response.data.last_name)
+      setUserName(userDetail.first_name + " " + userDetail.last_name)
 
-      if (response.data.is_staff) {
+      if (userDetail.is_staff == true) {
         setUserRole('คุณครู')
-      } else {
+      }
+      if (!userDetail.is_staff == true) {
         setUserRole('นักเรียน')
       }
     }
-    fetchData();
+    fetchData(); s
   }, []);
 
-
+  const path = useLocation().pathname;
+  if (path == "/") { if (value != 0) { setValue(0) } }
+  if (path == "/activity") { if (value != 1) { setValue(1) } }
+  if (path == "/mypoints") { if (value != 2) { setValue(2) } }
+  if (path == "/profile") { if (value != 3) { setValue(3) } }
 
 
   return (
@@ -101,6 +107,9 @@ function AppHeader() {
                       </div>
                     }
                     sx={{
+                      "&:hover": {
+                        color: "#f3e5f5",
+                      },
                       color: "#f3e5f5",
                       fontFamily: "Prompt",
                       display: "inline",
@@ -117,6 +126,9 @@ function AppHeader() {
                       </div>
                     }
                     sx={{
+                      "&:hover": {
+                        color: "#f3e5f5",
+                      },
                       color: "#f3e5f5",
                       fontFamily: "Prompt",
                       display: "inline",
@@ -133,6 +145,9 @@ function AppHeader() {
                       </div>
                     }
                     sx={{
+                      "&:hover": {
+                        color: "#f3e5f5",
+                      },
                       color: "#f3e5f5",
                       fontFamily: "Prompt",
                       display: "inline",
@@ -148,6 +163,9 @@ function AppHeader() {
                       </div>
                     }
                     sx={{
+                      "&:hover": {
+                        color: "#f3e5f5",
+                      },
                       color: "#f3e5f5",
                       fontFamily: "Prompt",
                       display: "inline",

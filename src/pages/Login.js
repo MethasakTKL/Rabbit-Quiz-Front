@@ -8,7 +8,8 @@ import Loginlogo from '../Static/image/Rabbitquiz_05.png'
 
 //authentic
 import { ax, useAuth } from "../auth/auth";
-
+import { message } from "antd";
+import "antd/dist/antd.css";
 
 function Login() {
 
@@ -40,6 +41,7 @@ function Login() {
         setShowLoginEmpty(true)
       }
       else if (typeof response != String) {
+        message.success({ content: "ลงชื่อเข้าใช้สำเร็จ", style: { fontFamily: "Prompt" } })
         console.log("Login successfully.")
         navigate("/", { replace: true });
       }
@@ -79,9 +81,8 @@ function Login() {
                 />
               </Stack>
               <button type="button" className='login' onClick={loginpress}>เข้าสู่ระบบ</button>
-              <p>
-                <button type="button" className='register'>สร้างบัญชีใหม่</button>
-              </p>
+              <p></p>
+              <button type="button" className='register'>สร้างบัญชีใหม่</button>
             </form>
           </div>
         </div>

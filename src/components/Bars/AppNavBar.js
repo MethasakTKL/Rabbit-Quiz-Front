@@ -46,7 +46,12 @@ function AppNavBar() {
                 className="navtext"
                 icon={<HomeIcon />}
                 label="หน้าแรก"
-                sx={{ color: "#f3e5f5", fontFamily: "Prompt" }}
+                sx={{
+                  "&:hover": {
+                    color: "#f3e5f5"
+                  },
+                  color: "#f3e5f5", fontFamily: "Prompt"
+                }}
                 to="/"
                 component={Link}
               />
@@ -54,7 +59,12 @@ function AppNavBar() {
                 className="navtext"
                 icon={<HistoryIcon />}
                 label="กิจกรรม"
-                sx={{ color: "#f3e5f5", fontFamily: "Prompt" }}
+                sx={{
+                  "&:hover": {
+                    color: "#f3e5f5"
+                  },
+                  color: "#f3e5f5", fontFamily: "Prompt"
+                }}
                 to="/activity"
                 component={Link}
               />
@@ -62,7 +72,12 @@ function AppNavBar() {
                 className="navtext"
                 icon={<EmojiEvents />}
                 label="คะแนน"
-                sx={{ color: "#f3e5f5", fontFamily: "Prompt" }}
+                sx={{
+                  "&:hover": {
+                    color: "#f3e5f5"
+                  },
+                  color: "#f3e5f5", fontFamily: "Prompt"
+                }}
                 to="/mypoints"
                 component={Link}
               />
@@ -70,7 +85,12 @@ function AppNavBar() {
                 className="navtext"
                 icon={<FaceIcon />}
                 label="โปรไฟล์"
-                sx={{ color: "#f3e5f5", fontFamily: "Prompt" }}
+                sx={{
+                  "&:hover": {
+                    color: "#f3e5f5"
+                  },
+                  color: "#f3e5f5", fontFamily: "Prompt"
+                }}
                 to="/profile"
                 component={Link}
               />
