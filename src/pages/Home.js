@@ -103,7 +103,7 @@ function Home() {
               ห้องเรียน <ClassIcon sx={{ fontSize: "50" }} />
             </h1>
           </typography>
-          <Stack sx={{ paddingBottom: 2 }}>
+          <Stack sx={{ paddingBottom: 5 }}>
             <Box>
               <Card
                 sx={{
@@ -111,6 +111,8 @@ function Home() {
                   maxWidth: 500,
                   marginLeft: "auto",
                   marginRight: "auto",
+                  paddingBottom: 2,
+                  
                 }}
                 elevation={5}
               >
@@ -124,12 +126,13 @@ function Home() {
                   <div className="cardcontent">ห้องเรียนการเกษตร</div>
                 </CardContent>
                 <CardActions>
-                  <Box sx={{ marginLeft: "auto" }}>
+                  <Box sx={{ marginLeft: "auto",paddingRight:1.5 }}>
                     <Button
                       variant="contained"
                       sx={{ width: 200, height: 50 }}
                       component={Link}
                       to="/classroom"
+
                     >
                       <div className="roomname">เข้าห้องเรียน</div>
                     </Button>
