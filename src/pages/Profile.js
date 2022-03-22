@@ -156,7 +156,7 @@ function Profile() {
           </Grid> */}
 
           <Grid paddingBottom={2} sx={{ marginLeft: "42%" }}>
-            <EditEmailPopup />
+            <EditEmailPopup userDetail={user} />
           </Grid>
         </Paper>
       </Grid>
