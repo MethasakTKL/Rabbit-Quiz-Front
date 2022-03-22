@@ -21,8 +21,6 @@ import { ax, useAuth } from "../../auth/auth";
 
 function AppHeader() {
   const auth = useAuth()
-  const user = auth.user
-
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -40,14 +38,37 @@ function AppHeader() {
     setAnchorEl(null);
     auth.signout()
   };
-  const navigate = useNavigate();
 
-  // เปลี่ยนสีของ Tabs บน Headers เวลากดเปลี่ยนลิ้ง
+  // เปลี่ยนสีของ Tabs บน Headers เวลากดเปลี่ยน path
+  const navigate = useNavigate();
   const path = useLocation().pathname;
   if (path == "/") { if (value != 0) { setValue(0) } }
   if (path == "/activity") { if (value != 1) { setValue(1) } }
   if (path == "/mypoints") { if (value != 2) { setValue(2) } }
   if (path == "/profile") { if (value != 3) { setValue(3) } }
+
+  //วิธีเรียกข้อมูลหริอ fetch data มาใช้
+  const [userDetail, setUserDetail] = React.useState(null) //ตัวแปรใช้ useState ตั้ง
+  const [userRole, setUserRole] = React.useState('')
+  const [userName, setUserName] = React.useState('')
+
+
+  useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
+    async function fetchData() {
+      const response = await ax.get('/userdetail')
+      console.log("Fetch data for header success...")
+      setUserDetail(response.data)
+      setUserName(userDetail.first_name + " " + userDetail.last_name)
+
+      if (userDetail.is_staff == true) {
+        setUserRole('คุณครู')
+      }
+      if (!userDetail.is_staff == true) {
+        setUserRole('นักเรียน')
+      }
+    }
+    fetchData();
+  }, []);
 
 
   return (
@@ -159,8 +180,8 @@ function AppHeader() {
             {/* PC SECTION */}
             <Grid sx={{ marginLeft: "auto", marginRight: 0 }}>
 
-              <div class="user-role" >{user.is_staff ? "คุณครู" : "นักเรียน"}</div>
-              <div class="user-name">{user.first_name + " " + user.last_name}</div>
+              <div class="user-role" >{userRole}</div>
+              <div class="user-name">{userName}</div>
 
             </Grid>
             {/* Other Button */}

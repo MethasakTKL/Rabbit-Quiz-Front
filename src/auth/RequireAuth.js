@@ -6,10 +6,23 @@ function RequireAuth() {
     let location = useLocation();
 
     if (appAuthProvider.isAuthenticated === false) {
-        // Redirect them to the /login page, but save the current location they were
-        // trying to go to when they were redirected. This allows us to send them
-        // along to that page after they login, which is a nicer user experience
-        // than dropping them off on the home page.
+        let token = localStorage.getItem('access_token')
+        if (token) {
+            try {
+                let username = localStorage.getItem('id_username')
+                let password = localStorage.getItem('id_password')
+                let userdata = { username, password }
+
+                auth.signin(userdata, (response) => {
+                    auth.setUser(response)
+                })
+
+
+            } catch (err) {
+                console.log("Error", JSON.stringify(err))
+            }
+        }
+
         return <Navigate to="/login" state={{ from: location }} />;
     }
     return <Outlet />;

@@ -26,6 +26,8 @@ const appAuthProvider = {
             localStorage.setItem("user_first_name", user_detail.data.first_name)
             localStorage.setItem("user_last_name", user_detail.data.last_name)
             localStorage.setItem("user_is_staff", JSON.stringify(user_detail.data.is_staff))
+            localStorage.setItem("id_username", userdata.username)
+            localStorage.setItem("id_password", userdata.password)
             callback(user_detail.data)
          }
       } catch (error) {
@@ -49,6 +51,8 @@ const appAuthProvider = {
    },
 };
 
+let token = localStorage.getItem('access_token')
+appAuthProvider.accessToken = token
 ax.interceptors.request.use(config => {
    if (appAuthProvider.accessToken) {
       config.headers.authorization = `Bearer ${appAuthProvider.accessToken}`
@@ -61,9 +65,9 @@ let AuthContext = React.createContext(null);
 
 function AuthProvider({ children }) {
    let [user, setUser] = React.useState(null);
-   let navigate = useNavigate()
-   let auth = useAuth()
-
+   let navigate = useNavigate();
+   let auth = useAuth();
+   let location = useLocation();
 
    let signin = (userdata, callback) => {
       return appAuthProvider.signin(userdata, (response) => {
@@ -82,6 +86,8 @@ function AuthProvider({ children }) {
    };
 
    let value = { user, setUser, signin, signout };
+
+
 
    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

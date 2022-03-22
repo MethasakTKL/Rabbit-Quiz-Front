@@ -18,18 +18,26 @@ import {
 
 function Profile() {
   //เรียกข้อมูลหริอ fetch data มาใช้
-  const auth = useAuth()
-  const [user, setUser] = useState(auth.user)
+  const [user, setUser] = useState()
+  const [userFirstname, setUserFirstname] = useState('')
+  const [userLastname, setUserLastname] = useState('')
+  const [userEmail, setUserEmail] = useState('')
+  const [userIsStaff, setUserIsStaff] = useState(null)
 
   useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
     async function fetchData() {
       const response = await ax.get('/userdetail')
       setUser(response.data)
+      setUserFirstname(response.data.first_name)
+      setUserLastname(response.data.last_name)
+      setUserEmail(response.data.email)
+      setUserIsStaff(response.data.is_staff)
       console.log('Fetch data for profile success...')
     }
     fetchData();
   }, []);
 
+  console.log(userEmail)
   return (
     <div>
       <h4 className="hello">สวัสดี, นี่คือโปรไฟล์ของคุณ</h4>{" "}
@@ -43,10 +51,10 @@ function Profile() {
               <FaceIcon sx={{ fontSize: 100, color: "#F19528" }} />
             </div>
             <div className="centerName">
-              {user.first_name + " " + user.last_name}
+              {userFirstname + " " + userLastname}
             </div>
             <div className="centerAccount">
-              ประเภทบัญชี : {user.is_staff ? "คุณครู" : "นักเรียน"}
+              ประเภทบัญชี : {userIsStaff ? "คุณครู" : "นักเรียน"}
             </div>
           </Grid>
         </Paper>
@@ -75,7 +83,7 @@ function Profile() {
                 <Box
                   className='boxname'
                 >
-                  <div className="name">{user.first_name}</div>
+                  <div className="name">{userFirstname}</div>
                 </Box>
               </Grid>
             </Grid>
@@ -89,7 +97,7 @@ function Profile() {
                 <Box
                   className='boxname'
                 >
-                  <div className="name">{user.last_name}</div>
+                  <div className="name">{userLastname}</div>
                 </Box>
               </Grid>
             </Grid>
@@ -118,7 +126,7 @@ function Profile() {
           </Grid> */}
 
           <Grid paddingBottom={2} sx={{ marginLeft: "42%" }}>
-            <EditProfilePopup userDetail={user} />
+            <EditProfilePopup userName={{ userFirstname, userLastname }} />
           </Grid>
         </Paper>
       </Grid>
@@ -146,7 +154,7 @@ function Profile() {
                 <Box
                   className='boxname'
                 >
-                  <div className="name">{user.email}</div>
+                  <div className="name">{userEmail}</div>
                 </Box>
               </Grid>
             </Grid>
@@ -165,7 +173,7 @@ function Profile() {
           </Grid> */}
 
           <Grid paddingBottom={2} sx={{ marginLeft: "42%" }}>
-            <EditEmailPopup userDetail={user} />
+            <EditEmailPopup userOldEmail={userEmail} />
           </Grid>
         </Paper>
       </Grid>

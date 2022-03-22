@@ -28,8 +28,10 @@ import { EmojiEvents } from "@mui/icons-material";
 //import image
 import waterplant from "../Static/image/waterplant.png";
 import { Link } from "react-router-dom";
+import { useAuth } from "../auth/auth";
 
 function ClassActivity() {
+  let auth = useAuth()
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
 

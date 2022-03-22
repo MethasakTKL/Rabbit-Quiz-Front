@@ -42,15 +42,17 @@ function Login() {
           content: "ลงชื่อเข้าใช้สำเร็จ",
           style: { fontFamily: "Prompt" },
         });
-        console.log("Login successfully.");
+        console.log("Login successfully...");
         navigate("/", { replace: true });
+
       }
     });
   };
 
+
   return (
-      <html className="bodybackground">
-        <header className="App-header">
+    <html className="bodybackground">
+      <header className="App-header">
         <div class="login-page">
           <div class="logo">
             <img src={Loginlogo} alt="logorabbit"></img>
@@ -90,7 +92,7 @@ function Login() {
               <Stack spacing={2}>
                 <Button
                   variant="contained"
-                  style={{ height:50,background: "#1976D2" }}
+                  style={{ height: 50, background: "#1976D2" }}
                   onClick={loginpress}
                 >
                   <div className="register">เข้าสู่ระบบ</div>
@@ -99,7 +101,7 @@ function Login() {
 
                 <Button
                   variant="contained"
-                  style={{ height:50,background: "#56d35b" }}
+                  style={{ height: 50, background: "#56d35b" }}
                   to='/register'
                   component={Link}
                 >
@@ -109,8 +111,8 @@ function Login() {
             </form>
           </div>
         </div>
-        </header>
-      </html>
+      </header>
+    </html>
 
   );
 }

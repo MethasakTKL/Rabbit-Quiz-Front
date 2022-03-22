@@ -16,7 +16,7 @@ import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 
 
-function EditProfilePopup({ userDetail }) {
+function EditProfilePopup({ userName }) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -27,9 +27,12 @@ function EditProfilePopup({ userDetail }) {
     setOpen(false);
   };
 
+
   const onlyAlpha = /[^ก-๛]/gi;
-  const [firstname, setFirstName] = React.useState(userDetail.first_name);
-  const [lastname, setLastName] = React.useState(userDetail.last_name);
+  let first_name = userName.userFirstname
+  let last_name = userName.userLastname
+  const [firstname, setFirstName] = useState(first_name);
+  const [lastname, setLastName] = useState(last_name);
 
 
   return (
@@ -100,8 +103,8 @@ function EditProfilePopup({ userDetail }) {
 }
 
 
-function EditEmailPopup({ userDetail }) {
-  const [open, setOpen] = React.useState(false);
+function EditEmailPopup({ userOldEmail }) {
+  const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -112,16 +115,16 @@ function EditEmailPopup({ userDetail }) {
 
   const auth = useAuth()
   const navigate = useNavigate()
-  const [userEmail, setUserEmail] = React.useState(userDetail.email)
+  const [userNewEmail, setUserNewEmail] = useState(userOldEmail)
   const handleEditEmail = async () => {
     try {
       var result = await ax.post('/changeEmail', {
-        "email": userEmail
+        "email": userNewEmail
       })
       if (result.status === 200 && result.data) {
-        auth.user.email = userEmail
-        console.log(`User ${userDetail.username} has successfully changed email...`)
-        console.log(`From ${userDetail.email} -> ${userEmail}`)
+        auth.user.email = userNewEmail
+        console.log(`Changed email successfully...`)
+        console.log(`From ${userOldEmail} -> ${userNewEmail}`)
         handleClose()
         navigate('/', { replace: true })
         navigate('/profile', { replace: true })
@@ -160,8 +163,8 @@ function EditEmailPopup({ userDetail }) {
             margin="dense"
             id="nameclass"
             label="อีเมล"
-            value={userEmail}
-            onChange={(e) => setUserEmail(e.target.value)}
+            value={userNewEmail}
+            onChange={(e) => setUserNewEmail(e.target.value)}
             type="email"
             fullWidth
             variant="standard"
