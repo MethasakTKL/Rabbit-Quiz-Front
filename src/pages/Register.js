@@ -190,7 +190,8 @@ function Register() {
 
   return (
     <html>
-      <body class="background-reg">
+      <header className="App-header">
+      
         <div class="register-page">
           <div class="logo">
             <logo>
@@ -353,7 +354,8 @@ function Register() {
             </Dialog>
           </div>
         </div>
-      </body>
+
+      </header>
     </html>
   );
 }
