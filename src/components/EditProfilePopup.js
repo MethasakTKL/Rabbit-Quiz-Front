@@ -11,6 +11,7 @@ import TextField from "@mui/material/TextField";
 import './EditProfilePopup.css';
 import SaveIcon from '@mui/icons-material/Save';
 import RegexTextField from "./RegexTextField";
+import { ax } from "../auth/auth";
 
 
 function EditProfilePopup({ userDetail }) {
@@ -97,7 +98,7 @@ function EditProfilePopup({ userDetail }) {
 }
 
 
-function EditEmailPopup() {
+function EditEmailPopup({ userDetail }) {
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
@@ -106,7 +107,12 @@ function EditEmailPopup() {
   const handleClose = () => {
     setOpen(false);
   };
-  const [fullWidth, setFullWidth] = React.useState(true);
+
+  const [userEmail, setUserEmail] = React.useState(userDetail.email)
+  const handleEditEmail = () => {
+    ax
+  }
+
   return (
     <div>
       <Button
@@ -131,6 +137,8 @@ function EditEmailPopup() {
             margin="dense"
             id="nameclass"
             label="อีเมล"
+            value={userEmail}
+            onChange={(e) => setUserEmail(e.target.value)}
             type="email"
             fullWidth
             variant="standard"
@@ -145,7 +153,7 @@ function EditEmailPopup() {
           </Button>
           <Button
             variant="contained"
-            onClick={handleClose}
+            onClick={handleEditEmail}
             sx={{ fontFamily: "Prompt", color: "white", width: 100 }}
 
           >
