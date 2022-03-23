@@ -52,7 +52,7 @@ function AppNavBar() {
                 icon={<HistoryIcon />}
                 label="กิจกรรม"
                 sx={{ color: "#f3e5f5", fontFamily: "Prompt"}}
-                to="/activity"
+                to="/classroom-activity-teacher"
                 component={Link}
 
               />
