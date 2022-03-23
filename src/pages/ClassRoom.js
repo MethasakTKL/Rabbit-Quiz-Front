@@ -10,9 +10,6 @@ import FaceIcon from "@mui/icons-material/Face";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 class Classroom extends React.Component {
-
-
-
   renderItem(item) {
     return (
       <Link to={`/classroom/${item.id}`}>
@@ -23,7 +20,7 @@ class Classroom extends React.Component {
 
   render() {
     return (
-      <div className="screen" >
+      <div className="screen">
         <h1 className="classname" style={{ fontSize: 36 }}>
           ห้องเรียนการเกษตร
         </h1>
@@ -32,7 +29,6 @@ class Classroom extends React.Component {
           spacing={2}
           paddingBottom={2}
           justifyContent="center"
-
         >
           <Button
             variant="contained"
@@ -128,7 +124,9 @@ class Classroom extends React.Component {
                     alignItems="center"
                     paddingLeft={2}
                   >
-                    <AccountCircleIcon sx={{ fontSize: 30, color: "#9C2431" }} />
+                    <AccountCircleIcon
+                      sx={{ fontSize: 30, color: "#9C2431" }}
+                    />
                     <p className="postername">อารีย์ มีสุข</p>
                   </Grid>
                   <p className="postinfo">
@@ -222,7 +220,9 @@ class Classroom extends React.Component {
                     alignItems="center"
                     paddingLeft={2}
                   >
-                    <AccountCircleIcon sx={{ fontSize: 30, color: "#9C2431" }} />
+                    <AccountCircleIcon
+                      sx={{ fontSize: 30, color: "#9C2431" }}
+                    />
                     <p className="postername">อารีย์ มีสุข</p>
                   </Grid>
                   <p className="postinfo">
@@ -256,6 +256,7 @@ class Classroom extends React.Component {
             </Stack>
           </Paper>
         </Box>
+        <Box sx={{ paddingTop: 15 }}></Box>
       </div>
     );
   }
