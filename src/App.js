@@ -6,7 +6,7 @@ import AppHeader from "./components/Bars/AppHeader";
 import AppNavBar from "./components/Bars/AppNavBar";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Layout from "./components/Bars/Layout";
-
+import LayOutTeacher from "./components_teacher/Bars/LayoutTeacher"
 //pages
 import Falsepage from "./pages/Falsepage";
 import Home from "./pages/Home";
@@ -48,16 +48,18 @@ function App() {
             <Route path="/classroom-activity" element={<ClassActivity />} />
             <Route path="/activity" element={<Activity />} />
             <Route path="/mypoints" element={<MyPointsPage />} />
-
-            <Route element={<TeacherGuard />}>
-              <Route path="/teacher" element={<Home_Teacher />} />
-              <Route path="/profile-teacher" element={<Profile_Teacher />} />
-              <Route path="/classroom-teacher" element={<Classroom_Teacher />} />
-              <Route path="/classroom-member-teacher" element={<ClassMember_Teacher />} />
-              <Route path="/classroom-activity-teacher" element={<ClassActivity_Teacher />} />
-            </Route>
             <Route path="*" element={<Falsepage />} />
           </Route>
+          <Route element={<LayOutTeacher />}>
+            <Route element={<TeacherGuard />}>
+                <Route path="/teacher" element={<Home_Teacher />} />
+                <Route path="/profile-teacher" element={<Profile_Teacher />} />
+                <Route path="/classroom-teacher" element={<Classroom_Teacher />} />
+                <Route path="/classroom-member-teacher" element={<ClassMember_Teacher />} />
+                <Route path="/classroom-activity-teacher" element={<ClassActivity_Teacher />} />
+            </Route>
+          </Route>
+
         </Route>
 
       </Routes>
