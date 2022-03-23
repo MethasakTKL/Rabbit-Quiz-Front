@@ -41,8 +41,9 @@ function AddMember() {
           <DialogContentText sx={{ fontFamily: "Prompt" }}>
             กรุณากรอกอีเมลเพื่อเพิ่มสมาชิกเข้าสู่ห้องเรียน
           </DialogContentText>
-          <error>ไม่พบผู้ใช้สำหรับอีเมลนี้ในระบบ กรุณาลองใช้ชื่อบัญชีอื่น</error>
-
+          <div className="addmember-error">
+            ไม่พบผู้ใช้สำหรับอีเมลนี้ในระบบ<div>กรุณาลองใช้อีเมลอื่น </div>{" "}
+          </div>
           <TextField
             autoFocus
             margin="dense"
