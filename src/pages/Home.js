@@ -35,8 +35,8 @@ function Home() {
         setOpen(false);
     };
 
-    const [userFirstName, setUserFirstName] = useState('')
-    const [userIsStaff, setUserIsStaff] = useState('')
+    let userFirstName = localStorage.getItem('user_first_name')
+    let userIsStaff = JSON.parse(localStorage.getItem('user_is_staff'))
     const [userClassRoom, setUserClassRoom] = useState()
 
     let timeout;
@@ -44,18 +44,9 @@ function Home() {
         clearTimeout(timeout);
         timeout = setTimeout(() => {
             async function fetchData() {
-                const response = await ax.get('/userdetail')
-                setUserFirstName(response.data.first_name)
-                setUserIsStaff(response.data.is_staff)
-                console.log('Fetch data for home success...')
-
                 const classRoom = await ax.get('/getUserClassroom')
                 setUserClassRoom(classRoom)
-                console.log(classRoom.data.length)
                 console.log(classRoom.data)
-
-                const res = await ax.get('/myclass')
-                console.log(res.data)
             }
             fetchData();
         }, 0);    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData

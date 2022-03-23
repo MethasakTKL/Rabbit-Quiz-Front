@@ -48,31 +48,12 @@ function AppHeader() {
   if (path == "/profile") { if (value != 3) { setValue(3) } }
 
   //วิธีเรียกข้อมูลหริอ fetch data มาใช้
-  const [userRole, setUserRole] = React.useState('')
-  const [isStaff, setIsStaff] = React.useState(false)
-  const [userName, setUserName] = React.useState('')
-  const [userFirstName, setUserFirstName] = React.useState('')
+  let userName =
+    localStorage.getItem('user_first_name') + " " +
+    localStorage.getItem('user_last_name')
 
-
-  // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
-  let localFirstName = localStorage.getItem('user_first_name')
-  if (localFirstName != userFirstName) {
-
-    async function fetchData() {
-      const response = await ax.get('/userdetail')
-      let userDetail = response.data
-      setUserName(userDetail.first_name + " " + userDetail.last_name)
-      setIsStaff(userDetail.is_Staff)
-      console.log(isStaff)
-      if (userDetail.is_staff == true) {
-        setUserRole('คุณครู')
-      }
-      if (!userDetail.is_staff == true) {
-        setUserRole('นักเรียน')
-      }
-    }
-    fetchData();
-  }
+  let IsStaff =
+    JSON.parse(localStorage.getItem('user_is_staff'))
 
   return (
     <div>
@@ -121,7 +102,7 @@ function AppHeader() {
                       height: "63px"
 
                     }}
-                    to="/"
+                    to={IsStaff ? '/teacher' : '/'}
                     component={Link}
                   />
 
@@ -193,7 +174,7 @@ function AppHeader() {
             {/* PC SECTION */}
             <Grid sx={{ marginLeft: "auto", marginRight: 0 }}>
 
-              <div class="user-role" >{userRole}</div>
+              <div class="user-role" >{IsStaff ? 'คุณครู' : 'นักเรียน'}</div>
               <div class="user-name">{userName}</div>
 
             </Grid>

@@ -29,16 +29,8 @@ function EditProfilePopup() {
 
   /////// Get data for Default Profile /////////
   const onlyAlpha = /[^ก-๛]/gi;
-  const [firstname, setFirstName] = useState();
-  const [lastname, setLastName] = useState();
-  useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
-    async function fetchData() {
-      const response = await ax.get('/userdetail')
-      setFirstName(response.data.first_name)
-      setLastName(response.data.last_name)
-    }
-    fetchData();
-  }, []);
+  const [firstname, setFirstName] = useState(localStorage.getItem('user_first_name'));
+  const [lastname, setLastName] = useState(localStorage.getItem('user_last_name'));
 
 
   let auth = useAuth()
@@ -55,12 +47,13 @@ function EditProfilePopup() {
         handleClose()
         let username = localStorage.getItem('id_username')
         let password = localStorage.getItem('id_password')
-        auth.signin(username, password)
-        navigate('/', { replace: true })
-        navigate('/profile', { replace: true })
-        message.success({
-          content: "เปลี่ยนแปลงชื่อนามสกุลสำเร็จ",
-          style: { fontFamily: "Prompt" },
+        auth.signin({ username, password }, (response) => {
+          navigate('/', { replace: true })
+          navigate('/profile', { replace: true })
+          message.success({
+            content: "เปลี่ยนแปลงชื่อนามสกุลสำเร็จ",
+            style: { fontFamily: "Prompt" },
+          })
         })
       }
     } catch (error) {
@@ -148,14 +141,7 @@ function EditEmailPopup() {
 
   const auth = useAuth()
   const navigate = useNavigate()
-  const [userNewEmail, setUserNewEmail] = useState();
-  useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
-    async function fetchData() {
-      const response = await ax.get('/userdetail')
-      await setUserNewEmail(response.data.email)
-    }
-    fetchData();
-  }, []);
+  const [userNewEmail, setUserNewEmail] = useState(localStorage.getItem('user_email'));
 
 
   const handleEditEmail = async () => {
@@ -164,14 +150,19 @@ function EditEmailPopup() {
         "email": userNewEmail
       })
       if (result.status === 200 && result.data) {
+
         auth.user.email = userNewEmail
         console.log(`Changed email successfully...`)
         handleClose()
-        navigate('/', { replace: true })
-        navigate('/profile', { replace: true })
-        message.success({
-          content: "เปลี่ยนแปลงที่อยู่อีเมลสำเร็จ",
-          style: { fontFamily: "Prompt" },
+        let username = localStorage.getItem('id_username')
+        let password = localStorage.getItem('id_password')
+        auth.signin({ username, password }, (response) => {
+          navigate('/', { replace: true })
+          navigate('/profile', { replace: true })
+          message.success({
+            content: "เปลี่ยนแปลงชื่อนามสกุลสำเร็จ",
+            style: { fontFamily: "Prompt" },
+          })
         })
       }
     } catch (error) {

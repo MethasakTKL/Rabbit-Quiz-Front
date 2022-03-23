@@ -21,30 +21,13 @@ import {
 
 function Profile() {
   //เรียกข้อมูลหริอ fetch data มาใช้
-  let navigate = useNavigate()
-  const [user, setUser] = useState()
-  const [userFirstname, setUserFirstname] = useState('')
-  const [userLastname, setUserLastname] = useState('')
-  const [userEmail, setUserEmail] = useState('')
-  const [userIsStaff, setUserIsStaff] = useState(null)
+  let userFirstname = localStorage.getItem('user_first_name')
+  let userLastname = localStorage.getItem('user_last_name')
 
-  let timeout;
+  let userEmail = localStorage.getItem('user_email')
+  let userIsStaff = JSON.parse(localStorage.getItem('user_is_staff'))
 
-  useEffect(() => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      async function fetchData() {
-        const response = await ax.get('/userdetail')
-        setUser(response.data)
-        setUserFirstname(response.data.first_name)
-        setUserLastname(response.data.last_name)
-        setUserEmail(response.data.email)
-        setUserIsStaff(response.data.is_staff)
-      }
-      fetchData();
-    }, 0);
-  }, []);
-
+  console.log('Profile has loaded ')
   return (
     <div>
       <h4 className="hello">สวัสดี, นี่คือโปรไฟล์ของคุณ</h4>{" "}
