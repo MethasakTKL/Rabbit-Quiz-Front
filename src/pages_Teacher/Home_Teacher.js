@@ -50,7 +50,7 @@ function Home_Teacher() {
 
   return (
     <div>
-      <h4 className="hello">สวัสดี,คุณครู{userFirstName}</h4>
+      <h4 className="hello">สวัสดี,คุณครู{" " + userFirstName}</h4>
       {/* เพิ่มห้องเรียน */}
       <CreateClassRoomPopup />
       {/* เพิ่มห้องเรียน */}

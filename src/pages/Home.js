@@ -19,6 +19,7 @@ import { useLocation, useNavigate } from "react-router";
 import { message } from "antd";
 import AddClassRoomPopup from "../components/Popup/AddClassRoomPopup";
 import CreateClassRoomPopup from "../components/Popup/CreateClassRoomPopup";
+import UserClassRoomCard from "../components/User/UserClassRoomCard";
 
 
 
@@ -41,22 +42,30 @@ function Home() {
 
     let timeout;
     useEffect(() => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            async function fetchData() {
-                const classRoom = await ax.get('/getUserClassroom')
-                setUserClassRoom(classRoom)
-                console.log(classRoom.data)
+
+        async function fetchData() {
+            const classRoom = await ax.get('/getUserClassroom')
+
+            let roomDetail = classRoom.data; let n = 0; let rooms = []
+            for (const prop in roomDetail) {
+                let room_id = roomDetail[n].id
+                let room_name = roomDetail[n].name
+                rooms.push({ id: room_id, name: room_name })
+                n++
             }
-            fetchData();
-        }, 0);    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
+            // console.log("obj room", rooms)
+        }
+        fetchData();
+        // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
     }, []);
+
+
+
     return (
         <div>
             <h4 className="hello">สวัสดี, {userFirstName}</h4>
             {/* ADD AND CREATE CLASSROOM SECTION USER*/}
             {userIsStaff ? <CreateClassRoomPopup /> : <AddClassRoomPopup />}
-
             <Box
                 sx={{
                     display: "flex",
@@ -72,49 +81,11 @@ function Home() {
                 }}
             >
                 <Paper elevation={3}>
-                    <typography>
-                        <h1 className="titleclass" sx={{}}>
-                            ห้องเรียน <ClassIcon sx={{ fontSize: "50" }} />
-                        </h1>
-                    </typography>
-                    <Stack sx={{ paddingBottom: 5 }}>
-                        <Box>
-                            <Card
-                                sx={{
-                                    width: "90%",
-                                    maxWidth: 500,
-                                    marginLeft: "auto",
-                                    marginRight: "auto",
-                                    paddingBottom: 2,
+                    <h1 className="titleclass" sx={{}}>
+                        ห้องเรียน <ClassIcon sx={{ fontSize: "50" }} />
+                    </h1>
+                    <UserClassRoomCard />
 
-                                }}
-                                elevation={5}
-                            >
-                                <CardMedia
-                                    component="img"
-                                    height="100%"
-                                    image={classIMG}
-                                    alt="green iguana"
-                                />
-                                <CardContent>
-                                    <div className="cardcontent">ห้องเรียนการเกษตร</div>
-                                </CardContent>
-                                <CardActions>
-                                    <Box sx={{ marginLeft: "auto", paddingRight: 1.5 }}>
-                                        <Button
-                                            variant="contained"
-                                            sx={{ width: 200, height: 50 }}
-                                            component={Link}
-                                            to="/classroom"
-
-                                        >
-                                            <div className="roomname">เข้าห้องเรียน</div>
-                                        </Button>
-                                    </Box>
-                                </CardActions>
-                            </Card>
-                        </Box>
-                    </Stack>
                 </Paper>
             </Box>
         </div>

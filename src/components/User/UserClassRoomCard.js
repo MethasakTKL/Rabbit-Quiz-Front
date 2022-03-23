@@ -1,38 +1,65 @@
-function UserResultCard(props) {
-    const card = (
-        <React.Fragment>
-            <CardHeader
-                title={props.userResult.announcement.topic}
-                subheader={props.userResult.announcement.pub_date_time}
-            />
-            <CardActionArea onClick={handleOpenPopup}>
-                <CardContent>
-                    <Grid container spacing={2} columns={4}>
-                        <Grid item xs={1}>
-                            <Avatar sx={{ bgcolor: red[500] }} aria-label="avatar">
-                                S
-                            </Avatar>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <Typography variant="h5" component="div">
-                                {props.userResult.result}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {props.userResult.remark}
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                </CardContent>
-                <CardActions>
-                    <Button onClick={handleOpenPopup} size="small">Read More</Button>
-                </CardActions>
-            </CardActionArea>
-        </React.Fragment>
-    )
+import "./UserClassRoomCard.css"
+import React from 'react'
+import { ax } from '../../auth/auth';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Box, Button, Paper, Stack, TextField, Card, CardActions, CardContent, CardMedia } from "@mui/material";
+
+function UserClassRoomCard() {
+    const [classroomList, setClassRoomList] = useState()
+
+    useEffect(() => {
+        async function fetchClassroom() {
+            const userRoom = await ax.get('/getUserClassroom')
+            let classroom = [];
+            let rooms = userRoom.data
+            let n = 0;
+            for (const prop in rooms) {
+                let roomID = rooms[n].id
+                let roomName = rooms[n].name
+                classroom.push({ id: roomID, name: roomName })
+                n++
+            }
+            setClassRoomList(classroom.map(room =>
+                <Stack sx={{ paddingBottom: 5 }}>
+                    <Box>
+                        <Card
+                            sx={{
+                                width: "90%",
+                                maxWidth: 500,
+                                marginLeft: "auto",
+                                marginRight: "auto",
+                                paddingBottom: 2,
+
+                            }}
+                            elevation={5}
+                        >
+                            <CardContent>
+                                <div className="cardcontent">{room.name}</div>
+                            </CardContent>
+                            <CardActions>
+                                <Box sx={{ marginLeft: "auto", paddingRight: 1.5 }}>
+                                    <Button
+                                        variant="contained"
+                                        sx={{ width: 200, height: 50 }}
+                                        component={Link}
+                                        to="/classroom"
+                                    >
+                                        <div className="roomname">เข้าห้องเรียน</div>
+                                    </Button>
+                                </Box>
+                            </CardActions>
+                        </Card>
+                    </Box>
+                </Stack>
+            ))
+
+        } fetchClassroom();
+    }, [])
 
     return (
-        <Card sx={{ maxWidth: 345 }}>{card}</Card>
+        <div class="user-classroom">{classroomList}</div>
     )
 }
 
-export default UserResultCard;
+export default UserClassRoomCard

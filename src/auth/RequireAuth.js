@@ -8,6 +8,7 @@ function RequireAuth() {
     let navigate = useNavigate
 
     if (appAuthProvider.isAuthenticated === false) {
+        console.log(appAuthProvider.isAuthenticated)
         try {
             let username = localStorage.getItem('id_username')
             let password = localStorage.getItem('id_password')
