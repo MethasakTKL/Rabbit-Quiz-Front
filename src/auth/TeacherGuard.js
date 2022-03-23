@@ -2,32 +2,17 @@ import { useLocation, Outlet, Navigate } from "react-router";
 import { useAuth, appAuthProvider } from "./auth";
 import { useNavigate } from "react-router-dom";
 
-function RequireAuth() {
-    let auth = useAuth();
+function TeacherGuard() {
     let location = useLocation();
-    let navigate = useNavigate
 
-    if (auth.user === null) {
-        let token = localStorage.getItem('access_token')
-        if (token) {
-            try {
-                let username = localStorage.getItem('id_username')
-                let password = localStorage.getItem('id_password')
-                let userdata = { username, password }
-
-                auth.signin(userdata, (response) => {
-                    auth.setUser(response)
-                })
-                return <Outlet />
-
-            } catch (err) {
-                console.log("Error", JSON.stringify(err))
-            }
-        }
-
+    let isStaff = JSON.parse(localStorage.getItem("user_is_staff"))
+    console.log("Is this teacher?")
+    console.log(isStaff)
+    if (!isStaff) {
+        console.log("Hey")
         return <Navigate to="/" state={{ from: location }} />;
     }
     return <Outlet />;
-}
 
-export { RequireAuth };
+}
+export { TeacherGuard };

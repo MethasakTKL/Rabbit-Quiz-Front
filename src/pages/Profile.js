@@ -42,7 +42,7 @@ function Profile() {
         setUserIsStaff(response.data.is_staff)
       }
       fetchData();
-    }, 700);
+    }, 0);
   }, []);
 
   return (

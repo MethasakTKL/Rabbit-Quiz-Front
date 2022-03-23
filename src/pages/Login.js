@@ -58,9 +58,10 @@ function Login() {
           style: { fontFamily: "Prompt", marginTop: 20, fontSize: "20px" },
           duration: 3
         });
-        console.log("Login successfully...");
-        navigate("/", { replace: true });
 
+        console.log("Login successfully...");
+        if (response.is_staff === true) { navigate("/teacher", { replace: true }); }
+        if (response.is_staff === false) { navigate("/", { replace: true }); }
       }
     });
   };

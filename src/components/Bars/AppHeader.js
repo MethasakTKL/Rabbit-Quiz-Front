@@ -49,6 +49,7 @@ function AppHeader() {
 
   //วิธีเรียกข้อมูลหริอ fetch data มาใช้
   const [userRole, setUserRole] = React.useState('')
+  const [isStaff, setIsStaff] = React.useState(false)
   const [userName, setUserName] = React.useState('')
 
 
@@ -62,7 +63,8 @@ function AppHeader() {
         const response = await ax.get('/userdetail')
         let userDetail = response.data
         setUserName(userDetail.first_name + " " + userDetail.last_name)
-
+        setIsStaff(userDetail.is_Staff)
+        console.log(isStaff)
         if (userDetail.is_staff == true) {
           setUserRole('คุณครู')
         }
@@ -71,7 +73,7 @@ function AppHeader() {
         }
       }
       fetchData();
-    }, 700);
+    }, 0);
   }, []);
 
   return (
@@ -124,6 +126,7 @@ function AppHeader() {
                     to="/"
                     component={Link}
                   />
+
                   <Tab
                     className="navtext"
                     label={
@@ -144,6 +147,8 @@ function AppHeader() {
                     to="/activity"
                     component={Link}
                   />
+
+
                   <Tab
                     className="navtext"
                     label={
@@ -164,6 +169,7 @@ function AppHeader() {
                     to="/mypoints"
                     component={Link}
                   />
+
                   <Tab
                     className="navtext"
                     label={

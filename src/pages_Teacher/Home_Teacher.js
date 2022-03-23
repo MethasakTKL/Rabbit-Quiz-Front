@@ -9,6 +9,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import kid from "../Static/image/kid.png";
+import CreateClassRoomPopup from "../components/Popup/CreateClassRoomPopup";
 
 function Home_Teacher() {
   const [open, setOpen] = React.useState(false);
@@ -25,58 +26,7 @@ function Home_Teacher() {
     <div>
       <h4 className="hello">สวัสดี, อารีย์ มีสุข</h4>
       {/* เพิ่มห้องเรียน */}
-      <Button
-        variant="outlined"
-        sx={{
-          display: "block",
-          marginLeft:'auto',
-          marginRight:'auto',
-          fontFamily: "Prompt",
-        }}
-        onClick={handleClickOpen}
-      >
-        <FiPlus /> สร้างห้องเรียน
-      </Button>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle sx={{ fontFamily: "Prompt" }}>สร้างห้องเรียน</DialogTitle>
-        <error class="teacher-add-room">กรุณากรอกชื่อห้องเรียนและรหัสห้องเรียนให้ครบถ้วน</error>
-        <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="nameclass"
-            label="ชื่อห้องเรียน"
-            type="name"
-            fullWidth
-            variant="standard"
-            inputProps={{ style: { fontFamily: "Prompt" } }}
-            InputLabelProps={{ style: { fontFamily: "Prompt" } }}
-          />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="codeclass"
-            label="รหัสห้องเรียน"
-            type="name"
-            fullWidth
-            variant="standard"
-            inputProps={{ style: { fontFamily: "Prompt" } }}
-            InputLabelProps={{ style: { fontFamily: "Prompt" } }}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} sx={{ fontFamily: "Prompt" }}>
-            ยกเลิก
-          </Button>
-          <Button
-            variant="contained"
-            onClick={handleClose}
-            sx={{ fontFamily: "Prompt", color: "white" }}
-          >
-            สร้าง
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <CreateClassRoomPopup />
       {/* เพิ่มห้องเรียน */}
       <Box
         sx={{
@@ -103,7 +53,7 @@ function Home_Teacher() {
             <Button
               style={{
                 display: "flex",
-                background:"3870BD",//"linear-gradient(135deg, #33C58E 20%, #63FD88 90%)",
+                background: "3870BD",//"linear-gradient(135deg, #33C58E 20%, #63FD88 90%)",
                 marginRight: "auto",
                 marginLeft: "auto",
                 bottom: 10,

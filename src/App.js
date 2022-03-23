@@ -29,39 +29,39 @@ import Home_Teacher from "./pages_Teacher/Home_Teacher";
 
 //authentic
 import { RequireAuth } from "./auth/RequireAuth";
-import RefreshGuard from "./auth/RefreshGuard";
+import { TeacherGuard } from "./auth/TeacherGuard";
 
 function App() {
   return (
     <div>
 
       <Routes>
-        <Route element={<RefreshGuard />} >
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/register" element={<Register />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/register" element={<Register />} />
 
-          <Route element={<RequireAuth />}>
-            <Route element={<Layout />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/classroom" element={<Classroom />} />
-              <Route path="/classroom-member" element={<ClassMember />} />
-              <Route path="/classroom-activity" element={<ClassActivity />} />
-              <Route path="/activity" element={<Activity />} />
-              <Route path="/mypoints" element={<MyPointsPage />} />
+        <Route element={<RequireAuth />}>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/classroom" element={<Classroom />} />
+            <Route path="/classroom-member" element={<ClassMember />} />
+            <Route path="/classroom-activity" element={<ClassActivity />} />
+            <Route path="/activity" element={<Activity />} />
+            <Route path="/mypoints" element={<MyPointsPage />} />
 
+            <Route element={<TeacherGuard />}>
               <Route path="/teacher" element={<Home_Teacher />} />
               <Route path="/profile-teacher" element={<Profile_Teacher />} />
               <Route path="/classroom-teacher" element={<Classroom_Teacher />} />
               <Route path="/classroom-member-teacher" element={<ClassMember_Teacher />} />
               <Route path="/classroom-activity-teacher" element={<ClassActivity_Teacher />} />
-              <Route path="*" element={<Falsepage />} />
             </Route>
+            <Route path="*" element={<Falsepage />} />
           </Route>
-
         </Route>
+
       </Routes>
-    </div>
+    </div >
   );
 }
 

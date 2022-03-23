@@ -58,12 +58,8 @@ function Home() {
                 console.log(res.data)
             }
             fetchData();
-        }, 700);    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
+        }, 0);    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
     }, []);
-
-    let navigate = useNavigate()
-
-
     return (
         <div>
             <h4 className="hello">สวัสดี, {userFirstName}</h4>
