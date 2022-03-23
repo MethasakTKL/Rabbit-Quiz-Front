@@ -9,14 +9,19 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FaceIcon from "@mui/icons-material/Face";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
-
 function Classroom() {
   return (
     <div className="screen">
-      <h1 className="classname" style={{ paddingLeft: "5%", fontSize: 36 }}>
+      <h1 className="classname" style={{fontSize: 36 }}>
         ห้องเรียนการเกษตร
       </h1>
-      <Stack direction="row" spacing={2} paddingLeft={"5%"} paddingBottom={1}>
+      <Stack
+        direction="row"
+        spacing={2}
+        paddingBottom={2}
+        justifyContent="center"
+
+      >
         <Button
           variant="contained"
           sx={{ borderRadius: 3, width: 120 }}
@@ -24,7 +29,7 @@ function Classroom() {
           to="/classroom-member"
           component={Link}
         >
-          <PeopleAltIcon sx={{color:"#ffffff"}} />
+          <PeopleAltIcon sx={{ color: "#ffffff" }} />
           <div className="button1">สมาชิก</div>
         </Button>
         <Button
@@ -34,27 +39,22 @@ function Classroom() {
           to="/classroom-activity"
           component={Link}
         >
-          <QuizIcon sx={{color:"#ffffff"}} />
+          <QuizIcon sx={{ color: "#ffffff" }} />
           <div className="button2">กิจกรรม</div>
         </Button>
       </Stack>
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          "& > :not(style)": {
-            m: 1,
-
-            width: "90%",
-            height: "auto",
-            borderRadius: 3,
+      <Box>
+        <Paper
+          elevation={3}
+          sx={{
             marginLeft: "auto",
             marginRight: "auto",
+            paddingTop: 2,
             paddingBottom: 2,
-          },
-        }}
-      >
-        <Paper elevation={3}>
+            borderRadius: 3,
+          }}
+          className="screenpaper"
+        >
           <h1 className="post" style={{ paddingLeft: 40, fontSize: 24 }}>
             ประกาศข้อความของคุณ
           </h1>
@@ -83,168 +83,162 @@ function Classroom() {
           </Grid>
         </Paper>
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          "& > :not(style)": {
-            m: 1,
-
-            width: "90%",
-            height: "auto",
-            borderRadius: 3,
+      <Box sx={{paddingTop:2}}>
+        <Paper
+          elevation={3}
+          sx={{
             marginLeft: "auto",
             marginRight: "auto",
-          },
-        }}
-      >
-        <Paper elevation={3} paddingBottom={10}>
+            paddingTop: 2,
+            paddingBottom: 2,
+            borderRadius: 3,
+          }}
+          className="screenpaper"
+        >
           <h1 className="post" style={{ paddingLeft: 40, fontSize: 24 }}>
             โพสต์ล่าสุด
           </h1>
           {/* --------------------------------------------------------------------------------------------------------------------------------------- */}
           <Stack direction="column" spacing={4} paddingBottom={3}>
             <Grid>
-            <Paper
-              style={{
-                background: "#E7E6E5",
-                width: "80%",
-                height: "auto",
-                margin: "auto",
-                borderRadius: 10,
-              }}
-            >
-              <Grid
-                container
-                direction="row"
-                alignItems="center"
-                paddingLeft={2}
+              <Paper
+                style={{
+                  background: "#E7E6E5",
+                  width: "80%",
+                  height: "auto",
+                  margin: "auto",
+                  borderRadius: 10,
+                }}
               >
-                <AccountCircleIcon sx={{ fontSize: 30, color: "#9C2431" }} />
-                <p className="postername">อารีย์ มีสุข</p>
-              </Grid>
-              <p className="postinfo">
-                ให้นักเรียนทำกิจกรรมที่ 2 ให้เสร็จภายในวันที่ 1 มีนาคม 2565 ก่อน
-                22.00 น.
-              </p>
-              <Stack
-                spacing={1}
-                paddingBottom={2}
-                paddingRight={2}
-                direction="row"
-                justifyContent="flex-end"
-                alignItems="flex-start"
-
-              >
-                <Grid>
-                  <Button disabled>
-                    <DeleteOutlineIcon />
-                    <div className="buttondelete">ลบ</div>
-                  </Button>
+                <Grid
+                  container
+                  direction="row"
+                  alignItems="center"
+                  paddingLeft={2}
+                >
+                  <AccountCircleIcon sx={{ fontSize: 30, color: "#9C2431" }} />
+                  <p className="postername">อารีย์ มีสุข</p>
                 </Grid>
-                <Grid>
-                  <Button disabled>
-                    <DeleteOutlineIcon />
-                    <div className="buttonedit">แก้ไข</div>
-                  </Button>
-                </Grid>
-              </Stack>
-            </Paper>
+                <p className="postinfo">
+                  ให้นักเรียนทำกิจกรรมที่ 2 ให้เสร็จภายในวันที่ 1 มีนาคม 2565
+                  ก่อน 22.00 น.
+                </p>
+                <Stack
+                  spacing={1}
+                  paddingBottom={2}
+                  paddingRight={2}
+                  direction="row"
+                  justifyContent="flex-end"
+                  alignItems="flex-start"
+                >
+                  <Grid>
+                    <Button disabled>
+                      <DeleteOutlineIcon />
+                      <div className="buttondelete">ลบ</div>
+                    </Button>
+                  </Grid>
+                  <Grid>
+                    <Button disabled>
+                      <DeleteOutlineIcon />
+                      <div className="buttonedit">แก้ไข</div>
+                    </Button>
+                  </Grid>
+                </Stack>
+              </Paper>
             </Grid>
 
             {/* --------------------------------------------------------------------------------------------------------------------------------------- */}
             <Grid>
-            <Paper
-              style={{
-                background: "#E7E6E5",
-                width: "80%",
-                height: "auto",
-                margin: "auto",
-                borderRadius: 10,
-              }}
-            >
-              <Grid
-                container
-                direction="row"
-                alignItems="center"
-                paddingLeft={2}
+              <Paper
+                style={{
+                  background: "#E7E6E5",
+                  width: "80%",
+                  height: "auto",
+                  margin: "auto",
+                  borderRadius: 10,
+                }}
               >
-                <FaceIcon sx={{ fontSize: 30, color: "#F19528" }} />
-                <p className="postername">อิฟฟาฮาน สุขสุวรรณ</p>
-              </Grid>
-              <p className="postinfo">
-                คุณครูครับ ต้องทำกิจกรรมที่ 2 เลยไหมครับ
-              </p>
-              <Stack
-                spacing={1}
-                paddingBottom={2}
-                paddingRight={2}
-                direction="row"
-                justifyContent="flex-end"
-                alignItems="flex-start"
-              >
-                <Grid>
-                  <Button disabled>
-                    <DeleteOutlineIcon />
-                    <div className="buttondelete">ลบ</div>
-                  </Button>
+                <Grid
+                  container
+                  direction="row"
+                  alignItems="center"
+                  paddingLeft={2}
+                >
+                  <FaceIcon sx={{ fontSize: 30, color: "#F19528" }} />
+                  <p className="postername">อิฟฟาฮาน สุขสุวรรณ</p>
                 </Grid>
-                <Grid>
-                  <Button disabled>
-                    <DeleteOutlineIcon />
-                    <div className="buttonedit">แก้ไข</div>
-                  </Button>
-                </Grid>
-              </Stack>
-            </Paper>
+                <p className="postinfo">
+                  คุณครูครับ ต้องทำกิจกรรมที่ 2 เลยไหมครับ
+                </p>
+                <Stack
+                  spacing={1}
+                  paddingBottom={2}
+                  paddingRight={2}
+                  direction="row"
+                  justifyContent="flex-end"
+                  alignItems="flex-start"
+                >
+                  <Grid>
+                    <Button disabled>
+                      <DeleteOutlineIcon />
+                      <div className="buttondelete">ลบ</div>
+                    </Button>
+                  </Grid>
+                  <Grid>
+                    <Button disabled>
+                      <DeleteOutlineIcon />
+                      <div className="buttonedit">แก้ไข</div>
+                    </Button>
+                  </Grid>
+                </Stack>
+              </Paper>
             </Grid>
             {/* --------------------------------------------------------------------------------------------------------------------------------------- */}
             <Grid>
-            <Paper
-              style={{
-                background: "#E7E6E5",
-                width: "80%",
-                height: "auto",
-                margin: "auto",
-                borderRadius: 10,
-              }}
-            >
-              <Grid
-                container
-                direction="row"
-                alignItems="center"
-                paddingLeft={2}
+              <Paper
+                style={{
+                  background: "#E7E6E5",
+                  width: "80%",
+                  height: "auto",
+                  margin: "auto",
+                  borderRadius: 10,
+                }}
               >
-                <AccountCircleIcon sx={{ fontSize: 30, color: "#9C2431" }} />
-                <p className="postername">อารีย์ มีสุข</p>
-              </Grid>
-              <p className="postinfo">
-                ให้นักเรียนทำกิจกรรมที่ 1 ให้เสร็จภายในวันที่ 28 กุมภาพันธ์ 2565
-                ก่อน 22.00 น. นะคะ
-              </p>
-              <Stack
-                spacing={1}
-                paddingBottom={2}
-                paddingRight={2}
-                direction="row"
-                justifyContent="flex-end"
-                alignItems="flex-start"
-
-              >
-                <Grid>
-                  <Button disabled>
-                    <DeleteOutlineIcon />
-                    <div className="buttondelete">ลบ</div>
-                  </Button>
+                <Grid
+                  container
+                  direction="row"
+                  alignItems="center"
+                  paddingLeft={2}
+                >
+                  <AccountCircleIcon sx={{ fontSize: 30, color: "#9C2431" }} />
+                  <p className="postername">อารีย์ มีสุข</p>
                 </Grid>
-                <Grid>
-                  <Button disabled>
-                    <DeleteOutlineIcon />
-                    <div className="buttonedit">แก้ไข</div>
-                  </Button>
-                </Grid>
-              </Stack>
-            </Paper>
+                <p className="postinfo">
+                  ให้นักเรียนทำกิจกรรมที่ 1 ให้เสร็จภายในวันที่ 28 กุมภาพันธ์
+                  2565 ก่อน 22.00 น. นะคะ
+                </p>
+                <Stack
+                  spacing={1}
+                  paddingBottom={2}
+                  paddingRight={2}
+                  direction="row"
+                  justifyContent="flex-end"
+                  alignItems="flex-start"
+                >
+                  <Grid>
+                    <Button disabled>
+                      <DeleteOutlineIcon />
+                      <div className="buttondelete">ลบ</div>
+                    </Button>
+                  </Grid>
+                  <Grid>
+                    <Button disabled>
+                      <DeleteOutlineIcon />
+                      <div className="buttonedit">แก้ไข</div>
+                    </Button>
+                  </Grid>
+                </Stack>
+              </Paper>
             </Grid>
             {/* ------------------------------------------------------------------------------------------------------------------- */}
           </Stack>

@@ -23,6 +23,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { EmojiEvents } from "@mui/icons-material";
+import Linkform from '@mui/material/Link';
 
 
 //import image
@@ -48,9 +49,11 @@ function ClassActivity() {
   };
   return (
     <Box height={800}>
-      <h1 className="classname" style={{ paddingLeft: "5%", fontSize: 36 }}>
-        ห้องเรียนการเกษตร
-      </h1>
+      <Linkform href="classroom" underline="none">
+        <h1 className="classname" style={{fontSize: 36}}>
+          ห้องเรียนการเกษตร
+        </h1>
+      </Linkform>
       <Stack
         marginLeft={"auto"}
         marginRight={"auto"}
@@ -63,7 +66,7 @@ function ClassActivity() {
         <Grid>
           <Button
             variant="contained"
-            style={{ background: "#f5df4d", width: 170 }}
+            style={{ background: "#f5df4d", width: 180 }}
             to="/mypoints"
             component={Link}
           >

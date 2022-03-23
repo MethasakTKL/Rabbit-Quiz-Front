@@ -22,6 +22,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import AddIcon from "@mui/icons-material/Add";
+import Link from '@mui/material/Link';
 
 
 //import component
@@ -51,9 +52,11 @@ function ClassActivity_Teacher() {
   };
   return (
     <Box sx={{ height: 1050 }}>
-      <h1 className="classname" style={{ paddingLeft: "5%", fontSize: 36 }}>
-        ห้องเรียนการเกษตร
-      </h1>
+      <Link href="classroom-teacher" underline="none">
+        <h1 className="classname" style={{fontSize: 36}}>
+          ห้องเรียนการเกษตร
+        </h1>
+      </Link>
       <Stack
         marginLeft={"auto"}
         marginRight={"auto"}
@@ -165,6 +168,7 @@ function ClassActivity_Teacher() {
             borderRadius: 3,
             marginLeft: "auto",
             marginRight: "auto",
+            paddingTop:3
           },
         }}
       >

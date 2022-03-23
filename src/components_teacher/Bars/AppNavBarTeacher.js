@@ -2,19 +2,26 @@ import React from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import HistoryIcon from "@mui/icons-material/History";
 import FaceIcon from "@mui/icons-material/Face";
-import "./AppNavBar.css";
+import "./AppNavBarTeacher.css";
 import { AppBar, Box, Tab, Tabs, Toolbar } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link,useNavigate, useLocation, } from "react-router-dom";
 
 function AppNavBar() {
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  // เปลี่ยนสีของ Tabs บน Headers เวลากดเปลี่ยน path
+  const navigate = useNavigate();
+  const path = useLocation().pathname;
+  if (path == "/teacher") { if (value != 0) { setValue(0) } }
+  if (path == "/classroom-activity-teacher") { if (value != 1) { setValue(1) } }
+  if (path == "/profile-teacher") { if (value != 2) { setValue(2) } }
   return (
     <Box sx={{ justifyContent: "center" }}>
       <AppBar
-        style={{ background: "#5f498c" }}
+        style={{ background: "#4b327e" }}
         sx={{
           top: "auto",
           bottom: 15,

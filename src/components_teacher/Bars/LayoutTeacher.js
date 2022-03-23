@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import AppNavBar from './AppNavBar';
-import AppHeader from './AppHeader';
+import AppNavBar from './AppNavBarTeacher';
+import AppHeader from './AppHeaderTeacher';
 
 const LayOutTeacher = () => {
     return (

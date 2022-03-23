@@ -42,10 +42,9 @@ function AppHeader() {
   // เปลี่ยนสีของ Tabs บน Headers เวลากดเปลี่ยน path
   const navigate = useNavigate();
   const path = useLocation().pathname;
-  if (path == "/") { if (value != 0) { setValue(0) } }
-  if (path == "/activity") { if (value != 1) { setValue(1) } }
-  if (path == "/mypoints") { if (value != 2) { setValue(2) } }
-  if (path == "/profile") { if (value != 3) { setValue(3) } }
+  if (path == "/teacher") { if (value != 0) { setValue(0) } }
+  if (path == "/classroom-activity-teacher") { if (value != 1) { setValue(1) } }
+  if (path == "/profile-teacher") { if (value != 2) { setValue(2) } }
 
   //วิธีเรียกข้อมูลหริอ fetch data มาใช้
   const [userRole, setUserRole] = React.useState('')
@@ -78,7 +77,7 @@ function AppHeader() {
   return (
     <div>
       <Box>
-        <AppBar position="static" style={{ background: "#5F498C" }}>
+        <AppBar position="static" style={{ background: "#4b327e" }}>
           <CssBaseline />
           <Toolbar>
             <div className="goback-button">

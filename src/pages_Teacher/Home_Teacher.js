@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Paper, TextField } from "@mui/material";
+import { Box, Button, Paper, Stack, TextField } from "@mui/material";
 import ClassIcon from "@mui/icons-material/Class";
 import "./Home_Teacher.css";
 import { Link } from "react-router-dom";
@@ -11,6 +11,12 @@ import DialogTitle from "@mui/material/DialogTitle";
 import kid from "../Static/image/kid.png";
 import CreateClassRoomPopup from "../components/Popup/CreateClassRoomPopup";
 import { ax, useAuth } from "../auth/auth";
+import classIMG from "../Static/image/Classroomimg.jpg";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+
 
 function Home_Teacher() {
   const [open, setOpen] = React.useState(false);
@@ -53,7 +59,8 @@ function Home_Teacher() {
       <h4 className="hello">สวัสดี,คุณครู{" " + userFirstName}</h4>
       {/* เพิ่มห้องเรียน */}
       <CreateClassRoomPopup />
-      {/* เพิ่มห้องเรียน */}
+      {/* สร้างห้องเรียน */}
+
       <Box
         sx={{
           display: "flex",
@@ -62,7 +69,6 @@ function Home_Teacher() {
             m: 1,
 
             width: "90%",
-            height: 220,
             borderRadius: 3,
             marginLeft: "auto",
             marginRight: "auto",
@@ -75,25 +81,42 @@ function Home_Teacher() {
               ห้องเรียน <ClassIcon sx={{ fontSize: "50" }} />
             </h1>
           </typography>
-          <Box>
-            <Button
-              style={{
-                display: "flex",
-                background: "3870BD", //"linear-gradient(135deg, #33C58E 20%, #63FD88 90%)",
-                marginRight: "auto",
-                marginLeft: "auto",
-                bottom: 10,
-              }}
-              variant="contained"
-              sx={{ width: "90%", height: 100, borderRadius: 3 }}
-              to="/classroom-teacher"
-              component={Link}
-            >
-              <typography>
-                <h1 className="roomname">240-124 การเกษตร</h1>
-              </typography>
-            </Button>
-          </Box>
+          <Stack sx={{ paddingBottom: 5 }}>
+            <Box>
+              <Card
+                sx={{
+                  width: "90%",
+                  maxWidth: 500,
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  paddingBottom: 2,
+                }}
+                elevation={5}
+              >
+                <CardMedia
+                  component="img"
+                  height="100%"
+                  image={classIMG}
+                  alt="green iguana"
+                />
+                <CardContent>
+                  <div className="cardcontent">ห้องเรียนการเกษตร</div>
+                </CardContent>
+                <CardActions>
+                  <Box sx={{ marginLeft: "auto", paddingRight: 1.5 }}>
+                    <Button
+                      variant="contained"
+                      sx={{ width: 200, height: 50 }}
+                      component={Link}
+                      to="/classroom-teacher"
+                    >
+                      <div className="roomname">เข้าห้องเรียน</div>
+                    </Button>
+                  </Box>
+                </CardActions>
+              </Card>
+            </Box>
+          </Stack>
         </Paper>
       </Box>
     </div>

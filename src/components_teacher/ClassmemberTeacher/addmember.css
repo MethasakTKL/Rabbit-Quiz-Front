@@ -8,3 +8,23 @@
     font-weight: 550;
 
 }
+
+.addmember-error {
+    font-family: "Prompt";
+    font-size: 13pt;
+    color: rgba(220, 0, 0, 0.9);
+    border: 2px solid rgba(220, 0, 0, 0.9);
+    background-color: rgb(255, 244, 249);
+    padding: 4px;
+    text-align: center;
+}
+
+@media (max-width: 41em) {
+    .addmember-error {
+        font-size: 11pt;
+    }
+    
+    .login-page {
+        margin-bottom: 0rem;
+    }
+}

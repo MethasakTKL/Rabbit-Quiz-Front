@@ -20,6 +20,7 @@
 
 .Question{
     font-family: 'Prompt', sans-serif;
+    font-size: 15pt;
     text-align: center;
     color: #4d4d4d;
     font-weight: 600;
@@ -47,10 +48,10 @@
 }
 
 .ActivityTitle{
-    display: inline;
     font-family: 'Prompt', sans-serif;
     text-align: center;
     color: #856FB4;
+    font-size: 18pt;
     font-weight: 600;
 }
 
@@ -112,4 +113,16 @@
         width: 130px;
         padding-left: 2px;
     }
+}
+
+@media (max-width: 500px) {
+
+    .ActivityTitle{
+        font-family: 'Prompt', sans-serif;
+        text-align: center;
+        color: #856FB4;
+        font-size: 15pt;
+        font-weight: 600;
+    }
+
 }

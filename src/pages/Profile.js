@@ -34,7 +34,8 @@ function Profile() {
       <Grid>
         <Paper
           elevation={4}
-          sx={{ width: "90%", marginLeft: "auto", marginRight: "auto" }}
+          sx={{marginLeft: "auto", marginRight: "auto" }}
+          className='screenpaper'
         >
           <Grid spacing={2} paddingBottom={5}>
             <div className="centerIcon">
@@ -53,10 +54,10 @@ function Profile() {
         <Paper
           elevation={4}
           sx={{
-            width: "90%",
             marginLeft: "auto",
             marginRight: "auto",
           }}
+          className='screenpaper'
         >
           <h1
             className="editTitle"
@@ -69,7 +70,7 @@ function Profile() {
               <Grid item xs={4} md={2}>
                 <div className="titlename">ชื่อ</div>
               </Grid>
-              <Grid item xs={11.5} md={4}>
+              <Grid item xs={11.5} md={8}>
                 <Box
                   className='boxname'
                 >
@@ -83,7 +84,7 @@ function Profile() {
               <Grid item xs={4} md={2}>
                 <div className="titlename">นามสกุล</div>
               </Grid>
-              <Grid item xs={11.5} md={4}>
+              <Grid item xs={11.5} md={8}>
                 <Box
                   className='boxname'
                 >
@@ -101,10 +102,10 @@ function Profile() {
         <Paper
           elevation={4}
           sx={{
-            width: "90%",
             marginLeft: "auto",
             marginRight: "auto",
           }}
+          className='screenpaper'
         >
           <h1
             className="editTitle"
@@ -117,7 +118,7 @@ function Profile() {
               <Grid item xs={4} md={2}>
                 <div className="titlename">อีเมล</div>
               </Grid>
-              <Grid item xs={11.5} md={4}>
+              <Grid item xs={11.5} md={8}>
                 <Box
                   className='boxemail'
                   sx={{}}
