@@ -43,7 +43,7 @@ function AppNavBar() {
                 icon={<HomeIcon />}
                 label="หน้าแรก"
                 sx={{ color: "#f3e5f5", fontFamily: "Prompt"}}
-                to="/"
+                to="/teacher"
                 component={Link}
 
               />
@@ -61,7 +61,7 @@ function AppNavBar() {
                 icon={<FaceIcon />}
                 label="โปรไฟล์"
                 sx={{ color: "#f3e5f5", fontFamily: "Prompt"}}
-                to="/profile"
+                to="/profile-teacher"
                 component={Link}
 
               />
