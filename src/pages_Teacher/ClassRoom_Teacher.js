@@ -23,7 +23,7 @@ function Classroom_Teacher() {
           to="/classroom-member-teacher"
           component={Link}
         >
-          <PeopleAltIcon />
+          <PeopleAltIcon sx={{color:"#ffffff"}}/>
           <div className="button1">สมาชิก</div>
         </Button>
         <Button
@@ -33,7 +33,7 @@ function Classroom_Teacher() {
           to="/classroom-activity-teacher"
           component={Link}
         >
-          <QuizIcon />
+          <QuizIcon sx={{color:"#ffffff"}} />
           <div className="button2">กิจกรรม</div>
         </Button>
       </Stack>
