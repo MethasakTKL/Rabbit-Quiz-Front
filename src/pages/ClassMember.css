@@ -3,8 +3,7 @@
 .classname {
     font-family: 'Prompt', sans-serif;
     color: #856FB4;
-    text-align: left;
-    padding-left: 20px;
+    text-align: center;
     font-size: 36px;
 }
 
@@ -14,6 +13,7 @@
 }
 .membertopic{
     font-family: 'Prompt', sans-serif;
+    padding-left: 10px;
 }
 
 .center{
@@ -30,3 +30,36 @@
     padding-left: 20px;
 }
 
+.boxname{
+    width: 90%;
+    padding-top: 10px;
+}
+
+.texttitle1{
+    font-family: 'Prompt', sans-serif;
+    font-size: 16pt;
+    font-weight: 600;
+    color: #542ea1;
+
+}
+
+.texttitle2{
+    font-family: 'Prompt', sans-serif;
+    font-size: 14pt;
+    color: #542ea1;
+}
+
+.boxtitle{
+    width: 70%;
+}
+.namestudent{
+    font-family: 'Prompt', sans-serif;
+    font-size: 14pt;
+    padding-bottom: 8px;
+
+}
+@media only screen and (min-width: 1200px) {
+    .boxtitle{
+        width: 50%;
+    }
+}
