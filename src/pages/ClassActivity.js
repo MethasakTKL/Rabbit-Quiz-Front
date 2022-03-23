@@ -66,7 +66,7 @@ function ClassActivity() {
         <Grid>
           <Button
             variant="contained"
-            style={{ background: "#f5df4d", width: 170 }}
+            style={{ background: "#f5df4d", width: 180 }}
             to="/mypoints"
             component={Link}
           >
