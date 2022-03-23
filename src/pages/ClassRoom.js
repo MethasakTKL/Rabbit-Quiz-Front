@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FaceIcon from "@mui/icons-material/Face";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+<<<<<<< HEAD
 import { useAuth, ax } from "../auth/auth";
 
 
@@ -45,6 +46,29 @@ function Classroom() {
           style={{ background: "#F19528" }}
           to="/classroom-member"
           component={Link}
+=======
+
+class Classroom extends React.Component {
+  renderItem(item) {
+    return (
+      <Link to={`/classroom/${item.id}`}>
+        <div>{item.title}</div>
+      </Link>
+    );
+  }
+
+  render() {
+    return (
+      <div className="screen">
+        <h1 className="classname" style={{ fontSize: 36 }}>
+          ห้องเรียนการเกษตร
+        </h1>
+        <Stack
+          direction="row"
+          spacing={2}
+          paddingBottom={2}
+          justifyContent="center"
+>>>>>>> bd837851f3979e5429dc885c3464f8a8d71c3d85
         >
           <PeopleAltIcon sx={{ color: "#ffffff" }} />
           <div className="button1">สมาชิก</div>
@@ -133,6 +157,7 @@ function Classroom() {
                   alignItems="center"
                   paddingLeft={2}
                 >
+<<<<<<< HEAD
                   <AccountCircleIcon sx={{ fontSize: 30, color: "#9C2431" }} />
                   <p className="postername">อารีย์ มีสุข</p>
                 </Grid>
@@ -153,6 +178,18 @@ function Classroom() {
                       <DeleteOutlineIcon />
                       <div className="buttondelete">ลบ</div>
                     </Button>
+=======
+                  <Grid
+                    container
+                    direction="row"
+                    alignItems="center"
+                    paddingLeft={2}
+                  >
+                    <AccountCircleIcon
+                      sx={{ fontSize: 30, color: "#9C2431" }}
+                    />
+                    <p className="postername">อารีย์ มีสุข</p>
+>>>>>>> bd837851f3979e5429dc885c3464f8a8d71c3d85
                   </Grid>
                   <Grid>
                     <Button disabled>
@@ -195,6 +232,7 @@ function Classroom() {
                   justifyContent="flex-end"
                   alignItems="flex-start"
                 >
+<<<<<<< HEAD
                   <Grid>
                     <Button disabled>
                       <DeleteOutlineIcon />
@@ -263,6 +301,54 @@ function Classroom() {
       </Box>
     </div>
   );
+=======
+                  <Grid
+                    container
+                    direction="row"
+                    alignItems="center"
+                    paddingLeft={2}
+                  >
+                    <AccountCircleIcon
+                      sx={{ fontSize: 30, color: "#9C2431" }}
+                    />
+                    <p className="postername">อารีย์ มีสุข</p>
+                  </Grid>
+                  <p className="postinfo">
+                    ให้นักเรียนทำกิจกรรมที่ 1 ให้เสร็จภายในวันที่ 28 กุมภาพันธ์
+                    2565 ก่อน 22.00 น. นะคะ
+                  </p>
+                  <Stack
+                    spacing={1}
+                    paddingBottom={2}
+                    paddingRight={2}
+                    direction="row"
+                    justifyContent="flex-end"
+                    alignItems="flex-start"
+                  >
+                    <Grid>
+                      <Button disabled>
+                        <DeleteOutlineIcon />
+                        <div className="buttondelete">ลบ</div>
+                      </Button>
+                    </Grid>
+                    <Grid>
+                      <Button disabled>
+                        <DeleteOutlineIcon />
+                        <div className="buttonedit">แก้ไข</div>
+                      </Button>
+                    </Grid>
+                  </Stack>
+                </Paper>
+              </Grid>
+              {/* ------------------------------------------------------------------------------------------------------------------- */}
+            </Stack>
+          </Paper>
+        </Box>
+        <Box sx={{ paddingTop: 15 }}></Box>
+      </div>
+    );
+  }
+>>>>>>> bd837851f3979e5429dc885c3464f8a8d71c3d85
 }
 
 export default Classroom;

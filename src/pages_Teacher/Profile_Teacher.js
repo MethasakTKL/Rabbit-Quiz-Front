@@ -150,7 +150,7 @@ function Profile_Teacher() {
           </Grid>
         </Paper>
       </Grid>
-      <Box sx={{ height: "5rem" }}></Box>
+      <Box sx={{ paddingTop: 15 }}></Box>
     </div>
   );
 }

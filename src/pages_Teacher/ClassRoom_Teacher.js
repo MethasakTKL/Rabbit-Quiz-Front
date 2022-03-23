@@ -18,7 +18,7 @@ function Classroom_Teacher() {
       <Stack direction="row"  spacing={1} justifyContent="center" paddingBottom={2}>
         <Button
           variant="contained"
-          style={{ background: "#F19528" }}
+          style={{ background: "#F19528",borderRadius:8 }}
           to="/classroom-member-teacher"
           component={Link}
         >
@@ -27,7 +27,7 @@ function Classroom_Teacher() {
         </Button>
         <Button
           variant="contained"
-          style={{ background: "#51D87A" }}
+          style={{ background: "#51D87A",borderRadius:8 }}
           to="/classroom-activity-teacher"
           component={Link}
         >
@@ -236,6 +236,7 @@ function Classroom_Teacher() {
           </Stack>
         </Paper>
       </Box>
+      <Box sx={{ paddingTop: 15 }}></Box>
     </div>
   );
 }

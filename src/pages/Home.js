@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Paper, Stack, TextField } from "@mui/material";
+import { Box, Button, Paper, Stack, TextField, Grid } from "@mui/material";
 import ClassIcon from "@mui/icons-material/Class";
 import "./Home.css";
 import { Link } from "react-router-dom";
@@ -22,9 +22,21 @@ import CreateClassRoomPopup from "../components/Popup/CreateClassRoomPopup";
 import UserClassRoomCard from "../components/User/UserClassRoomCard";
 
 
+<<<<<<< HEAD
 function Home() {
+=======
+
+class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            open: false
+        };
+    }
+>>>>>>> bd837851f3979e5429dc885c3464f8a8d71c3d85
 
 
+<<<<<<< HEAD
     let userFirstName = localStorage.getItem('user_first_name')
     let userIsStaff = JSON.parse(localStorage.getItem('user_is_staff'))
     return (
@@ -53,6 +65,17 @@ function Home() {
             </Box>
         </div >
     );
+=======
+                    </Paper>
+                </Box>
+                <Box sx={{paddingTop:15}}>
+
+                </Box>
+            </div >
+        );
+    }
+
+>>>>>>> bd837851f3979e5429dc885c3464f8a8d71c3d85
 }
 
 
