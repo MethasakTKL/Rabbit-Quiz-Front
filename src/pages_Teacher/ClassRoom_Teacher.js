@@ -133,7 +133,6 @@ function Classroom_Teacher() {
                 direction="row"
                 justifyContent="flex-end"
                 alignItems="flex-start"
-                spacing={2}
               >
                 <Grid>
                   <Button>
@@ -181,7 +180,6 @@ function Classroom_Teacher() {
                 direction="row"
                 justifyContent="flex-end"
                 alignItems="flex-start"
-                spacing={2}
               >
                 <Grid>
                   <Button>
@@ -229,7 +227,6 @@ function Classroom_Teacher() {
                 direction="row"
                 justifyContent="flex-end"
                 alignItems="flex-start"
-                spacing={2}
               >
                 <Grid>
                   <Button>
