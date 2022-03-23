@@ -40,19 +40,23 @@ function Login() {
 
   const auth = useAuth();
   const loginpress = async () => {
+    await localStorage.clear()
     console.log("Username:", namefill);
     console.log("Password:", passfill);
     await auth.signin(userdata, (response) => {
       if (response === "valid username or password.") {
         setShowLoginError(true);
         setShowLoginEmpty(false);
+
       } else if (response === "some field is blank.") {
         setShowLoginError(false);
         setShowLoginEmpty(true);
+
       } else if (typeof response != String) {
         message.success({
           content: "ลงชื่อเข้าใช้สำเร็จ",
-          style: { fontFamily: "Prompt" },
+          style: { fontFamily: "Prompt", marginTop: 20, fontSize: "20px" },
+          duration: 3
         });
         console.log("Login successfully...");
         navigate("/", { replace: true });

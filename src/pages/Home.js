@@ -15,7 +15,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import classIMG from "../Static/image/Classroomimg.jpg";
 import { ax, useAuth } from "../auth/auth";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
+import { message } from "antd";
 
 function Home() {
   const [open, setOpen] = useState(false);
@@ -38,6 +39,37 @@ function Home() {
     fetchData();
   }, []);
 
+  let navigate = useNavigate()
+  const [classCode, setClassCode] = useState('')
+  const [error, setError] = useState()
+  const handleAddClass = async () => {
+    try {
+      var result = await ax.post('/join', { classCode })
+      if (result.status === 200 && result.data) {
+        console.log(`Successfully joined classroom...`)
+        setOpen(false)
+        navigate('/reload', { replace: true })
+        navigate('/', { replace: true })
+        message.success({
+          content: "เข้าร่วมห้องเรียนสำเร็จ",
+          style: { fontFamily: "Prompt", marginTop: 20, fontSize: "20px" },
+          duration: 3
+        });
+      }
+    } catch (error) {
+      setOpen(false)
+      message.error({
+        content: "รหัสห้องเรียนนี้ไม่สามารถเข้าร่วมได้ กรุณาลองใหม่",
+        style: { fontFamily: "Prompt", marginTop: 140, fontSize: "20px" },
+        duration: 3
+      });
+
+      console.error(error)
+    }
+  }
+  // setError(true)
+
+
   return (
     <div>
       <h4 className="hello">สวัสดี, {userFirstName}</h4>
@@ -54,14 +86,18 @@ function Home() {
       >
         <FiPlus /> ห้องเรียน
       </Button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} sx={{ marginBottom: "200px" }}>
         <DialogTitle sx={{ fontFamily: "Prompt" }}>เพิ่มห้องเรียน</DialogTitle>
+        {error &&
+          <error>รหัสห้องเรียนนี้ไม่สามารถเข้าได้<br />กรุณาลองใหม่</error>}
         <DialogContent>
           <TextField
             autoFocus
             margin="dense"
             id="name"
             label="รหัสห้องเรียน"
+            value={classCode}
+            onChange={(e) => setClassCode(e.target.value)}
             type="name"
             fullWidth
             variant="standard"
@@ -70,15 +106,16 @@ function Home() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} sx={{ fontFamily: "Prompt" }}>
-            ยกเลิก
-          </Button>
           <Button
-            onClick={handleClose}
+            disabled={classCode === ''}
+            onClick={handleAddClass}
             sx={{ fontFamily: "Prompt", color: "white" }}
             variant="contained"
           >
             เพิ่ม
+          </Button>
+          <Button onClick={handleClose} sx={{ fontFamily: "Prompt" }}>
+            ยกเลิก
           </Button>
         </DialogActions>
       </Dialog>
@@ -112,7 +149,7 @@ function Home() {
                   marginLeft: "auto",
                   marginRight: "auto",
                   paddingBottom: 2,
-                  
+
                 }}
                 elevation={5}
               >
@@ -126,7 +163,7 @@ function Home() {
                   <div className="cardcontent">ห้องเรียนการเกษตร</div>
                 </CardContent>
                 <CardActions>
-                  <Box sx={{ marginLeft: "auto",paddingRight:1.5 }}>
+                  <Box sx={{ marginLeft: "auto", paddingRight: 1.5 }}>
                     <Button
                       variant="contained"
                       sx={{ width: 200, height: 50 }}

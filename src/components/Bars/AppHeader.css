@@ -37,16 +37,14 @@
     max-width: 42px;
 }
 
-@media (max-width: 41em) { 
+.tab-component {
+    padding-top: 8px
+}
+
+
+@media (max-width: 54em) { 
     .header-menu {
         display: none;
-    }
-
-    .user-role {
-        font-size: 17px;
-    }
-    .user-name {
-        font-size: 15px;
     }
     
 }

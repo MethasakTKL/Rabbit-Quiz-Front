@@ -14,7 +14,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {
   Dialog,
   DialogContent,
@@ -25,6 +25,11 @@ import {
   Grid,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+
+//ant-desigmn
+import { message } from "antd";
+import { CheckCircleFilled } from '@ant-design/icons';
+
 
 // authentic
 import { ax } from "../auth/auth";
@@ -38,11 +43,6 @@ const onlyThaiAlphabet = /[^ก-๛]/gi;
 
 
 function Register() {
-  const [open, setOpen] = React.useState(false);
-  const handleClickClose = () => {
-    setOpen(false);
-  };
-
   const [visible, setVisible] = useState(false);
 
   const toggleVisibility = () => {
@@ -67,8 +67,11 @@ function Register() {
   const [errorPassWord2, setErrorPassWord2] = useState("");
   const [errorIsStaff, setErrorIsStaff] = useState("");
 
+  // Register Successfuly Section
+  const [regDone, setRegDone] = useState(false)
 
   const registpress = async () => {
+    await localStorage.clear()
     console.log(namefill);
     console.log(passfill);
     console.log(stafffill);
@@ -88,7 +91,13 @@ function Register() {
       });
       console.log("Register success");
       console.log(RegistResult.data);
-      setOpen(true);
+      setShowError(false)
+      setRegDone(true)
+      message.success({
+        content: "สร้างบัญชีสำเร็จ",
+        style: { fontFamily: "Prompt", marginTop: 30, fontSize: "20px" },
+        duration: 3
+      });
     }
     catch (error) {
       if (error.response) {
@@ -207,204 +216,191 @@ function Register() {
       }
     }
   }
-
   return (
     <html>
       <header className="App-header">
 
         <div class="register-page">
           <div class="logo">
-            <logo>
-              <img src={logo} alt="logorabbit" />
-            </logo>
+            <img src={logo} alt="logorabbit" />
           </div>
           <div class="form">
-            <h1 class="head">สร้างบัญชีใหม่</h1>
-            <div className="reg-password" password>
-              <div type="reg-header">ข้อกำหนด</div>
-              <div>• ชื่อ-นามสกุล จะต้องเป็นตัวอักษรภาษาไทยเท่านั้น</div>
-              <div>• รหัสผ่านจะต้องใช้อักขระ 8 ตัวขึ้นไป สามารถมีตัวอักษร (a-z A-z) ตัวเลข (0-9) และสัญลักษณ์ผสมกัน (เช่น ! @ # % & * _ ? , . /)</div>
-              <p />
-            </div>
-            {showError === true && <div class="register-error">
-              <div />{errorFirstName}
-              <div />{errorSurName}
-              <div />{errorUserName}
-              <div />{errorEmail}
-              <div />{errorPassWord}
-              <div />{errorPassWord2}
-              <div />{errorIsStaff}</div>
-            }
-            <Stack spacing={1} paddingBottom={2}>
-              <RegexTextField
-                helpertext="Hey dude"
-                id="name"
-                label="ชื่อ"
-                variant="outlined"
-                regex={onlyThaiAlphabet}
-                onChange={(event) => setFirstnamefill(event.target.value)}
-                inputProps={{ style: { fontFamily: "Prompt" } }}
-                InputLabelProps={{ style: { fontFamily: "Prompt" } }}
-                required
-              />
-              <RegexTextField
-                id="lastname"
-                label="นามสกุล"
-                variant="outlined"
-                regex={onlyThaiAlphabet}
-                onChange={(event) => setSurnamefill(event.target.value)}
-                inputProps={{ style: { fontFamily: "Prompt" } }}
-                InputLabelProps={{ style: { fontFamily: "Prompt" } }}
-                required
-              />
-              <TextField
-                id="username"
-                label="ชื่อบัญชี"
-                variant="outlined"
-                onChange={(event) => setNamefill(event.target.value)}
-                inputProps={{ style: { fontFamily: "Prompt" } }}
-                InputLabelProps={{ style: { fontFamily: "Prompt" } }}
-                required
+            <div>
+              {!regDone && <>
+                <h1 class="head">สร้างบัญชีใหม่</h1>
+                <div className="reg-password" password>
+                  <div type="reg-header">ข้อกำหนด</div>
+                  <div>• ชื่อ-นามสกุล จะต้องเป็นตัวอักษรภาษาไทยเท่านั้น</div>
+                  <div>• รหัสผ่านจะต้องใช้อักขระ 8 ตัวขึ้นไป สามารถมีตัวอักษร (a-z A-z) ตัวเลข (0-9) และสัญลักษณ์ผสมกัน (เช่น ! @ # % & * _ ? , . /)</div>
+                  <p />
+                </div>
+              </>
+              }
+              {showError && <div class="register-error">
+                <div />{errorFirstName}
+                <div />{errorSurName}
+                <div />{errorUserName}
+                <div />{errorEmail}
+                <div />{errorPassWord}
+                <div />{errorPassWord2}
+                <div />{errorIsStaff}</div>
+              }
+              {!regDone &&
+                <>
+                  <Stack spacing={1} paddingBottom={2}>
+                    <RegexTextField
+                      helpertext="Hey dude"
+                      id="name"
+                      label="ชื่อ"
+                      variant="outlined"
+                      regex={onlyThaiAlphabet}
+                      onChange={(event) => setFirstnamefill(event.target.value)}
+                      inputProps={{ style: { fontFamily: "Prompt" } }}
+                      InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+                      required
+                    />
+                    <RegexTextField
+                      id="lastname"
+                      label="นามสกุล"
+                      variant="outlined"
+                      regex={onlyThaiAlphabet}
+                      onChange={(event) => setSurnamefill(event.target.value)}
+                      inputProps={{ style: { fontFamily: "Prompt" } }}
+                      InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+                      required
+                    />
+                    <TextField
+                      id="username"
+                      label="ชื่อบัญชี"
+                      variant="outlined"
+                      onChange={(event) => setNamefill(event.target.value)}
+                      inputProps={{ style: { fontFamily: "Prompt" } }}
+                      InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+                      required
 
-              />
-              <TextField
-                id="email"
-                type="email"
-                label="อีเมล"
-                variant="outlined"
-                onChange={(event) => setEmailfill(event.target.value)}
-                inputProps={{ style: { fontFamily: "Prompt" } }}
-                InputLabelProps={{ style: { fontFamily: "Prompt" } }}
-                required
-              />
-              <TextField
-                id="password"
-                type={visible ? 'text' : 'password'}
-                label="รหัสผ่าน"
-                variant="outlined"
-                onChange={(event) => setPassfill(event.target.value)}
-                InputLabelProps={{ style: { fontFamily: "Prompt" } }}
-                required
-                InputProps={{
-                  style: { fontFamily: "Prompt" },
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton onClick={toggleVisibility}>
-                        {visible ? <Visibility /> : <VisibilityOff />}
-                      </IconButton>
-                    </InputAdornment>
-                  )
-                }}
+                    />
+                    <TextField
+                      id="email"
+                      type="email"
+                      label="อีเมล"
+                      variant="outlined"
+                      onChange={(event) => setEmailfill(event.target.value)}
+                      inputProps={{ style: { fontFamily: "Prompt" } }}
+                      InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+                      required
+                    />
+                    <TextField
+                      id="password"
+                      type={visible ? 'text' : 'password'}
+                      label="รหัสผ่าน"
+                      variant="outlined"
+                      onChange={(event) => setPassfill(event.target.value)}
+                      InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+                      required
+                      InputProps={{
+                        style: { fontFamily: "Prompt" },
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton onClick={toggleVisibility}>
+                              {visible ? <Visibility /> : <VisibilityOff />}
+                            </IconButton>
+                          </InputAdornment>
+                        )
+                      }}
 
 
-              />
-              <TextField
-                id="password-confirm"
-                type={visible ? 'text' : 'password'}
-                label="ยืนยันรหัสผ่าน"
-                variant="outlined"
-                onChange={(event) => setPass2fill(event.target.value)}
-                InputLabelProps={{ style: { fontFamily: "Prompt" } }}
-                required
-                InputProps={{
-                  style: { fontFamily: "Prompt" },
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton onClick={toggleVisibility}>
-                        {visible ? <Visibility /> : <VisibilityOff />}
-                      </IconButton>
-                    </InputAdornment>
-                  )
-                }}
-              />
+                    />
+                    <TextField
+                      id="password-confirm"
+                      type={visible ? 'text' : 'password'}
+                      label="ยืนยันรหัสผ่าน"
+                      variant="outlined"
+                      onChange={(event) => setPass2fill(event.target.value)}
+                      InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+                      required
+                      InputProps={{
+                        style: { fontFamily: "Prompt" },
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton onClick={toggleVisibility}>
+                              {visible ? <Visibility /> : <VisibilityOff />}
+                            </IconButton>
+                          </InputAdornment>
+                        )
+                      }}
+                    />
 
-            </Stack>
-            <FormControl>
-              <FormLabel id="demo-row-radio-buttons-group-label">
-                <div className="accounttype">ประเภทบัญชีผู้ใช้</div>
-              </FormLabel>
-              <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
-              >
-                <FormControlLabel
-                  value="student"
-                  onClick={() => setStafffill("False")}
-                  control={<Radio />}
-                  label={
-                    <Typography
-                      className="choices"
-                      sx={{ fontFamily: "Prompt" }}
+                  </Stack>
+                  <FormControl>
+                    <FormLabel id="demo-row-radio-buttons-group-label">
+                      <div className="accounttype">ประเภทบัญชีผู้ใช้</div>
+                    </FormLabel>
+                    <RadioGroup
+                      row
+                      aria-labelledby="demo-row-radio-buttons-group-label"
+                      name="row-radio-buttons-group"
                     >
-                      นักเรียน
-                    </Typography>
-                  }
-                />
-                <FormControlLabel
-                  value="teacher"
-                  onClick={() => setStafffill("True")}
-                  control={<Radio />}
-                  label={
-                    <Typography
-                      className="choices"
-                      sx={{ fontFamily: "Prompt" }}
-                    >
-                      คุณครู
-                    </Typography>
-                  }
-                />
-              </RadioGroup>
-            </FormControl>
-            <p>
-              <button type="register" onClick={registpress}>
-                สร้างบัญชี
-              </button>
-            </p>
-            <div class="text-backtologin">
-              มีบัญชีอยู่แล้วใช่ไหม
-              <Link to="/login">
-                <button type="backtologin">เข้าสู่ระบบ</button>
-              </Link>
-            </div>
-            <Dialog open={open} onClose={handleClickClose}>
-              <DialogTitle>
-                <Grid>
-                  <Box
-                    sx={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    <div className="reg-header-congrat">
-                      สร้างบัญชีเสร็จสิ้น
-                    </div>
-                    <IconButton sx={{ display: "flex" }}>
-                      <CloseIcon onClick={handleClickClose} />
-                    </IconButton>
-                  </Box>
-                </Grid>
-              </DialogTitle>
-              <DialogContent>
-                <DialogContentText>
-                  <div className="reg-congrat">
-                    ยินดีด้วยคุณได้สร้างบัญชีเสร็จเรียบร้อยแล้ว
+                      <FormControlLabel
+                        value="student"
+                        onClick={() => setStafffill("False")}
+                        control={<Radio />}
+                        label={
+                          <Typography
+                            className="choices"
+                            sx={{ fontFamily: "Prompt" }}
+                          >
+                            นักเรียน
+                          </Typography>
+                        }
+                      />
+                      <FormControlLabel
+                        value="teacher"
+                        onClick={() => setStafffill("True")}
+                        control={<Radio />}
+                        label={
+                          <Typography
+                            className="choices"
+                            sx={{ fontFamily: "Prompt" }}
+                          >
+                            คุณครู
+                          </Typography>
+                        }
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                  <button type="register" onClick={registpress}>
+                    สร้างบัญชี
+                  </button>
+                  <p />
+                  <div class="text-backtologin">
+                    มีบัญชีอยู่แล้วใช่ไหม
+                    <Link to="/login">
+                      <button type="backtologin">เข้าสู่ระบบ</button>
+                    </Link>
                   </div>
-                </DialogContentText>
-              </DialogContent>
-              <Grid>
-                <Box sx={{ display: "flex" }}>
-                  <div className="reg-close" onClick={handleClickClose}>
-                    ปิด
+                </>
+              }
+
+
+              {regDone ?
+                <div className="reg-done-page">
+                  <div>
+                    <CheckCircleIcon />
                   </div>
+                  <h2 className="reg-header-congrat">สร้างบัญชีเสร็จสิ้น</h2>
+                  <h2 className="reg-congrat">ยินดีด้วยคุณได้สร้างบัญชีเสร็จเรียบร้อยแล้ว</h2>
                   <Link to="/login" style={{ textDecoration: "none" }}>
-                    <div className="reg-login">เข้าสู่ระบบ</div>
+                    <div className="reg-login">กลับไปยังหน้าเข้าสู่ระบบ</div>
                   </Link>
-                </Box>
-              </Grid>
-            </Dialog>
+                </div>
+                : <div />}
+
+
+            </div>
           </div>
         </div>
-
       </header>
-    </html>
+    </html >
   );
 }
 

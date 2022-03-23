@@ -16,7 +16,7 @@ function RequireAuth() {
                 auth.signin(userdata, (response) => {
                     auth.setUser(response)
                 })
-
+                return <Outlet />;
 
             } catch (err) {
                 console.log("Error", JSON.stringify(err))

@@ -12,13 +12,13 @@ const appAuthProvider = {
    refreshToken: null,
    isAuthenticated: false,
    async signin(userdata, callback) {
-      appAuthProvider.isAuthenticated = true;
       try {
          var result = await ax.post('/auth/login/', {
             username: userdata.username,
             password: userdata.password,
          })
          if (result.status === 200 && result.data) {
+            appAuthProvider.isAuthenticated = true;
             appAuthProvider.accessToken = result.data.access;
             appAuthProvider.refreshToken = result.data.refresh;
             let user_detail = await ax.get('/userdetail')
@@ -30,6 +30,7 @@ const appAuthProvider = {
             localStorage.setItem("id_password", userdata.password)
             callback(user_detail.data)
          }
+
       } catch (error) {
          if (error.response) {
             if (userdata.username === "" || userdata.password === "") {
@@ -44,15 +45,13 @@ const appAuthProvider = {
       }
    },
 
-
    signout(callback) {
       appAuthProvider.isAuthenticated = false;
+      localStorage.clear()
       setTimeout(callback, 100);
    },
 };
 
-let token = localStorage.getItem('access_token')
-appAuthProvider.accessToken = token
 ax.interceptors.request.use(config => {
    if (appAuthProvider.accessToken) {
       config.headers.authorization = `Bearer ${appAuthProvider.accessToken}`
@@ -72,8 +71,8 @@ function AuthProvider({ children }) {
    let signin = (userdata, callback) => {
       return appAuthProvider.signin(userdata, (response) => {
          setUser(response);
-         localStorage.setItem('access_token', appAuthProvider.accessToken);
          callback(response);
+         localStorage.setItem('access_token', appAuthProvider.accessToken);
       });
    };
 
@@ -87,7 +86,9 @@ function AuthProvider({ children }) {
 
    let value = { user, setUser, signin, signout };
 
-
+   localStorage.setItem('User Auth', JSON.stringify(user));
+   localStorage.setItem('User Authentic', appAuthProvider.isAuthenticated);
+   localStorage.setItem('User Authentic AccessToken', appAuthProvider.accessToken);
 
    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

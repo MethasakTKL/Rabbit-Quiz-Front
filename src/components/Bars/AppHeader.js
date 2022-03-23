@@ -51,11 +51,10 @@ function AppHeader() {
   const [userRole, setUserRole] = React.useState('')
   const [userName, setUserName] = React.useState('')
 
-
+  console.log("Fetch data for header success...")
   useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
     async function fetchData() {
       const response = await ax.get('/userdetail')
-      console.log("Fetch data for header success...")
       let userDetail = response.data
       setUserName(userDetail.first_name + " " + userDetail.last_name)
 
@@ -92,8 +91,9 @@ function AppHeader() {
                 <Tabs
                   value={value}
                   onChange={handleChange}
+                  sx={{ height: "auto" }}
                   TabIndicatorProps={{
-                    style: { background: "#ffdd44", height: 5 },
+                    style: { background: "#ffdd44", height: 6 },
                   }}
                   textColor="#f5df4d"
 
@@ -101,7 +101,7 @@ function AppHeader() {
                   <Tab
                     className="navtext"
                     label={
-                      <div>
+                      <div class="tab-component">
                         <HomeIcon style={{ verticalAlign: "middle" }} /> หน้าแรก
                       </div>
                     }
@@ -112,6 +112,9 @@ function AppHeader() {
                       color: "#f3e5f5",
                       fontFamily: "Prompt",
                       display: "inline",
+                      fontSize: "18px",
+                      height: "63px"
+
                     }}
                     to="/"
                     component={Link}
@@ -119,7 +122,7 @@ function AppHeader() {
                   <Tab
                     className="navtext"
                     label={
-                      <div>
+                      <div class="tab-component">
                         <HistoryIcon style={{ verticalAlign: "middle" }} />{" "}
                         กิจกรรม
                       </div>
@@ -131,6 +134,7 @@ function AppHeader() {
                       color: "#f3e5f5",
                       fontFamily: "Prompt",
                       display: "inline",
+                      fontSize: "18px",
                     }}
                     to="/activity"
                     component={Link}
@@ -138,7 +142,7 @@ function AppHeader() {
                   <Tab
                     className="navtext"
                     label={
-                      <div>
+                      <div class="tab-component">
                         <EmojiEvents style={{ verticalAlign: "middle" }} />{" "}
                         คะแนน
                       </div>
@@ -150,6 +154,7 @@ function AppHeader() {
                       color: "#f3e5f5",
                       fontFamily: "Prompt",
                       display: "inline",
+                      fontSize: "18px",
                     }}
                     to="/mypoints"
                     component={Link}
@@ -157,16 +162,16 @@ function AppHeader() {
                   <Tab
                     className="navtext"
                     label={
-                      <div>
-                        <FaceIcon style={{ verticalAlign: "middle" }} /> โปรไฟล์
+                      <div class="tab-component">
+                        <FaceIcon style={{ verticalAlign: "middle", fontSize: "x-large", }} /> โปรไฟล์
                       </div>
                     }
                     sx={{
                       "&:hover": {
                         color: "#f3e5f5",
                       },
-                      color: "#f3e5f5",
                       fontFamily: "Prompt",
+                      fontSize: "18px",
                       display: "inline",
                     }}
                     to="/profile"

@@ -19,7 +19,7 @@
     max-height: 90%;
     max-width: 30rem;
     padding: 0 0 0;
-    margin: auto;
+    margin-bottom: 13rem;
     border-radius: 10px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     }
@@ -41,7 +41,7 @@
     padding-top: 0%;
     text-align: center;
     border-radius: 0 0 10px 10px;
-    /* border: 1px solid red; */
+      /* border: 1px solid red; */
 }
 
 .login {
@@ -84,4 +84,7 @@ error {
         font-size: 11pt;
     }
     
+    .login-page {
+        margin-bottom: 0rem;
+    }
 }

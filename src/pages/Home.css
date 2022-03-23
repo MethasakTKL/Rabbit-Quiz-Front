@@ -31,3 +31,10 @@
     color: #4d4a53;
 
 }
+
+error {
+    border: 1px solid red;
+    padding: 3px;
+    margin-left: 20px ;
+    max-width: fit-content;
+}
