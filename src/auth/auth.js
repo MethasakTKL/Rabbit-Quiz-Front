@@ -100,11 +100,8 @@ function AuthProvider({ children }) {
       });
    };
 
+   console.log("ID Current Class is", id)
    let value = { user, setUser, signin, signout, id, setID };
-
-   localStorage.setItem('User Auth', JSON.stringify(user));
-   localStorage.setItem('User Authentic', appAuthProvider.isAuthenticated);
-   localStorage.setItem('User Authentic AccessToken', appAuthProvider.accessToken);
 
    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

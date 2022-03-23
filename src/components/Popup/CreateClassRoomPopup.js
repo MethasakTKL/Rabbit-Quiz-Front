@@ -34,7 +34,7 @@ function CreateClassRoomPopup() {
                 content: "สร้างห้องเรียนเสร็จสิ้น",
                 style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
                 key,
-                duration: 3,
+                duration: 2,
             });
         }, 3000);
 
@@ -48,6 +48,34 @@ function CreateClassRoomPopup() {
     const handleCreateClass = async () => {
         console.log("teacher", teacher)
         try {
+            var existClass = await ax.get('/classroom')
+            var res = existClass.data.results
+
+            let n = 0; let curClassCode = [];
+            for (const prop in res) {
+                curClassCode.push(res[n].classCode)
+                n++
+            }
+            if (Object.values(curClassCode).indexOf(classCode) > -1) {
+                console.error('This code already exists.');
+                setOpen(false)
+                message.loading({
+                    content: 'กรุณารอซักครู่...',
+                    style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+                    key
+                });
+                setTimeout(() => {
+                    message.error({
+                        content: "รหัสห้องเรียนนี้ถูกใช้แล้ว กรุณาลองใช้รหัสอื่น",
+                        style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+                        key,
+                        duration: 3,
+                    });
+                }, 3000);
+                return
+            }
+
+
             var result = await ax.post('/createClass', {
                 className,
                 classCode,

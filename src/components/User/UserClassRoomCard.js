@@ -47,7 +47,7 @@ function UserClassRoomCard() {
                 classroom.map(function (room, i) {
 
                     return (
-                        <Stack sx={{ paddingBottom: 5 }}>
+                        <Stack direction="column-reverse" sx={{ paddingBottom: 5 }}>
                             <Box>
                                 <CardActionArea
                                     component={Link}

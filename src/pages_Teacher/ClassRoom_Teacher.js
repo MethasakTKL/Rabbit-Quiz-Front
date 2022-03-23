@@ -15,10 +15,10 @@ function Classroom_Teacher() {
       <h1 className="classname" style={{ fontSize: 36 }}>
         ห้องเรียนการเกษตร
       </h1>
-      <Stack direction="row"  spacing={1} justifyContent="center" paddingBottom={2}>
+      <Stack direction="row" spacing={1} justifyContent="center" paddingBottom={2}>
         <Button
           variant="contained"
-          style={{ background: "#F19528",borderRadius:8 }}
+          style={{ background: "#F19528", borderRadius: 8 }}
           to="/classroom-member-teacher"
           component={Link}
         >
@@ -27,7 +27,7 @@ function Classroom_Teacher() {
         </Button>
         <Button
           variant="contained"
-          style={{ background: "#51D87A",borderRadius:8 }}
+          style={{ background: "#51D87A", borderRadius: 8 }}
           to="/classroom-activity-teacher"
           component={Link}
         >
@@ -75,7 +75,7 @@ function Classroom_Teacher() {
           </Grid>
         </Paper>
       </Box>
-      <Box sx={{paddingTop:2}}>
+      <Box sx={{ paddingTop: 2 }}>
         <Paper
           elevation={3}
           sx={{

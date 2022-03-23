@@ -1,6 +1,4 @@
-.user-classroom {
-    font-family: "Prompt";
+.user-post {
     display: flex;
     flex-direction: column-reverse;
-
 }

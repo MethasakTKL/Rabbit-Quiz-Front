@@ -12,11 +12,23 @@ import { message } from "antd";
 
 function AddClassRoomPopup() {
     const handleSendApi = async () => {
-        let res = await ax.get('/api/user/aree')
-        console.log(res.data)
+        var post = await ax.get('/getMessage/8')
+        console.log(post.data)
+        let postData = post.data
+        let n = 0;
+        let allPost = []
+        for (var a in postData) {
+            let text = postData[n].text
+            let name = postData[n].firstname + " " + postData[n].lastname
+            allPost.push({ text, name })
+        }
+        let formattedAllPost = allPost.map(function (p, i) {
+            return (
+                console.log(`A post ${p.text} has post by ${p.name}`)
+            )
+        })
+        console.log(formattedAllPost)
     };
-
-
 
     const [open, setOpen] = useState(false);
 
