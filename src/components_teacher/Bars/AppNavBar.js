@@ -42,8 +42,12 @@ function AppNavBar() {
                 className="navtext"
                 icon={<HomeIcon />}
                 label="หน้าแรก"
-                sx={{ color: "#f3e5f5", fontFamily: "Prompt"}}
-                to="/teacher"
+                sx={{
+                  "&:hover": {
+                    color: "#f3e5f5"
+                  },
+                  color: "#f3e5f5", fontFamily: "Prompt"
+                }}                to="/teacher"
                 component={Link}
 
               />
@@ -51,7 +55,12 @@ function AppNavBar() {
                 className="navtext"
                 icon={<HistoryIcon />}
                 label="กิจกรรม"
-                sx={{ color: "#f3e5f5", fontFamily: "Prompt"}}
+                sx={{
+                  "&:hover": {
+                    color: "#f3e5f5"
+                  },
+                  color: "#f3e5f5", fontFamily: "Prompt"
+                }}
                 to="/classroom-activity-teacher"
                 component={Link}
 
@@ -60,8 +69,12 @@ function AppNavBar() {
                 className="navtext"
                 icon={<FaceIcon />}
                 label="โปรไฟล์"
-                sx={{ color: "#f3e5f5", fontFamily: "Prompt"}}
-                to="/profile-teacher"
+                sx={{
+                  "&:hover": {
+                    color: "#f3e5f5"
+                  },
+                  color: "#f3e5f5", fontFamily: "Prompt"
+                }}                to="/profile-teacher"
                 component={Link}
 
               />
