@@ -19,6 +19,12 @@
     text-align: center;
 }
 
+.editTitle{
+    font-family:'Prompt', sans-serif;
+    font-weight: 600;
+    color: #693aa0;
+}
+
 .saveButton{
     font-family:'Prompt', sans-serif;
     padding-left: 10px;
@@ -35,3 +41,48 @@
     padding-left: 10px;
 }
 
+.boxprofile{
+    padding-left: 10%;
+    padding-right: 2%;
+    padding-bottom: 20px;
+    align-items: center;
+
+}
+
+.boxEmail{
+    padding-left: 10%;
+    padding-right: 2%;
+    padding-bottom: 20px;
+
+
+
+    
+}
+.titlename{
+    font-family:'Prompt', sans-serif;
+    padding-top: 10px;
+    color: #5E2F7E;
+    font-weight: 550;
+}
+
+.name{
+    font-family:'Prompt', sans-serif;
+    padding-left: 3%;
+    padding-top: 8px;
+    font-size: 13pt;
+}
+.boxname{
+    height: 40px;
+    width: 100%;
+    background-color: #e7daf8ea;
+    border-radius: 2px;
+}
+.boxemail{
+    height: 40px;
+    width: 100%;
+    background-color: #e7daf8ea;
+    border-radius: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, Paper, TextField } from "@mui/material";
 import ClassIcon from "@mui/icons-material/Class";
 import "./Home_Teacher.css";
@@ -10,6 +10,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import kid from "../Static/image/kid.png";
 import CreateClassRoomPopup from "../components/Popup/CreateClassRoomPopup";
+import { ax, useAuth } from "../auth/auth";
 
 function Home_Teacher() {
   const [open, setOpen] = React.useState(false);
@@ -21,10 +22,35 @@ function Home_Teacher() {
   const handleClose = () => {
     setOpen(false);
   };
+  const [userFirstName, setUserFirstName] = useState("");
+  const [userIsStaff, setUserIsStaff] = useState("");
+  const [userClassRoom, setUserClassRoom] = useState();
+
+  let timeout;
+  useEffect(() => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      async function fetchData() {
+        const response = await ax.get("/userdetail");
+        setUserFirstName(response.data.first_name);
+        setUserIsStaff(response.data.is_staff);
+        console.log("Fetch data for home success...");
+
+        const classRoom = await ax.get("/getUserClassroom");
+        setUserClassRoom(classRoom);
+        console.log(classRoom.data.length);
+        console.log(classRoom.data);
+
+        const res = await ax.get("/myclass");
+        console.log(res.data);
+      }
+      fetchData();
+    }, 0); // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
+  }, []);
 
   return (
     <div>
-      <h4 className="hello">สวัสดี, อารีย์ มีสุข</h4>
+      <h4 className="hello">สวัสดี,คุณครู{userFirstName}</h4>
       {/* เพิ่มห้องเรียน */}
       <CreateClassRoomPopup />
       {/* เพิ่มห้องเรียน */}
@@ -53,7 +79,7 @@ function Home_Teacher() {
             <Button
               style={{
                 display: "flex",
-                background: "3870BD",//"linear-gradient(135deg, #33C58E 20%, #63FD88 90%)",
+                background: "3870BD", //"linear-gradient(135deg, #33C58E 20%, #63FD88 90%)",
                 marginRight: "auto",
                 marginLeft: "auto",
                 bottom: 10,

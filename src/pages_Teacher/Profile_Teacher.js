@@ -1,14 +1,50 @@
-import { Button, Grid, Paper, TextField } from "@mui/material";
-import React from "react";
-import FaceIcon from "@mui/icons-material/Face";
+import { Button, Container, Grid, Paper, TextField } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import "./Profile_Teacher.css";
-import { Link } from "react-router-dom";
-import LogoutIcon from '@mui/icons-material/Logout';
-import SaveIcon from '@mui/icons-material/Save';
-import AccountCircle from "@mui/icons-material/AccountCircle";
+import { Link, useNavigate } from "react-router-dom";
+import LogoutIcon from "@mui/icons-material/Logout";
+import SaveIcon from "@mui/icons-material/Save";
+import { Box } from "@mui/system";
+
+//authentic
+import { ax, useAuth } from "../auth/auth";
+
+//components
+import {
+  EditProfilePopup,
+  EditEmailPopup,
+} from "../components/Popup/EditProfilePopup";
+
+
 
 
 function Profile_Teacher() {
+  //เรียกข้อมูลหริอ fetch data มาใช้
+  let navigate = useNavigate()
+  const [user, setUser] = useState()
+  const [userFirstname, setUserFirstname] = useState('')
+  const [userLastname, setUserLastname] = useState('')
+  const [userEmail, setUserEmail] = useState('')
+  const [userIsStaff, setUserIsStaff] = useState(null)
+
+  let timeout;
+
+  useEffect(() => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      async function fetchData() {
+        const response = await ax.get('/userdetail')
+        setUser(response.data)
+        setUserFirstname(response.data.first_name)
+        setUserLastname(response.data.last_name)
+        setUserEmail(response.data.email)
+        setUserIsStaff(response.data.is_staff)
+      }
+      fetchData();
+    }, 0);
+  }, []);
+
   return (
     <div>
       <h4 className="hello">สวัสดี, นี่คือโปรไฟล์ของคุณ</h4>{" "}
@@ -17,19 +53,17 @@ function Profile_Teacher() {
           elevation={4}
           sx={{ width: "90%", marginLeft: "auto", marginRight: "auto" }}
         >
-          <Grid direction="row" spacing={2} paddingBottom={5}>
+          <Grid spacing={2} paddingBottom={5}>
             <div className="centerIcon">
-              <AccountCircle sx={{ fontSize: 100, color: "#F19528" }} />
+              <AccountCircleIcon sx={{ fontSize: 100, color: "#F19528" }} />
             </div>
-            <div className="centerName">อารีย์  มีสุข</div>
-            <div className="centerAccount">ประเภทบัญชี : คุณครู</div>
+            <div className="centerName">
+              {userFirstname + " " + userLastname}
+            </div>
+            <div className="centerAccount">
+              ประเภทบัญชี : {userIsStaff ? "คุณครู" : "นักเรียน"}
+            </div>
           </Grid>
-          {/* <Grid textAlign='center' paddingBottom={2}>
-            <Button variant="contained" style={{background:'#CD0049'}} to='/login' component={Link}>
-              <div className="logoutIcon"><LogoutIcon sx={{fontSize:20}}/></div>
-              <div className="logout" >ออกจากระบบ</div>
-            </Button>
-          </Grid> */}
         </Paper>
       </Grid>
       <Grid paddingTop={2}>
@@ -41,39 +75,81 @@ function Profile_Teacher() {
             marginRight: "auto",
           }}
         >
-          <h1 className="editTitle" style={{ paddingLeft: 40, fontSize: 24 }}>
-            แก้ไขข้อมูลส่วนตัว
+          <h1
+            className="editTitle"
+            style={{ paddingLeft: 40, fontSize: 24, paddingTop: 40 }}
+          >
+            ข้อมูลส่วนตัว
           </h1>
-          <Grid width={"70%"} margin="auto">
-            <TextField
-              fullWidth
-              id="standard-basic"
-              label="ชื่อ"
-              defaultValue="อารีย์"
-              variant="filled"
-              inputProps={{style: {fontFamily: "Prompt"}}}
-              InputLabelProps={{style: {fontFamily: "Prompt"}}}
-            />
-          </Grid>
-          <Grid width={"70%"} margin="auto" paddingTop={2} paddingBottom={2}>
-            <TextField
-              fullWidth
-              id="standard-basic"
-              label="นามสกุล"
-              defaultValue="มีสุข"
-              variant="filled"
-              inputProps={{style: {fontFamily: "Prompt"}}}
-              InputLabelProps={{style: {fontFamily: "Prompt"}}}
-            />
-          </Grid>
-          <Grid paddingBottom={2} sx={{ marginLeft: "60%" }}>
-            <Button variant="contained" sx={{ width: "60%" }}>
-              <div className="saveButtonIcon"><SaveIcon/></div>
-              <div className="saveButton">บันทึก</div>
-            </Button>
+          <Box className="boxprofile">
+            <Grid container spacing={0.5}>
+              <Grid item xs={4} md={2}>
+                <div className="titlename">ชื่อ</div>
+              </Grid>
+              <Grid item xs={11.5} md={4}>
+                <Box
+                  className='boxname'
+                >
+                  <div className="name">{userFirstname}</div>
+                </Box>
+              </Grid>
+            </Grid>
+          </Box>
+          <Box className="boxprofile">
+            <Grid container spacing={0.5}>
+              <Grid item xs={4} md={2}>
+                <div className="titlename">นามสกุล</div>
+              </Grid>
+              <Grid item xs={11.5} md={4}>
+                <Box
+                  className='boxname'
+                >
+                  <div className="name">{userLastname}</div>
+                </Box>
+              </Grid>
+            </Grid>
+          </Box>
+          <Grid paddingBottom={2} sx={{ marginLeft: "42%" }}>
+            <EditProfilePopup />
           </Grid>
         </Paper>
       </Grid>
+      <Grid paddingTop={2}>
+        <Paper
+          elevation={4}
+          sx={{
+            width: "90%",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
+          <h1
+            className="editTitle"
+            style={{ paddingLeft: 40, fontSize: 24, paddingTop: 40 }}
+          >
+            ที่อยู่อีเมล
+          </h1>
+          <Box className="boxEmail" >
+            <Grid container spacing={0.5} alignItems="center" >
+              <Grid item xs={4} md={2}>
+                <div className="titlename">อีเมล</div>
+              </Grid>
+              <Grid item xs={11.5} md={4}>
+                <Box
+                  className='boxemail'
+                  sx={{}}
+                >
+                  <div className="name">{userEmail}</div>
+                </Box>
+              </Grid>
+            </Grid>
+          </Box>
+          <Grid paddingBottom={2} sx={{ marginLeft: "42%" }}>
+            <EditEmailPopup />
+          </Grid>
+        </Paper>
+      </Grid>
+      <Box sx={{ height: "5rem" }}></Box>
     </div>
   );
 }

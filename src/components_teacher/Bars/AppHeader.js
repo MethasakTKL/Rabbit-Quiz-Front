@@ -125,7 +125,7 @@ function AppHeader() {
                     to="/teacher"
                     component={Link}
                   />
-                  {/* <Tab
+                  <Tab
                     className="navtext"
                     label={
                       <div class="tab-component">
@@ -142,9 +142,9 @@ function AppHeader() {
                       display: "inline",
                       fontSize: "18px",
                     }}
-                    to="/activity-teacher"
+                    to="/classroom-activity-teacher"
                     component={Link}
-                  /> */}
+                  />
 
                   <Tab
                     className="navtext"
