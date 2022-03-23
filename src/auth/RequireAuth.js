@@ -1,9 +1,11 @@
 import { useLocation, Outlet, Navigate } from "react-router";
 import { useAuth, appAuthProvider } from "./auth";
+import { useNavigate } from "react-router-dom";
 
 function RequireAuth() {
     let auth = useAuth();
     let location = useLocation();
+    let navigate = useNavigate
 
     if (appAuthProvider.isAuthenticated === false) {
         let token = localStorage.getItem('access_token')

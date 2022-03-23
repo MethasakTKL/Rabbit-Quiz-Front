@@ -1,5 +1,5 @@
 import { Button, Box, Paper, Grid, Stack } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { DataGrid } from "@mui/x-data-grid";
 import Dialog from "@mui/material/Dialog";
@@ -16,7 +16,7 @@ import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 
 
-function EditProfilePopup({ userName }) {
+function EditProfilePopup() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -27,13 +27,42 @@ function EditProfilePopup({ userName }) {
     setOpen(false);
   };
 
-
+  /////// Get data for Default Profile /////////
   const onlyAlpha = /[^ก-๛]/gi;
-  let first_name = userName.userFirstname
-  let last_name = userName.userLastname
-  const [firstname, setFirstName] = useState(first_name);
-  const [lastname, setLastName] = useState(last_name);
+  const [firstname, setFirstName] = useState();
+  const [lastname, setLastName] = useState();
+  useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
+    async function fetchData() {
+      const response = await ax.get('/userdetail')
+      setFirstName(response.data.first_name)
+      setLastName(response.data.last_name)
+    }
+    fetchData();
+  }, []);
 
+
+  ////// Change Profie Section ///////
+  const navigate = useNavigate()
+  const handleEditName = async () => {
+    try {
+      var result = await ax.post('/changeProfile', {
+        "first_name": firstname,
+        "last_name": lastname,
+      })
+      if (result.status === 200 && result.data) {
+        console.log(`Changed fullname successfully...`)
+        handleClose()
+        navigate('/', { replace: true })
+        navigate('/profile', { replace: true })
+        message.success({
+          content: "เปลี่ยนแปลงชื่อนามสกุลสำเร็จ",
+          style: { fontFamily: "Prompt" },
+        })
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
     <div>
@@ -89,7 +118,7 @@ function EditProfilePopup({ userName }) {
           </Button>
           <Button
             variant="contained"
-            onClick={handleClose}
+            onClick={handleEditName}
             sx={{ fontFamily: "Prompt", color: "white", width: 100 }}
           >
 
@@ -103,7 +132,7 @@ function EditProfilePopup({ userName }) {
 }
 
 
-function EditEmailPopup({ userOldEmail }) {
+function EditEmailPopup() {
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
     setOpen(true);
@@ -115,7 +144,16 @@ function EditEmailPopup({ userOldEmail }) {
 
   const auth = useAuth()
   const navigate = useNavigate()
-  const [userNewEmail, setUserNewEmail] = useState(userOldEmail)
+  const [userNewEmail, setUserNewEmail] = useState();
+  useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
+    async function fetchData() {
+      const response = await ax.get('/userdetail')
+      await setUserNewEmail(response.data.email)
+    }
+    fetchData();
+  }, []);
+
+
   const handleEditEmail = async () => {
     try {
       var result = await ax.post('/changeEmail', {
@@ -124,7 +162,6 @@ function EditEmailPopup({ userOldEmail }) {
       if (result.status === 200 && result.data) {
         auth.user.email = userNewEmail
         console.log(`Changed email successfully...`)
-        console.log(`From ${userOldEmail} -> ${userNewEmail}`)
         handleClose()
         navigate('/', { replace: true })
         navigate('/profile', { replace: true })

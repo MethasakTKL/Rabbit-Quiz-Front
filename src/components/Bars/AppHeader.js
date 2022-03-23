@@ -51,7 +51,6 @@ function AppHeader() {
   const [userRole, setUserRole] = React.useState('')
   const [userName, setUserName] = React.useState('')
 
-  console.log("Fetch data for header success...")
   useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
     async function fetchData() {
       const response = await ax.get('/userdetail')

@@ -2,7 +2,7 @@ import { Button, Container, Grid, Paper, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import FaceIcon from "@mui/icons-material/Face";
 import "./Profile.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SaveIcon from "@mui/icons-material/Save";
 import { Box } from "@mui/system";
@@ -21,13 +21,13 @@ import {
 
 function Profile() {
   //เรียกข้อมูลหริอ fetch data มาใช้
+  let navigate = useNavigate()
   const [user, setUser] = useState()
   const [userFirstname, setUserFirstname] = useState('')
   const [userLastname, setUserLastname] = useState('')
   const [userEmail, setUserEmail] = useState('')
   const [userIsStaff, setUserIsStaff] = useState(null)
 
-  
 
   useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
     async function fetchData() {
@@ -37,12 +37,10 @@ function Profile() {
       setUserLastname(response.data.last_name)
       setUserEmail(response.data.email)
       setUserIsStaff(response.data.is_staff)
-      console.log('Fetch data for profile success...')
     }
     fetchData();
   }, []);
 
-  console.log(userEmail)
 
   return (
     <div>
@@ -109,7 +107,7 @@ function Profile() {
             </Grid>
           </Box>
           <Grid paddingBottom={2} sx={{ marginLeft: "42%" }}>
-            <EditProfilePopup userName={{ userFirstname, userLastname }} />
+            <EditProfilePopup />
           </Grid>
         </Paper>
       </Grid>
@@ -144,7 +142,7 @@ function Profile() {
             </Grid>
           </Box>
           <Grid paddingBottom={2} sx={{ marginLeft: "42%" }}>
-            <EditEmailPopup userOldEmail={userEmail} />
+            <EditEmailPopup />
           </Grid>
         </Paper>
       </Grid>
