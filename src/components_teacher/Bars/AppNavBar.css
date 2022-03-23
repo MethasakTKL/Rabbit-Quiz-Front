@@ -1,4 +1,4 @@
-@media (min-width: 36em) { 
+@media (min-width: 900px) { 
     .navbar {
         display: none;
     }

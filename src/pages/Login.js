@@ -85,7 +85,7 @@ function Login() {
               <Stack spacing={3} paddingBottom={2} className="text-field">
                 {showLoginError ? (
                   <div className="login-error">
-                    ชื่อบัญชีหรือรหัสผ่านของคุณไม่ถูกต้อง<div>กรุณาลองใหม่</div>{" "}
+                    ชื่อบัญชีหรือรหัสผ่านของคุณไม่ถูกต้อง<div>กรุณาลองใหม่อีกครั้ง</div>{" "}
                   </div>
                 ) : null}
                 {showLoginEmpty ? (
