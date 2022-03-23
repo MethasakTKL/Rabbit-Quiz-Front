@@ -365,6 +365,7 @@ function ClassActivity_Teacher() {
           </Stack>
         </Paper>
       </Box>
+      <Box sx={{ paddingTop: 15 }}></Box>
     </Box>
   );
 }
