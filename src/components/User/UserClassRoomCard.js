@@ -70,7 +70,7 @@ function UserClassRoomCard() {
                                         component="img"
                                         alt="classroom"
                                         height="180"
-                                        image={classroomimg}
+                                        // image={}
                                         sx={{ borderRadius: 1 }}
                                     />
 

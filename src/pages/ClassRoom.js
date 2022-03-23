@@ -150,7 +150,7 @@ function Classroom() {
                       <div className="buttonedit">แก้ไข</div>
                     </Button>
                   </Grid>
-                </Stack>
+                  </Grid>
               </Paper>
             </Grid>
 
@@ -200,6 +200,7 @@ function Classroom() {
                     ให้นักเรียนทำกิจกรรมที่ 1 ให้เสร็จภายในวันที่ 28 กุมภาพันธ์
                     2565 ก่อน 22.00 น. นะคะ
                   </p>
+                  </Stack>
                   <Stack
                     spacing={1}
                     paddingBottom={2}
@@ -231,6 +232,6 @@ function Classroom() {
     </div>
   );
 }
-}
+
 
 export default Classroom;
