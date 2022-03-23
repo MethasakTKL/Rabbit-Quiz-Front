@@ -51,30 +51,28 @@ function AppHeader() {
   const [userRole, setUserRole] = React.useState('')
   const [isStaff, setIsStaff] = React.useState(false)
   const [userName, setUserName] = React.useState('')
+  const [userFirstName, setUserFirstName] = React.useState('')
 
 
   // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
-  let timeout;
-  useEffect(() => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
+  let localFirstName = localStorage.getItem('user_first_name')
+  if (localFirstName != userFirstName) {
 
-      async function fetchData() {
-        const response = await ax.get('/userdetail')
-        let userDetail = response.data
-        setUserName(userDetail.first_name + " " + userDetail.last_name)
-        setIsStaff(userDetail.is_Staff)
-        console.log(isStaff)
-        if (userDetail.is_staff == true) {
-          setUserRole('คุณครู')
-        }
-        if (!userDetail.is_staff == true) {
-          setUserRole('นักเรียน')
-        }
+    async function fetchData() {
+      const response = await ax.get('/userdetail')
+      let userDetail = response.data
+      setUserName(userDetail.first_name + " " + userDetail.last_name)
+      setIsStaff(userDetail.is_Staff)
+      console.log(isStaff)
+      if (userDetail.is_staff == true) {
+        setUserRole('คุณครู')
       }
-      fetchData();
-    }, 0);
-  }, []);
+      if (!userDetail.is_staff == true) {
+        setUserRole('นักเรียน')
+      }
+    }
+    fetchData();
+  }
 
   return (
     <div>

@@ -41,6 +41,7 @@ function EditProfilePopup() {
   }, []);
 
 
+  let auth = useAuth()
   ////// Change Profie Section ///////
   const navigate = useNavigate()
   const handleEditName = async () => {
@@ -52,6 +53,9 @@ function EditProfilePopup() {
       if (result.status === 200 && result.data) {
         console.log(`Changed fullname successfully...`)
         handleClose()
+        let username = localStorage.getItem('id_username')
+        let password = localStorage.getItem('id_password')
+        auth.signin(username, password)
         navigate('/', { replace: true })
         navigate('/profile', { replace: true })
         message.success({

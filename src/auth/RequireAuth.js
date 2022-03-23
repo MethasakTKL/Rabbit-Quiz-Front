@@ -7,7 +7,8 @@ function RequireAuth() {
     let location = useLocation();
     let navigate = useNavigate
 
-    if (auth.user === null) {
+    if (appAuthProvider.isAuthenticated === false) {
+        console.log("App auth is Authen is Fasle")
         let token = localStorage.getItem('access_token')
         if (token) {
             try {
@@ -27,6 +28,7 @@ function RequireAuth() {
 
         return <Navigate to="/login" state={{ from: location }} />;
     }
+    console.log("App auth is Authen is True")
     return <Outlet />;
 }
 
