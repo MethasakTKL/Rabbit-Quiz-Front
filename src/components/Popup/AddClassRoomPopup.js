@@ -37,6 +37,8 @@ function AddClassRoomPopup() {
                 key,
                 duration: 3,
             });
+            navigate('/reload', { replace: true })
+            navigate('/', { replace: true })
         }, 3000);
 
     };
@@ -46,11 +48,9 @@ function AddClassRoomPopup() {
         try {
             var result = await ax.post('/join', { classCode })
             if (result.status === 200 && result.data) {
-                console.log(`Successfully joined classroom...`)
                 setOpen(false)
-                navigate('/reload', { replace: true })
-                navigate('/', { replace: true })
                 openMessage()
+                console.log(`Successfully joined classroom...`)
             }
         } catch (error) {
             setOpen(false)
