@@ -11,6 +11,13 @@ import { message } from "antd";
 
 
 function AddClassRoomPopup() {
+    const handleSendApi = async () => {
+        let res = await ax.get('/api/user/aree')
+        console.log(res.data)
+    };
+
+
+
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -66,6 +73,19 @@ function AddClassRoomPopup() {
 
     return (
         <div>
+            <Button
+                variant="outlined"
+                sx={{
+                    display: "block",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    fontFamily: "Prompt",
+                }}
+                onClick={handleSendApi}
+            >
+                <FiPlus /> ทดสอบ Api
+            </Button><p />
+
             <Button
                 variant="outlined"
                 sx={{

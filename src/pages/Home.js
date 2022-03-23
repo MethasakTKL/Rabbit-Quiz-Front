@@ -22,47 +22,38 @@ import CreateClassRoomPopup from "../components/Popup/CreateClassRoomPopup";
 import UserClassRoomCard from "../components/User/UserClassRoomCard";
 
 
-class Home extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            open: false
-        };
-    }
+function Home() {
 
-    render() {
-        let userFirstName = localStorage.getItem('user_first_name')
-        let userIsStaff = JSON.parse(localStorage.getItem('user_is_staff'))
-        return (
-            <div>
-                <h4 className="hello">สวัสดี, {userFirstName}</h4>
-                {/* ADD AND CREATE CLASSROOM SECTION USER*/}
-                {userIsStaff ? <CreateClassRoomPopup /> : <AddClassRoomPopup />}
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        "& > :not(style)": {
-                            m: 1,
-                            width: "90%",
-                            maxWidth: 1000,
-                            borderRadius: 3,
-                            marginLeft: "auto",
-                            marginRight: "auto",
-                        },
-                    }}
-                >
-                    <Paper elevation={3}>
-                        <h1 className="titleclass" sx={{}}>
-                            ห้องเรียน <ClassIcon sx={{ fontSize: "50" }} />
-                        </h1>
-                        <UserClassRoomCard />
 
-                    </Paper>
-                </Box>
-            </div >
-        );
-    }
+    let userFirstName = localStorage.getItem('user_first_name')
+    let userIsStaff = JSON.parse(localStorage.getItem('user_is_staff'))
+    return (
+        <div>
+            <h4 className="hello">สวัสดี, {userFirstName}</h4>
+            {/* ADD AND CREATE CLASSROOM SECTION USER*/}
+            {userIsStaff ? <CreateClassRoomPopup /> : <AddClassRoomPopup />}
+            <Box
+                sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    "& > :not(style)": {
+                        m: 1,
+                        width: "90%",
+                        maxWidth: 1000,
+                        borderRadius: 3,
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                    },
+                }}
+            >
+                <Paper elevation={3}>
+                    <h1 className="titleclass" sx={{}}>ห้องเรียน <ClassIcon sx={{ fontSize: "50" }} /></h1>
+                    <UserClassRoomCard />
+                </Paper>
+            </Box>
+        </div >
+    );
 }
+
 
 export default Home;

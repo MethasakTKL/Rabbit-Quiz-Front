@@ -77,10 +77,12 @@ let AuthContext = React.createContext(null);
 
 
 function AuthProvider({ children }) {
+   let [id, setID] = React.useState(null)
    let [user, setUser] = React.useState(null);
    let navigate = useNavigate();
    let auth = useAuth();
    let location = useLocation();
+
 
    let signin = (userdata, callback) => {
       return appAuthProvider.signin(userdata, (response) => {
@@ -98,7 +100,7 @@ function AuthProvider({ children }) {
       });
    };
 
-   let value = { user, setUser, signin, signout };
+   let value = { user, setUser, signin, signout, id, setID };
 
    localStorage.setItem('User Auth', JSON.stringify(user));
    localStorage.setItem('User Authentic', appAuthProvider.isAuthenticated);

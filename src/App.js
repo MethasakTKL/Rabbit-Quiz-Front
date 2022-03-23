@@ -31,7 +31,12 @@ import Home_Teacher from "./pages_Teacher/Home_Teacher";
 import { RequireAuth } from "./auth/RequireAuth";
 import { TeacherGuard } from "./auth/TeacherGuard";
 
+
+const IDContext = React.createContext()
+
 function App() {
+
+  const [id, setID] = React.useState(null)
   return (
     <div>
 
@@ -40,6 +45,7 @@ function App() {
         <Route exact path="/register" element={<Register />} />
 
         <Route element={<RequireAuth />}>
+
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
@@ -50,13 +56,14 @@ function App() {
             <Route path="/mypoints" element={<MyPointsPage />} />
             <Route path="*" element={<Falsepage />} />
           </Route>
+
           <Route element={<LayOutTeacher />}>
             <Route element={<TeacherGuard />}>
-                <Route path="/teacher" element={<Home_Teacher />} />
-                <Route path="/profile-teacher" element={<Profile_Teacher />} />
-                <Route path="/classroom-teacher" element={<Classroom_Teacher />} />
-                <Route path="/classroom-member-teacher" element={<ClassMember_Teacher />} />
-                <Route path="/classroom-activity-teacher" element={<ClassActivity_Teacher />} />
+              <Route path="/teacher" element={<Home_Teacher />} />
+              <Route path="/profile-teacher" element={<Profile_Teacher />} />
+              <Route path="/classroom-teacher" element={<Classroom_Teacher />} />
+              <Route path="/classroom-member-teacher" element={<ClassMember_Teacher />} />
+              <Route path="/classroom-activity-teacher" element={<ClassActivity_Teacher />} />
             </Route>
           </Route>
 
