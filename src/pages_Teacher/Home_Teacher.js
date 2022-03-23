@@ -108,7 +108,7 @@ function Home_Teacher() {
                       variant="contained"
                       sx={{ width: 200, height: 50 }}
                       component={Link}
-                      to="/classroom"
+                      to="/classroom-teacher"
                     >
                       <div className="roomname">เข้าห้องเรียน</div>
                     </Button>
