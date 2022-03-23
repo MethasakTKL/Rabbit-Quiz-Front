@@ -60,7 +60,6 @@ function AppHeader() {
 
       async function fetchData() {
         const response = await ax.get('/userdetail')
-        console.log("I SENT RES")
         let userDetail = response.data
         setUserName(userDetail.first_name + " " + userDetail.last_name)
 
@@ -72,7 +71,7 @@ function AppHeader() {
         }
       }
       fetchData();
-    }, 1000);
+    }, 700);
   }, []);
 
   return (

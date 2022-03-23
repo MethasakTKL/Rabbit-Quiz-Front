@@ -14,7 +14,7 @@ import { ax, useAuth } from "../auth/auth";
 import {
   EditProfilePopup,
   EditEmailPopup,
-} from "../components/EditProfilePopup";
+} from "../components/Popup/EditProfilePopup";
 
 
 
@@ -42,7 +42,7 @@ function Profile() {
         setUserIsStaff(response.data.is_staff)
       }
       fetchData();
-    }, 1000);
+    }, 700);
   }, []);
 
   return (

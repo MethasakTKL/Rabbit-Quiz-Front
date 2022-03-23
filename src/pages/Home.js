@@ -17,176 +17,121 @@ import classIMG from "../Static/image/Classroomimg.jpg";
 import { ax, useAuth } from "../auth/auth";
 import { useLocation, useNavigate } from "react-router";
 import { message } from "antd";
+import AddClassRoomPopup from "../components/Popup/AddClassRoomPopup";
+import CreateClassRoomPopup from "../components/Popup/CreateClassRoomPopup";
+
+
+
+
 
 function Home() {
-  const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+    const handleClose = () => {
+        setOpen(false);
+    };
 
-  const [userFirstName, setUserFirstName] = useState('')
+    const [userFirstName, setUserFirstName] = useState('')
+    const [userIsStaff, setUserIsStaff] = useState('')
+    const [userClassRoom, setUserClassRoom] = useState()
 
-  let timeout;
-  useEffect(() => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      async function fetchData() {
-        const response = await ax.get('/userdetail')
-        setUserFirstName(response.data.first_name)
-        console.log('Fetch data for home success...')
-      }
-      fetchData();
-    }, 1000);    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
-  }, []);
+    let timeout;
+    useEffect(() => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            async function fetchData() {
+                const response = await ax.get('/userdetail')
+                setUserFirstName(response.data.first_name)
+                setUserIsStaff(response.data.is_staff)
+                console.log('Fetch data for home success...')
 
-  let navigate = useNavigate()
-  const [classCode, setClassCode] = useState('')
-  const [error, setError] = useState()
-  const handleAddClass = async () => {
-    try {
-      var result = await ax.post('/join', { classCode })
-      if (result.status === 200 && result.data) {
-        console.log(`Successfully joined classroom...`)
-        setOpen(false)
-        navigate('/reload', { replace: true })
-        navigate('/', { replace: true })
-        message.success({
-          content: "เข้าร่วมห้องเรียนสำเร็จ",
-          style: { fontFamily: "Prompt", marginTop: 20, fontSize: "20px" },
-          duration: 3
-        });
-      }
-    } catch (error) {
-      setOpen(false)
-      message.error({
-        content: "รหัสห้องเรียนนี้ไม่สามารถเข้าร่วมได้ กรุณาลองใหม่",
-        style: { fontFamily: "Prompt", marginTop: 140, fontSize: "20px" },
-        duration: 3
-      });
+                const classRoom = await ax.get('/getUserClassroom')
+                setUserClassRoom(classRoom)
+                console.log(classRoom.data.length)
+                console.log(classRoom.data)
 
-      console.error(error)
-    }
-  }
-  // setError(true)
+                const res = await ax.get('/myclass')
+                console.log(res.data)
+            }
+            fetchData();
+        }, 700);    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
+    }, []);
+
+    let navigate = useNavigate()
 
 
-  return (
-    <div>
-      <h4 className="hello">สวัสดี, {userFirstName}</h4>
-      {/* เพิ่มห้องเรียน */}
-      <Button
-        variant="outlined"
-        sx={{
-          display: "block",
-          marginLeft: "auto",
-          marginRight: "auto",
-          fontFamily: "Prompt",
-        }}
-        onClick={handleClickOpen}
-      >
-        <FiPlus /> ห้องเรียน
-      </Button>
-      <Dialog open={open} onClose={handleClose} sx={{ marginBottom: "200px" }}>
-        <DialogTitle sx={{ fontFamily: "Prompt" }}>เพิ่มห้องเรียน</DialogTitle>
-        {error &&
-          <error>รหัสห้องเรียนนี้ไม่สามารถเข้าได้<br />กรุณาลองใหม่</error>}
-        <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="รหัสห้องเรียน"
-            value={classCode}
-            onChange={(e) => setClassCode(e.target.value)}
-            type="name"
-            fullWidth
-            variant="standard"
-            inputProps={{ style: { fontFamily: "Prompt" } }}
-            InputLabelProps={{ style: { fontFamily: "Prompt" } }}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button
-            disabled={classCode === ''}
-            onClick={handleAddClass}
-            sx={{ fontFamily: "Prompt", color: "white" }}
-            variant="contained"
-          >
-            เพิ่ม
-          </Button>
-          <Button onClick={handleClose} sx={{ fontFamily: "Prompt" }}>
-            ยกเลิก
-          </Button>
-        </DialogActions>
-      </Dialog>
-      {/* เพิ่มห้องเรียน */}
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          "& > :not(style)": {
-            m: 1,
-            width: "90%",
-            maxWidth: 1000,
-            borderRadius: 3,
-            marginLeft: "auto",
-            marginRight: "auto",
-          },
-        }}
-      >
-        <Paper elevation={3}>
-          <typography>
-            <h1 className="titleclass" sx={{}}>
-              ห้องเรียน <ClassIcon sx={{ fontSize: "50" }} />
-            </h1>
-          </typography>
-          <Stack sx={{ paddingBottom: 5 }}>
-            <Box>
-              <Card
+    return (
+        <div>
+            <h4 className="hello">สวัสดี, {userFirstName}</h4>
+            {/* ADD AND CREATE CLASSROOM SECTION USER*/}
+            {userIsStaff ? <CreateClassRoomPopup /> : <AddClassRoomPopup />}
+
+            <Box
                 sx={{
-                  width: "90%",
-                  maxWidth: 500,
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  paddingBottom: 2,
-
+                    display: "flex",
+                    flexWrap: "wrap",
+                    "& > :not(style)": {
+                        m: 1,
+                        width: "90%",
+                        maxWidth: 1000,
+                        borderRadius: 3,
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                    },
                 }}
-                elevation={5}
-              >
-                <CardMedia
-                  component="img"
-                  height="100%"
-                  image={classIMG}
-                  alt="green iguana"
-                />
-                <CardContent>
-                  <div className="cardcontent">ห้องเรียนการเกษตร</div>
-                </CardContent>
-                <CardActions>
-                  <Box sx={{ marginLeft: "auto", paddingRight: 1.5 }}>
-                    <Button
-                      variant="contained"
-                      sx={{ width: 200, height: 50 }}
-                      component={Link}
-                      to="/classroom"
+            >
+                <Paper elevation={3}>
+                    <typography>
+                        <h1 className="titleclass" sx={{}}>
+                            ห้องเรียน <ClassIcon sx={{ fontSize: "50" }} />
+                        </h1>
+                    </typography>
+                    <Stack sx={{ paddingBottom: 5 }}>
+                        <Box>
+                            <Card
+                                sx={{
+                                    width: "90%",
+                                    maxWidth: 500,
+                                    marginLeft: "auto",
+                                    marginRight: "auto",
+                                    paddingBottom: 2,
 
-                    >
-                      <div className="roomname">เข้าห้องเรียน</div>
-                    </Button>
-                  </Box>
-                </CardActions>
-              </Card>
+                                }}
+                                elevation={5}
+                            >
+                                <CardMedia
+                                    component="img"
+                                    height="100%"
+                                    image={classIMG}
+                                    alt="green iguana"
+                                />
+                                <CardContent>
+                                    <div className="cardcontent">ห้องเรียนการเกษตร</div>
+                                </CardContent>
+                                <CardActions>
+                                    <Box sx={{ marginLeft: "auto", paddingRight: 1.5 }}>
+                                        <Button
+                                            variant="contained"
+                                            sx={{ width: 200, height: 50 }}
+                                            component={Link}
+                                            to="/classroom"
+
+                                        >
+                                            <div className="roomname">เข้าห้องเรียน</div>
+                                        </Button>
+                                    </Box>
+                                </CardActions>
+                            </Card>
+                        </Box>
+                    </Stack>
+                </Paper>
             </Box>
-          </Stack>
-        </Paper>
-      </Box>
-    </div>
-  );
+        </div>
+    );
 }
 
 export default Home;

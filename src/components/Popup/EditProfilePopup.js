@@ -10,8 +10,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import './EditProfilePopup.css';
 import SaveIcon from '@mui/icons-material/Save';
-import RegexTextField from "./RegexTextField";
-import { ax, useAuth } from "../auth/auth";
+import RegexTextField from "../RegexTextField";
+import { ax, useAuth } from "../../auth/auth";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 
