@@ -388,7 +388,7 @@ function Register() {
                   <div>
                     <CheckCircleIcon />
                   </div>
-                  <h2 className="reg-header-congrat">สร้างบัญชีเสร็จสิ้น</h2>
+                  <h2 className="reg-header-congrat"><CheckCircleIcon sx={{fontSize:180,color:"#4cb143",paddingBottom:5}}/><div>สร้างบัญชีเสร็จสิ้น</div></h2>
                   <h2 className="reg-congrat">ยินดีด้วยคุณได้สร้างบัญชีเสร็จเรียบร้อยแล้ว</h2>
                   <Link to="/login" style={{ textDecoration: "none" }}>
                     <div className="reg-login">กลับไปยังหน้าเข้าสู่ระบบ</div>
