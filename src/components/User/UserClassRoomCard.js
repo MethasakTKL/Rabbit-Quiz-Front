@@ -16,6 +16,7 @@ import {
     CardMedia,
     CardActionArea,
 } from "@mui/material";
+import Classroom from "../../Static/image/Untitled-2.png"
 
 function UserClassRoomCard() {
     const [classroomList, setClassRoomList] = useState();
@@ -56,7 +57,7 @@ function UserClassRoomCard() {
                                     onClick={() => handleClick(room.id)}
                                     sx={{
                                         width: "90%",
-                                        maxWidth: 700,
+                                        maxWidth: 500,
                                         marginLeft: "auto",
                                         marginRight: "auto",
                                         paddingBottom: 2,
@@ -69,13 +70,13 @@ function UserClassRoomCard() {
                                     <CardMedia
                                         component="img"
                                         alt="classroom"
-                                        height="180"
-                                        // image={}
+                                        height="130"
+                                        image={Classroom}
                                         sx={{ borderRadius: 1 }}
                                     />
 
                                     <CardContent>
-                                        <div className="cardcontent">{room.name}</div>
+                                        <div className="cardcontent">ห้องเรียน {room.name}</div>
                                     </CardContent>
                                 </CardActionArea>
                             </Box>

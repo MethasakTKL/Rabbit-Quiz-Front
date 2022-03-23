@@ -21,7 +21,6 @@ import AddClassRoomPopup from "../components/Popup/AddClassRoomPopup";
 import CreateClassRoomPopup from "../components/Popup/CreateClassRoomPopup";
 import UserClassRoomCard from "../components/User/UserClassRoomCard";
 
-
 function Home() {
 
 
