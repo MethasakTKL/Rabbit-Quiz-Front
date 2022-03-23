@@ -13,14 +13,35 @@ const appAuthProvider = {
    isAuthenticated: false,
    async signin(userdata, callback) {
       try {
+
+         var username = localStorage.getItem("id_username");
+         var password = localStorage.getItem("id_password");
+
+         if (username && password) {
+            userdata = {
+               username: username,
+               password: password,
+            };
+
+         }
+
+         console.log(userdata.username); console.log(userdata.password);
          var result = await ax.post('/auth/login/', {
             username: userdata.username,
             password: userdata.password,
          })
+
          if (result.status === 200 && result.data) {
+            console.log("Login Success!!!")
             appAuthProvider.isAuthenticated = true;
             appAuthProvider.accessToken = result.data.access;
             appAuthProvider.refreshToken = result.data.refresh;
+            (ax.interceptors.request.use(config => {
+               if (appAuthProvider.accessToken) {
+                  config.headers.authorization = `Bearer ${appAuthProvider.accessToken}`
+               }
+               return config;
+            }))
             let user_detail = await ax.get('/userdetail')
             localStorage.setItem("user_email", user_detail.data.email)
             localStorage.setItem("user_first_name", user_detail.data.first_name)
@@ -51,13 +72,6 @@ const appAuthProvider = {
       setTimeout(callback, 100);
    },
 };
-
-ax.interceptors.request.use(config => {
-   if (appAuthProvider.accessToken) {
-      config.headers.authorization = `Bearer ${appAuthProvider.accessToken}`
-   }
-   return config;
-})
 
 let AuthContext = React.createContext(null);
 

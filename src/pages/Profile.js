@@ -28,19 +28,22 @@ function Profile() {
   const [userEmail, setUserEmail] = useState('')
   const [userIsStaff, setUserIsStaff] = useState(null)
 
+  let timeout;
 
-  useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
-    async function fetchData() {
-      const response = await ax.get('/userdetail')
-      setUser(response.data)
-      setUserFirstname(response.data.first_name)
-      setUserLastname(response.data.last_name)
-      setUserEmail(response.data.email)
-      setUserIsStaff(response.data.is_staff)
-    }
-    fetchData();
+  useEffect(() => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      async function fetchData() {
+        const response = await ax.get('/userdetail')
+        setUser(response.data)
+        setUserFirstname(response.data.first_name)
+        setUserLastname(response.data.last_name)
+        setUserEmail(response.data.email)
+        setUserIsStaff(response.data.is_staff)
+      }
+      fetchData();
+    }, 1000);
   }, []);
-
 
   return (
     <div>

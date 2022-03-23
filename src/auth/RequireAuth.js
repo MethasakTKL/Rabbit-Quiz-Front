@@ -7,7 +7,7 @@ function RequireAuth() {
     let location = useLocation();
     let navigate = useNavigate
 
-    if (appAuthProvider.isAuthenticated === false) {
+    if (auth.user === null) {
         let token = localStorage.getItem('access_token')
         if (token) {
             try {
@@ -18,7 +18,7 @@ function RequireAuth() {
                 auth.signin(userdata, (response) => {
                     auth.setUser(response)
                 })
-                return <Outlet />;
+                return <Outlet />
 
             } catch (err) {
                 console.log("Error", JSON.stringify(err))

@@ -30,13 +30,18 @@ function Home() {
   };
 
   const [userFirstName, setUserFirstName] = useState('')
-  useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
-    async function fetchData() {
-      const response = await ax.get('/userdetail')
-      setUserFirstName(response.data.first_name)
-      console.log('Fetch data for home success...')
-    }
-    fetchData();
+
+  let timeout;
+  useEffect(() => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      async function fetchData() {
+        const response = await ax.get('/userdetail')
+        setUserFirstName(response.data.first_name)
+        console.log('Fetch data for home success...')
+      }
+      fetchData();
+    }, 1000);    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
   }, []);
 
   let navigate = useNavigate()

@@ -16,7 +16,7 @@ import "./AppHeader.css";
 import { EmojiEvents, MenuTwoTone } from "@mui/icons-material";
 
 //authentic
-import { ax, useAuth } from "../../auth/auth";
+import { AuthProvider, ax, useAuth } from "../../auth/auth";
 
 
 function AppHeader() {
@@ -51,22 +51,29 @@ function AppHeader() {
   const [userRole, setUserRole] = React.useState('')
   const [userName, setUserName] = React.useState('')
 
-  useEffect(() => {    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
-    async function fetchData() {
-      const response = await ax.get('/userdetail')
-      let userDetail = response.data
-      setUserName(userDetail.first_name + " " + userDetail.last_name)
 
-      if (userDetail.is_staff == true) {
-        setUserRole('คุณครู')
+  // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
+  let timeout;
+  useEffect(() => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+
+      async function fetchData() {
+        const response = await ax.get('/userdetail')
+        console.log("I SENT RES")
+        let userDetail = response.data
+        setUserName(userDetail.first_name + " " + userDetail.last_name)
+
+        if (userDetail.is_staff == true) {
+          setUserRole('คุณครู')
+        }
+        if (!userDetail.is_staff == true) {
+          setUserRole('นักเรียน')
+        }
       }
-      if (!userDetail.is_staff == true) {
-        setUserRole('นักเรียน')
-      }
-    }
-    fetchData();
+      fetchData();
+    }, 1000);
   }, []);
-
 
   return (
     <div>
