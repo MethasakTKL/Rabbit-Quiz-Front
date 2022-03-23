@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Paper, Stack, TextField } from "@mui/material";
+import { Box, Button, Paper, Stack, TextField, Grid } from "@mui/material";
 import ClassIcon from "@mui/icons-material/Class";
 import "./Home.css";
 import { Link } from "react-router-dom";
@@ -21,75 +21,73 @@ import AddClassRoomPopup from "../components/Popup/AddClassRoomPopup";
 import CreateClassRoomPopup from "../components/Popup/CreateClassRoomPopup";
 import UserClassRoomCard from "../components/User/UserClassRoomCard";
 
-
-
-
-
 function Home() {
-    const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-    let userFirstName = localStorage.getItem('user_first_name')
-    let userIsStaff = JSON.parse(localStorage.getItem('user_is_staff'))
-    const [userClassRoom, setUserClassRoom] = useState()
+  let userFirstName = localStorage.getItem("user_first_name");
+  let userIsStaff = JSON.parse(localStorage.getItem("user_is_staff"));
+  const [userClassRoom, setUserClassRoom] = useState();
 
-    let timeout;
-    useEffect(() => {
+  let timeout;
+  useEffect(() => {
+    async function fetchData() {
+      const classRoom = await ax.get("/getUserClassroom");
 
-        async function fetchData() {
-            const classRoom = await ax.get('/getUserClassroom')
+      let roomDetail = classRoom.data;
+      let n = 0;
+      let rooms = [];
+      for (const prop in roomDetail) {
+        let room_id = roomDetail[n].id;
+        let room_name = roomDetail[n].name;
+        rooms.push({ id: room_id, name: room_name });
+        n++;
+      }
+      // console.log("obj room", rooms)
+    }
+    fetchData();
+    // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
+  }, []);
 
-            let roomDetail = classRoom.data; let n = 0; let rooms = []
-            for (const prop in roomDetail) {
-                let room_id = roomDetail[n].id
-                let room_name = roomDetail[n].name
-                rooms.push({ id: room_id, name: room_name })
-                n++
-            }
-            // console.log("obj room", rooms)
-        }
-        fetchData();
-        // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
-    }, []);
-
-
-
-    return (
-        <div>
-            <h4 className="hello">สวัสดี, {userFirstName}</h4>
-            {/* ADD AND CREATE CLASSROOM SECTION USER*/}
-            {userIsStaff ? <CreateClassRoomPopup /> : <AddClassRoomPopup />}
-            <Box
-                sx={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    "& > :not(style)": {
-                        m: 1,
-                        width: "90%",
-                        maxWidth: 1000,
-                        borderRadius: 3,
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                    },
-                }}
-            >
-                <Paper elevation={3}>
-                    <h1 className="titleclass" sx={{}}>
-                        ห้องเรียน <ClassIcon sx={{ fontSize: "50" }} />
-                    </h1>
-                    <UserClassRoomCard />
-
-                </Paper>
-            </Box>
-        </div>
-    );
+  return (
+    <div>
+      <h4 className="hello">สวัสดี, {userFirstName}</h4>
+      {/* ADD AND CREATE CLASSROOM SECTION USER*/}
+      {userIsStaff ? <CreateClassRoomPopup /> : <AddClassRoomPopup />}
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          "& > :not(style)": {
+            m: 1,
+            width: "90%",
+            maxWidth: 1000,
+            borderRadius: 3,
+            marginLeft: "auto",
+            marginRight: "auto",
+          },
+        }}
+      >
+        <Paper elevation={3}>
+          <h1 className="titleclass" sx={{}}>
+            ห้องเรียน <ClassIcon sx={{ fontSize: "50" }} />
+          </h1>
+          <Grid spacing={2} columns={2}>
+            <Grid item xs={8}>
+              <UserClassRoomCard />
+            </Grid>
+          </Grid>
+        </Paper>
+      </Box>
+    </div>
+  );
 }
 
 export default Home;
