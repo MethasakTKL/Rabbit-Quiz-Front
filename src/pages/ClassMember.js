@@ -1,4 +1,4 @@
-import { Button, Box, Paper, Grid } from "@mui/material";
+import { Button, Box, Paper, Grid, Stack } from "@mui/material";
 import React from "react";
 import "./ClassMember.css";
 import Card from "@mui/material/Card";
@@ -10,175 +10,214 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 function ClassMember() {
   return (
     <div>
-      <h1 className="classname" style={{ paddingLeft: "5%", fontSize: 36 }}>
+      <h1 className="classname" style={{ fontSize: 36 }}>
         ห้องเรียนการเกษตร
       </h1>
-      <Paper
-        className="membertopic"
-        variant="contained"
-        sx={{
-          borderRadius: 3,
-          width: 150,
-          height: 40,
-          marginLeft: "5%",
-          marginRight: 0,
-        }}
-        style={{ background: "#F19528" }}
-      >
-        <h3 className="center" style={{ paddingLeft: "30%", paddingTop: 5 }}>
-          สมาชิก
-        </h3>
-        {/* // Mockup data----------------------------------------------------------------------------------------------------------------------- */}
-      </Paper>
+      {/* <Stack direction="row" justifyContent="center">
+        <Paper
+          className="membertopic"
+          variant="contained"
+          sx={{
+            borderRadius: 3,
+            width: 150,
+            height: 40,
+          }}
+          style={{ background: "#F19528" }}
+        >
+          <h3 className="center" style={{ paddingLeft: "25%", paddingTop: 5 }}>
+            สมาชิก
+          </h3>
+        </Paper>
+      </Stack> */}
+      {/* // Mockup data----------------------------------------------------------------------------------------------------------------------- */}
       <Box
         sx={{
-          width: "80%",
-          height: 40,
-          borderRadius: 20,
+          borderBottom: 2,
+          borderColor:"#7c6aa1",
           marginLeft: "auto",
           marginRight: "auto",
-          paddingTop: 2,
+          paddingTop: 3,
         }}
+        className="boxtitle"
       >
-        <Card variant="contained" sx={{ borderRadius: 4 }}>
-          <Grid
-            container
-            direction="row"
-            justifyContent="flex-start"
-            alignItems="center"
-            paddingLeft={3}
-            sx={{ background: "#E4E4E5" }}
-          >
-            <AccountCircleIcon sx={{ fontSize: 40 , color:'#9C2431'}} />
-            <p className="centertext">อาจารย์ อารีย์ มีสุข</p>
+        <Stack direction="row" justifyContent="space-between">
+          <Grid>
+            <div className="texttitle1">คุณครู</div>
           </Grid>
-        </Card>
+        </Stack>
       </Box>
-      {/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
       <Box
         sx={{
-          width: "75%",
-          height: 40,
-          borderRadius: 20,
           marginLeft: "auto",
           marginRight: "auto",
-          paddingTop: 7,
+          paddingTop: 3,
+          paddingBottom:2
         }}
+        className="boxtitle"
       >
-        <Card variant="contained" sx={{ borderRadius: 4 }}>
-          <Grid
-            container
-            direction="row"
-            justifyContent="flex-start"
-            alignItems="center"
-            paddingLeft={3}
-            sx={{ background: "#E4E4E5" }}
-          >
-            <FaceIcon sx={{ fontSize: 30 , color:'#F19528'}} />
-            <p className="centertext">ชนาวัฒน์ ทั้วสุภาพ</p>
+        <Stack
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="center"
+          spacing={4}
+        >
+          <Grid>
+            <AccountCircleIcon sx={{fontSize:32,color:"#F19528"}}/>
           </Grid>
-        </Card>
+          <Grid>
+            <div className="namestudent">อารีย์ มีสุข</div>
+          </Grid>
+        </Stack>
       </Box>
-      {/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */}
+      
       <Box
         sx={{
-          width: "75%",
-          height: 40,
-          borderRadius: 20,
+          borderBottom: 2,
+          borderColor:"#7c6aa1",
           marginLeft: "auto",
           marginRight: "auto",
-          paddingTop: 10,
+          paddingTop: 3,
         }}
+        className="boxtitle"
       >
-        <Card variant="contained" sx={{ borderRadius: 4 }}>
-          <Grid
-            container
-            direction="row"
-            justifyContent="flex-start"
-            alignItems="center"
-            paddingLeft={3}
-            sx={{ background: "#E4E4E5" }}
-          >
-            <FaceIcon sx={{ fontSize: 30, color:'#F19528' }} />
-            <p className="centertext">เมธาศักดิ์ ทิพย์กองลาศ</p>
+        <Stack direction="row" justifyContent="space-between">
+          <Grid>
+            <div className="texttitle1">เพื่อนร่วมชั้น</div>
           </Grid>
-        </Card>
+          <Grid>
+            <div className="texttitle2">ทั้งหมด 5 คน</div>
+          </Grid>
+        </Stack>
       </Box>
-      {/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
       <Box
         sx={{
-          width: "75%",
-          height: 40,
-          borderRadius: 20,
+          borderBottom: 2,
+          borderColor:"#e8dcff",
           marginLeft: "auto",
           marginRight: "auto",
-          paddingTop: 10,
+          paddingTop: 3,
         }}
+        className="boxtitle"
       >
-        <Card variant="contained" sx={{ borderRadius: 4 }}>
-          <Grid
-            container
-            direction="row"
-            justifyContent="flex-start"
-            alignItems="center"
-            paddingLeft={3}
-            sx={{ background: "#E4E4E5" }}
-          >
-            <FaceIcon sx={{ fontSize: 30 , color:'#F19528'}} />
-            <p className="centertext">นัฏฐวัฒน์ สิงห์อินทร์</p>
+        <Stack
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="center"
+          spacing={4}
+        >
+          <Grid>
+            <FaceIcon sx={{fontSize:32,color:"#F19528"}}/>
           </Grid>
-        </Card>
+          <Grid>
+            <div className="namestudent">ชนาวัฒน์ ทั้วสุภาพ</div>
+          </Grid>
+        </Stack>
       </Box>
-      {/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
+
       <Box
         sx={{
-          width: "75%",
-          height: 40,
-          borderRadius: 20,
+          borderBottom: 2,
+          borderColor:"#e8dcff",
           marginLeft: "auto",
           marginRight: "auto",
-          paddingTop: 10,
+          paddingTop: 3,
         }}
+        className="boxtitle"
       >
-        <Card variant="contained" sx={{ borderRadius: 4 }}>
-          <Grid
-            container
-            direction="row"
-            justifyContent="flex-start"
-            alignItems="center"
-            paddingLeft={3}
-            sx={{ background: "#E4E4E5" }}
-          >
-            <FaceIcon sx={{ fontSize: 30 , color:'#F19528'}} />
-            <p className="centertext">อิฟฟาฮาน สุขสุวรรณ</p>
+        <Stack
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="center"
+          spacing={4}
+        >
+          <Grid>
+            <FaceIcon sx={{fontSize:32,color:"#F19528"}}/>
           </Grid>
-        </Card>
+          <Grid>
+            <div className="namestudent">นัฏฐวัฒน์ สิงห์อินทร์</div>
+          </Grid>
+        </Stack>
       </Box>
-      {/* ----------------------------------------------------------------------------------------------------------------------------------------------------- */}
+
       <Box
         sx={{
-          width: "75%",
-          height: 40,
-          borderRadius: 20,
+          borderBottom: 2,
+          borderColor:"#e8dcff",
           marginLeft: "auto",
           marginRight: "auto",
-          paddingTop: 10,
+          paddingTop: 3,
         }}
+        className="boxtitle"
       >
-        <Card variant="contained" sx={{ borderRadius: 4 }}>
-          <Grid
-            container
-            direction="row"
-            justifyContent="flex-start"
-            alignItems="center"
-            paddingLeft={3}
-            sx={{ background: "#E4E4E5" }}
-          >
-            <FaceIcon sx={{ fontSize: 30 , color:'#F19528' }} />
-            <p className="centertext">ธรรมาธิป ชิตพงศ์</p>
+        <Stack
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="center"
+          spacing={4}
+        >
+          <Grid>
+            <FaceIcon sx={{fontSize:32,color:"#F19528"}}/>
           </Grid>
-        </Card>
+          <Grid>
+            <div className="namestudent">เมธาศักดิ์ ทิพย์กองลาศ</div>
+          </Grid>
+        </Stack>
       </Box>
+
+      <Box
+        sx={{
+          borderBottom: 2,
+          borderColor:"#e8dcff",
+          marginLeft: "auto",
+          marginRight: "auto",
+          paddingTop: 3,
+        }}
+        className="boxtitle"
+      >
+        <Stack
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="center"
+          spacing={4}
+        >
+          <Grid>
+            <FaceIcon sx={{fontSize:32,color:"#F19528"}}/>
+          </Grid>
+          <Grid>
+            <div className="namestudent">อิฟฟาฮาน สุขสุวรรณ</div>
+          </Grid>
+        </Stack>
+      </Box>
+
+      <Box
+        sx={{
+          borderBottom: 2,
+          borderColor:"#e8dcff",
+          marginLeft: "auto",
+          marginRight: "auto",
+          paddingTop: 3,
+        }}
+        className="boxtitle"
+      >
+        <Stack
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="center"
+          spacing={4}
+        >
+          <Grid>
+            <FaceIcon sx={{fontSize:32,color:"#F19528"}}/>
+          </Grid>
+          <Grid>
+            <div className="namestudent">ธรรมาธิป ชิตพงศ์</div>
+          </Grid>
+        </Stack>
+      </Box>
+
+      
     </div>
   );
 }
