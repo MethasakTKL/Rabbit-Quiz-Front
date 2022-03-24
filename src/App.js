@@ -2,9 +2,7 @@ import "./App.css";
 import React from "react";
 
 //components
-import AppHeader from "./components/Bars/AppHeader";
-import AppNavBar from "./components/Bars/AppNavBar";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Bars/Layout";
 
 //pages
@@ -19,15 +17,13 @@ import Register from "./pages/Register";
 import MyPointsPage from "./pages/MyPointsPage";
 import Activity from "./pages/Activity";
 
+import ClassActivity_Teacher from "./Classroom/ClassActivity_Teacher.js";
 //pages teacher
-import ClassActivity_Teacher from "./pages_Teacher/ClassActivity_Teacher";
 
 //authentic
 import { RequireAuth } from "./auth/RequireAuth";
 import { TeacherGuard } from "./auth/TeacherGuard";
 
-
-const IDContext = React.createContext()
 
 function App() {
 

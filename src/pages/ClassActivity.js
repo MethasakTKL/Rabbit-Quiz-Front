@@ -33,7 +33,7 @@ import { useAuth, ax } from "../auth/auth";
 
 //import list result
 import ClassActivityResults from "../Classroom/ClassActivityResults";
-import ClassActivity_Teacher from "../pages_Teacher/ClassActivity_Teacher";
+import ClassActivity_Teacher from "../Classroom/ClassActivity_Teacher";
 
 function ClassActivity() {
 
@@ -65,12 +65,13 @@ function ClassActivity() {
 
   let isstaff = JSON.parse(localStorage.getItem('user_is_staff'))
 
+
   return (
     <div> {isstaff ? <ClassActivity_Teacher /> :
       <Box height={800}>
         <Linkform href="classroom" underline="none">
           <h1 className="classname" style={{ fontSize: 36 }}>
-            ห้องเรียนการเกษตร
+            ห้องเรียน {classroomName}
           </h1>
         </Linkform>
         <Stack

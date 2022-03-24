@@ -32,10 +32,14 @@ import { Link } from "react-router-dom";
 import { ax, useAuth } from "../auth/auth";
 
 //css
-import "./ClassActivityResults.css";
+import "./ClassActivityResults_Teacher.css";
 import { message } from "antd";
+import DetailActivity from "../Classroom/ClassTeacherActivity/DetailActivity";
+import EditActivity from "../Classroom/ClassTeacherActivity/EditActivity";
+import DeleteIcon from "@mui/icons-material/Delete";
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 
-function ClassActivityResults() {
+function ClassActivityResults_Teacher() {
     let auth = useAuth()
     const [open, setOpen] = React.useState(false);
     const [fullWidth, setFullWidth] = React.useState(true);
@@ -67,6 +71,7 @@ function ClassActivityResults() {
     useEffect(() => {
         async function fetchActivity() {
             const res = await ax.get(`/assignments/`)
+            console.log(res)
             const check = await ax.get(`/assignment_status/`)
             let c = check.data.results
             let r = res.data.results
@@ -82,9 +87,7 @@ function ClassActivityResults() {
                 let classroom_id = r[n].classroom_id
                 let id = r[n].id
 
-                if (classroom_id === auth.id) {
-                    assignments.push({ title, description, posted_date, deadline, choice_true, choice_false, id })
-                }
+                assignments.push({ title, description, posted_date, deadline, choice_true, choice_false, id })
                 n++
             }
 
@@ -92,46 +95,101 @@ function ClassActivityResults() {
 
                 assignments.map(function (a, index) {
                     return (
-                        < Stack direction="column-reverse" >
-                            <Grid paddingTop={2} paddingBottom={2}>
-                                <Button
-                                    variant="contained"
-                                    onClick={() => handleOpen(a.title, a.discription, a.choice_true, a.choice_false, a.id)}
+                        <Stack direction={"column-reverse"}>
+                            <Grid paddingBottom={3}>
+                                <Box
                                     style={{
-                                        width: "80%",
                                         display: "flex",
                                         marginRight: "auto",
                                         marginLeft: "auto",
-                                        bottom: 10,
-                                        top: 1,
                                         background: "#5F498C",
+                                        width: "95%",
+                                        paddingBottom: 10,
+                                        paddingLeft: "5%",
+                                        paddingTop: 10,
                                         borderRadius: 15,
-                                        paddingBottom: 15,
                                     }}
                                 >
-                                    <Stack>
-                                        <h1 className="activitybutton">
-                                            {a.title}
-                                        </h1>
-                                        <div className="assignment-detail-activity">
-                                            <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
-                                            <div className="end-time">สิ้น</div>
-                                            <div className="end-time">สุด</div>
-                                            <div className="duetimeactivity">
-                                                {a.deadline}
+                                    <Grid
+                                        container
+                                        rowSpacing={1}
+                                        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                                        paddingTop={2}
+                                    >
+                                        <Grid item xs={6}>
+                                            <div className="activityname">
+                                                {a.title}
                                             </div>
-                                        </div>
-                                        <Grid className="status">
-                                            <div>หมดเวลาเเล้ว</div>
                                         </Grid>
-                                        <Grid className="statussent">
-                                            <CheckCircleIcon />
-                                            <div>ส่งเเล้ว</div>
+                                        <Grid item xs={6}>
+                                            <div className="activityduedate">
+                                                สิ้นสุดเวลา {a.deadline}
+                                            </div>
                                         </Grid>
-                                    </Stack>
-                                </Button>
+                                        <Grid item xs={6}>
+                                            <div className="textinbutton">ทั้งหมด</div>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <div className="textinbutton">5</div>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <div className="textinbutton">{a.choice_true}</div>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <div className="textinbutton">4</div>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <div className="textinbutton">{a.choice_false}</div>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <div className="textinbutton">-</div>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <div className="textinbutton">ยังไม่ส่ง</div>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <div className="textinbutton">1</div>
+                                        </Grid>
+                                        <Stack
+                                            marginLeft={"auto"}
+                                            marginRight={"auto"}
+                                            direction="row"
+                                            spacing={1}
+                                            paddingTop={3}
+                                            paddingBottom={2}
+                                        >
+                                            <Grid>
+                                                <DetailActivity />
+                                            </Grid>
+                                            <Grid>
+                                                <EditActivity />
+                                            </Grid>
+                                            <Grid>
+                                                <Button
+                                                    variant="contained"
+                                                    style={{ background: "#D64A55" }}
+                                                >
+                                                    <DeleteIcon />
+                                                    <div className="deletebutton">ลบ</div>
+                                                </Button>
+                                            </Grid>
+                                        </Stack>
+                                        <Stack
+                                            marginLeft={"auto"}
+                                            marginRight={"auto"}
+                                            direction="row"
+                                        >
+                                            <Grid className="statusactive">
+                                                <AccessTimeFilledIcon />
+                                            </Grid>
+                                            <Grid className="statusactive">
+                                                <div>อยู่ในระยะเวลา</div>
+                                            </Grid>
+                                        </Stack>
+                                    </Grid>
+                                </Box>
                             </Grid>
-                        </Stack >
+                        </Stack>
                     )
                 })
             )
@@ -234,4 +292,4 @@ function ClassActivityResults() {
     )
 }
 
-export default ClassActivityResults
+export default ClassActivityResults_Teacher
