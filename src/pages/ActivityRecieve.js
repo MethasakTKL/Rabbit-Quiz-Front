@@ -33,7 +33,7 @@ import { ax, useAuth } from "../auth/auth";
 
 //css
 import { message } from "antd";
-
+import "./Activity.css"
 
 
 function ActivityRecieve() {
@@ -43,7 +43,7 @@ function ActivityRecieve() {
     const [assignREC, setAssignmentREC] = React.useState(null)
     useEffect(() => {
         async function fetchActivity() {
-            const res = await ax.get(`/assignments/`)
+            const res = await ax.get(`/assignments`)
             const check = await ax.get(`/assignment_status/`)
             console.log(res)
             let c = check.data.results
@@ -71,14 +71,26 @@ function ActivityRecieve() {
                 assignments.map(function (a, index) {
                     return (
                         <Grid paddingTop={2} paddingBottom={2}>
-                            <h1 className="activity">{a.title}</h1>
-                            <div className="assignment-detail">
-                                <div type="time-activity">
-                                    <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
-                                    <div>สิ้นสุด</div>
-                                    <div type="duetime">{a.deadline}</div>
+                            <Button
+                                sx={{
+                                    color: "black",
+                                    display: "block",
+                                    border: 0,
+                                    paddingBottom: 1.5,
+                                    boxShadow: 3,
+                                    marginLeft: 'auto',
+                                    marginRight: 'auto',
+                                    width: "80%"
+                                }}>
+                                <h1 className="activity">{a.title}</h1>
+                                <div className="assignment-detail">
+                                    <div type="time-activity">
+                                        <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
+                                        <div className="due-time">สิ้นสุด</div>
+                                        <div type="duetime">{a.deadline}</div>
+                                    </div>
                                 </div>
-                            </div>
+                            </Button>
                         </Grid>
                     )
                 })

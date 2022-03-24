@@ -50,6 +50,9 @@
     justify-content: center;
     
 }
+.due-time {
+    font-size: 14px;
+}
 
 @media (max-width: 41em) { 
     .activity {

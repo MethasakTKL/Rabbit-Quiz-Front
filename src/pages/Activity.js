@@ -93,24 +93,8 @@ function Activity() {
           }}
         >
           <Box sx={{ paddingTop: 1 }}></Box>
-          <Button
-            sx={{
-              color: "black",
-              display: "block",
-              border: 0,
-              paddingBottom: 1.5,
-              boxShadow: 3,
-              marginLeft: 'auto',
-              marginRight: 'auto'
-            }}
-            className='screenpaper'
 
-            style={{ backgroundColor: "white" }}
-            to="/"
-            component={Link}
-          >
-            <ActivityRecieve />
-          </Button>
+          <ActivityRecieve />
         </Box>
       </TabPanel>
       {/* ---------------------------------------------------------------------------------------------------- */}
