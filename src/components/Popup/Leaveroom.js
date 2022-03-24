@@ -31,11 +31,12 @@ function Leaveroom() {
     <div>
       <Button
         variant="contained"
-        sx={{ borderRadius: 3, width: 50 }}
+        sx={{ borderRadius: 3, width: 80 }}
         style={{ background: "#E7E6E5" }}
         onClick={handleClickOpen}
       >
         <LogoutIcon sx={{ color: "#5F498C" }} />
+        <div className="leave">ออก</div>
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogContent>
