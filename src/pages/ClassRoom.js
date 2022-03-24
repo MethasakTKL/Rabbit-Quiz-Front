@@ -28,7 +28,7 @@ function Classroom() {
   return (
     <div className="screen">
       <h1 className="classname" style={{ fontSize: 36 }}>
-        ห้องเรียน{classroomName}
+        ห้องเรียน {classroomName}
       </h1>
       <Stack
         direction="row"

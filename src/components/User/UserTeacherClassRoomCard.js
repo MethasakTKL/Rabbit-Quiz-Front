@@ -18,7 +18,7 @@ import {
 } from "@mui/material";
 import Classroom from "../../Static/image/Untitled-2.png"
 
-function UserClassRoomCard() {
+function UserTeacherClassRoomCard() {
     const [classroomList, setClassRoomList] = useState();
 
     let auth = useAuth()
@@ -33,10 +33,10 @@ function UserClassRoomCard() {
     // setTimeout(alertFunc, 3000);
     useEffect(() => {
         async function fetchClassroom() {
-            const userRoom = await ax.get('/getUserClassroom')
+            const userRoom = await ax.get('/classroom')
             console.log(userRoom)
             let classroom = [];
-            let rooms = userRoom.data
+            let rooms = userRoom.data.results
             let n = 0;
             for (const prop in rooms) {
                 let roomID = rooms[n].id
@@ -92,4 +92,4 @@ function UserClassRoomCard() {
     return <div class="user-classroom">{classroomList}</div>;
 }
 
-export default UserClassRoomCard;
+export default UserTeacherClassRoomCard;

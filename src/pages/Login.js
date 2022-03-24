@@ -60,8 +60,7 @@ function Login() {
         });
 
         console.log("Login successfully...");
-        if (response.is_staff === true) { navigate("/teacher", { replace: true }); }
-        if (response.is_staff === false) { navigate("/", { replace: true }); }
+        navigate("/", { replace: true })
       }
     });
   };

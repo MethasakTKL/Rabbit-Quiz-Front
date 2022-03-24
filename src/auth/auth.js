@@ -77,8 +77,8 @@ let AuthContext = React.createContext(null);
 
 
 function AuthProvider({ children }) {
-   let [id, setID] = React.useState(null)
-   let [user, setUser] = React.useState(null);
+   let [id, setID] = React.useState(null);
+   let [user, setUser] = React.useState(JSON.parse(localStorage.getItem('response')));
    let navigate = useNavigate();
    let auth = useAuth();
    let location = useLocation();

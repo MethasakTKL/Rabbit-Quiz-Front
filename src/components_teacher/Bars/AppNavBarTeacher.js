@@ -4,9 +4,9 @@ import HistoryIcon from "@mui/icons-material/History";
 import FaceIcon from "@mui/icons-material/Face";
 import "./AppNavBarTeacher.css";
 import { AppBar, Box, Tab, Tabs, Toolbar } from "@mui/material";
-import { Link,useNavigate, useLocation, } from "react-router-dom";
+import { Link, useNavigate, useLocation, } from "react-router-dom";
 
-function AppNavBar() {
+function AppNavBarTeacher() {
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -15,9 +15,9 @@ function AppNavBar() {
   // เปลี่ยนสีของ Tabs บน Headers เวลากดเปลี่ยน path
   const navigate = useNavigate();
   const path = useLocation().pathname;
-  if (path == "/teacher") { if (value != 0) { setValue(0) } }
+  if (path == "/") { if (value != 0) { setValue(0) } }
   if (path == "/classroom-activity-teacher") { if (value != 1) { setValue(1) } }
-  if (path == "/profile-teacher") { if (value != 2) { setValue(2) } }
+  if (path == "/profile") { if (value != 2) { setValue(2) } }
   return (
     <Box sx={{ justifyContent: "center" }}>
       <AppBar
@@ -54,7 +54,7 @@ function AppNavBar() {
                     color: "#f3e5f5"
                   },
                   color: "#f3e5f5", fontFamily: "Prompt"
-                }}                to="/teacher"
+                }} to="/"
                 component={Link}
 
               />
@@ -81,7 +81,7 @@ function AppNavBar() {
                     color: "#f3e5f5"
                   },
                   color: "#f3e5f5", fontFamily: "Prompt"
-                }}                to="/profile-teacher"
+                }} to="/profile"
                 component={Link}
 
               />
@@ -94,4 +94,4 @@ function AppNavBar() {
   );
 }
 
-export default AppNavBar;
+export default AppNavBarTeacher;

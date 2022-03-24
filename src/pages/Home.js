@@ -20,6 +20,7 @@ import { message } from "antd";
 import AddClassRoomPopup from "../components/Popup/AddClassRoomPopup";
 import CreateClassRoomPopup from "../components/Popup/CreateClassRoomPopup";
 import UserClassRoomCard from "../components/User/UserClassRoomCard";
+import UserTeacherClassRoomCard from "../components/User/UserTeacherClassRoomCard";
 
 function Home() {
 
@@ -47,7 +48,7 @@ function Home() {
             >
                 <Paper elevation={3}>
                     <h1 className="titleclass" sx={{}}>ห้องเรียน <ClassIcon sx={{ fontSize: "50" }} /></h1>
-                    <UserClassRoomCard />
+                    {userIsStaff ? <UserTeacherClassRoomCard /> : <UserClassRoomCard />}
                 </Paper>
             </Box>
             <Box sx={{ paddingTop: 15 }}>

@@ -19,7 +19,7 @@ import { EmojiEvents, MenuTwoTone } from "@mui/icons-material";
 import { AuthProvider, ax, useAuth } from "../../auth/auth";
 
 
-function AppHeader() {
+function AppHeaderTeacher() {
   const auth = useAuth()
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
@@ -42,37 +42,15 @@ function AppHeader() {
   // เปลี่ยนสีของ Tabs บน Headers เวลากดเปลี่ยน path
   const navigate = useNavigate();
   const path = useLocation().pathname;
-  if (path == "/teacher") { if (value != 0) { setValue(0) } }
+  if (path == "/") { if (value != 0) { setValue(0) } }
   if (path == "/classroom-activity-teacher") { if (value != 1) { setValue(1) } }
-  if (path == "/profile-teacher") { if (value != 2) { setValue(2) } }
+  if (path == "/profile") { if (value != 2) { setValue(2) } }
 
   //วิธีเรียกข้อมูลหริอ fetch data มาใช้
-  const [userRole, setUserRole] = React.useState('')
-  const [userName, setUserName] = React.useState('')
 
-
-  // <---- ใช้ useEffect async fucntion เพื่อลดการเรียกใช้ fetchData
-  let timeout;
-  useEffect(() => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-
-      async function fetchData() {
-        const response = await ax.get('/userdetail')
-        console.log("I SENT RES")
-        let userDetail = response.data
-        setUserName(userDetail.first_name + " " + userDetail.last_name)
-
-        if (userDetail.is_staff == true) {
-          setUserRole('คุณครู')
-        }
-        if (!userDetail.is_staff == true) {
-          setUserRole('นักเรียน')
-        }
-      }
-      fetchData();
-    }, 1000);
-  }, []);
+  let userName =
+    localStorage.getItem('user_first_name') + " " +
+    localStorage.getItem('user_last_name')
 
   return (
     <div>
@@ -86,7 +64,7 @@ function AppHeader() {
               </Button>
             </div>
             <div className="appheader-logo">
-              <Link to="/teacher">
+              <Link to="/">
                 <img src={logo} alt="logorabbit" width={"120"} />
               </Link>
             </div>
@@ -121,7 +99,7 @@ function AppHeader() {
                       height: "63px"
 
                     }}
-                    to="/teacher"
+                    to="/"
                     component={Link}
                   />
                   <Tab
@@ -160,7 +138,7 @@ function AppHeader() {
                       fontSize: "18px",
                       display: "inline",
                     }}
-                    to="/profile-teacher"
+                    to="/profile"
                     component={Link}
                   />
                 </Tabs>
@@ -170,7 +148,7 @@ function AppHeader() {
             {/* PC SECTION */}
             <Grid sx={{ marginLeft: "auto", marginRight: 0 }}>
 
-              <div class="user-role" >{userRole}</div>
+              <div class="user-role" >คุณครู</div>
               <div class="user-name">{userName}</div>
 
             </Grid>
@@ -197,7 +175,7 @@ function AppHeader() {
             >
 
               <Box sx={{ width: 150 }}>
-                <MenuItem onClick={handleClose} to="/profile-teacher" component={Link}>
+                <MenuItem onClick={handleClose} to="/profile" component={Link}>
                   <div className="menubar">โปรไฟล์ของคุณ</div>
                 </MenuItem>
                 <MenuItem onClick={onClickLogout} to="/login" component={Link}>
@@ -214,4 +192,4 @@ function AppHeader() {
   );
 }
 
-export default AppHeader;
+export default AppHeaderTeacher;
