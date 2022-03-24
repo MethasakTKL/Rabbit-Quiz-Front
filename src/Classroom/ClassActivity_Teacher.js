@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import {
   Button,
   Box,
@@ -30,6 +30,8 @@ import EditActivity from "../Classroom/ClassTeacherActivity/EditActivity";
 import DetailActivity from "../Classroom/ClassTeacherActivity/DetailActivity";
 
 import ClassActivityResults_Teacher from "./ClassActivityResults_Teacher";
+import { ax, useAuth } from "../auth/auth";
+import { message } from "antd";
 
 function ClassActivity_Teacher() {
   const [open, setOpen] = React.useState(false);
@@ -55,6 +57,47 @@ function ClassActivity_Teacher() {
 
 
 
+  const [classroomName, setClassroomName] = React.useState(null)
+
+  let auth = useAuth()
+  React.useEffect(() => {
+    async function fetchClassroom() {
+      let res = await ax.get(`/classroom/${auth.id}`)
+      setClassroomName(res.data.classroomName)
+    } fetchClassroom();
+  }, [])
+
+
+
+
+
+  const [title, setTitle] = React.useState('')
+  const [description, setDescription] = React.useState('')
+  const [choice_true, setChoiceTrue] = React.useState('ใช่')
+  const [choice_false, setChoiceFalse] = React.useState('ไม่ใช่')
+  const [deadline, setDeadline] = React.useState('')
+
+  const handleCreateAssignment = async () => {
+    try {
+      var result = await ax.post(`/createAssignment/${auth.id}`, {
+        title, description, deadline, choice_true, choice_false
+      })
+      if (result.status === 200 && result.data) {
+        handleClose()
+
+        React.navigate('/reload', { replace: true })
+        React.navigate('/classroom-activity', { replace: true })
+        message.success({
+          content: "สร้างกิจกรรมสำเร็จ",
+          style: { fontFamily: "Prompt", marginTop: 20, fontSize: "20px" },
+          duration: 3
+        });
+
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
 
 
@@ -62,7 +105,7 @@ function ClassActivity_Teacher() {
     <Box sx={{ height: 1050 }}>
       <Link href="classroom-teacher" underline="none">
         <h1 className="classname" style={{ fontSize: 36 }}>
-          ห้องเรียนการเกษตร
+          {classroomName}
         </h1>
       </Link>
       <Stack
@@ -98,6 +141,8 @@ function ClassActivity_Teacher() {
                 variant="standard"
                 inputProps={{ style: { fontFamily: "Prompt" } }}
                 InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
               />
               <TextField
                 required
@@ -108,6 +153,8 @@ function ClassActivity_Teacher() {
                 variant="standard"
                 inputProps={{ style: { fontFamily: "Prompt" } }}
                 InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
               />
               <TextField
                 required
@@ -119,6 +166,8 @@ function ClassActivity_Teacher() {
                 variant="standard"
                 inputProps={{ style: { fontFamily: "Prompt" } }}
                 InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+                value={choice_true}
+                onChange={(e) => setChoiceTrue(e.target.value)}
               />
               <TextField
                 required
@@ -130,6 +179,8 @@ function ClassActivity_Teacher() {
                 variant="standard"
                 inputProps={{ style: { fontFamily: "Prompt" } }}
                 InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+                value={choice_false}
+                onChange={(e) => setChoiceFalse(e.target.value)}
               />
               <Grid paddingTop={3}>
                 <TextField
@@ -139,6 +190,8 @@ function ClassActivity_Teacher() {
                   type="datetime-local"
                   sx={{ width: 250 }}
                   inputProps={{ style: { fontFamily: "Prompt" } }}
+                  value={deadline}
+                  onChange={(e) => setDeadline(e.target.value)}
                   InputLabelProps={{
                     shrink: true,
                     style: { fontFamily: "Prompt" },
@@ -151,7 +204,7 @@ function ClassActivity_Teacher() {
                 <div className="cancelbutton">ยกเลิก</div>
               </Button>
               <Button
-                onClick={handleClose}
+                onClick={handleCreateAssignment}
                 variant="contained"
                 style={{ width: 150 }}
               >

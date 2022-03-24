@@ -161,7 +161,7 @@ function EditEmailPopup() {
           navigate('/profile', { replace: true })
           message.success({
             content: "เปลี่ยนแปลงชื่อนามสกุลสำเร็จ",
-            style: { fontFamily: "Prompt" },
+            style: { fontFamily: "Prompt", marginTop: 20, fontSize: "20px" },
           })
         })
       }
