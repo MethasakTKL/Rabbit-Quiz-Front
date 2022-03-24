@@ -118,7 +118,7 @@ function ClassMemberList() {
     }, []);
 
 
-    return <div>ClassMemberList</div>
+    return <div>{memberList}</div>
 
 }
 
