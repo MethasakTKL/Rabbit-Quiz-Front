@@ -4,8 +4,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Button, Grid, Paper } from "@mui/material";
-import "./Activity.css";
+import { Button, Grid, Paper, Stack } from "@mui/material";
 import "./Activity.css";
 import { Link } from "react-router-dom";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -54,7 +53,9 @@ function Activity() {
     <Box sx={{ width: "100%" }}>
       {/* ------------------------------------------------------------------ */}
       {/* TabActivity */}
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <Stack direction="row" justifyContent="center">
+      <Box sx={{borderBottom: 1, borderColor: "divider" }}>
+
         <Tabs
           value={value}
           onChange={handleChange}
@@ -73,10 +74,11 @@ function Activity() {
           />
         </Tabs>
       </Box>
+      </Stack>
       {/* ---------------------------------------------------------------------------------------------------- */}
       <TabPanel value={value} index={0}>
         <Box
-          sx={{
+          sx={{        
             bgcolor: "white",
             height: "500px",
             width: "100%",
@@ -91,12 +93,15 @@ function Activity() {
           <Button
             sx={{
               color: "black",
-              width: "100%",
               display: "block",
               border: 0,
               paddingBottom: 1.5,
               boxShadow: 3,
+              marginLeft:'auto',
+              marginRight:'auto'
             }}
+            className='screenpaper'
+            
             style={{ backgroundColor: "white" }}
             to="/classroom-activity"
             component={Link}
@@ -131,12 +136,14 @@ function Activity() {
           <Button
             sx={{
               color: "black",
-              width: "100%",
               display: "block",
               border: 0,
               paddingBottom: 1.5,
               boxShadow: 3,
+              marginLeft:'auto',
+              marginRight:'auto'
             }}
+            className='screenpaper'
             style={{ backgroundColor: "white" }}
             to="/classroom-activity"
             component={Link}

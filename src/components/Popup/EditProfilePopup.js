@@ -68,7 +68,7 @@ function EditProfilePopup() {
         style={{ background: "#F19528" }}
         onClick={handleClickOpen}
       >
-        <div className="buttonAdd">แก้ไขข้อมูลส่วนตัว</div>
+        <div className="buttonedit">แก้ไขข้อมูลส่วนตัว</div>
       </Button>
 
       <Dialog open={open} onClose={handleClose}>
@@ -178,7 +178,7 @@ function EditEmailPopup() {
         style={{ background: "#F19528" }}
         onClick={handleClickOpen}
       >
-        <div className="buttonAdd">แก้ไขที่อยู่อีเมล</div>
+        <div className="buttonedit">แก้ไขที่อยู่อีเมล</div>
       </Button>
 
       <Dialog open={open} onClose={handleClose}>
