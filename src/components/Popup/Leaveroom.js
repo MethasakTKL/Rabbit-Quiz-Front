@@ -17,7 +17,13 @@ import { useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import HelpIcon from "@mui/icons-material/Help";
 import ReportIcon from "@mui/icons-material/Report";
+
+
+
+
 function Leaveroom() {
+  let auth = useAuth()
+  let id = auth.id
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -27,6 +33,34 @@ function Leaveroom() {
   const handleClose = () => {
     setOpen(false);
   };
+
+
+
+  const key = 'updatable';
+  let navigate = useNavigate()
+  const handleLeave = async () => {
+    var res = await ax.post(`/leave/${id}`)
+    let resp = await ax.get(`/classroom/${id}`)
+    let roomname = resp.data.classroomName
+    console.log(`You have alreay exit the room ${roomname}`)
+    setOpen(false);
+    message.loading({
+      content: 'คุณกำลังออกจากห้องเรียน...',
+      style: { fontFamily: "Prompt", marginTop: 200, fontSize: "20px" },
+      key
+    });
+    setTimeout(() => {
+      message.warn({
+        content: `คุณได้ออกจากห้องเรียน ${roomname}`,
+        style: { fontFamily: "Prompt", marginTop: 200, fontSize: "20px" },
+        key,
+        duration: 2,
+      });
+      navigate('/', { replace: true })
+    }, 2000);
+  }
+
+
   return (
     <div>
       <Button
@@ -57,7 +91,7 @@ function Leaveroom() {
             variant="contained"
             style={{ background: "#7D0000" }}
             sx={{ width: 150 }}
-            onClick={handleClose}
+            onClick={handleLeave}
           >
             <div className="answer2">ใช่</div>
           </Button>

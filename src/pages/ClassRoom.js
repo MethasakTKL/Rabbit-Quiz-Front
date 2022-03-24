@@ -12,13 +12,18 @@ import { useAuth, ax } from "../auth/auth";
 import ClassAnnoucement from "../Classroom/ClassAnnoucement";
 import LogoutIcon from '@mui/icons-material/Logout';
 import Leaveroom from "../components/Popup/Leaveroom";
+import { message } from "antd";
+import { useNavigate } from "react-router";
+
+
+
+
 
 function Classroom() {
   let auth = useAuth()
   let id = auth.id
 
   const [classroomName, setClassroomName] = useState(null)
-
   useEffect(() => {
     async function fetchClassroom() {
       let res = await ax.get(`/classroom/${id}`)
@@ -58,12 +63,12 @@ function Classroom() {
           <QuizIcon sx={{ color: "#ffffff" }} />
           <div className="button2">กิจกรรม</div>
         </Button>
-        <Leaveroom/>
+
+        <Leaveroom />
 
       </Stack>
       <ClassAnnoucement />
-      <Box sx={{ paddingTop: 15 }}></Box>
-    </div>
+    </div >
   );
 }
 
