@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState }  from "react";
 import {
   Button,
   Box,
@@ -27,15 +27,15 @@ import Linkform from '@mui/material/Link';
 
 
 //import image
-import waterplant from "../Static/image/waterplant.png";
+import question from "../Static/image/Question00.png";
 import { Link } from "react-router-dom";
-import { useAuth } from "../auth/auth";
+import { useAuth, ax } from "../auth/auth";
 
 //import list result
 import ClassActivityResults from "../Classroom/ClassActivityResults";
 
 function ClassActivity() {
-  let auth = useAuth()
+  
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
 
@@ -47,9 +47,20 @@ function ClassActivity() {
     setOpen(false);
   };
 
-  const handleCloseYes = () => {
-    setOpen(false);
-  };
+  let auth = useAuth()
+  let id = auth.id
+  console.log(id)
+
+  const [classroomName, setClassroomName] = useState(null)
+
+  useEffect(() => {
+    async function fetchClassroom() {
+      let res = await ax.get(`/classroom/${id}`)
+      console.log(res.data.classroomName)
+      setClassroomName(res.data.classroomName)
+    } fetchClassroom();
+  }, [])
+
   return (
     <Box height={800}>
       <Linkform href="classroom" underline="none">
