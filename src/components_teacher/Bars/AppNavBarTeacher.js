@@ -16,8 +16,8 @@ function AppNavBarTeacher() {
   const navigate = useNavigate();
   const path = useLocation().pathname;
   if (path == "/") { if (value != 0) { setValue(0) } }
-  if (path == "/classroom-activity-teacher") { if (value != 1) { setValue(1) } }
-  if (path == "/profile") { if (value != 2) { setValue(2) } }
+  if (path == "/profile") { if (value != 1) { setValue(1) } }
+  if (path == "/classroom-activity-teacher") { if (value != 2) { setValue(2) } }
   return (
     <Box sx={{ justifyContent: "center" }}>
       <AppBar
@@ -60,20 +60,6 @@ function AppNavBarTeacher() {
               />
               <Tab
                 className="navtext"
-                icon={<HistoryIcon />}
-                label="กิจกรรม"
-                sx={{
-                  "&:hover": {
-                    color: "#f3e5f5"
-                  },
-                  color: "#f3e5f5", fontFamily: "Prompt"
-                }}
-                to="/classroom-activity-teacher"
-                component={Link}
-
-              />
-              <Tab
-                className="navtext"
                 icon={<FaceIcon />}
                 label="โปรไฟล์"
                 sx={{
@@ -85,6 +71,20 @@ function AppNavBarTeacher() {
                 component={Link}
 
               />
+              {/* <Tab
+                className="navtext"
+                icon={<HistoryIcon />}
+                label="กิจกรรม"
+                sx={{
+                  "&:hover": {
+                    color: "#f3e5f5"
+                  },
+                  color: "#f3e5f5", fontFamily: "Prompt"
+                }}
+                to="/classroom-activity-teacher"
+                component={Link}
+
+              /> */}
             </Tabs>
           </Toolbar>
         </div>
