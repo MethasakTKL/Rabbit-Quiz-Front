@@ -81,7 +81,6 @@ function ClassActivity_Teacher() {
               <div className="titledialog">สร้างกิจกรรม</div>
             </DialogTitle>
             <DialogContent>
-              <error>กรุณากรอกข้อมูลชื่อกิจกรรม</error>
               <TextField
                 required
                 margin="dense"

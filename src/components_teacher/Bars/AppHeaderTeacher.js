@@ -43,8 +43,8 @@ function AppHeaderTeacher() {
   const navigate = useNavigate();
   const path = useLocation().pathname;
   if (path == "/") { if (value != 0) { setValue(0) } }
-  if (path == "/classroom-activity-teacher") { if (value != 1) { setValue(1) } }
-  if (path == "/profile") { if (value != 2) { setValue(2) } }
+  if (path == "/profile") { if (value != 1) { setValue(1) } }
+  if (path == "/classroom-activity-teacher") { if (value != 2) { setValue(2) } }
 
   //วิธีเรียกข้อมูลหริอ fetch data มาใช้
 
@@ -106,6 +106,25 @@ function AppHeaderTeacher() {
                     className="navtext"
                     label={
                       <div class="tab-component">
+                        <FaceIcon style={{ verticalAlign: "middle", fontSize: "x-large", }} /> โปรไฟล์
+                      </div>
+                    }
+                    sx={{
+                      "&:hover": {
+                        color: "#f3e5f5",
+                      },
+                      fontFamily: "Prompt",
+                      fontSize: "18px",
+                      display: "inline",
+                    }}
+                    to="/profile"
+                    component={Link}
+                  />
+                  {/* <Tab
+                  
+                    className="navtext"
+                    label={
+                      <div class="tab-component">
                         <HistoryIcon style={{ verticalAlign: "middle" }} />{" "}
                         กิจกรรม
                       </div>
@@ -121,26 +140,8 @@ function AppHeaderTeacher() {
                     }}
                     to="/classroom-activity-teacher"
                     component={Link}
-                  />
+                  /> */}
 
-                  <Tab
-                    className="navtext"
-                    label={
-                      <div class="tab-component">
-                        <FaceIcon style={{ verticalAlign: "middle", fontSize: "x-large", }} /> โปรไฟล์
-                      </div>
-                    }
-                    sx={{
-                      "&:hover": {
-                        color: "#f3e5f5",
-                      },
-                      fontFamily: "Prompt",
-                      fontSize: "18px",
-                      display: "inline",
-                    }}
-                    to="/profile"
-                    component={Link}
-                  />
                 </Tabs>
               </Box>
             </div>
