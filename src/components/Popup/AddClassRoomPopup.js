@@ -11,24 +11,7 @@ import { message } from "antd";
 
 
 function AddClassRoomPopup() {
-    const handleSendTestApi = async () => {
-        var post = await ax.get(`/classroom`)
-        console.log(post)
-        let postData = post.data
-        let n = 0;
-        let allPost = []
-        for (var a in postData) {
-            let text = postData[n].text
-            let name = postData[n].firstname + " " + postData[n].lastname
-            allPost.push({ text, name })
-        }
-        let formattedAllPost = allPost.map(function (p, i) {
-            return (
-                console.log(`A post ${p.text} has post by ${p.name}`)
-            )
-        })
-        console.log(formattedAllPost)
-    };
+
 
     const [open, setOpen] = useState(false);
 
@@ -85,18 +68,7 @@ function AddClassRoomPopup() {
 
     return (
         <div>
-            <Button
-                variant="outlined"
-                sx={{
-                    display: "block",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    fontFamily: "Prompt",
-                }}
-                onClick={handleSendTestApi}
-            >
-                <FiPlus /> ทดสอบ Api
-            </Button><p />
+
 
             <Button
                 variant="outlined"
