@@ -86,3 +86,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.screenpaper{
+    width: 90%;
+}
+
+@media only screen and (min-width: 1200px) {
+    .screenpaper{
+        width: 50%;
+    }
+  }
