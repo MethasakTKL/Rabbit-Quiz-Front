@@ -10,7 +10,8 @@ import FaceIcon from "@mui/icons-material/Face";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useAuth, ax } from "../auth/auth";
 import ClassAnnoucement from "../Classroom/ClassAnnoucement";
-
+import LogoutIcon from '@mui/icons-material/Logout';
+import Leaveroom from "../components/Popup/Leaveroom";
 
 function Classroom() {
   let auth = useAuth()
@@ -57,6 +58,8 @@ function Classroom() {
           <QuizIcon sx={{ color: "#ffffff" }} />
           <div className="button2">กิจกรรม</div>
         </Button>
+        <Leaveroom/>
+
       </Stack>
       <ClassAnnoucement />
       <Box sx={{ paddingTop: 15 }}></Box>
