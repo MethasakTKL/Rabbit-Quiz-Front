@@ -12,7 +12,7 @@ import { message } from "antd";
 
 function AddClassRoomPopup() {
     const handleSendTestApi = async () => {
-        var post = await ax.post(`/user_result_do/${3}`, { result: "True" })
+        var post = await ax.get(`/assignment_status`)
         console.log(post)
         let postData = post.data
         let n = 0;

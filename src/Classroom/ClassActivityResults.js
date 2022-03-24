@@ -62,10 +62,13 @@ function ClassActivityResults() {
 
 
     ///////////////////////CARD ASSIGNMENT SECTION ///////////////////////
+    const [checkACT, setCheckACT] = React.useState(false)
     const [assignmentList, setAssignmentList] = React.useState(null)
     useEffect(() => {
         async function fetchActivity() {
             const res = await ax.get(`/assignments/`)
+            const check = await ax.get(`/assignment_status/`)
+            let c = check.data.results
             let r = res.data.results
             let n = 0;
             let assignments = []

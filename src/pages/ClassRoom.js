@@ -9,7 +9,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FaceIcon from "@mui/icons-material/Face";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useAuth, ax } from "../auth/auth";
-import ClassAnnoucement from "./ClassAnnoucement";
+import ClassAnnoucement from "../Classroom/ClassAnnoucement";
 
 
 function Classroom() {

@@ -33,7 +33,8 @@ function UserClassRoomCard() {
     // setTimeout(alertFunc, 3000);
     useEffect(() => {
         async function fetchClassroom() {
-            const userRoom = await ax.get('/getUserClassroom')
+            const userRoom = await ax.get('/getClassAssignment/3')
+            console.log(userRoom)
             let classroom = [];
             let rooms = userRoom.data
             let n = 0;

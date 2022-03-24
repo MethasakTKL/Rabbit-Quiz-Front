@@ -10,8 +10,8 @@ import { useAuth, ax } from "../auth/auth";
 import { styled } from "@mui/material/styles";
 
 
-import "./ClassRoom.css";
-import ClassPostResult from "../Classroom/ClassPostResults";
+import "../pages/ClassRoom.css";
+import ClassPostResult from "./ClassPostResults";
 import { message } from "antd";
 import { useNavigate } from "react-router";
 
