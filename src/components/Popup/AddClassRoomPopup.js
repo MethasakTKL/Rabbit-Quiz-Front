@@ -11,9 +11,9 @@ import { message } from "antd";
 
 
 function AddClassRoomPopup() {
-    const handleSendApi = async () => {
-        var post = await ax.get('/getMessage/8')
-        console.log(post.data)
+    const handleSendTestApi = async () => {
+        var post = await ax.post(`/user_result_do/${3}`, { result: "True" })
+        console.log(post)
         let postData = post.data
         let n = 0;
         let allPost = []
@@ -93,7 +93,7 @@ function AddClassRoomPopup() {
                     marginRight: "auto",
                     fontFamily: "Prompt",
                 }}
-                onClick={handleSendApi}
+                onClick={handleSendTestApi}
             >
                 <FiPlus /> ทดสอบ Api
             </Button><p />

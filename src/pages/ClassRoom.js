@@ -15,19 +15,16 @@ import ClassAnnoucement from "./ClassAnnoucement";
 function Classroom() {
   let auth = useAuth()
   let id = auth.id
-  console.log(id)
 
   const [classroomName, setClassroomName] = useState(null)
 
   useEffect(() => {
     async function fetchClassroom() {
       let res = await ax.get(`/classroom/${id}`)
-      console.log(res.data.classroomName)
       setClassroomName(res.data.classroomName)
     } fetchClassroom();
   }, [])
 
-  console.log(classroomName)
   return (
     <div className="screen">
       <h1 className="classname" style={{ fontSize: 36 }}>

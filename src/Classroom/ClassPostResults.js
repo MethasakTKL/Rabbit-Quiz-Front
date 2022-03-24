@@ -17,7 +17,7 @@ import {
     CardActionArea,
     Grid,
 } from "@mui/material";
-import "./ClassPostResult.css"
+import "./ClassPostResults.css"
 
 function ClassPostResult() {
     const [postList, setClassPostList] = useState();

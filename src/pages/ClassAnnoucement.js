@@ -11,7 +11,7 @@ import { styled } from "@mui/material/styles";
 
 
 import "./ClassRoom.css";
-import ClassPostResult from "../Classroom/ClassPostResult";
+import ClassPostResult from "../Classroom/ClassPostResults";
 import { message } from "antd";
 import { useNavigate } from "react-router";
 
@@ -35,7 +35,6 @@ function ClassAnnoucement() {
       navigate(`/classroom`, { replace: true })
 
    };
-   console.log(text)
    return (
       <div>
          <Box>

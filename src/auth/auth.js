@@ -100,7 +100,6 @@ function AuthProvider({ children }) {
       });
    };
 
-   console.log("ID Current Class is", id)
    let value = { user, setUser, signin, signout, id, setID };
 
    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

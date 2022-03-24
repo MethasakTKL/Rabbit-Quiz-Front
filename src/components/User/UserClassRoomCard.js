@@ -26,7 +26,7 @@ function UserClassRoomCard() {
     let setID = auth.setID
     const handleClick = function (id) {
         setID(id)
-        console.log('You clicked:', id);
+        console.log('You Clicked Class ID:', id);
     }
 
 
