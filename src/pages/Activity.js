@@ -9,6 +9,9 @@ import "./Activity.css";
 import { Link } from "react-router-dom";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
+import ActivityRecieve from "./ActivityRecieve";
+
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -54,31 +57,31 @@ function Activity() {
       {/* ------------------------------------------------------------------ */}
       {/* TabActivity */}
       <Stack direction="row" justifyContent="center">
-      <Box sx={{borderBottom: 1, borderColor: "divider" }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
 
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-          className="tablabel"
-        >
-          <Tab
-            label="ได้รับมอบหมาย"
-            {...a11yProps(0)}
-            sx={{ fontFamily: "Prompt" }}
-          />
-          <Tab
-            label="เสร็จเรียบร้อยแล้ว"
-            {...a11yProps(1)}
-            sx={{ fontFamily: "Prompt" }}
-          />
-        </Tabs>
-      </Box>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+            className="tablabel"
+          >
+            <Tab
+              label="ได้รับมอบหมาย"
+              {...a11yProps(0)}
+              sx={{ fontFamily: "Prompt" }}
+            />
+            <Tab
+              label="เสร็จเรียบร้อยแล้ว"
+              {...a11yProps(1)}
+              sx={{ fontFamily: "Prompt" }}
+            />
+          </Tabs>
+        </Box>
       </Stack>
       {/* ---------------------------------------------------------------------------------------------------- */}
       <TabPanel value={value} index={0}>
         <Box
-          sx={{        
+          sx={{
             bgcolor: "white",
             height: "500px",
             width: "100%",
@@ -97,24 +100,16 @@ function Activity() {
               border: 0,
               paddingBottom: 1.5,
               boxShadow: 3,
-              marginLeft:'auto',
-              marginRight:'auto'
+              marginLeft: 'auto',
+              marginRight: 'auto'
             }}
             className='screenpaper'
-            
+
             style={{ backgroundColor: "white" }}
-            to="/classroom-activity"
+            to="/"
             component={Link}
           >
-            <h1 className="activity">กิจกรรมที่ 2 รดน้ำต้นไม้วันที่ 2</h1>
-            <div className="assignment-detail">
-              <div>240-124 การเกษตร</div>
-              <div type="time-activity">
-                <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
-                <div>สิ้นสุด</div>
-                <div type="duetime">1 มีนาคม 2020 10.00 PM</div>
-              </div>
-            </div>
+            <ActivityRecieve />
           </Button>
         </Box>
       </TabPanel>
@@ -140,8 +135,8 @@ function Activity() {
               border: 0,
               paddingBottom: 1.5,
               boxShadow: 3,
-              marginLeft:'auto',
-              marginRight:'auto'
+              marginLeft: 'auto',
+              marginRight: 'auto'
             }}
             className='screenpaper'
             style={{ backgroundColor: "white" }}
