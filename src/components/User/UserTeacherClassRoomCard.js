@@ -40,8 +40,11 @@ function UserTeacherClassRoomCard() {
             let n = 0;
             for (const prop in rooms) {
                 let roomID = rooms[n].id
-                let roomName = rooms[n].name
-                classroom.push({ id: roomID, name: roomName })
+                let roomName = rooms[n].classroomName
+                let teacherAtRoom = rooms[n].teacher_firstname
+                if (teacherAtRoom === localStorage.getItem("user_first_name")) {
+                    classroom.push({ id: roomID, name: roomName })
+                }
                 n++
             }
             setClassRoomList(

@@ -86,7 +86,7 @@ function CreateClassRoomPopup() {
                 setOpen(false)
                 openMessage()
                 navigate('/reload', { replace: true })
-                navigate('/teacher', { replace: true })
+                navigate('/', { replace: true })
 
 
             }

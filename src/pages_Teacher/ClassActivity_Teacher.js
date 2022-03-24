@@ -26,8 +26,8 @@ import Link from '@mui/material/Link';
 
 
 //import component
-import EditActivity from "../components_teacher/ClassActivityTeacher/EditActivity";
-import DetailActivity from "../components_teacher/ClassActivityTeacher/DetailActivity";
+import EditActivity from "../Classroom/ClassTeacherActivity/EditActivity";
+import DetailActivity from "../Classroom/ClassTeacherActivity/DetailActivity";
 
 function ClassActivity_Teacher() {
   const [open, setOpen] = React.useState(false);
@@ -53,7 +53,7 @@ function ClassActivity_Teacher() {
   return (
     <Box sx={{ height: 1050 }}>
       <Link href="classroom-teacher" underline="none">
-        <h1 className="classname" style={{fontSize: 36}}>
+        <h1 className="classname" style={{ fontSize: 36 }}>
           ห้องเรียนการเกษตร
         </h1>
       </Link>
@@ -81,7 +81,7 @@ function ClassActivity_Teacher() {
               <div className="titledialog">สร้างกิจกรรม</div>
             </DialogTitle>
             <DialogContent>
-            <error>กรุณากรอกข้อมูลชื่อกิจกรรม</error>
+              <error>กรุณากรอกข้อมูลชื่อกิจกรรม</error>
               <TextField
                 required
                 margin="dense"
@@ -168,7 +168,7 @@ function ClassActivity_Teacher() {
             borderRadius: 3,
             marginLeft: "auto",
             marginRight: "auto",
-            paddingTop:3
+            paddingTop: 3
           },
         }}
       >

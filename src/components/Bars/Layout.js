@@ -5,7 +5,7 @@ import AppNavBarTeacher from '../../components_teacher/Bars/AppNavBarTeacher';
 import AppHeaderTeacher from '../../components_teacher/Bars/AppHeaderTeacher';
 
 const LayOut = () => {
-    let isstaff = localStorage.getItem('user_is_staff')
+    let isstaff = JSON.parse(localStorage.getItem('user_is_staff'))
 
     return (
         <main className="App">
