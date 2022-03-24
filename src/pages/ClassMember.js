@@ -1,17 +1,34 @@
 import { Button, Box, Paper, Grid, Stack } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState }  from "react";
 import "./ClassMember.css";
 import Card from "@mui/material/Card";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FaceIcon from "@mui/icons-material/Face";
 import IconButton from "@mui/material/IconButton";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { useAuth, ax } from "../auth/auth";
+
+
 
 function ClassMember() {
+  let auth = useAuth()
+  let id = auth.id
+  console.log(id)
+
+  const [classroomName, setClassroomName] = useState(null)
+
+  useEffect(() => {
+    async function fetchClassroom() {
+      let res = await ax.get(`/classroom/${id}`)
+      console.log(res.data.classroomName)
+      setClassroomName(res.data.classroomName)
+    } fetchClassroom();
+  }, [])
+
   return (
     <div>
       <h1 className="classname" style={{ fontSize: 36 }}>
-        ห้องเรียนการเกษตร
+        ห้องเรียน{classroomName}
       </h1>
       {/* <Stack direction="row" justifyContent="center">
         <Paper

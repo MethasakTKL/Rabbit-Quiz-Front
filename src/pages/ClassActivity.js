@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState }  from "react";
 import {
   Button,
   Box,
@@ -27,12 +27,12 @@ import Linkform from '@mui/material/Link';
 
 
 //import image
-import waterplant from "../Static/image/waterplant.png";
+import question from "../Static/image/Question00.png";
 import { Link } from "react-router-dom";
-import { useAuth } from "../auth/auth";
+import { useAuth, ax } from "../auth/auth";
 
 function ClassActivity() {
-  let auth = useAuth()
+  
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
 
@@ -44,14 +44,25 @@ function ClassActivity() {
     setOpen(false);
   };
 
-  const handleCloseYes = () => {
-    setOpen(false);
-  };
+  let auth = useAuth()
+  let id = auth.id
+  console.log(id)
+
+  const [classroomName, setClassroomName] = useState(null)
+
+  useEffect(() => {
+    async function fetchClassroom() {
+      let res = await ax.get(`/classroom/${id}`)
+      console.log(res.data.classroomName)
+      setClassroomName(res.data.classroomName)
+    } fetchClassroom();
+  }, [])
+
   return (
     <Box height={800}>
       <Linkform href="classroom" underline="none">
         <h1 className="classname" style={{fontSize: 36}}>
-          ห้องเรียนการเกษตร
+          ห้องเรียน{classroomName}
         </h1>
       </Linkform>
       <Stack
@@ -150,7 +161,7 @@ function ClassActivity() {
                 <DialogContentText>
                   <div className="Question">ต้องการจะรดน้ำต้นไม้หรือไม่ ?</div>
                 </DialogContentText>
-                <img className="imgwater" src={waterplant} />
+                <img className="imgwater" src={question} />
               </DialogContent>
               <Grid paddingTop={2} paddingBottom={2}>
                 <DialogActions>
@@ -245,7 +256,7 @@ function ClassActivity() {
                 <DialogContentText>
                   <div className="Question">ต้องการจะรดน้ำต้นไม้หรือไม่ ?</div>
                 </DialogContentText>
-                <img className="imgwater" src={waterplant} />
+                <img className="imgwater" src={question} />
               </DialogContent>
               <Grid paddingTop={2} paddingBottom={2}>
                 <DialogActions>
@@ -253,6 +264,7 @@ function ClassActivity() {
                     marginLeft={"auto"}
                     marginRight={"auto"}
                     direction="row"
+                    justifyContent="center"
                     spacing={1}
                   >
                     <Grid>
@@ -260,7 +272,7 @@ function ClassActivity() {
                         variant="contained"
                         onClick={handleClose}
                         style={{
-                          width: 150,
+                          width: 140,
                           height: 50,
                           background: "#5BC0DE",
                         }}
@@ -273,7 +285,7 @@ function ClassActivity() {
                         variant="contained"
                         onClick={handleClose}
                         style={{
-                          width: 150,
+                          width: 140,
                           height: 50,
                           background: "#D9534F",
                         }}

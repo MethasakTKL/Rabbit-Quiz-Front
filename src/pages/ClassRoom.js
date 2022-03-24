@@ -31,7 +31,7 @@ function Classroom() {
   return (
     <div className="screen">
       <h1 className="classname" style={{ fontSize: 36 }}>
-        {classroomName}
+        ห้องเรียน{classroomName}
       </h1>
       <Stack
         direction="row"

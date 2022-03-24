@@ -82,28 +82,30 @@ function Profile_Teacher() {
           >
             ข้อมูลส่วนตัว
           </h1>
-          <Box className="boxprofile">
-            <Grid container spacing={0.5}>
+          <Box className="boxEmail" >
+            <Grid container spacing={0.5} alignItems="center" >
               <Grid item xs={4} md={2}>
                 <div className="titlename">ชื่อ</div>
               </Grid>
               <Grid item xs={11.5} md={8}>
                 <Box
-                  className='boxname'
+                  className='boxemail'
+                  sx={{}}
                 >
                   <div className="name">{userFirstname}</div>
                 </Box>
               </Grid>
             </Grid>
           </Box>
-          <Box className="boxprofile">
-            <Grid container spacing={0.5}>
+          <Box className="boxEmail" >
+            <Grid container spacing={0.5} alignItems="center" >
               <Grid item xs={4} md={2}>
                 <div className="titlename">นามสกุล</div>
               </Grid>
               <Grid item xs={11.5} md={8}>
                 <Box
-                  className='boxname'
+                  className='boxemail'
+                  sx={{}}
                 >
                   <div className="name">{userLastname}</div>
                 </Box>
