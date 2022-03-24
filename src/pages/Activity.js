@@ -87,8 +87,8 @@ function Activity() {
             width: "100%",
             display: "block",
             flexWrap: "wrap",
-            paddingLeft: 3,
-            paddingRight: 3,
+            paddingLeft: 0,
+            paddingRight: 0,
             "& > :not(style)": { mb: 2 },
           }}
         >

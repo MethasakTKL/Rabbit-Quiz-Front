@@ -77,7 +77,7 @@ function UserClassRoomCard() {
                                     />
 
                                     <CardContent>
-                                        <div className="cardcontent">ห้องเรียน {room.name}</div>
+                                        <div className="cardcontent">ห้องเรียน <br className="new-line" />{room.name}</div>
                                     </CardContent>
                                 </CardActionArea>
                             </Box>

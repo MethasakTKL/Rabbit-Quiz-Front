@@ -4,3 +4,21 @@
     flex-direction: column-reverse;
 
 }
+
+
+.cardcontent {
+        font-family: "Prompt", sans-serif;
+        font-size: 30px;
+}
+
+@media (max-width: 41em) { 
+    .cardcontent {
+        font-family: "Prompt", sans-serif;
+        font-size: 24px;
+    }
+    .new-line {
+        display: none;
+    }
+    
+    
+}
