@@ -14,3 +14,20 @@
     font-family: 'Prompt', sans-serif;
 
 }
+
+.textleave{
+    font-family: 'Prompt', sans-serif;
+    color: black;
+    font-size: 16pt;
+
+}
+
+.answer1{
+    font-family: 'Prompt', sans-serif;
+    color: #757575;
+}
+
+.answer2{
+    font-family: 'Prompt', sans-serif;
+    color: #ffffff;
+}
