@@ -27,7 +27,7 @@ import Linkform from '@mui/material/Link';
 
 
 //import image
-import waterplant from "../Static/image/waterplant.png";
+import question from "../Static/image/Question00.png";
 import { Link } from "react-router-dom";
 import { ax, useAuth } from "../auth/auth";
 
@@ -182,7 +182,7 @@ function ClassActivityResults() {
                     <DialogContentText>
                         <div className="Question">{discription}</div>
                     </DialogContentText>
-                    <img className="imgwater" src={waterplant} />
+                    <img className="imgwater" src={question} />
                 </DialogContent>
                 <Grid paddingTop={2} paddingBottom={2}>
                     <DialogActions>
