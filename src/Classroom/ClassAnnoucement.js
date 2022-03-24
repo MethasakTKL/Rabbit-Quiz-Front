@@ -11,6 +11,7 @@ import { styled } from "@mui/material/styles";
 
 
 import "../pages/ClassRoom.css";
+import "./ClassAnnoucement.css";
 import ClassPostResult from "./ClassPostResults";
 import { message } from "antd";
 import { useNavigate } from "react-router";
@@ -36,7 +37,7 @@ function ClassAnnoucement() {
 
    };
    return (
-      <div>
+      <div className="annouce-field">
          <Box>
             <Paper
                elevation={3}
@@ -94,15 +95,22 @@ function ClassAnnoucement() {
                className="screenpaper"
             >
                <h1 className="post" style={{ paddingLeft: 40, fontSize: 24 }}>
-                  โพสต์ล่าสุด
-               </h1>
+                  โพสต์ล่าสุด</h1>
+
+
 
                <Stack direction="column-reverse" spacing={4} paddingBottom={3}>
+
+
                   <ClassPostResult />
+
                </Stack>
 
+
+
             </Paper>
-         </Box></div>
+         </Box>
+      </div>
    )
 }
 

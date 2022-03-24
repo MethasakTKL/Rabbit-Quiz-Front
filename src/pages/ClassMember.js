@@ -1,5 +1,5 @@
 import { Button, Box, Paper, Grid, Stack } from "@mui/material";
-import React, { useEffect, useState }  from "react";
+import React, { useEffect, useState } from "react";
 import "./ClassMember.css";
 import Card from "@mui/material/Card";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -28,7 +28,7 @@ function ClassMember() {
   return (
     <div>
       <h1 className="classname" style={{ fontSize: 36 }}>
-        ห้องเรียน{classroomName}
+        ห้องเรียน {classroomName}
       </h1>
       {/* <Stack direction="row" justifyContent="center">
         <Paper
@@ -50,7 +50,7 @@ function ClassMember() {
       <Box
         sx={{
           borderBottom: 2,
-          borderColor:"#7c6aa1",
+          borderColor: "#7c6aa1",
           marginLeft: "auto",
           marginRight: "auto",
           paddingTop: 3,
@@ -69,7 +69,7 @@ function ClassMember() {
           marginLeft: "auto",
           marginRight: "auto",
           paddingTop: 3,
-          paddingBottom:2
+          paddingBottom: 2
         }}
         className="boxtitle"
       >
@@ -80,18 +80,18 @@ function ClassMember() {
           spacing={4}
         >
           <Grid>
-            <AccountCircleIcon sx={{fontSize:32,color:"#F19528"}}/>
+            <AccountCircleIcon sx={{ fontSize: 32, color: "#F19528" }} />
           </Grid>
           <Grid>
             <div className="namestudent">อารีย์ มีสุข</div>
           </Grid>
         </Stack>
       </Box>
-      
+
       <Box
         sx={{
           borderBottom: 2,
-          borderColor:"#7c6aa1",
+          borderColor: "#7c6aa1",
           marginLeft: "auto",
           marginRight: "auto",
           paddingTop: 3,
@@ -111,7 +111,7 @@ function ClassMember() {
       <Box
         sx={{
           borderBottom: 2,
-          borderColor:"#e8dcff",
+          borderColor: "#e8dcff",
           marginLeft: "auto",
           marginRight: "auto",
           paddingTop: 3,
@@ -125,7 +125,7 @@ function ClassMember() {
           spacing={4}
         >
           <Grid>
-            <FaceIcon sx={{fontSize:32,color:"#F19528"}}/>
+            <FaceIcon sx={{ fontSize: 32, color: "#F19528" }} />
           </Grid>
           <Grid>
             <div className="namestudent">ชนาวัฒน์ ทั้วสุภาพ</div>
@@ -137,7 +137,7 @@ function ClassMember() {
       <Box
         sx={{
           borderBottom: 2,
-          borderColor:"#e8dcff",
+          borderColor: "#e8dcff",
           marginLeft: "auto",
           marginRight: "auto",
           paddingTop: 3,
@@ -151,7 +151,7 @@ function ClassMember() {
           spacing={4}
         >
           <Grid>
-            <FaceIcon sx={{fontSize:32,color:"#F19528"}}/>
+            <FaceIcon sx={{ fontSize: 32, color: "#F19528" }} />
           </Grid>
           <Grid>
             <div className="namestudent">นัฏฐวัฒน์ สิงห์อินทร์</div>
@@ -162,7 +162,7 @@ function ClassMember() {
       <Box
         sx={{
           borderBottom: 2,
-          borderColor:"#e8dcff",
+          borderColor: "#e8dcff",
           marginLeft: "auto",
           marginRight: "auto",
           paddingTop: 3,
@@ -176,7 +176,7 @@ function ClassMember() {
           spacing={4}
         >
           <Grid>
-            <FaceIcon sx={{fontSize:32,color:"#F19528"}}/>
+            <FaceIcon sx={{ fontSize: 32, color: "#F19528" }} />
           </Grid>
           <Grid>
             <div className="namestudent">เมธาศักดิ์ ทิพย์กองลาศ</div>
@@ -187,7 +187,7 @@ function ClassMember() {
       <Box
         sx={{
           borderBottom: 2,
-          borderColor:"#e8dcff",
+          borderColor: "#e8dcff",
           marginLeft: "auto",
           marginRight: "auto",
           paddingTop: 3,
@@ -201,7 +201,7 @@ function ClassMember() {
           spacing={4}
         >
           <Grid>
-            <FaceIcon sx={{fontSize:32,color:"#F19528"}}/>
+            <FaceIcon sx={{ fontSize: 32, color: "#F19528" }} />
           </Grid>
           <Grid>
             <div className="namestudent">อิฟฟาฮาน สุขสุวรรณ</div>
@@ -212,7 +212,7 @@ function ClassMember() {
       <Box
         sx={{
           borderBottom: 2,
-          borderColor:"#e8dcff",
+          borderColor: "#e8dcff",
           marginLeft: "auto",
           marginRight: "auto",
           paddingTop: 3,
@@ -226,7 +226,7 @@ function ClassMember() {
           spacing={4}
         >
           <Grid>
-            <FaceIcon sx={{fontSize:32,color:"#F19528"}}/>
+            <FaceIcon sx={{ fontSize: 32, color: "#F19528" }} />
           </Grid>
           <Grid>
             <div className="namestudent">ธรรมาธิป ชิตพงศ์</div>
@@ -234,7 +234,7 @@ function ClassMember() {
         </Stack>
       </Box>
 
-      
+
     </div>
   );
 }

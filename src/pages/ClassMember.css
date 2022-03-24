@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
 
 .classname {
+    text-align: center;
     font-family: 'Prompt', sans-serif;
     color: #856FB4;
     text-align: center;
