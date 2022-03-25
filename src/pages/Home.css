@@ -39,3 +39,12 @@ error {
     margin-left: 20px ;
     max-width: fit-content;
 }
+
+.noroom{
+    font-family: 'Prompt', sans-serif;
+    text-align: center;
+    font-size: 14pt;
+    padding-bottom: 50px;
+    color: rgb(117, 117, 117);
+
+}

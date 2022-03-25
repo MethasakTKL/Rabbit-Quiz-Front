@@ -23,8 +23,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { EmojiEvents } from "@mui/icons-material";
-import Linkform from '@mui/material/Link';
-
+import Linkform from "@mui/material/Link";
 
 //import image
 import question from "../Static/image/Question00.png";
@@ -36,7 +35,6 @@ import ClassActivityResults from "../Classroom/ClassActivityResults";
 import ClassActivity_Teacher from "../Classroom/ClassActivity_Teacher";
 
 function ClassActivity() {
-
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
 
@@ -48,79 +46,81 @@ function ClassActivity() {
     setOpen(false);
   };
 
-  let auth = useAuth()
-  let id = auth.id
-  console.log(id)
+  let auth = useAuth();
+  let id = auth.id;
+  console.log(id);
 
-  const [classroomName, setClassroomName] = useState(null)
+  const [classroomName, setClassroomName] = useState(null);
 
   useEffect(() => {
     async function fetchClassroom() {
-      let res = await ax.get(`/classroom/${id}`)
-      console.log(res.data.classroomName)
-      setClassroomName(res.data.classroomName)
-    } fetchClassroom();
-  }, [])
+      let res = await ax.get(`/classroom/${id}`);
+      console.log(res.data.classroomName);
+      setClassroomName(res.data.classroomName);
+    }
+    fetchClassroom();
+  }, []);
 
-
-  let isstaff = JSON.parse(localStorage.getItem('user_is_staff'))
-
+  let isstaff = JSON.parse(localStorage.getItem("user_is_staff"));
 
   return (
-    <div> {isstaff ? <ClassActivity_Teacher /> :
-      <Box height={800}>
-        <Linkform href="classroom" underline="none">
-          <h1 className="classname" style={{ fontSize: 36 }}>
-            ห้องเรียน {classroomName}
-          </h1>
-        </Linkform>
-        <Stack
-          marginLeft={"auto"}
-          marginRight={"auto"}
-          direction="row"
-          spacing={2}
-          justifyContent="center"
-          alignItems="center"
-          paddingBottom={1}
-        >
-          <Grid>
-            <Button
-              variant="contained"
-              style={{ background: "#f5df4d", width: 180 }}
-              to="/mypoints"
-              component={Link}
-            >
-              <EmojiEvents className="viewscore" />
-              <Grid>
-                <div className="viewscore">คะแนนของคุณ</div>
-              </Grid>
-            </Button>
-          </Grid>
-        </Stack>
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            "& > :not(style)": {
-              m: 1,
+    <div>
+      {" "}
+      {isstaff ? (
+        <ClassActivity_Teacher />
+      ) : (
+        <Box height={800}>
+          <Linkform href="classroom" underline="none">
+            <h1 className="classname" style={{ fontSize: 36 }}>
+              ห้องเรียน {classroomName}
+            </h1>
+          </Linkform>
+          <Stack
+            marginLeft={"auto"}
+            marginRight={"auto"}
+            direction="row"
+            spacing={2}
+            justifyContent="center"
+            alignItems="center"
+            paddingBottom={1}
+          >
+            <Grid>
+              <Button
+                variant="contained"
+                style={{ background: "#f5df4d", width: 180 }}
+                to="/mypoints"
+                component={Link}
+              >
+                <EmojiEvents className="viewscore" />
+                <Grid>
+                  <div className="viewscore">คะแนนของคุณ</div>
+                </Grid>
+              </Button>
+            </Grid>
+          </Stack>
+          <Box sx={{paddingTop:8}}>
+            <div className="noroom">ยังไม่มีกิจกรรม</div>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              "& > :not(style)": {
+                m: 1,
 
-              width: "90%",
-              maxWidth: 1000,
-              height: "auto",
-              borderRadius: 3,
-              marginLeft: "auto",
-              marginRight: "auto",
-            },
-          }}
-        >
-
-
-          <ClassActivityResults />
-
-
+                width: "90%",
+                maxWidth: 1000,
+                height: "auto",
+                borderRadius: 3,
+                marginLeft: "auto",
+                marginRight: "auto",
+              },
+            }}
+          >
+            <ClassActivityResults />
+          </Box>
         </Box>
-      </Box>
-    }
+      )}
     </div>
   );
 }

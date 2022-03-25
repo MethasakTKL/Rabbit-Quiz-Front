@@ -50,6 +50,7 @@ function Home() {
             >
                 <Paper elevation={3}>
                     <h1 className="titleclass" sx={{}}>ห้องเรียน <ClassIcon sx={{ fontSize: "50" }} /></h1>
+                    <div className="noroom">ยังไม่มีห้องเรียน</div>
                     {userIsStaff ? <UserTeacherClassRoomCard /> : <UserClassRoomCard />}
                 </Paper>
             </Box>
