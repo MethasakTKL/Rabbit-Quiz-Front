@@ -45,7 +45,6 @@ function ActivityRecieve() {
         async function fetchActivity() {
             const res = await ax.get(`/assignments`)
             const check = await ax.get(`/assignment_status/`)
-            console.log(res)
             let c = check.data.results
             let r = res.data.results
             let n = 0;

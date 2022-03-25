@@ -3,7 +3,6 @@ import { Box, Button, Paper, Stack, TextField, Grid } from "@mui/material";
 import ClassIcon from "@mui/icons-material/Class";
 import "./Home.css";
 import { Link } from "react-router-dom";
-import { FiPlus } from "react-icons/fi";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -22,6 +21,7 @@ import CreateClassRoomPopup from "../components/Popup/CreateClassRoomPopup";
 import UserClassRoomCard from "../components/User/UserClassRoomCard";
 import UserTeacherClassRoomCard from "../components/User/UserTeacherClassRoomCard";
 import TestApiButton from "../components/TestApiButton";
+import { FiPlus } from "react-icons/fi";
 
 function Home() {
 
@@ -50,7 +50,6 @@ function Home() {
             >
                 <Paper elevation={3}>
                     <h1 className="titleclass" sx={{}}>ห้องเรียน <ClassIcon sx={{ fontSize: "50" }} /></h1>
-                    <div className="noroom">ยังไม่มีห้องเรียน</div>
                     {userIsStaff ? <UserTeacherClassRoomCard /> : <UserClassRoomCard />}
                 </Paper>
             </Box>

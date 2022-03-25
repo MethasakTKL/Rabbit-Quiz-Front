@@ -17,10 +17,11 @@ import {
     CardActionArea,
 } from "@mui/material";
 import Classroom from "../../Static/image/Untitled-2.png"
+import CreateClassRoomPopup from "../Popup/CreateClassRoomPopup";
 
 function UserTeacherClassRoomCard() {
     const [classroomList, setClassRoomList] = useState();
-
+    const [isEmptyRoom, setIsEmptyRoom] = useState(false)
     let auth = useAuth()
     let id = auth.id
     let setID = auth.setID
@@ -28,7 +29,6 @@ function UserTeacherClassRoomCard() {
         setID(id)
         console.log('You Clicked Class ID:', id);
     }
-
 
     // setTimeout(alertFunc, 3000);
     useEffect(() => {
@@ -47,6 +47,7 @@ function UserTeacherClassRoomCard() {
                 }
                 n++
             }
+            if (classroom.length === 0) { setIsEmptyRoom(true) }
             setClassRoomList(
 
                 classroom.map(function (room, i) {
@@ -92,7 +93,12 @@ function UserTeacherClassRoomCard() {
         fetchClassroom();
     }, []);
 
-    return <div class="user-classroom">{classroomList}</div>;
+    return <div class="user-classroom">
+        {classroomList}
+        {isEmptyRoom ? <div className="noroom">
+            <div className="textnoroom">ยังไม่มีห้องเรียนให้แสดง กรุณาสร้างห้องเรียน</div><br /><CreateClassRoomPopup />
+        </div> : <div />}
+    </div>;
 }
 
 export default UserTeacherClassRoomCard;

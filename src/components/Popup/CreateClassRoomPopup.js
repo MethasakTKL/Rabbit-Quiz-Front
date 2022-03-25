@@ -37,7 +37,10 @@ function CreateClassRoomPopup() {
                 duration: 2,
             });
         }, 3000);
-
+        setTimeout(() => {
+            navigate('/reload', { replace: true })
+            navigate('/', { replace: true })
+        }, 3000);
     };
 
 
@@ -85,9 +88,6 @@ function CreateClassRoomPopup() {
                 console.log(`Successfully Created classroom...`)
                 setOpen(false)
                 openMessage()
-                navigate('/reload', { replace: true })
-                navigate('/', { replace: true })
-
 
             }
         } catch (error) {
