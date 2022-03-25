@@ -32,6 +32,7 @@ import DetailActivity from "../Classroom/ClassTeacherActivity/DetailActivity";
 import ClassActivityResults_Teacher from "./ClassActivityResults_Teacher";
 import { ax, useAuth } from "../auth/auth";
 import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 function ClassActivity_Teacher() {
   const [open, setOpen] = React.useState(false);
@@ -70,28 +71,29 @@ function ClassActivity_Teacher() {
 
 
 
-
+  let navigate = useNavigate()
   const [title, setTitle] = React.useState('')
   const [description, setDescription] = React.useState('')
   const [choice_true, setChoiceTrue] = React.useState('ใช่')
   const [choice_false, setChoiceFalse] = React.useState('ไม่ใช่')
   const [deadline, setDeadline] = React.useState('')
-
   const handleCreateAssignment = async () => {
     try {
       var result = await ax.post(`/createAssignment/${auth.id}`, {
         title, description, deadline, choice_true, choice_false
       })
+      console.log(result)
       if (result.status === 200 && result.data) {
         handleClose()
 
-        React.navigate('/reload', { replace: true })
-        React.navigate('/classroom-activity', { replace: true })
+        navigate('/reload', { replace: true })
+        navigate('/classroom-activity', { replace: true })
         message.success({
           content: "สร้างกิจกรรมสำเร็จ",
           style: { fontFamily: "Prompt", marginTop: 20, fontSize: "20px" },
           duration: 3
         });
+        console.log("Create assignment Success")
 
       }
     } catch (error) {
