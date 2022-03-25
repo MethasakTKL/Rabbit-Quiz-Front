@@ -60,15 +60,13 @@ function AppHeader() {
       <Box>
         <AppBar position="static" style={{ background: "#5F498C" }}>
           <CssBaseline />
-          <Toolbar>
+          <Toolbar >
             <div className="goback-button">
-              <Button onClick={() => navigate(-1)}>
-                <ArrowBackIosIcon sx={{ fontSize: 30, color: "white" }} />
-              </Button>
+              <ArrowBackIosIcon onClick={() => navigate(-1)} className="goback" sx={{ fontSize: 30, color: "white" }} />
             </div>
             <div className="appheader-logo">
               <Link to="/">
-                <img src={logo} alt="logorabbit" width={"120"} />
+                <img src={logo} alt="logorabbit" class="logorabbit" />
               </Link>
             </div>
             {/* PC SECTION */}

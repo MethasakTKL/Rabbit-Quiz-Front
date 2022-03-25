@@ -108,7 +108,6 @@ function ClassMemberList() {
                                 </Stack>
                             </Box>
                         </Box>
-
                     )
                 })
 
@@ -118,7 +117,10 @@ function ClassMemberList() {
     }, []);
 
 
-    return <div>{memberList}</div>
+    return <div>
+        {memberList}
+        <Box>Hey</Box>
+    </div>
 
 }
 

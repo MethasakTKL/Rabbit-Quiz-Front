@@ -121,8 +121,8 @@ function ClassActivityResults() {
                                                 {a.deadline}
                                             </div>
                                         </div>
-                                        <Grid className="status">
-                                            <div>หมดเวลาเเล้ว</div>
+                                        <Grid className="intime">
+                                            <div>อยู่ในระยะเวลา</div>
                                         </Grid>
                                         <Grid className="statussent">
                                             <CheckCircleIcon />

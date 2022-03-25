@@ -3,6 +3,7 @@
 .goback-button {
     /* border: 1px solid red; */
     max-width: 42px;
+    
 }
 
 .appheader-logo {
@@ -10,22 +11,24 @@
     margin-right: auto;
     max-width: 100px;
 }
+.logorabbit {
+    /* border: 1px solid red; */
+    max-width: 120px;
+}
 
 .user-role {
     text-align: center;
     font-family: "Prompt", sans-serif;
     color: rgb(255, 240, 107);
     font-size: large;
+    margin-left: auto;
+    margin-right: auto;
 }
 .user-name {
     font-family: "Prompt", sans-serif;
     color: aliceblue;
-}
-.header-menu {
+    /* border: 1px solid red; */
     margin-left: auto;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .menubar{
@@ -35,6 +38,7 @@
 .hambergur {
     /* border: 1px solid red; */
     max-width: 42px;
+    
 }
 
 .tab-component {
@@ -46,7 +50,35 @@
     .header-menu {
         display: none;
     }
-    
+
+    .user-role {
+        font-size: 16px;
+        margin-right: 0;
+        width: fit-content;
+    }
+
+    .user-name {
+        font-size: 14px;
+    }
+
+    .goback-button {
+        width: 10px;
+    }
+
+    .logorabbit {
+        width: 80px;
+        margin-left: 10px;
+    }
+    .appheader-logo {
+        width: 60px;
+    }
+
+    .hambergur {
+        /* border: 1px solid red; */
+        width: 40px;
+        margin-right: 10px;
+        
+    }
 }
 
 
