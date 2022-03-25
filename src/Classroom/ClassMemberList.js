@@ -14,75 +14,22 @@ function ClassMemberList() {
 
     let auth = useAuth()
     const [memberList, setMemberList] = useState([])
+    const [memberSize, setMemberSize] = useState(0)
+    const [teacher, setTeacher] = useState(null)
 
     useEffect(() => {
         async function fetchMember() {
             let id = auth.id
             let res = await ax.get(`/classroom/${id}`)
             let members = res.data.Member
-            let teacher = res.data.teacher_firstname + " " + res.data.teacher_lastname
+            setMemberSize(members.length)
+            setTeacher(res.data.teacher_firstname + " " + res.data.teacher_lastname)
             setMemberList(
                 members.map(function (m, i) {
                     return (
                         <Box>
-                            <Box
-                                sx={{
-                                    borderBottom: 2,
-                                    borderColor: "#7c6aa1",
-                                    marginLeft: "auto",
-                                    marginRight: "auto",
-                                    paddingTop: 3,
-                                }}
-                                className="boxtitle"
-                            >
-                                <Stack direction="row" justifyContent="space-between">
-                                    <Grid>
-                                        <div className="texttitle1">คุณครู</div>
-                                    </Grid>
-                                </Stack>
-                            </Box>
-                            <Box
-                                sx={{
-                                    marginLeft: "auto",
-                                    marginRight: "auto",
-                                    paddingTop: 3,
-                                    paddingBottom: 2
-                                }}
-                                className="boxtitle"
-                            >
-                                <Stack
-                                    direction="row"
-                                    justifyContent="flex-start"
-                                    alignItems="center"
-                                    spacing={4}
-                                >
-                                    <Grid>
-                                        <AccountCircleIcon sx={{ fontSize: 32, color: "#F19528" }} />
-                                    </Grid>
-                                    <Grid>
-                                        <div className="namestudent">{teacher}</div>
-                                    </Grid>
-                                </Stack>
-                            </Box>
-                            <Box
-                                sx={{
-                                    borderBottom: 2,
-                                    borderColor: "#7c6aa1",
-                                    marginLeft: "auto",
-                                    marginRight: "auto",
-                                    paddingTop: 3,
-                                }}
-                                className="boxtitle"
-                            >
-                                <Stack direction="row" justifyContent="space-between">
-                                    <Grid>
-                                        <div className="texttitle1">เพื่อนร่วมชั้น</div>
-                                    </Grid>
-                                    <Grid>
-                                        <div className="texttitle2">ทั้งหมด {members.length} คน</div>
-                                    </Grid>
-                                </Stack>
-                            </Box>
+
+
                             <Box
                                 sx={{
                                     borderBottom: 2,
@@ -118,8 +65,65 @@ function ClassMemberList() {
 
 
     return <div>
+        <Box
+            sx={{
+                borderBottom: 2,
+                borderColor: "#7c6aa1",
+                marginLeft: "auto",
+                marginRight: "auto",
+                paddingTop: 3,
+            }}
+            className="boxtitle"
+        >
+            <Stack direction="row" justifyContent="space-between">
+                <Grid>
+                    <div className="texttitle1">คุณครู</div>
+                </Grid>
+            </Stack>
+        </Box>
+        <Box
+            sx={{
+                marginLeft: "auto",
+                marginRight: "auto",
+                paddingTop: 3,
+                paddingBottom: 2
+            }}
+            className="boxtitle"
+        >
+            <Stack
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="center"
+                spacing={4}
+            >
+                <Grid>
+                    <AccountCircleIcon sx={{ fontSize: 32, color: "#F19528" }} />
+                </Grid>
+                <Grid>
+                    <div className="namestudent">{teacher}</div>
+                </Grid>
+            </Stack>
+        </Box>
+        <Box
+            sx={{
+                borderBottom: 2,
+                borderColor: "#7c6aa1",
+                marginLeft: "auto",
+                marginRight: "auto",
+                paddingTop: 3,
+            }}
+            className="boxtitle"
+        >
+            <Stack direction="row" justifyContent="space-between">
+                <Grid>
+                    <div className="texttitle1">{JSON.parse(localStorage.getItem('user_is_staff')) ? "สมาชิกในห้อง" : "เพื่อนร่วมชั้น"}</div>
+                </Grid>
+                <Grid>
+                    <div className="texttitle2">ทั้งหมด {memberSize} คน</div>
+                </Grid>
+            </Stack>
+        </Box>
         {memberList}
-        <Box>Hey</Box>
     </div>
 
 }
