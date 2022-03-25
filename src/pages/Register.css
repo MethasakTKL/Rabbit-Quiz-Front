@@ -142,17 +142,7 @@ div.logo img {
     font-family: "Prompt", sans-serif;
     font-size: 14px;
     text-align: left;
-    color: #4d4d4d;
-}
-
-@media (max-width: 41em) { 
-    .reg-password {
-        font-family: "Prompt", sans-serif;
-        font-size: 13px;
-        text-align: left;
-    }
-    
-    
+    color: #000000;
 }
 
 .register-error {
@@ -164,4 +154,14 @@ div.logo img {
     margin-bottom: 1em;
     padding: 0.8em;
     text-align: left;
+}
+
+@media (max-width: 41em) { 
+    .reg-password {
+        font-family: "Prompt", sans-serif;
+        font-size: 13px;
+        text-align: left;
+    }
+    
+    
 }

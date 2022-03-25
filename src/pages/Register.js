@@ -56,12 +56,12 @@ function Register() {
   const [stafffill, setStafffill] = useState("");
   const [emailfill, setEmailfill] = useState("");
   const [firstnamefill, setFirstnamefill] = useState("");
-  const [surnamefill, setSurnamefill] = useState("");
+  const [lastnamefill, setLastnamefill] = useState("");
 
   // Error Message Section
   const [showError, setShowError] = useState(false)
   const [errorFirstName, setErrorFirstName] = useState("");
-  const [errorSurName, setErrorSurName] = useState("");
+  const [errorLastName, setErrorLastName] = useState("");
   const [errorUserName, setErrorUserName] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassWord, setErrorPassWord] = useState("");
@@ -73,118 +73,121 @@ function Register() {
 
   const registpress = async () => {
     await localStorage.clear()
-    console.log(namefill);
-    console.log(passfill);
-    console.log(stafffill);
-    console.log(emailfill);
-    console.log(firstnamefill);
-    console.log(surnamefill);
+    console.log("Username", namefill);
+    console.log("Password", passfill);
+    console.log("Role", stafffill);
+    console.log("Email", emailfill);
+    console.log("Firstname", firstnamefill);
+    console.log("Lastname", lastnamefill);
 
-    try {
-      let RegistResult = await ax.post("/auth/register/", {
-        username: namefill,
-        password: passfill,
-        password2: pass2fill,
-        is_staff: stafffill,
-        email: emailfill,
-        first_name: firstnamefill,
-        last_name: surnamefill,
-      });
-      console.log("Register success");
-      console.log(RegistResult.data);
-      setShowError(false)
-      setRegDone(true)
-      message.success({
-        content: "สร้างบัญชีสำเร็จ",
-        style: { fontFamily: "Prompt", marginTop: 30, fontSize: "20px" },
-        duration: 3
-      });
+    if (/^[ก-๛]*$/.test(firstnamefill + lastnamefill) === false) {
+      console.error("ชื่อและนามสกุลเป็นอังกฤษ")
+      setShowError(true)
+      setErrorFirstName("กรุณากรอกชื่อและนามสกุลเป็นภาษาไทย")
+      setErrorLastName("")
+      setErrorUserName("")
+      setErrorEmail("")
+      setErrorPassWord("")
+      setErrorPassWord2("")
     }
-    catch (error) {
-      if (error.response) {
+
+    if (/^[ก-๛]*$/.test(firstnamefill + lastnamefill)) {
+      try {
+        let RegistResult = await ax.post("/auth/register/", {
+          username: namefill,
+          password: passfill,
+          password2: pass2fill,
+          is_staff: stafffill,
+          email: emailfill,
+          first_name: firstnamefill,
+          last_name: lastnamefill,
+        });
+        console.log("Register success");
+        console.log(RegistResult.data);
+        setShowError(false)
+        setRegDone(true)
+        message.success({
+          content: "สร้างบัญชีสำเร็จ",
+          style: { fontFamily: "Prompt", marginTop: 30, fontSize: "20px" },
+          duration: 3
+        });
+      }
+      catch (error) {
         console.log(error.response)
         setShowError(true)
         if (error.response.data.first_name) { var errorFirstName = error.response.data.first_name.toString() }
-        if (error.response.data.last_name) { var errorSurName = error.response.data.last_name.toString() }
+        if (error.response.data.last_name) { var errorLastName = error.response.data.last_name.toString() }
         if (error.response.data.username) { var errorUserName = error.response.data.username.toString() }
         if (error.response.data.email) { var errorEmail = error.response.data.email.toString() }
         if (error.response.data.password) { var errorPassWord = error.response.data.password.toString() }
         if (error.response.data.password2) { var errorPassWord2 = error.response.data.password2.toString() }
         if (error.response.data.is_staff) { var errorIsStaff = error.response.data.is_staff.toString() }
 
-        console.log(errorPassWord)
         if (errorFirstName === "This field may not be blank.") {
-          console.log("ไม่พบข้อมูลชื่อของผู้ใช้")
+          console.error("ไม่พบข้อมูลชื่อของผู้ใช้")
           setErrorFirstName("กรุณากรอกชื่อของท่าน")
 
         }
-        if (errorSurName === "This field may not be blank.") {
-          console.log("ไม่พบข้อมูลนามสกุลผู้ใช้")
-          setErrorSurName("กรุณากรอกนามสกุลของท่าน")
+        if (errorLastName === "This field may not be blank.") {
+          console.error("ไม่พบข้อมูลนามสกุลผู้ใช้")
+          setErrorLastName("กรุณากรอกนามสกุลของท่าน")
 
         }
         if (errorUserName === "This field may not be blank.") {
-          console.log("ไม่พบข้อมูลชื่อบัญชี")
+          console.error("ไม่พบข้อมูลชื่อบัญชี")
           setErrorUserName("กรุณากรอกชื่อบัญชี")
 
         }
         if (errorUserName === "A user with that username already exists.") {
-          console.log("ชื่อบัญชีนี้ซ้ำกับในระบบ")
+          console.error("ชื่อบัญชีนี้ซ้ำกับในระบบ")
           setErrorUserName("ชื่อบัญชีนี้มีผู้ใช้แล้ว ลองใช้ชื่ออื่น")
 
         }
         if (errorUserName === "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.") {
-          console.log("รูปแบบชื่อบัญชีไม่ถูกต้อง")
+          console.error("รูปแบบชื่อบัญชีไม่ถูกต้อง")
           setErrorUserName("ชื่อบัญชีต้องเป็นตัวอักษรภาษาอังกฤษ ตัวเลข และอักขระพิเศษ")
 
         }
         if (errorEmail === "This field may not be blank.") {
-          console.log("ไม่พบข้อมูลในช่องอีเมล")
+          console.error("ไม่พบข้อมูลในช่องอีเมล")
           setErrorEmail("กรุณากรอกข้อมูลในช่องอีเมล")
 
         }
         if (errorEmail === "This field must be unique.") {
-          console.log("อีเมลนี้ซ้ำกับในระบบ")
-          setErrorEmail("อีเมลนี้ได้ถูกลงทะเบียนแล้ว ลองใช้อีเมลอื่น")
+          console.error("อีเมลนี้ซ้ำกับในระบบ")
+          setErrorEmail("อีเมลนี้มีผู้ใช้งานแล้ว ลองใช้อีเมลอื่น")
 
         }
         if (errorEmail === "Enter a valid email address.") {
-          console.log("รูปแบบอีเมลนี้ไม่ถูกต้อง")
+          console.error("รูปแบบอีเมลนี้ไม่ถูกต้อง")
           setErrorEmail("กรุณากรอกข้อมูลที่อยู่อีเมลให้ถูกต้อง")
 
         }
         if (errorPassWord === "This field may not be blank.") {
-          console.log("ไม่พบข้อมูลในช่องรหัสผ่าน")
+          console.error("ไม่พบข้อมูลในช่องรหัสผ่าน")
           setErrorPassWord("กรุณากรอกข้อมูลในช่องรหัสผ่าน")
 
         }
         if (errorPassWord === "This password is too short. It must contain at least 8 characters." ||
           errorPassWord === "This password is too short. It must contain at least 8 characters.,This password is too common.,This password is entirely numeric.") {
-          console.log("รหัสผ่านสั้นเกินไป")
+          console.error("รหัสผ่านสั้นเกินไป")
           setErrorPassWord("รหัสผ่านสั้นเกินไป จะต้องมีความยาวอย่างน้อย 8 ตัวอักษร")
 
-        }
-        if (pass2fill !== '') {
-          if (passfill !== pass2fill) {
-            console.log("รหัสผ่านไม่ตรงกัน")
-            setErrorPassWord("กรุณายืนยันรหัสผ่านให้ตรงกัน")
-
-          }
         }
 
         if (errorPassWord === "This password is too common." ||
           errorPassWord === "This password is too common.,This password is entirely numeric.") {
-          console.log("รหัสผ่านคาดเดาง่ายเกินไป")
+          console.error("รหัสผ่านคาดเดาง่ายเกินไป")
           setErrorPassWord("โปรดเลือกรหัสผ่านที่ปลอดภัยยิ่งขึ้น ลองใช้ตัวอักษร ตัวเลข และสัญลักษณ์ผสมกัน")
 
         }
         if (errorPassWord2 === "This field may not be blank.") {
-          console.log("ไม่พบข้อมูลในช่องยืนยันรหัสผ่าน")
+          console.error("ไม่พบข้อมูลในช่องยืนยันรหัสผ่าน")
           setErrorPassWord2("กรุณากรอกข้อมูลในช่องยืนยันรหัสผ่าน")
 
         }
         if (errorIsStaff === "This field may not be blank.") {
-          console.log("ไม่พบข้อมูลประเภทบัญชีผู้ใช้")
+          console.error("ไม่พบข้อมูลประเภทบัญชีผู้ใช้")
           setErrorIsStaff("กรุณาเลือกประเภทบัญชีผู้ใช้")
 
         }
@@ -192,8 +195,8 @@ function Register() {
           setErrorFirstName("")
 
         }
-        if (errorSurName === undefined) {
-          setErrorSurName("")
+        if (errorLastName === undefined) {
+          setErrorLastName("")
 
         }
         if (errorUserName === undefined) {
@@ -214,9 +217,15 @@ function Register() {
         if (errorIsStaff === undefined) {
           setErrorIsStaff("")
         }
+        if (pass2fill != '') {
+          if (pass2fill != passfill) {
+            setErrorPassWord2("กรุณายืนยันรหัสผ่านให้ตรงกัน")
+          }
+        }
       }
     }
   }
+
   return (
     <html>
       <header className="App-header">
@@ -239,7 +248,7 @@ function Register() {
               }
               {showError && <div class="register-error">
                 <div />{errorFirstName}
-                <div />{errorSurName}
+                <div />{errorLastName}
                 <div />{errorUserName}
                 <div />{errorEmail}
                 <div />{errorPassWord}
@@ -249,7 +258,7 @@ function Register() {
               {!regDone &&
                 <>
                   <Stack spacing={1} paddingBottom={2}>
-                    <RegexTextField
+                    <TextField
                       helpertext="Hey dude"
                       id="name"
                       label="ชื่อ"
@@ -260,12 +269,12 @@ function Register() {
                       InputLabelProps={{ style: { fontFamily: "Prompt" } }}
                       required
                     />
-                    <RegexTextField
+                    <TextField
                       id="lastname"
                       label="นามสกุล"
                       variant="outlined"
                       regex={onlyThaiAlphabet}
-                      onChange={(event) => setSurnamefill(event.target.value)}
+                      onChange={(event) => setLastnamefill(event.target.value)}
                       inputProps={{ style: { fontFamily: "Prompt" } }}
                       InputLabelProps={{ style: { fontFamily: "Prompt" } }}
                       required
@@ -388,7 +397,7 @@ function Register() {
                   <div>
                     <CheckCircleIcon />
                   </div>
-                  <h2 className="reg-header-congrat"><CheckCircleIcon sx={{fontSize:180,color:"#4cb143",paddingBottom:5}}/><div>สร้างบัญชีเสร็จสิ้น</div></h2>
+                  <h2 className="reg-header-congrat"><CheckCircleIcon sx={{ fontSize: 180, color: "#4cb143", paddingBottom: 5 }} /><div>สร้างบัญชีเสร็จสิ้น</div></h2>
                   <h2 className="reg-congrat">ยินดีด้วยคุณได้สร้างบัญชีเสร็จเรียบร้อยแล้ว</h2>
                   <Link to="/login" style={{ textDecoration: "none" }}>
                     <div className="reg-login">กลับไปยังหน้าเข้าสู่ระบบ</div>
