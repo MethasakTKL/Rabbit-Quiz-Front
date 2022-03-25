@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
+
+.Titlesetting{
+    font-family:'Prompt', sans-serif;
+    font-size: 20pt;
+    font-weight: 600;
+
+}
+
+.TitleForm{
+    font-family:'Prompt', sans-serif;
+    font-size: 12pt;
+    padding-bottom: 20px;
+}
+
+.TitleFormDelete{
+    font-family:'Prompt', sans-serif;
+    font-size: 12pt;
+    text-align: center;
+}

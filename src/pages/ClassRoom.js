@@ -10,26 +10,26 @@ import FaceIcon from "@mui/icons-material/Face";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useAuth, ax } from "../auth/auth";
 import ClassAnnoucement from "../Classroom/ClassAnnoucement";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
 import Leaveroom from "../components/Popup/Leaveroom";
 import { message } from "antd";
 import { useNavigate } from "react-router";
-
-
-
-
+import ClassSetting from "../Classroom/ClassSetting";
 
 function Classroom() {
-  let auth = useAuth()
-  let id = auth.id
+  let auth = useAuth();
+  let id = auth.id;
 
-  const [classroomName, setClassroomName] = useState(null)
+  const [classroomName, setClassroomName] = useState(null);
   useEffect(() => {
     async function fetchClassroom() {
-      let res = await ax.get(`/classroom/${id}`)
-      setClassroomName(res.data.classroomName)
-    } fetchClassroom();
-  }, [])
+      let res = await ax.get(`/classroom/${id}`);
+      setClassroomName(res.data.classroomName);
+    }
+    fetchClassroom();
+  }, []);
+
+  let isstaff = JSON.parse(localStorage.getItem('user_is_staff'))
 
   return (
     <div className="screen">
@@ -41,7 +41,6 @@ function Classroom() {
         spacing={2}
         paddingBottom={2}
         justifyContent="center"
-
       >
         <Button
           variant="contained"
@@ -63,14 +62,15 @@ function Classroom() {
           <QuizIcon sx={{ color: "#ffffff" }} />
           <div className="button2">กิจกรรม</div>
         </Button>
-
-        <Leaveroom />
+          {isstaff ?  <ClassSetting/> :
+          <Leaveroom /> 
+  }
+          
 
       </Stack>
       <ClassAnnoucement />
-    </div >
+    </div>
   );
 }
-
 
 export default Classroom;
