@@ -11,7 +11,7 @@ import ClassMemberList from "../Classroom/ClassMemberList";
 
 function ClassMember() {
   let auth = useAuth()
-  let id = auth.id
+  let id = localStorage.getItem("classid")
   console.log(id)
 
   const [classroomName, setClassroomName] = useState(null)
@@ -19,7 +19,7 @@ function ClassMember() {
 
   useEffect(() => {
     async function fetchClassroom() {
-      let res = await ax.get(`/classroom/${id}`)
+      let res = await ax.get(`/classroom/${id}}`)
       console.log(res.data.classroomName)
       setClassroomName(res.data.classroomName)
     } fetchClassroom();

@@ -2,7 +2,7 @@ import "./UserClassRoomCard.css"
 import React from 'react'
 import { ax, useAuth } from '../../auth/auth';
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IDContext } from "../../App"
 import {
     Box,
@@ -23,12 +23,10 @@ import AddClassRoomPopup from "../Popup/AddClassRoomPopup";
 function UserClassRoomCard() {
     const [classroomList, setClassRoomList] = useState();
     const [isEmptyRoom, setIsEmptyRoom] = useState(false)
-
+    let navigate = useNavigate()
     let auth = useAuth()
-    let id = auth.id
-    let setID = auth.setID
     const handleClick = function (id) {
-        setID(id)
+        localStorage.setItem("classid", id)
         console.log('You Clicked Class ID:', id);
     }
 
@@ -36,58 +34,65 @@ function UserClassRoomCard() {
     // setTimeout(alertFunc, 3000);
     useEffect(() => {
         async function fetchClassroom() {
-            const userRoom = await ax.get('/getUserClassroom')
-            let classroom = [];
-            let rooms = userRoom.data
-            let n = 0;
-            for (const prop in rooms) {
-                let roomID = rooms[n].id
-                let roomName = rooms[n].name
-                classroom.push({ id: roomID, name: roomName })
-                n++
+            try {
+                const userRoom = await ax.get('/getUserClassroom')
+                let classroom = [];
+                let rooms = userRoom.data
+                let n = 0;
+                for (const prop in rooms) {
+                    let roomID = rooms[n].id
+                    let roomName = rooms[n].name
+                    classroom.push({ id: roomID, name: roomName })
+                    n++
+                }
+                if (classroom.length === 0) { setIsEmptyRoom(true) }
+                setClassRoomList(
+
+                    classroom.map(function (room, i) {
+
+                        return (
+                            <Stack direction="column-reverse" sx={{ paddingBottom: 5 }}>
+                                <Box>
+                                    <CardActionArea
+                                        component={Link}
+                                        to="/classroom"
+                                        key={room.id}
+                                        onClick={() => handleClick(room.id)}
+                                        sx={{
+                                            width: "90%",
+                                            maxWidth: 500,
+                                            marginLeft: "auto",
+                                            marginRight: "auto",
+                                            paddingBottom: 2,
+                                            border: 2,
+                                            borderColor: "#566E7A",
+                                            borderRadius: 3,
+                                        }}
+                                        elevation={5}
+                                    >
+                                        <CardMedia
+                                            component="img"
+                                            alt="classroom"
+                                            height="130"
+                                            image={Classroom}
+                                            sx={{ borderRadius: 1 }}
+                                        />
+
+                                        <CardContent>
+                                            <div className="cardcontent">ห้องเรียน <div className="new-line" />{room.name}</div>
+                                        </CardContent>
+                                    </CardActionArea>
+                                </Box>
+                            </Stack>
+                        )
+                    })
+                )
+            } catch (err) {
+                if (err.response.data.detail) {
+                    navigate("/reload")
+                    navigate("/")
+                }
             }
-            if (classroom.length === 0) { setIsEmptyRoom(true) }
-            setClassRoomList(
-
-                classroom.map(function (room, i) {
-
-                    return (
-                        <Stack direction="column-reverse" sx={{ paddingBottom: 5 }}>
-                            <Box>
-                                <CardActionArea
-                                    component={Link}
-                                    to="/classroom"
-                                    key={room.id}
-                                    onClick={() => handleClick(room.id)}
-                                    sx={{
-                                        width: "90%",
-                                        maxWidth: 500,
-                                        marginLeft: "auto",
-                                        marginRight: "auto",
-                                        paddingBottom: 2,
-                                        border: 2,
-                                        borderColor: "#566E7A",
-                                        borderRadius: 3,
-                                    }}
-                                    elevation={5}
-                                >
-                                    <CardMedia
-                                        component="img"
-                                        alt="classroom"
-                                        height="130"
-                                        image={Classroom}
-                                        sx={{ borderRadius: 1 }}
-                                    />
-
-                                    <CardContent>
-                                        <div className="cardcontent">ห้องเรียน <br className="new-line" />{room.name}</div>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Box>
-                        </Stack>
-                    )
-                })
-            )
         }
         fetchClassroom();
     }, []);

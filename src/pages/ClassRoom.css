@@ -6,10 +6,10 @@
 .classname {
     font-family: 'Prompt', sans-serif;
     color: #856FB4;
-    text-align: center;
     font-size: 100px;
     font-weight: 600;
     padding-top:20px;
+    text-align: center;
 }
 
 .button1 {

@@ -79,7 +79,8 @@ function ClassActivity_Teacher() {
   const [deadline, setDeadline] = React.useState('')
   const handleCreateAssignment = async () => {
     try {
-      var result = await ax.post(`/createAssignment/${auth.id}`, {
+      let id = localStorage.getItem("classid")
+      var result = await ax.post(`/createAssignment/${id}`, {
         title, description, deadline, choice_true, choice_false
       })
       console.log(result)
@@ -162,8 +163,7 @@ function ClassActivity_Teacher() {
                 required
                 margin="dense"
                 id="nameactivity"
-                label="ตัวเลือกที่ 1"
-                defaultValue="ใช่"
+                label="ตัวเลือกที่ 1 (ใช่)"
                 fullWidth
                 variant="standard"
                 inputProps={{ style: { fontFamily: "Prompt" } }}
@@ -175,8 +175,7 @@ function ClassActivity_Teacher() {
                 required
                 margin="dense"
                 id="nameactivity"
-                label="ตัวเลือกที่ 2"
-                defaultValue="ไม่ใช่"
+                label="ตัวเลือกที่ 2 (ไม่ใช่)"
                 fullWidth
                 variant="standard"
                 inputProps={{ style: { fontFamily: "Prompt" } }}

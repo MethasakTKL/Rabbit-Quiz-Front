@@ -23,7 +23,7 @@ import ReportIcon from "@mui/icons-material/Report";
 
 function Leaveroom() {
   let auth = useAuth()
-  let id = auth.id
+  let id = localStorage.getItem("classid")
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {

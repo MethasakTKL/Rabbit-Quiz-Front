@@ -7,11 +7,14 @@ function RequireAuth() {
     let location = useLocation();
     let navigate = useNavigate
 
-    if (appAuthProvider.isAuthenticated === false) {
-        console.log(appAuthProvider.isAuthenticated)
+    if (!appAuthProvider.isAuthenticated) {
         try {
             let username = localStorage.getItem('id_username')
             let password = localStorage.getItem('id_password')
+            if (username === null || password === null) {
+                return <Navigate to="/login" />;
+            }
+
             auth.signin({ username, password }, (response) => {
                 auth.setUser(response)
             })
@@ -19,7 +22,7 @@ function RequireAuth() {
 
         } catch (err) {
             console.log("Error", JSON.stringify(err))
-            return <Navigate to="/login" state={{ from: location }} />;
+            return <Navigate to="/login" />;
 
         }
     }

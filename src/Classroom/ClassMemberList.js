@@ -19,7 +19,7 @@ function ClassMemberList() {
 
     useEffect(() => {
         async function fetchMember() {
-            let id = auth.id
+            let id = localStorage.getItem("classid")
             let res = await ax.get(`/classroom/${id}`)
             let members = res.data.Member
             setMemberSize(members.length)

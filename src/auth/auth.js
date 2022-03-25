@@ -7,6 +7,7 @@ const ax = axios.create({
    baseURL: 'http://localhost:8000',
 })
 
+
 const appAuthProvider = {
    accessToken: null,
    refreshToken: null,
@@ -17,7 +18,7 @@ const appAuthProvider = {
          var username = localStorage.getItem("id_username");
          var password = localStorage.getItem("id_password");
 
-         if (username && password) {
+         if (username != null || password != null) {
             userdata = {
                username: username,
                password: password,
@@ -52,7 +53,8 @@ const appAuthProvider = {
             callback(user_detail.data)
          }
 
-      } catch (error) {
+      }
+      catch (error) {
          if (error.response) {
             if (userdata.username === "" || userdata.password === "") {
                console.log('There must be no blank field.')
@@ -77,7 +79,6 @@ let AuthContext = React.createContext(null);
 
 
 function AuthProvider({ children }) {
-   let [id, setID] = React.useState(null);
    let [user, setUser] = React.useState(JSON.parse(localStorage.getItem('response')));
    let navigate = useNavigate();
    let auth = useAuth();
@@ -100,7 +101,7 @@ function AuthProvider({ children }) {
       });
    };
 
-   let value = { user, setUser, signin, signout, id, setID };
+   let value = { user, setUser, signin, signout };
 
    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

@@ -22,14 +22,15 @@ import "./ClassPostResults.css"
 function ClassPostResult() {
     const [postList, setClassPostList] = useState();
     const [column, setColomn] = useState()
-
+    const [isEmpty, setIsEmpty] = useState()
     let auth = useAuth()
-    let id = auth.id
+    let id = localStorage.getItem("classid")
 
     // setTimeout(alertFunc, 3000);
     useEffect(() => {
         async function fetchListPost() {
             const res = await ax.get(`/getMessage/${id}`)
+            console.log(res)
             let post = res.data
             let n = 0;
             let allPost = []
@@ -39,8 +40,8 @@ function ClassPostResult() {
                 allPost.push({ text, name })
                 n++
             }
+            if (allPost.length === 0) { setIsEmpty(true) }
             setClassPostList(
-
                 allPost.map(function (p, i) {
                     return (
                         <Stack direction="column-reverse" spacing={4} paddingBottom={3}>
@@ -100,7 +101,13 @@ function ClassPostResult() {
         fetchListPost();
     }, []);
 
-    return <div class="user-post">{postList}</div>;
+    return <div class="user-post">
+        {postList}
+        {isEmpty ?
+            <Box sx={{ paddingTop: 5 }}>
+                <div className="noroom">ยังไม่มีมีประกาศ</div>
+            </Box> : <div />}
+    </div>;
 }
 
 export default ClassPostResult;

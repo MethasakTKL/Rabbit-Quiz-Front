@@ -46,10 +46,7 @@ function ClassActivity() {
     setOpen(false);
   };
 
-  let auth = useAuth();
-  let id = auth.id;
-  console.log(id);
-
+  let id = localStorage.getItem("classid")
   const [classroomName, setClassroomName] = useState(null);
 
   useEffect(() => {
@@ -98,7 +95,7 @@ function ClassActivity() {
               </Button>
             </Grid>
           </Stack>
-          <Box sx={{paddingTop:8}}>
+          <Box sx={{ paddingTop: 8 }}>
             <div className="noroom">ยังไม่มีกิจกรรม</div>
           </Box>
           <Box

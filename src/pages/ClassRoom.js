@@ -18,13 +18,20 @@ import ClassSetting from "../Classroom/ClassSetting";
 
 function Classroom() {
   let auth = useAuth();
-  let id = auth.id;
-
+  let id = localStorage.getItem("classid")
+  let navigate = useNavigate()
   const [classroomName, setClassroomName] = useState(null);
   useEffect(() => {
     async function fetchClassroom() {
-      let res = await ax.get(`/classroom/${id}`);
-      setClassroomName(res.data.classroomName);
+      try {
+        let res = await ax.get(`/classroom/${id}`);
+        setClassroomName(res.data.classroomName);
+      } catch (err) {
+        if (err.response.data.detail) {
+          navigate("/reload")
+          navigate("/classroom")
+        }
+      }
     }
     fetchClassroom();
   }, []);
@@ -62,10 +69,10 @@ function Classroom() {
           <QuizIcon sx={{ color: "#ffffff" }} />
           <div className="button2">กิจกรรม</div>
         </Button>
-          {isstaff ?  <ClassSetting/> :
-          <Leaveroom /> 
-  }
-          
+        {isstaff ? <ClassSetting /> :
+          <Leaveroom />
+        }
+
 
       </Stack>
       <ClassAnnoucement />

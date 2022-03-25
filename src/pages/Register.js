@@ -40,6 +40,7 @@ import logo from "../Static/image/Rabbitquiz_05.png";
 
 // text field
 import RegexTextField from "../components/RegexTextField";
+import { axios } from "axios";
 const onlyThaiAlphabet = /[^ก-๛]/gi;
 
 
