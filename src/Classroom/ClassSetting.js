@@ -24,17 +24,18 @@ function ClassSetting() {
   };
   let id = localStorage.getItem("classid");
   const [classroomName, setClassroomName] = useState(null);
+  const [classroomID, setClassroomID] = useState(null)
 
   useEffect(() => {
     async function fetchClassroom() {
       let res = await ax.get(`classroom/${id}`);
-      console.log(res.data.classroomName);
+      console.log(res.data);
       setClassroomName(res.data.classroomName);
+      setClassroomID(res.data.classCode);
     }
     fetchClassroom();
   }, []);
 
-  let isstaff = JSON.parse(localStorage.getItem("user_is_staff"));
 
   return (
     <div>
@@ -54,7 +55,8 @@ function ClassSetting() {
             margin="dense"
             id="name"
             label="ชื่อห้องเรียน"
-            defaultValue={classroomName}
+            value={classroomName}
+            onChange={(e) => setClassroomName(e.target.value)}
             fullWidth
             variant="standard"
             inputProps={{ style: { fontFamily: "Prompt" } }}
@@ -65,7 +67,8 @@ function ClassSetting() {
             margin="dense"
             id="name"
             label="รหัสห้องเรียน"
-            defaultValue="รอดึงข้อมูล"
+            value={classroomID}
+            onChange={(e) => setClassroomID(e.target.value)}
             fullWidth
             variant="standard"
             inputProps={{ style: { fontFamily: "Prompt" } }}
