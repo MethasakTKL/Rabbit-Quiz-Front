@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e4ebb8a8.css",
+    "main.js": "/static/js/main.f4a3bb40.js",
+    "static/js/787.8d9db845.chunk.js": "/static/js/787.8d9db845.chunk.js",
+    "static/media/Classroomimg.jpg": "/static/media/Classroomimg.f69e21e5f7f1cbcc9a2f.jpg",
+    "static/media/waterplant.png": "/static/media/waterplant.428dc4dfbd0af050308d.png",
+    "static/media/Untitled-2.png": "/static/media/Untitled-2.9fc27e535357a72956a5.png",
+    "static/media/Question00.png": "/static/media/Question00.31685281dd17c52df8af.png",
+    "static/media/Rabbitquiz_05.png": "/static/media/Rabbitquiz_05.8787238222c557f9eee0.png",
+    "static/media/Rabbitquiz_04.png": "/static/media/Rabbitquiz_04.6a03bc67b602d1a9cf06.png",
+    "static/media/rabbiterror.png": "/static/media/rabbiterror.34162a6000df59f4190e.png",
+    "static/media/scorevector.png": "/static/media/scorevector.8d41a333880f92334acb.png",
+    "index.html": "/index.html",
+    "main.e4ebb8a8.css.map": "/static/css/main.e4ebb8a8.css.map",
+    "main.f4a3bb40.js.map": "/static/js/main.f4a3bb40.js.map",
+    "787.8d9db845.chunk.js.map": "/static/js/787.8d9db845.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e4ebb8a8.css",
+    "static/js/main.f4a3bb40.js"
+  ]
+}
