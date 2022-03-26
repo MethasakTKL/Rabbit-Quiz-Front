@@ -98,10 +98,10 @@ function ClassPostResult() {
                                             alignItems="center"
                                             paddingLeft={2}
                                         >
-                                            {p.role ? <AccountCircleIcon sx={{ fontSize: 30, color: "#51d87a" }} /> : <FaceIcon sx={{ fontSize: 30, color: "#ECA400" }} />}
-                                            <p className="postername">{p.name}</p>
+                                            {p.role ? <AccountCircleIcon sx={{ fontSize: 30, color: "#5F498C" }} /> : <FaceIcon sx={{ fontSize: 30, color: "#ECA400" }} />}
+                                            <p className="postername" key={p.id}>{p.name}</p>
                                         </Grid>
-                                        <p className="postinfo">
+                                        <p className="postinfo" >
                                             {p.text}
                                         </p>
                                         <Stack

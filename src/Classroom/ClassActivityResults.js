@@ -171,7 +171,7 @@ function ClassActivityResults() {
 
     ///////////////////////POPUP ASSIGNMENT SECTION ///////////////////////
     let navigate = useNavigate()
-    const handleSendAPI = async () => {
+    const handleSendAPITrue = async () => {
         var submit = await ax.post(`/user_result_do/${activityID}`, { result: "True" })
 
 
@@ -185,7 +185,30 @@ function ClassActivityResults() {
         navigate('/classroom-activity', { replace: true })
         setTimeout(() => {
             message.success({
-                content: `เลือก ${choice_true} สำหรับกิจกรรม${title}สำเร็จ`,
+                content: `เลือก ${choice_true} สำหรับ ${title} สำเร็จ`,
+                style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+                key,
+                duration: 10,
+            });
+        }, 2000);
+    }
+
+
+    const handleSendAPIFalse = async () => {
+        var submit = await ax.post(`/user_result_do/${activityID}`, { result: "False" })
+
+
+        const key = 'updatable';
+        message.loading({
+            content: 'กำลังดำเนินการ...',
+            style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+            key
+        });
+        navigate('/reload', { replace: true })
+        navigate('/classroom-activity', { replace: true })
+        setTimeout(() => {
+            message.success({
+                content: `เลือก ${choice_true} สำหรับ ${title} สำเร็จ`,
                 style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
                 key,
                 duration: 10,
@@ -223,7 +246,7 @@ function ClassActivityResults() {
                             <Grid>
                                 <Button
                                     variant="contained"
-                                    onClick={handleSendAPI}
+                                    onClick={handleSendAPITrue}
                                     style={{
                                         width: 150,
                                         height: 50,
@@ -236,7 +259,7 @@ function ClassActivityResults() {
                             <Grid>
                                 <Button
                                     variant="contained"
-                                    onClick={handleClose}
+                                    onClick={handleSendAPIFalse}
                                     style={{
                                         width: 150,
                                         height: 50,

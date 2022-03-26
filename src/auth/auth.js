@@ -44,9 +44,11 @@ const appAuthProvider = {
                return config;
             }))
             let user_detail = await ax.get('/userdetail')
-            localStorage.setItem("user_email", user_detail.data.email)
+            console.log(user_detail)
+            localStorage.setItem("student_id", user_detail.data.id)
             localStorage.setItem("user_first_name", user_detail.data.first_name)
             localStorage.setItem("user_last_name", user_detail.data.last_name)
+            localStorage.setItem("user_email", user_detail.data.email)
             localStorage.setItem("user_is_staff", JSON.stringify(user_detail.data.is_staff))
             localStorage.setItem("id_username", userdata.username)
             localStorage.setItem("id_password", userdata.password)
