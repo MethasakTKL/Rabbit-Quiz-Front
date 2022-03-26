@@ -63,9 +63,8 @@ function ClassActivity() {
   return (
     <div>
       {" "}
-      {isstaff ? (
-        <ClassActivity_Teacher />
-      ) : (
+      {isstaff ? (<ClassActivity_Teacher />) : 
+      (
         <Box height={800}>
           <Linkform href="classroom" underline="none">
             <h1 className="classname" style={{ fontSize: 36 }}>

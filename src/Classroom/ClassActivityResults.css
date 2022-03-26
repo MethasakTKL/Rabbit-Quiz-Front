@@ -7,3 +7,48 @@
     font-size: 24px;
     color: greenyellow;
 }
+
+
+.newline {
+    display: none
+}
+
+.titleASN {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.questionASNedit {
+    font-family: "Prompt";
+    color: #ffffff;
+}
+
+.questionASN {
+    display: inline-block;
+    font-size: 18px;
+}
+
+.datetimeASNedit {
+    font-size: 18px;
+}
+
+
+@media (max-width: 54em) {
+    .datetimeASNedit {
+        font-size: 16px;
+    }
+
+    .newline {
+        display: flex;
+    }
+
+    .titleASN {
+        font-size: 18px
+    }
+
+    .questionASN {
+        font-size: 16px;
+    }
+    
+}

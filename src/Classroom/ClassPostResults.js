@@ -41,14 +41,12 @@ function ClassPostResult() {
     const [messageID, setMessageID] = useState('')
     const [messageText, setMessageText] = useState('')
     const clickPopupChange = (text, id) => {
-        console.log("Change")
         setMessageText(text)
         setMessageID(id)
         setOpenChange(true)
     }
 
     const clickPopupDelete = (text, id) => {
-        console.log("Delete")
         setMessageText(text)
         setMessageID(id)
         setOpenDelete(true)
@@ -66,11 +64,9 @@ function ClassPostResult() {
         async function fetchListPost() {
             try {
                 const res = await ax.get(`/getMessage/${id}`)
-                console.log(res)
                 let post = res.data
                 let n = 0;
                 let allPost = []
-                console.log(post)
                 for (var a in post) {
                     let id = post[n].id
                     let text = post[n].text

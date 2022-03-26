@@ -34,7 +34,7 @@ function Profile() {
       <Grid>
         <Paper
           elevation={4}
-          sx={{marginLeft: "auto", marginRight: "auto" }}
+          sx={{ marginLeft: "auto", marginRight: "auto" }}
           className='screenpaper'
         >
           <Grid spacing={2} paddingBottom={5}>
@@ -48,6 +48,7 @@ function Profile() {
               ประเภทบัญชี : {userIsStaff ? "คุณครู" : "นักเรียน"}
             </div>
           </Grid>
+          <div className="allact">กิจกรรมที่ทำไปแล้วทั้งหมด</div>
         </Paper>
       </Grid>
       <Grid paddingTop={2}>

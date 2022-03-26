@@ -91,6 +91,16 @@
     width: 90%;
 }
 
+.allact {
+    /* border: 1px solid red; */
+    margin-right: auto ;
+    margin-left: auto ;
+    padding-bottom: 3em;
+    max-width: fit-content;
+    font-family: "Prompt";
+}
+
+
 @media only screen and (min-width: 1200px) {
     .screenpaper{
         width: 50%;
