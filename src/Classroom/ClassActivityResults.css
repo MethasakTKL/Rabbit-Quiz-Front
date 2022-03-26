@@ -7,6 +7,11 @@
     font-size: 24px;
     color: greenyellow;
 }
+.outtime {
+    font-family: "Prompt", sans-serif;
+    font-size: 24px;
+    color: rgb(255, 47, 47);
+}
 
 
 .newline {
@@ -36,6 +41,13 @@
 .activitybuttion {
     font-size: 18px;
     font-family: "Prompt";
+    color: #f5df4d;;
+}
+
+.activitybutton {
+    font-size: 20pt;
+    font-family: "Prompt";
+    padding-top: 10px;
     color: #f5df4d;;
 }
 

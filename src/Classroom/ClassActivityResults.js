@@ -156,9 +156,10 @@ function ClassActivityResults() {
                     }
 
                     return (
-                        < Stack direction="column-reverse" >
+                        < Stack direction="column-reverse"  >
                             <Grid paddingTop={2} paddingBottom={2}>
                                 <Button
+                                    disabled //-----------------------------------ถ้าทำแล้ว----------------------------
                                     variant="contained"
                                     onClick={() => handleOpen(a.title, a.description, a.choice_true, a.choice_false, a.id)}
                                     style={{
@@ -168,9 +169,11 @@ function ClassActivityResults() {
                                         marginLeft: "auto",
                                         bottom: 10,
                                         top: 1,
-                                        background: "#5F498C",
+                                        // background: "#5F498C", {/* //-----------------------------------ยังทำได้---------------------------- */}
+                                        background: "#453566", 
                                         borderRadius: 15,
                                         paddingBottom: 15,
+                                        
                                     }}
                                 >
                                     <Stack>
@@ -192,13 +195,16 @@ function ClassActivityResults() {
                                                 {date}
                                             </div>
                                         </div>
-                                        <Grid className="intime">
-                                            <div>อยู่ในระยะเวลา</div>
+                                        <Grid>
+                                            <div className="intime">อยู่ในระยะเวลา</div>
+                                            <div className="outtime">ไม่ได้อยู่ในระยะเวลา</div>  {/* //-----------------------------------ถ้าหมดเวลา---------------------------- */}
+                                            
                                         </Grid>
                                     </Stack>
                                 </Button>
                             </Grid>
                         </Stack >
+                        
                     )
                 })
             )
