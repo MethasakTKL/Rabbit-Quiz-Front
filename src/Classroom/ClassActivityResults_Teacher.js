@@ -44,6 +44,8 @@ import "./ClassActivityResults_Teacher.css";
 //Components
 import EditActivity from "../Classroom/ClassTeacherActivity/EditActivity";
 import DetailActivity from "../Classroom/ClassTeacherActivity/DetailActivity";
+import { ConsoleSqlOutlined } from "@ant-design/icons";
+import { DataGrid } from "@mui/x-data-grid";
 
 function ClassActivityResults_Teacher() {
    let auth = useAuth();
@@ -68,6 +70,7 @@ function ClassActivityResults_Teacher() {
       setOpen(false);
       setOpenDelete(false);
       setOpenEdit(false);
+      setOpenDetail(false);
       // setOpen(false);
    };
 
@@ -92,10 +95,11 @@ function ClassActivityResults_Teacher() {
             const check = await ax.get(`assignment_status/`)
             const resMem = await ax.get(`classroom/${classID}`)
             const classMem = await ax.get(`ClassMembers/${classID}`)
+            setMemberSize(resMem.data.Member.length)
 
-            let c = check.data.results
-            let r = res.data.results
-            let m = classMem.data
+            let c = check.data.results;
+            let r = res.data.results;
+            let m = classMem.data;
             let n = 0;
             let assignments = []
             for (var a in r) {
@@ -107,7 +111,6 @@ function ClassActivityResults_Teacher() {
                let id = r[n].id
                let deadline = r[n].deadline
                let posted_date = r[n].posted_date
-
                if (classID === `${classroom_id}`) {
                   assignments.push({
                      title,
@@ -115,7 +118,8 @@ function ClassActivityResults_Teacher() {
                      choice_true,
                      choice_false,
                      deadline,
-                     id, posted_date
+                     id,
+                     posted_date
                   })
                }
                n++
@@ -124,30 +128,12 @@ function ClassActivityResults_Teacher() {
 
             //vvvvvvvvvvvv Detail for Data, User vvvvvvvvvvvvvvvvvvv
             let t = 0; let memList = []
-            for (var a in m) {
+            for (var x in m) {
                memList.push(m[t].firstname)
                t++
             }
-            console.log("memList", memList)
 
 
-            let s = 0
-            let asnTrue = 0
-            let asnFalse = 0
-            for (var a in c) {
-               let memC = c[s].student
-               let asnC = c[s].assignment_id
-
-               if (memList.includes(memC)) {
-                  if (c[s].status === true) {
-                     asnTrue++
-                  }
-                  if (c[s].status === false) {
-                     asnFalse++
-                  }
-               }
-               s++
-            }
 
 
 
@@ -155,6 +141,9 @@ function ClassActivityResults_Teacher() {
                console.log("ASN is Empty")
                setEmptyASN(true)
             }
+
+
+
             setAssignmentList(
                assignments.map(function (a, index) {
                   function toThaiDateString(date) {
@@ -188,12 +177,38 @@ function ClassActivityResults_Teacher() {
                   var date = toThaiDateString(date1);
 
 
-                  console.log("Assign IS", res.data.results)
-                  console.log("Status IS", check.data.results)
-                  console.log("Class Room", resMem.data)
-                  console.log("Class Member", classMem.data)
+                  /////////VVVVVVVVVVV DATA CHECK HOW MANY ตรวจสอบข้อมูล การทำกิจกรรม ///////////////
 
 
+                  let s = 0
+                  let asnTrue = 0
+                  let asnFalse = 0
+                  let rows = []
+                  for (var v in c) {
+                     let asnC = c[s].assignment_id
+                     let memC = c[s].student_firstname
+                     let memFull = c[s].student_firstname + ' ' + c[s].student_lastname
+                     if (asnC === a.id) {
+                        if (memList.includes(memC)) {
+                           if (c[s].status === true) {
+                              asnTrue++
+                           }
+                           if (c[s].status === false) {
+                              asnFalse++
+                           }
+                        }
+                     } s++
+                  }
+                  let allSubmit = asnTrue + asnFalse
+                  let remainSubmit = resMem.data.Member.length - allSubmit
+                  if (remainSubmit === 0) { remainSubmit = "-" }
+                  if (asnTrue === 0) { asnTrue = "-" }
+                  if (asnFalse === 0) { asnFalse = "-" }
+
+
+
+
+                  ///^^^^^^^^^^^^^^ DATA CHECK HOW MANY ตรวจสอบข้อมูล การทำกิจกรรม ^^^^^^^^^^^^^^^//
                   //////////////// Time Check ////////////////////
                   let today = moment().format()
                   let isOutDate = moment(today).isAfter(a.deadline)
@@ -253,7 +268,7 @@ function ClassActivityResults_Teacher() {
                                        </div>
                                     </Grid>
                                     <Grid item xs={6}>
-                                       <div className="textinbutton">4</div>
+                                       <div className="textinbutton">{asnTrue}</div>
                                     </Grid>
                                     <Grid item xs={6}>
                                        <div className="textinbutton">
@@ -261,13 +276,13 @@ function ClassActivityResults_Teacher() {
                                        </div>
                                     </Grid>
                                     <Grid item xs={6}>
-                                       <div className="textinbutton">-</div>
+                                       <div className="textinbutton">{asnFalse}</div>
                                     </Grid>
                                     <Grid item xs={6}>
                                        <div className="textinbutton">ยังไม่ส่ง</div>
                                     </Grid>
                                     <Grid item xs={6}>
-                                       <div className="textinbutton">1</div>
+                                       <div className="textinbutton">{remainSubmit}</div>
                                     </Grid>
                                     <Stack
                                        marginLeft={"auto"}
@@ -278,7 +293,14 @@ function ClassActivityResults_Teacher() {
                                        paddingBottom={2}
                                     >
                                        <Grid>
-                                          <DetailActivity />
+                                          <Button
+                                             variant="contained"
+                                             onClick={() => clickPopupDetail(a.title, a.choice_true, a.choice_false, c, r, m)}
+                                             style={{ background: "#7AD400" }}
+                                          >
+                                             <div className="editbutton">ดูรายละเอียด</div>
+                                          </Button>
+
                                        </Grid>
 
                                        <Grid>
@@ -537,20 +559,18 @@ function ClassActivityResults_Teacher() {
    };
 
    const [openEdit, setOpenEdit] = useState();
-   const handleEditASN = () => {
-      console.log("ID", EditASNID);
-      console.log("Title", EditASNText);
-      console.log("Description", EditASNDescription);
-      console.log("Choice True", EditASNChoiceTrue);
-      console.log("Choice False", EditASNChoiceFalse);
-      console.log("Deadline", EditASNDeadline);
-
-      ax.post(`changeAssignment/${EditASNID}`, {
+   const handleEditASN = async () => {
+      console.log(EditASNText)
+      console.log(EditASNDescription)
+      console.log(EditASNChoiceTrue)
+      console.log(EditASNChoiceFalse)
+      console.log(EditASNDeadline)
+      let result = await ax.post(`changeAssignment/${EditASNID}`, {
          title: EditASNText,
          description: EditASNDescription,
          choice_true: EditASNChoiceTrue,
          choice_false: EditASNChoiceFalse,
-         deadline: EditASNDeadline,
+         deadline: moment(EditASNDeadline).format("YYYY-MM-DD HH:mm:ss"),
       });
       message.loading({
          content: `กำลังแก้ไข ${EditASNText}...`,
@@ -658,10 +678,107 @@ function ClassActivityResults_Teacher() {
       );
    };
 
-   ///^^^^^^^^^^^^^^^^^^^^^^^ POPUP EDIT ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^/
+   ///^^^^^^^^^^^^^^^^^^^^^^^ POPUP EDIT แก้ไข ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^/
 
-   //^^^^^^^^^^^^^^^^^^POPUP ASSIGNMENT SECTION ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^/
 
+
+
+   ////VVVVVVVVVVVVVVVVV DETAIL ASSIGNMENT ดูรายละเอียด////////////////////////////
+
+   const [rowsList, setRowsList] = useState()
+   const [openDetail, setOpenDetail] = useState()
+   const [detailTitle, setDetailTitle] = useState()
+   const [detailASNChoiceTrue, setDetailASNChoiceTrue] = useState()
+   const [detailASNChoiceFalse, setDetailASNChoiceFalse] = useState()
+   const clickPopupDetail = (
+      title,
+      choice_true,
+      choice_false,
+      c,
+      r,
+      m,
+   ) => {
+      let s = 0;
+      let rows = []
+      let memList = []
+      for (var i in c) {
+         let memFull = ''
+         if (c[s] != undefined) {
+            memFull = c[s].student_firstname + ' ' + c[s].student_lastname
+            console.log(memFull)
+            if (c[s].assignment === title) {
+               console.log(c[s].student_firstname, choice_true)
+               if (c[s].status === true) {
+                  rows.push({ id: c[s].id, col1: memFull, col2: choice_true, col3: 1, })
+                  memList.push(memFull)
+               }
+               if (c[s].status === false) {
+                  rows.push({ id: c[s].id, col1: memFull, col2: choice_false, col3: 0, })
+                  memList.push(memFull)
+               }
+            } s++
+         } if (c[s] == undefined) { console.log(`c[${s}] is undefiend`, c) }
+      }
+
+      console.log(m)
+      console.log(memList)
+      let q = 0
+      let memberClass = [];
+      for (var i in m) {
+         let member = (m[q].firstname + ' ' + m[q].lastname);
+         if (!memList.includes(member)) {
+            rows.push({ id: m[q].id, col1: member, col2: 'ยังไม่ส่ง', col3: 0 })
+         }
+         q++
+      }
+      setRowsList(rows)
+      setOpenDetail(true);
+   };
+
+   const detailClose = () => {
+      setOpenDetail(false)
+      console.log("Close")
+   }
+   const columns = [
+      { field: "col1", headerName: "ชื่อ-นามสกุล", width: 180 },
+      { field: "col2", headerName: "สถานะ", width: 120 },
+      { field: "col3", headerName: "คะแนน", width: 100 },
+   ];
+
+   const renderPopupDetail = () => {
+      return (
+         <div>
+            <Dialog open={true} onClose={detailClose}>
+               <DialogTitle>
+                  <div className="detialtitle">สรุปผลกิจกรรม</div>
+               </DialogTitle>
+               <DialogContent>
+                  <div className="allstudent">ทั้งหมด 5 คน</div>
+                  <div style={{ height: 500, width: "auto" }}>
+                     <DataGrid
+                        rows={rowsList}
+                        columns={columns}
+                        style={{ fontFamily: "prompt" }}
+                     />
+                  </div>
+               </DialogContent>
+               <DialogActions>
+                  <Button
+                     onClick={detailClose}
+                     variant="contained"
+                     style={{ width: 150 }}
+                  >
+                     <div className="createbutton">ตกลง</div>
+                  </Button>
+               </DialogActions>
+            </Dialog>
+         </div>
+      );
+   };
+
+
+
+   //^^^^^^^^^^^^^^^^^^POPUP ASSIGNMENT SECTION  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^/
 
    const renderEmpty = () => {
       return (
@@ -670,7 +787,6 @@ function ClassActivityResults_Teacher() {
    }
 
 
-   console.log(assignmentList)
    return (
       <div class="activity-list">
          {assignmentList}
@@ -678,6 +794,7 @@ function ClassActivityResults_Teacher() {
          {isEmptyASN && renderEmpty()}
          {openEdit && renderPopupEdit()}
          {openDelete && renderPopupDelete()}
+         {openDetail && renderPopupDetail()}
       </div>
    );
 }

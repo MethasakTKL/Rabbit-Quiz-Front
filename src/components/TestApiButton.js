@@ -4,7 +4,7 @@ import { ax } from '../auth/auth';
 import { message } from "antd";
 
 function TestApiButton() {
-    let api = "/getUserClassroom"
+    let api = "/assignments"
     const handleSendApi = async () => {
         try {
             var result = await ax.get(`${api}`)
