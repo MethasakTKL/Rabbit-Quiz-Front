@@ -106,7 +106,7 @@ function ClassActivity_Teacher() {
 
   return (
     <Box sx={{ height: 1050 }}>
-      <Link href="classroom-teacher" underline="none">
+      <Link href="classroom" underline="none">
         <h1 className="classname" style={{ fontSize: 36 }}>
           {classroomName}
         </h1>

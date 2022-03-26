@@ -58,7 +58,7 @@ function AppHeaderTeacher() {
   return (
     <div>
       <Box>
-        <AppBar position="static" style={{ background: "#4b327e" }}>
+        <AppBar position="static" style={{ background: "#5F498C" }}>
           <CssBaseline />
           <Toolbar>
             <div className="goback-button">

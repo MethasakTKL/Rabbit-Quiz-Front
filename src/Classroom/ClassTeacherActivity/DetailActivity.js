@@ -43,7 +43,6 @@ function DetailActivity() {
 
       const check = await ax.get(`/assignment_status/`)
       let c = check.data.results; let m = 0
-      console.log("ASN_Status", c)
       let ASNList = []
       for (var a in c) {
         let CUR_student_id = localStorage.getItem("student_id")
@@ -53,7 +52,6 @@ function DetailActivity() {
         ASNList.push({ ASN_id, ASN_status })
         m++
       }
-      console.log("List of your ASN", ASNList)
       // ^^^^^^^^^^^^^^^^^ CHECKING USER HAS FINISH ASSIGNMENT YET? ^^^^^^^^^^^^^^^^^
 
 
@@ -62,7 +60,6 @@ function DetailActivity() {
 
       const res = await ax.get(`/assignments/`)
       let r = res.data.results
-      console.log("Assignments", r)
       let assignments = []; let n = 0;
       for (var a in r) {
         let title = r[n].title

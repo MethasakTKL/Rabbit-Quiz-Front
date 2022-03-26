@@ -1,4 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
+
+
 .activity-list {
     display: flex;
     flex-direction: column-reverse;
+}
+
+.statusactive {
+    font-family: "Prompt";
+    color: #7AD400;
+}
+
+.statusinactive {
+    font-family: "Prompt";
+    color: #df4c58;
 }

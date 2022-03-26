@@ -10,7 +10,7 @@
 .outtime {
     font-family: "Prompt", sans-serif;
     font-size: 24px;
-    color: rgb(255, 47, 47);
+    color: rgb(221, 80, 80);
 }
 
 
@@ -57,12 +57,48 @@
     color: #f5df4d;;
 }
 
+.activitybutton-outed-date {
+    font-family: 'Prompt', sans-serif;
+    color: #cab739;
+}
+
+.statussent-outed-date {
+    font-family: 'Prompt', sans-serif;
+    color: #dddddd;
+}
+
+.questionACT-outed-date {
+    font-family: 'Prompt', sans-serif;
+    color: #cab739;
+}
+
+.activity-outed-date {
+    font-family: 'Prompt', sans-serif;
+    color: #f5df4d;
+}
+.duetimeactivity-outed-date {
+    font-family: 'Prompt', sans-serif;
+    color: rgb(226, 226, 226);
+    padding-left: 4px;
+}
+.duetimeactivity-activate {
+    font-family: 'Prompt', sans-serif;
+    color: rgb(255, 255, 255);
+    padding-left: 4px;
+}
+
+
 
 @media (max-width: 54em) {
     .datetimeASNedit {
         font-size: 16px;
     }
-
+    .duetimeactivity-activate {
+        font-family: 'Prompt', sans-serif;
+        color: rgb(255, 255, 255);
+        padding-left: 4px;
+        width: 140px;
+    }
     .newline {
         display: flex;
     }
