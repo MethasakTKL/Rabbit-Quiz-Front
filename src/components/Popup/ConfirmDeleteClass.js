@@ -22,9 +22,9 @@ function ConfirmDeleteClass() {
 
   return (
     <div>
-      <Button  variant="contained" onClick={handleClickOpen} style={{background:"#c94444",width:200}}>
+      <Button  variant="contained" onClick={handleClickOpen} style={{background:"#c94444",width:120}}>
         <div>
-            ลบห้องเรียน
+            <div className="buttonaction">ลบห้องเรียน</div>
         </div>
       </Button>
       <Dialog open={open} onClose={handleClose}>

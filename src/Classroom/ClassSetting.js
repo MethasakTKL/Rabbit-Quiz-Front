@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ClassSetting.css";
 import { Box, Button, Grid, IconButton, Stack } from "@mui/material";
 import TextField from "@mui/material/TextField";
@@ -9,6 +9,8 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ConfirmDeleteClass from "../components/Popup/ConfirmDeleteClass";
+import { useAuth, ax } from "../auth/auth";
+
 
 function ClassSetting() {
   const [open, setOpen] = React.useState(false);
@@ -20,6 +22,19 @@ function ClassSetting() {
   const handleClose = () => {
     setOpen(false);
   };
+  let id = localStorage.getItem("classid");
+  const [classroomName, setClassroomName] = useState(null);
+
+  useEffect(() => {
+    async function fetchClassroom() {
+      let res = await ax.get(`/classroom/${id}`);
+      console.log(res.data.classroomName);
+      setClassroomName(res.data.classroomName);
+    }
+    fetchClassroom();
+  }, []);
+
+  let isstaff = JSON.parse(localStorage.getItem("user_is_staff"));
 
   return (
     <div>
@@ -39,7 +54,7 @@ function ClassSetting() {
             margin="dense"
             id="name"
             label="ชื่อห้องเรียน"
-            defaultValue="รอดึงข้อมูล"
+            defaultValue={classroomName}
             fullWidth
             variant="standard"
             inputProps={{ style: { fontFamily: "Prompt" } }}
@@ -57,28 +72,28 @@ function ClassSetting() {
             InputLabelProps={{ style: { fontFamily: "Prompt" } }}
           />
         </DialogContent>
-          <Stack
-            direction="row"
-            justifyContent="center"
-            spacing={2}
-            sx={{
-              paddingBottom:2,
-              paddingTop:3
-            }}
-          >
-            <Grid>
-              <ConfirmDeleteClass />
-            </Grid>
-            <Grid>
-              <Button
-                variant="contained"
-                onClick={handleClose}
-                style={{ width: 200,background:"#1976D2" }}
-              >
-                บันทึก
-              </Button>
-            </Grid>
-          </Stack>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          spacing={2}
+          sx={{
+            paddingBottom: 2,
+            paddingTop: 3,
+          }}
+        >
+          <Grid>
+            <ConfirmDeleteClass />
+          </Grid>
+          <Grid>
+            <Button
+              variant="contained"
+              onClick={handleClose}
+              style={{ width: 120, background: "#1976D2" }}
+            >
+              <div className="buttonaction">บันทึก</div>
+            </Button>
+          </Grid>
+        </Stack>
       </Dialog>
     </div>
   );
