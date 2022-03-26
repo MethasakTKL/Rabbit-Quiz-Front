@@ -94,7 +94,7 @@ function Register() {
 
     if (/^[ก-๛]*$/.test(firstnamefill + lastnamefill)) {
       try {
-        let RegistResult = await ax.post("/auth/register/", {
+        let RegistResult = await ax.post("auth/register/", {
           username: namefill,
           password: passfill,
           password2: pass2fill,

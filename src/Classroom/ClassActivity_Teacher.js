@@ -75,7 +75,7 @@ function ClassActivity_Teacher() {
   const handleCreateAssignment = async () => {
     try {
       let id = localStorage.getItem("classid");
-      var result = await ax.post(`/createAssignment/${id}`, {
+      var result = await ax.post(`createAssignment/${id}`, {
         title,
         description,
         deadline,

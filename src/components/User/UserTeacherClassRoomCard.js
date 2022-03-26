@@ -33,7 +33,7 @@ function UserTeacherClassRoomCard() {
     useEffect(() => {
         async function fetchClassroom() {
             try {
-                const userRoom = await ax.get('/classroom')
+                const userRoom = await ax.get('classroom')
                 console.log(userRoom)
                 let classroom = [];
                 let rooms = userRoom.data.results

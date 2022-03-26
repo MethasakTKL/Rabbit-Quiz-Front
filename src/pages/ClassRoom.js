@@ -24,7 +24,7 @@ function Classroom() {
   useEffect(() => {
     async function fetchClassroom() {
       try {
-        let res = await ax.get(`/classroom/${id}`);
+        let res = await ax.get(`classroom/${id}`);
         setClassroomName(res.data.classroomName);
       } catch (err) {
         if (err.response.data.detail) {

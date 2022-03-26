@@ -51,7 +51,7 @@ function CreateClassRoomPopup() {
     const handleCreateClass = async () => {
         console.log("teacher", teacher)
         try {
-            var existClass = await ax.get('/classroom')
+            var existClass = await ax.get('classroom')
             var res = existClass.data.results
 
             let n = 0; let curClassCode = [];
@@ -79,7 +79,7 @@ function CreateClassRoomPopup() {
             }
 
 
-            var result = await ax.post('/createClass', {
+            var result = await ax.post('createClass', {
                 className,
                 classCode,
                 teacher

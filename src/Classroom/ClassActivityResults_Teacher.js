@@ -88,10 +88,10 @@ function ClassActivityResults_Teacher() {
       async function fetchActivity() {
          try {
             let classID = localStorage.getItem('classid')
-            const res = await ax.get(`/assignments/`)
-            const check = await ax.get(`/assignment_status/`)
-            const resMem = await ax.get(`/classroom/${classID}`)
-            const classMem = await ax.get(`/ClassMembers/${classID}`)
+            const res = await ax.get(`assignments/`)
+            const check = await ax.get(`assignment_status/`)
+            const resMem = await ax.get(`classroom/${classID}`)
+            const classMem = await ax.get(`ClassMembers/${classID}`)
 
             let c = check.data.results
             let r = res.data.results
@@ -148,7 +148,7 @@ function ClassActivityResults_Teacher() {
                }
                s++
             }
-            
+
 
 
             if (assignments.length === 0) {
@@ -670,7 +670,7 @@ function ClassActivityResults_Teacher() {
    }
 
 
-
+   console.log(assignmentList)
    return (
       <div class="activity-list">
          {assignmentList}

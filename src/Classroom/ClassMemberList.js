@@ -22,12 +22,12 @@ function ClassMemberList() {
         async function fetchMember() {
             try {
                 let id = localStorage.getItem("classid")
-                let res = await ax.get(`/classroom/${id}`)
+                let res = await ax.get(`classroom/${id}`)
                 setMemberSize(res.data.Member.length)
                 setTeacher(res.data.teacher_firstname + " " + res.data.teacher_lastname)
 
 
-                let classMember = await ax.get(`/ClassMembers/${id}`)
+                let classMember = await ax.get(`ClassMembers/${id}`)
                 let members = classMember.data
                 let memberlist = []; let n = 0
                 console.log(classMember)

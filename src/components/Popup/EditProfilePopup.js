@@ -38,7 +38,7 @@ function EditProfilePopup() {
   const navigate = useNavigate()
   const handleEditName = async () => {
     try {
-      var result = await ax.post('/changeProfile', {
+      var result = await ax.post('changeProfile', {
         "first_name": firstname,
         "last_name": lastname,
       })
@@ -146,7 +146,7 @@ function EditEmailPopup() {
 
   const handleEditEmail = async () => {
     try {
-      var result = await ax.post('/changeEmail', {
+      var result = await ax.post('changeEmail', {
         "email": userNewEmail
       })
       if (result.status === 200 && result.data) {

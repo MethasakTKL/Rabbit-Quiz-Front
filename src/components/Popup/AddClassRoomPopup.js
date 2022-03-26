@@ -48,7 +48,7 @@ function AddClassRoomPopup() {
     const [classCode, setClassCode] = useState('')
     const handleAddClass = async () => {
         try {
-            var result = await ax.post('/join', { classCode })
+            var result = await ax.post('join', { classCode })
             if (result.status === 200 && result.data) {
                 setOpen(false)
                 openMessage()

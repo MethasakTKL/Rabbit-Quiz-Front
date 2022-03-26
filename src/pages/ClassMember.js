@@ -19,7 +19,7 @@ function ClassMember() {
 
   useEffect(() => {
     async function fetchClassroom() {
-      let res = await ax.get(`/classroom/${id}}`)
+      let res = await ax.get(`classroom/${id}}`)
       console.log(res.data.classroomName)
       setClassroomName(res.data.classroomName)
     } fetchClassroom();

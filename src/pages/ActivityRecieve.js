@@ -43,8 +43,8 @@ function ActivityRecieve() {
     const [assignREC, setAssignmentREC] = React.useState(null)
     useEffect(() => {
         async function fetchActivity() {
-            const res = await ax.get(`/assignments`)
-            const check = await ax.get(`/assignment_status/`)
+            const res = await ax.get(`assignments`)
+            const check = await ax.get(`assignment_status/`)
             let c = check.data.results
             let r = res.data.results
             let n = 0;

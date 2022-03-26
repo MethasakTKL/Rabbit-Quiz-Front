@@ -74,7 +74,7 @@ function ClassActivityResults() {
 
             //vvvvvvvvvvvvvvvvvvv CHECKING USER HAS FINISH ASSIGNMENT YET? vvvvvvvvvvvvvvvvvvv
             try {
-                const check = await ax.get(`/assignment_status/`)
+                const check = await ax.get(`assignment_status/`)
                 let c = check.data.results; let m = 0
                 console.log("ASN_Status", c)
                 let ASNList = []
@@ -95,7 +95,7 @@ function ClassActivityResults() {
 
                 // vvvvvvvvvvvvvvvvv ALL OF ASSIGNMENT IS vvvvvvvvvvvvvvvvvvVVVVVVVVVVVVVV
 
-                const res = await ax.get(`/assignments/`)
+                const res = await ax.get(`assignments/`)
                 let r = res.data.results
                 console.log("Assignments", r)
                 let assignments = []; let n = 0;
@@ -271,7 +271,7 @@ function ClassActivityResults() {
     ///////////////////////POPUP ASSIGNMENT SECTION ///////////////////////
     let navigate = useNavigate()
     const handleSendAPITrue = async () => {
-        var submit = await ax.post(`/user_result_do/${activityID}`, { result: "True" })
+        var submit = await ax.post(`user_result_do/${activityID}`, { result: "True" })
 
 
         const key = 'updatable';
@@ -294,7 +294,7 @@ function ClassActivityResults() {
 
 
     const handleSendAPIFalse = async () => {
-        var submit = await ax.post(`/user_result_do/${activityID}`, { result: "False" })
+        var submit = await ax.post(`user_result_do/${activityID}`, { result: "False" })
 
 
         const key = 'updatable';

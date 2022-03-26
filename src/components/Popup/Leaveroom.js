@@ -39,8 +39,8 @@ function Leaveroom() {
   const key = 'updatable';
   let navigate = useNavigate()
   const handleLeave = async () => {
-    var res = await ax.post(`/leave/${id}`)
-    let resp = await ax.get(`/classroom/${id}`)
+    var res = await ax.post(`leave/${id}`)
+    let resp = await ax.get(`classroom/${id}`)
     let roomname = resp.data.classroomName
     console.log(`You have alreay exit the room ${roomname}`)
     setOpen(false);

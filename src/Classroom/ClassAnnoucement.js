@@ -21,7 +21,7 @@ function ClassAnnoucement() {
    const [text, setText] = useState("");
    let id = localStorage.getItem("classid")
    const handleSendPost = async () => {
-      var post = await ax.post(`/postMessage/${id}`, { text });
+      var post = await ax.post(`postMessage/${id}`, { text });
       console.log(post.data);
       setText(" ");
       setText("");

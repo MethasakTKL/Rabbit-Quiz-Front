@@ -63,7 +63,7 @@ function ClassPostResult() {
     useEffect(() => {
         async function fetchListPost() {
             try {
-                const res = await ax.get(`/getMessage/${id}`)
+                const res = await ax.get(`getMessage/${id}`)
                 let post = res.data
                 let n = 0;
                 let allPost = []

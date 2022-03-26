@@ -41,7 +41,7 @@ function DetailActivity() {
 
       //vvvvvvvvvvvvvvvvvvv CHECKING USER HAS FINISH ASSIGNMENT YET? vvvvvvvvvvvvvvvvvvv
 
-      const check = await ax.get(`/assignment_status/`)
+      const check = await ax.get(`assignment_status/`)
       let c = check.data.results; let m = 0
       let ASNList = []
       for (var a in c) {
