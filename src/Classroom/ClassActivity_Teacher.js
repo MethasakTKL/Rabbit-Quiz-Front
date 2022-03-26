@@ -22,9 +22,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 import AddIcon from "@mui/icons-material/Add";
-import Link from '@mui/material/Link';
-
-
+import Link from "@mui/material/Link";
+import ClassScore from "./ClassScore";
 //import component
 import EditActivity from "../Classroom/ClassTeacherActivity/EditActivity";
 import DetailActivity from "../Classroom/ClassTeacherActivity/DetailActivity";
@@ -56,53 +55,50 @@ function ClassActivity_Teacher() {
     setValue(newValue);
   };
 
+  const [classroomName, setClassroomName] = React.useState(null);
 
-
-  const [classroomName, setClassroomName] = React.useState(null)
-
-  let id = localStorage.getItem("classid")
+  let id = localStorage.getItem("classid");
   React.useEffect(() => {
     async function fetchClassroom() {
-      let res = await ax.get(`/classroom/${id}`)
-      setClassroomName(res.data.classroomName)
-    } fetchClassroom();
-  }, [])
+      let res = await ax.get(`/classroom/${id}`);
+      setClassroomName(res.data.classroomName);
+    }
+    fetchClassroom();
+  }, []);
 
-
-
-
-  let navigate = useNavigate()
-  const [title, setTitle] = React.useState('')
-  const [description, setDescription] = React.useState('')
-  const [choice_true, setChoiceTrue] = React.useState('ใช่')
-  const [choice_false, setChoiceFalse] = React.useState('ไม่ใช่')
-  const [deadline, setDeadline] = React.useState('')
+  let navigate = useNavigate();
+  const [title, setTitle] = React.useState("");
+  const [description, setDescription] = React.useState("");
+  const [choice_true, setChoiceTrue] = React.useState("ใช่");
+  const [choice_false, setChoiceFalse] = React.useState("ไม่ใช่");
+  const [deadline, setDeadline] = React.useState("");
   const handleCreateAssignment = async () => {
     try {
-      let id = localStorage.getItem("classid")
+      let id = localStorage.getItem("classid");
       var result = await ax.post(`/createAssignment/${id}`, {
-        title, description, deadline, choice_true, choice_false
-      })
-      console.log(result)
+        title,
+        description,
+        deadline,
+        choice_true,
+        choice_false,
+      });
+      console.log(result);
       if (result.status === 200 && result.data) {
-        handleClose()
+        handleClose();
 
-        navigate('/reload', { replace: true })
-        navigate('/classroom-activity', { replace: true })
+        navigate("/reload", { replace: true });
+        navigate("/classroom-activity", { replace: true });
         message.success({
           content: "สร้างกิจกรรมสำเร็จ",
           style: { fontFamily: "Prompt", marginTop: 20, fontSize: "20px" },
-          duration: 3
+          duration: 3,
         });
-        console.log("Create assignment Success")
-
+        console.log("Create assignment Success");
       }
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
-
-
+  };
 
   return (
     <Box sx={{ height: 1050 }}>
@@ -120,6 +116,9 @@ function ClassActivity_Teacher() {
         alignItems="center"
         paddingBottom={1}
       >
+        <Grid>
+          <ClassScore />
+        </Grid>
         <Grid>
           <Button
             variant="contained"
@@ -229,21 +228,14 @@ function ClassActivity_Teacher() {
             borderRadius: 3,
             marginLeft: "auto",
             marginRight: "auto",
-            paddingTop: 3
+            paddingTop: 3,
           },
         }}
       >
-
-
-
         {/* SUMMARY ALL OF ASSIGNMENT FOR TEACHER */}
         <Paper elevation={3}>
           <ClassActivityResults_Teacher />
         </Paper>
-
-
-
-
       </Box>
       <Box sx={{ paddingTop: 15 }}></Box>
     </Box>

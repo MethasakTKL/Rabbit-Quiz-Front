@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
+
+.buttonscore{
+    font-family: "Prompt";
+
+}
+
+.Titlescore{
+    font-family: "Prompt";
+    font-size: 20pt;
+    font-weight: 600;
+    padding-top: 10px;
+    color: rgb(123, 95, 149);
+}
+
+.Textscore{
+    font-family: "Prompt";
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
