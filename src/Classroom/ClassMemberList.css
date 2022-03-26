@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
+
+
+.nameteacher {
+    font-family: "Prompt";
+    font-size: 18px;
+}
+
+@media (max-width: 42em) {
+    .namestudent {
+        font-size: 14px;
+    }
+}

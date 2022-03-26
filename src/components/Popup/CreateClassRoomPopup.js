@@ -38,8 +38,8 @@ function CreateClassRoomPopup() {
             });
         }, 3000);
         setTimeout(() => {
-            navigate('/reload', { replace: true })
-            navigate('/', { replace: true })
+            setTimeout(() => { navigate("/reload", { replace: true }) }, 1000);
+            setTimeout(() => { navigate("/", { replace: true }) }, 1000);
         }, 3000);
     };
 

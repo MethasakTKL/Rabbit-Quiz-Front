@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 
 //components
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate, Navigate } from "react-router-dom";
 import Layout from "./components/Bars/Layout";
 
 //pages
@@ -24,10 +24,10 @@ import ClassActivity_Teacher from "./Classroom/ClassActivity_Teacher.js";
 import { RequireAuth } from "./auth/RequireAuth";
 import { TeacherGuard } from "./auth/TeacherGuard";
 
-
 function App() {
 
   const [id, setID] = React.useState(null)
+
   return (
     <div>
 

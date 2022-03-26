@@ -60,10 +60,10 @@ function ClassActivity_Teacher() {
 
   const [classroomName, setClassroomName] = React.useState(null)
 
-  let auth = useAuth()
+  let id = localStorage.getItem("classid")
   React.useEffect(() => {
     async function fetchClassroom() {
-      let res = await ax.get(`/classroom/${auth.id}`)
+      let res = await ax.get(`/classroom/${id}`)
       setClassroomName(res.data.classroomName)
     } fetchClassroom();
   }, [])

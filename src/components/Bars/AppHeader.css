@@ -1,17 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
 
-.goback-button-header {
+.goback-button {
     /* border: 1px solid red; */
     max-width: 42px;
     
 }
 
-.appheader-logo-rabbit-header {
+.appheader-logo {
     /* border: 1px solid red; */
     margin-right: auto;
     max-width: 100px;
 }
-.logorabbit-header {
+.logorabbit {
     /* border: 1px solid red; */
     max-width: 120px;
 }
@@ -61,16 +61,16 @@
         font-size: 14px;
     }
 
-    .goback-button-header {
+    .goback-button {
         width: 15px;
     }
 
-    .logorabbit-header {
-        width: 80px;
+    .logorabbit {
+        width: 100px;
         margin-left: 10px;
     }
     .appheader-logo {
-        width: 60px;
+        width: 80px;
     }
 
     .hambergur {

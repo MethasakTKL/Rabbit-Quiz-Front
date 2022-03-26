@@ -12,7 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import logo from "../../Static/image/Rabbitquiz_04.png";
 
 //css
-import "./AppHeader.css";
+import "../../components/Bars/AppHeader.css";
 import { EmojiEvents, MenuTwoTone } from "@mui/icons-material";
 
 //authentic
@@ -42,6 +42,9 @@ function AppHeaderTeacher() {
   // เปลี่ยนสีของ Tabs บน Headers เวลากดเปลี่ยน path
   const navigate = useNavigate();
   const path = useLocation().pathname;
+  function handleGoBack() {
+    navigate(-1)
+  }
   if (path == "/") { if (value != 0) { setValue(0) } }
   if (path == "/profile") { if (value != 1) { setValue(1) } }
   if (path == "/classroom-activity-teacher") { if (value != 2) { setValue(2) } }
@@ -59,13 +62,11 @@ function AppHeaderTeacher() {
           <CssBaseline />
           <Toolbar>
             <div className="goback-button">
-              <Button onClick={() => navigate(-1)}>
-                <ArrowBackIosIcon sx={{ fontSize: 30, color: "white" }} />
-              </Button>
+              <ArrowBackIosIcon onClick={handleGoBack} sx={{ fontSize: 25, color: "white" }} />
             </div>
             <div className="appheader-logo">
               <Link to="/">
-                <img src={logo} alt="logorabbit" width={"120"} />
+                <img src={logo} alt="logorabbit" width={"120"} className="logorabbit" />
               </Link>
             </div>
             {/* PC SECTION */}

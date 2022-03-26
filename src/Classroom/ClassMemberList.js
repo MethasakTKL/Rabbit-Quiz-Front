@@ -7,58 +7,79 @@ import FaceIcon from "@mui/icons-material/Face";
 import IconButton from "@mui/material/IconButton";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useAuth } from "../auth/auth";
-
+import { Link, useNavigate } from "react-router-dom";
+import "./ClassMemberList.css";
 
 
 function ClassMemberList() {
 
     let auth = useAuth()
+    let navigate = useNavigate();
     const [memberList, setMemberList] = useState([])
     const [memberSize, setMemberSize] = useState(0)
     const [teacher, setTeacher] = useState(null)
-
     useEffect(() => {
         async function fetchMember() {
-            let id = localStorage.getItem("classid")
-            let res = await ax.get(`/classroom/${id}`)
-            let members = res.data.Member
-            setMemberSize(members.length)
-            setTeacher(res.data.teacher_firstname + " " + res.data.teacher_lastname)
-            setMemberList(
-                members.map(function (m, i) {
-                    return (
-                        <Box>
+            try {
+                let id = localStorage.getItem("classid")
+                let res = await ax.get(`/classroom/${id}`)
+                setMemberSize(res.data.Member.length)
+                setTeacher(res.data.teacher_firstname + " " + res.data.teacher_lastname)
 
 
-                            <Box
-                                sx={{
-                                    borderBottom: 2,
-                                    borderColor: "#e8dcff",
-                                    marginLeft: "auto",
-                                    marginRight: "auto",
-                                    paddingTop: 3,
-                                }}
-                                className="boxtitle"
-                            >
-                                <Stack
-                                    direction="row"
-                                    justifyContent="flex-start"
-                                    alignItems="center"
-                                    spacing={4}
+                let classMember = await ax.get(`/ClassMembers/${id}`)
+                let members = classMember.data
+                let memberlist = []; let n = 0
+                console.log(classMember)
+                for (var i in members) {
+                    let name = members[n].firstname + " " + members[n].lastname
+                    memberlist.push({ name })
+                    n++
+                    console.log(name)
+                }
+                console.log(memberlist)
+                setMemberList(
+                    memberlist.map(function (m, i) {
+                        return (
+                            <Box>
+
+
+                                <Box
+                                    sx={{
+                                        borderBottom: 2,
+                                        borderColor: "#e8dcff",
+                                        marginLeft: "auto",
+                                        marginRight: "auto",
+                                        paddingTop: 3,
+                                    }}
+                                    className="boxtitle"
                                 >
-                                    <Grid>
-                                        <FaceIcon sx={{ fontSize: 32, color: "#F19528" }} />
-                                    </Grid>
-                                    <Grid>
-                                        <div className="namestudent">{m}</div>
-                                    </Grid>
-                                </Stack>
+                                    <Stack
+                                        direction="row"
+                                        justifyContent="flex-start"
+                                        alignItems="center"
+                                        spacing={4}
+                                    >
+                                        <Grid>
+                                            <FaceIcon sx={{ fontSize: 26, color: "#F19528" }} />
+                                        </Grid>
+                                        <Grid>
+                                            <div className="namestudent" key={i}>{m.name}</div>
+                                        </Grid>
+                                    </Stack>
+                                </Box>
                             </Box>
-                        </Box>
-                    )
-                })
+                        )
+                    })
 
-            )
+                )
+            }
+            catch (err) {
+                if (err.response.data.detail) {
+                    navigate("/reload")
+                    navigate("/classroom-member")
+                }
+            }
         }
         fetchMember();
     }, []);
@@ -100,7 +121,7 @@ function ClassMemberList() {
                     <AccountCircleIcon sx={{ fontSize: 32, color: "#F19528" }} />
                 </Grid>
                 <Grid>
-                    <div className="namestudent">{teacher}</div>
+                    <div className="nameteacher">{teacher}</div>
                 </Grid>
             </Stack>
         </Box>

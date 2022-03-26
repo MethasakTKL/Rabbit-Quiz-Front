@@ -4,10 +4,10 @@ import { ax } from '../auth/auth';
 import { message } from "antd";
 
 function TestApiButton() {
-    let api = "/classroom"
+    let api = "/changeMessage/15"
     const handleSendApi = async () => {
         try {
-            var result = await ax.request(`${api}`)
+            var result = await ax.post(`${api}`, { text: "555" })
             if (result.status === 200 && result.data) {
                 console.log(result)
                 message.success({

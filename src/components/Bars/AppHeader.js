@@ -40,12 +40,16 @@ function AppHeader() {
   };
 
   // เปลี่ยนสีของ Tabs บน Headers เวลากดเปลี่ยน path
-  const navigate = useNavigate();
   const path = useLocation().pathname;
-  if (path == "/") { if (value != 0) { setValue(0) } }
-  if (path == "/activity") { if (value != 1) { setValue(1) } }
-  if (path == "/mypoints") { if (value != 2) { setValue(2) } }
-  if (path == "/profile") { if (value != 3) { setValue(3) } }
+  var reload = localStorage.getItem("reload")
+  const navigate = useNavigate();
+  function handleGoBack() {
+    navigate(-1)
+  }
+  if (path === "/") { if (value != 0) { setValue(0) } }
+  if (path === "/activity") { if (value != 1) { setValue(1) } }
+  if (path === "/mypoints") { if (value != 2) { setValue(2) } }
+  if (path === "/profile") { if (value != 3) { setValue(3) } }
 
   //วิธีเรียกข้อมูลหริอ fetch data มาใช้
   let userName =
@@ -61,12 +65,12 @@ function AppHeader() {
         <AppBar position="static" style={{ background: "#5F498C" }}>
           <CssBaseline />
           <Toolbar >
-            <div className="goback-button-header">
-              <ArrowBackIosIcon onClick={() => navigate(-1)} className="goback" sx={{ fontSize: 25, color: "white" }} />
+            <div className="goback-button">
+              <ArrowBackIosIcon onClick={handleGoBack} className="goback" sx={{ fontSize: 25, color: "white" }} />
             </div>
-            <div className="appheader-logo-rabbit-header">
+            <div className="appheader-logo">
               <Link to="/">
-                <img src={logo} alt="logorabbit-header" className="logorabbit-header" />
+                <img src={logo} alt="logorabbit" className="logorabbit" />
               </Link>
             </div>
             {/* PC SECTION */}

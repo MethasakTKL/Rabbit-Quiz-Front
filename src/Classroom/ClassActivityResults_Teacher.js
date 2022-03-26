@@ -70,149 +70,156 @@ function ClassActivityResults_Teacher() {
     const [assignmentList, setAssignmentList] = React.useState(null)
     useEffect(() => {
         async function fetchActivity() {
-            const res = await ax.get(`/assignments/`)
-            console.log(res)
-            const check = await ax.get(`/assignment_status/`)
-            let c = check.data.results
-            let r = res.data.results
-            let n = 0;
-            let assignments = []
-            for (var a in r) {
-                let title = r[n].title
-                let description = r[n].description
-                let posted_date = r[n].posted_date
-                let deadline = r[n].deadline
-                let choice_true = r[n].choice_true
-                let choice_false = r[n].choice_false
-                let classroom_id = r[n].classroom_id
-                let id = r[n].id
+            try {
+                const res = await ax.get(`/assignments/`)
+                console.log(res)
+                const check = await ax.get(`/assignment_status/`)
+                let c = check.data.results
+                let r = res.data.results
+                let n = 0;
+                let assignments = []
+                for (var a in r) {
+                    let title = r[n].title
+                    let description = r[n].description
+                    let posted_date = r[n].posted_date
+                    let deadline = r[n].deadline
+                    let choice_true = r[n].choice_true
+                    let choice_false = r[n].choice_false
+                    let classroom_id = r[n].classroom_id
+                    let id = r[n].id
 
-                assignments.push({ title, description, posted_date, deadline, choice_true, choice_false, id })
-                n++
-            }
+                    assignments.push({ title, description, posted_date, deadline, choice_true, choice_false, id })
+                    n++
+                }
 
-            setAssignmentList(
+                setAssignmentList(
 
-                assignments.map(function (a, index) {
-                    function toThaiDateString(date) {
-                        let monthNames = [
-                            "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
-                            "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม.",
-                            "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
-                        ];
+                    assignments.map(function (a, index) {
+                        function toThaiDateString(date) {
+                            let monthNames = [
+                                "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
+                                "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม.",
+                                "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+                            ];
 
-                        let year = date.getFullYear() + 543;
-                        let month = monthNames[date.getMonth()];
-                        let numOfDay = date.getDate();
+                            let year = date.getFullYear() + 543;
+                            let month = monthNames[date.getMonth()];
+                            let numOfDay = date.getDate();
 
-                        let hour = date.getHours().toString().padStart(2, "0");
-                        let minutes = date.getMinutes().toString().padStart(2, "0");
+                            let hour = date.getHours().toString().padStart(2, "0");
+                            let minutes = date.getMinutes().toString().padStart(2, "0");
 
-                        return `${numOfDay} ${month} ${year} ` +
-                            `เวลา ${hour}:${minutes} น.`;
-                    }
-                    let date1 = new Date(a.deadline);
-                    var date = toThaiDateString(date1);
+                            return `${numOfDay} ${month} ${year} ` +
+                                `เวลา ${hour}:${minutes} น.`;
+                        }
+                        let date1 = new Date(a.deadline);
+                        var date = toThaiDateString(date1);
 
-                    return (
-                        <Stack direction={"column-reverse"}>
-                            <Grid paddingBottom={3}>
-                                <Box
-                                    style={{
-                                        display: "flex",
-                                        marginRight: "auto",
-                                        marginLeft: "auto",
-                                        background: "#5F498C",
-                                        width: "95%",
-                                        paddingBottom: 10,
-                                        paddingLeft: "5%",
-                                        paddingTop: 10,
-                                        borderRadius: 15,
-                                    }}
-                                >
-                                    <Grid
-                                        container
-                                        rowSpacing={1}
-                                        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-                                        paddingTop={2}
+                        return (
+                            <Stack direction={"column-reverse"}>
+                                <Grid paddingBottom={3}>
+                                    <Box
+                                        style={{
+                                            display: "flex",
+                                            marginRight: "auto",
+                                            marginLeft: "auto",
+                                            background: "#5F498C",
+                                            width: "95%",
+                                            paddingBottom: 10,
+                                            paddingLeft: "5%",
+                                            paddingTop: 10,
+                                            borderRadius: 15,
+                                        }}
                                     >
-                                        <Grid item xs={6}>
-                                            <div className="activityname">
-                                                {a.title}
-                                            </div>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <div className="activityduedate">
-                                                สิ้นสุดวันที่ {date}
-                                            </div>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <div className="textinbutton">ทั้งหมด</div>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <div className="textinbutton">5</div>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <div className="textinbutton">{a.choice_true}</div>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <div className="textinbutton">4</div>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <div className="textinbutton">{a.choice_false}</div>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <div className="textinbutton">-</div>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <div className="textinbutton">ยังไม่ส่ง</div>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <div className="textinbutton">1</div>
-                                        </Grid>
-                                        <Stack
-                                            marginLeft={"auto"}
-                                            marginRight={"auto"}
-                                            direction="row"
-                                            spacing={1}
-                                            paddingTop={3}
-                                            paddingBottom={2}
+                                        <Grid
+                                            container
+                                            rowSpacing={1}
+                                            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                                            paddingTop={2}
                                         >
-                                            <Grid>
-                                                <DetailActivity />
+                                            <Grid item xs={6}>
+                                                <div className="activityname">
+                                                    {a.title}
+                                                </div>
                                             </Grid>
-                                            <Grid>
-                                                <EditActivity />
+                                            <Grid item xs={6}>
+                                                <div className="activityduedate">
+                                                    สิ้นสุดวันที่ {date}
+                                                </div>
                                             </Grid>
-                                            <Grid>
-                                                <Button
-                                                    variant="contained"
-                                                    style={{ background: "#D64A55" }}
-                                                >
-                                                    <DeleteIcon />
-                                                    <div className="deletebutton">ลบ</div>
-                                                </Button>
+                                            <Grid item xs={6}>
+                                                <div className="textinbutton">ทั้งหมด</div>
                                             </Grid>
-                                        </Stack>
-                                        <Stack
-                                            marginLeft={"auto"}
-                                            marginRight={"auto"}
-                                            direction="row"
-                                        >
-                                            <Grid className="statusactive">
-                                                <AccessTimeFilledIcon />
+                                            <Grid item xs={6}>
+                                                <div className="textinbutton">5</div>
                                             </Grid>
-                                            <Grid className="statusactive">
-                                                <div>อยู่ในระยะเวลา</div>
+                                            <Grid item xs={6}>
+                                                <div className="textinbutton">{a.choice_true}</div>
                                             </Grid>
-                                        </Stack>
-                                    </Grid>
-                                </Box>
-                            </Grid>
-                        </Stack>
-                    )
-                })
-            )
+                                            <Grid item xs={6}>
+                                                <div className="textinbutton">4</div>
+                                            </Grid>
+                                            <Grid item xs={6}>
+                                                <div className="textinbutton">{a.choice_false}</div>
+                                            </Grid>
+                                            <Grid item xs={6}>
+                                                <div className="textinbutton">-</div>
+                                            </Grid>
+                                            <Grid item xs={6}>
+                                                <div className="textinbutton">ยังไม่ส่ง</div>
+                                            </Grid>
+                                            <Grid item xs={6}>
+                                                <div className="textinbutton">1</div>
+                                            </Grid>
+                                            <Stack
+                                                marginLeft={"auto"}
+                                                marginRight={"auto"}
+                                                direction="row"
+                                                spacing={1}
+                                                paddingTop={3}
+                                                paddingBottom={2}
+                                            >
+                                                <Grid>
+                                                    <DetailActivity />
+                                                </Grid>
+                                                <Grid>
+                                                    <EditActivity />
+                                                </Grid>
+                                                <Grid>
+                                                    <Button
+                                                        variant="contained"
+                                                        style={{ background: "#D64A55" }}
+                                                    >
+                                                        <DeleteIcon />
+                                                        <div className="deletebutton">ลบ</div>
+                                                    </Button>
+                                                </Grid>
+                                            </Stack>
+                                            <Stack
+                                                marginLeft={"auto"}
+                                                marginRight={"auto"}
+                                                direction="row"
+                                            >
+                                                <Grid className="statusactive">
+                                                    <AccessTimeFilledIcon />
+                                                </Grid>
+                                                <Grid className="statusactive">
+                                                    <div>อยู่ในระยะเวลา</div>
+                                                </Grid>
+                                            </Stack>
+                                        </Grid>
+                                    </Box>
+                                </Grid>
+                            </Stack>
+                        )
+                    })
+                )
+            } catch (err) {
+                if (err.response.data.detail) {
+                    navigate("/reload", { replace: true })
+                    setTimeout(navigate("/classroom-activity", { replace: true }), 100)
+                }
+            }
         }
         fetchActivity();
     }, []);

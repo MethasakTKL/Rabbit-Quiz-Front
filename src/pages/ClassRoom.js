@@ -29,7 +29,7 @@ function Classroom() {
       } catch (err) {
         if (err.response.data.detail) {
           navigate("/reload")
-          navigate("/classroom")
+          navigate("/classroom", { replace: true })
         }
       }
     }
