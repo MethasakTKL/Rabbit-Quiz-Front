@@ -518,7 +518,7 @@ function ClassActivityResults_Teacher() {
                   inputProps={{ style: { fontFamily: "Prompt" } }}
                   InputLabelProps={{ style: { fontFamily: "Prompt" } }}
                />
-               <TextField
+               {/* <TextField */}
                   required
                   margin="dense"
                   id="nameactivity"
