@@ -124,6 +124,7 @@ function Register() {
         if (error.response.data.password2) { var errorPassWord2 = error.response.data.password2.toString() }
         if (error.response.data.is_staff) { var errorIsStaff = error.response.data.is_staff.toString() }
 
+
         if (errorFirstName === "This field may not be blank.") {
           console.error("ไม่พบข้อมูลชื่อของผู้ใช้")
           setErrorFirstName("กรุณากรอกชื่อของท่าน")
@@ -180,6 +181,11 @@ function Register() {
           errorPassWord === "This password is too common.,This password is entirely numeric.") {
           console.error("รหัสผ่านคาดเดาง่ายเกินไป")
           setErrorPassWord("โปรดเลือกรหัสผ่านที่ปลอดภัยยิ่งขึ้น ลองใช้ตัวอักษร ตัวเลข และสัญลักษณ์ผสมกัน")
+
+        }
+        if (errorPassWord === "This password is too short. It must contain at least 8 characters.,This password is too common.") {
+          console.error("รหัสผ่านคาดเดาง่ายเกินไป")
+          setErrorPassWord("โปรดเลือกรหัสผ่านที่ปลอดภัยยิ่งขึ้น ลองใช้ตัวอักษร ตัวเลข สัญลักษณ์ผสมกัน และต้องมีความยาวอย่างน้อย 8 ตัวอักษร")
 
         }
         if (errorPassWord2 === "This field may not be blank.") {
