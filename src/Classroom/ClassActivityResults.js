@@ -67,14 +67,36 @@ function ClassActivityResults() {
     const [isEmpty, setIsEmpty] = React.useState(false)
     useEffect(() => {
         async function fetchActivity() {
-            const res = await ax.get(`/assignments/`)
+
+
+
+            //vvvvvvvvvvvvvvvvvvv CHECKING USER HAS FINISH ASSIGNMENT YET? vvvvvvvvvvvvvvvvvvv
+
             const check = await ax.get(`/assignment_status/`)
-            console.log("Assignments", res)
-            console.log("ASN_Status", check)
-            let c = check.data.results
+            let c = check.data.results; let m = 0
+            console.log("ASN_Status", c)
+            let ASNList = []
+            for (var a in c) {
+                let CUR_student_id = localStorage.getItem("student_id")
+                let ASN_student_id = (c[m].student_id).toString()
+                let ASN_id = c[m].assignment_id
+                let ASN_status = c[m].status
+                if (CUR_student_id === ASN_student_id) {
+                    ASNList.push({ ASN_id, ASN_status })
+                }
+                m++
+            }
+            console.log("List of your ASN", ASNList)
+            // ^^^^^^^^^^^^^^^^^ CHECKING USER HAS FINISH ASSIGNMENT YET? ^^^^^^^^^^^^^^^^^
+
+
+
+            // vvvvvvvvvvvvvvvvv ALL OF ASSIGNMENT IS vvvvvvvvvvvvvvvvvvVVVVVVVVVVVVVV
+
+            const res = await ax.get(`/assignments/`)
             let r = res.data.results
-            let n = 0;
-            let assignments = []
+            console.log("Assignments", r)
+            let assignments = []; let n = 0;
             for (var a in r) {
                 let title = r[n].title
                 let description = r[n].description
@@ -92,6 +114,7 @@ function ClassActivityResults() {
                 n++
             }
             if (assignments.length === 0) { setIsEmpty(true) }
+
 
             setAssignmentList(
 
@@ -116,6 +139,22 @@ function ClassActivityResults() {
                     }
                     let date1 = new Date(a.deadline);
                     var date = toThaiDateString(date1);
+
+                    let thisASN_status = false
+                    let thisASN_choice = ''
+                    let p = 0
+                    for (var asn in ASNList) {
+                        if (ASNList[p].ASN_id === a.id) {
+                            if (ASNList[p].ASN_status === true) {
+                                thisASN_status = a.choice_true
+                            }
+                            if (ASNList[p].ASN_status === false) {
+                                thisASN_status = a.choice_false
+                            }
+                        }
+                        p++
+                    }
+
                     return (
                         < Stack direction="column-reverse" >
                             <Grid paddingTop={2} paddingBottom={2}>
@@ -138,8 +177,12 @@ function ClassActivityResults() {
                                         <h1 className="activitybutton">
                                             {a.title}
                                         </h1>
+                                        <Grid className="statussent">
+                                            {thisASN_status ? <CheckCircleIcon sx={{ fontSize: "40px" }} /> : <CheckCircleOutlineIcon sx={{ fontSize: "40px" }} />}
+                                            <div>{thisASN_status ? "ส่งแล้ว" : "ยังไม่ส่ง"}</div>
+                                        </Grid>
                                         <h2 className="questionACT">
-                                            {a.description}
+                                            {thisASN_status ? <div>คำตอบที่เลือก {thisASN_status}</div> : <div>ยังไม่ได้เลือกคำตอบ</div>}
                                         </h2>
                                         <div className="assignment-detail-activity">
                                             <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
@@ -151,10 +194,6 @@ function ClassActivityResults() {
                                         </div>
                                         <Grid className="intime">
                                             <div>อยู่ในระยะเวลา</div>
-                                        </Grid>
-                                        <Grid className="statussent">
-                                            <CheckCircleIcon />
-                                            <div>ส่งเเล้ว</div>
                                         </Grid>
                                     </Stack>
                                 </Button>
@@ -208,7 +247,7 @@ function ClassActivityResults() {
         navigate('/classroom-activity', { replace: true })
         setTimeout(() => {
             message.success({
-                content: `เลือก ${choice_true} สำหรับ ${title} สำเร็จ`,
+                content: `เลือก ${choice_false} สำหรับ ${title} สำเร็จ`,
                 style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
                 key,
                 duration: 10,

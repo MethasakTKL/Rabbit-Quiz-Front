@@ -61,7 +61,7 @@ function ClassActivity() {
   let isstaff = JSON.parse(localStorage.getItem("user_is_staff"));
 
   return (
-    <div>
+    <div className="ASNPage">
       {" "}
       {isstaff ? (<ClassActivity_Teacher />) :
         (
@@ -114,6 +114,7 @@ function ClassActivity() {
             </Box>
           </Box>
         )}
+      <div className="spacebot" />
     </div>
   );
 }

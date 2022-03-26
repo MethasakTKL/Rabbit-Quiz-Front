@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
-
 .classname {
     font-family: 'Prompt', sans-serif;
     color: #856FB4;
@@ -103,6 +102,10 @@
 .end-time {
     display: inline-block;
     padding-right: 0px;
+}
+
+.spacebot {
+    padding-bottom: 70px;
 }
 
 @media (min-width: 42em) {
