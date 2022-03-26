@@ -40,13 +40,13 @@ function ClassActivityResults() {
     const [open, setOpen] = React.useState(false);
     const [fullWidth, setFullWidth] = React.useState(true);
     const [title, setTitle] = React.useState(null);
-    const [discription, setDescription] = React.useState(null);
+    const [description, setDescription] = React.useState(null);
     const [choice_true, setChoiceTrue] = React.useState(null);
     const [choice_false, setChoiceFalse] = React.useState(null);
     const [activityID, setActivityID] = React.useState(null);
-    const handleOpen = (title, discription, choice_true, choice_false, id) => {
+    const handleOpen = (title, description, choice_true, choice_false, id) => {
         setTitle(title)
-        setDescription(discription)
+        setDescription(description)
         setChoiceTrue(choice_true)
         setChoiceFalse(choice_false)
         setActivityID(id)
@@ -64,10 +64,13 @@ function ClassActivityResults() {
     ///////////////////////CARD ASSIGNMENT SECTION ///////////////////////
     const [checkACT, setCheckACT] = React.useState(false)
     const [assignmentList, setAssignmentList] = React.useState(null)
+    const [isEmpty, setIsEmpty] = React.useState(false)
     useEffect(() => {
         async function fetchActivity() {
             const res = await ax.get(`/assignments/`)
             const check = await ax.get(`/assignment_status/`)
+            console.log("Assignments", res)
+            console.log("ASN_Status", check)
             let c = check.data.results
             let r = res.data.results
             let n = 0;
@@ -79,14 +82,16 @@ function ClassActivityResults() {
                 let deadline = r[n].deadline
                 let choice_true = r[n].choice_true
                 let choice_false = r[n].choice_false
-                let classroom_id = r[n].classroom_id
                 let id = r[n].id
+                let classroom_id = r[n].classroom_id
+                let current_id = localStorage.getItem("classid")
 
-                if (classroom_id === auth.id) {
+                if (`${classroom_id}` === localStorage.getItem("classid")) {
                     assignments.push({ title, description, posted_date, deadline, choice_true, choice_false, id })
                 }
                 n++
             }
+            if (assignments.length === 0) { setIsEmpty(true) }
 
             setAssignmentList(
 
@@ -97,15 +102,15 @@ function ClassActivityResults() {
                             "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม.",
                             "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
                         ];
-                    
+
                         let year = date.getFullYear() + 543;
                         let month = monthNames[date.getMonth()];
                         let numOfDay = date.getDate();
-                    
+
                         let hour = date.getHours().toString().padStart(2, "0");
                         let minutes = date.getMinutes().toString().padStart(2, "0");
                         let second = date.getSeconds().toString().padStart(2, "0");
-                    
+
                         return `${numOfDay} ${month} ${year} ` +
                             `${hour}:${minutes}:${second} น.`;
                     }
@@ -116,7 +121,7 @@ function ClassActivityResults() {
                             <Grid paddingTop={2} paddingBottom={2}>
                                 <Button
                                     variant="contained"
-                                    onClick={() => handleOpen(a.title, a.discription, a.choice_true, a.choice_false, a.id)}
+                                    onClick={() => handleOpen(a.title, a.description, a.choice_true, a.choice_false, a.id)}
                                     style={{
                                         width: "80%",
                                         display: "flex",
@@ -133,6 +138,9 @@ function ClassActivityResults() {
                                         <h1 className="activitybutton">
                                             {a.title}
                                         </h1>
+                                        <h2 className="questionACT">
+                                            {a.description}
+                                        </h2>
                                         <div className="assignment-detail-activity">
                                             <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
                                             <div className="end-time">สิ้น</div>
@@ -200,7 +208,7 @@ function ClassActivityResults() {
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        <div className="Question">{discription}</div>
+                        <div className="Question">{description}</div>
                     </DialogContentText>
                     <img className="imgwater" src={question} />
                 </DialogContent>
@@ -250,6 +258,11 @@ function ClassActivityResults() {
         <div class="activity-list">
             {assignmentList}
             {open && renderPopup()}
+            {isEmpty &&
+                <Box sx={{ paddingTop: 8 }}>
+                    <div className="noroom">ยังไม่มีกิจกรรม</div>
+                </Box>
+            }
         </div>
     )
 }
