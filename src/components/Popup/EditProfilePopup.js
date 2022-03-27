@@ -37,6 +37,10 @@ function EditProfilePopup() {
   ////// Change Profie Section ///////
   const navigate = useNavigate()
   const handleEditName = async () => {
+    if (firstname === localStorage.getItem('user_first_name') && lastname === localStorage.getItem('user__name')) {
+      setOpen(false)
+      return
+    }
     try {
       var result = await ax.post('changeProfile', {
         "first_name": firstname,
@@ -47,13 +51,23 @@ function EditProfilePopup() {
         handleClose()
         let username = localStorage.getItem('id_username')
         let password = localStorage.getItem('id_password')
+        const key = 'updatable';
+        message.loading({
+          content: 'กำลังแก้ไขข้อมูล...',
+          style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+          key
+        });
         auth.signin({ username, password }, (response) => {
-          navigate('/', { replace: true })
-          navigate('/profile', { replace: true })
-          message.success({
-            content: "เปลี่ยนแปลงชื่อนามสกุลสำเร็จ",
-            style: { fontFamily: "Prompt" },
-          })
+          setTimeout(() => {
+            message.success({
+              content: "แก้ไขข้อมูลสำเร็จ",
+              style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+              key,
+              duration: 3,
+            });
+            navigate('/', { replace: true })
+            navigate('/profile', { replace: true })
+          }, 3000);
         })
       }
     } catch (error) {
@@ -145,24 +159,38 @@ function EditEmailPopup() {
 
 
   const handleEditEmail = async () => {
+    if (userNewEmail === localStorage.getItem('user_email')) {
+      setOpen(false)
+      return
+    }
     try {
       var result = await ax.post('changeEmail', {
         "email": userNewEmail
       })
       if (result.status === 200 && result.data) {
-
         auth.user.email = userNewEmail
         console.log(`Changed email successfully...`)
         handleClose()
         let username = localStorage.getItem('id_username')
         let password = localStorage.getItem('id_password')
+        const key = 'updatable'
+        message.loading({
+          content: 'กำลังแก้ไขข้อมูล...',
+          style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+          key
+        });
         auth.signin({ username, password }, (response) => {
-          navigate('/', { replace: true })
-          navigate('/profile', { replace: true })
-          message.success({
-            content: "เปลี่ยนแปลงชื่อนามสกุลสำเร็จ",
-            style: { fontFamily: "Prompt", marginTop: 20, fontSize: "20px" },
-          })
+
+          setTimeout(() => {
+            message.success({
+              content: "แก้ไขข้อมูลสำเร็จ",
+              style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+              key,
+              duration: 3,
+            });
+            navigate('/', { replace: true })
+            navigate('/profile', { replace: true })
+          }, 3000);
         })
       }
     } catch (error) {

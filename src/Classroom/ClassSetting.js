@@ -12,6 +12,8 @@ import ConfirmDeleteClass from "../components/Popup/ConfirmDeleteClass";
 import { useAuth, ax } from "../auth/auth";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
+import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 
 function ClassSetting() {
@@ -37,11 +39,15 @@ function ClassSetting() {
   let id = localStorage.getItem("classid");
   const [classroomName, setClassroomName] = useState(null);
   const [classroomID, setClassroomID] = useState(null)
+  const [oldCode, setOldCode] = useState()
+  const [oldName, setOldName] = useState()
 
   useEffect(() => {
     async function fetchClassroom() {
       let res = await ax.get(`classroom/${id}`);
       console.log(res.data);
+      setOldCode(res.data.classCode)
+      setOldName(res.data.classroomName)
       setClassroomName(res.data.classroomName);
       setClassroomID(res.data.classCode);
     }
@@ -58,12 +64,68 @@ function ClassSetting() {
   };
 
 
-  const handleChangeRoom = () => {
-    ax.post('changeClass', {
+  const navigate = useNavigate()
+  const key = 'updatable';
+  const handleChangeRoom = async () => {
+    var existClass = await ax.get('classroom')
+    var res = existClass.data.results
+    let n = 0; let curClassCode = [];
+    for (const prop in res) {
+      curClassCode.push(res[n].classCode)
+      n++
+    }
+
+    console.log(oldCode, oldName, "-->", classroomID, classroomName)
+    if (oldCode === classroomID && oldName === classroomName) {
+      setOpenSetting(false)
+      return
+    }
+
+
+    if (classroomID != oldCode) {
+      if (Object.values(curClassCode).indexOf(classroomID) > -1) {
+        console.error('This code already exists.');
+        setOpenSetting(false)
+        message.loading({
+          content: 'กรุณารอซักครู่...',
+          style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+          key
+        });
+        setTimeout(() => {
+          message.error({
+            content: "รหัสห้องเรียนนี้ถูกใช้แล้ว กรุณาลองใช้รหัสอื่น",
+            style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+            key,
+            duration: 3,
+          });
+        }, 3000);
+        return
+      }
+    }
+
+    ax.post(`changeClass/${id}`, {
       className: classroomName,
       teacher: localStorage.getItem("id_username"),
       classCode: classroomID
     })
+    setOpenSetting(false)
+    message.loading({
+      content: 'กำลังแก้ไขห้องเรียน...',
+      style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+      key
+    });
+
+    setTimeout(() => {
+      message.success({
+        content: "ห้องเรียนได้ถูกแก้ไขแล้ว",
+        style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+        key,
+        duration: 2,
+      });
+    }, 3000);
+    setTimeout(() => { navigate("/", { replace: true }) }, 3000);
+
+
   }
   return (
     <div>

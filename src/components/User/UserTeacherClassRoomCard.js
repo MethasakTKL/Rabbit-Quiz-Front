@@ -81,7 +81,7 @@ function UserTeacherClassRoomCard() {
                                         />
 
                                         <CardContent>
-                                            <div className="cardcontent">ห้องเรียน {room.name}</div>
+                                            <div className="cardcontent" key={room.name}>ห้องเรียน {room.name}</div>
                                         </CardContent>
                                     </CardActionArea>
                                 </Box>

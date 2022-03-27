@@ -100,7 +100,7 @@ function UserClassRoomCard() {
         {classroomList}
         {isEmptyRoom ? <div className="noroom">
             <div className="textnoroom">ยังไม่มีห้องเรียนให้แสดง กรุณาเข้าร่วมห้องเรียน</div><br />
-            <AddClassRoomPopup />
+            <AddClassRoomPopup style={{ color: "white" }} />
         </div> : <div />}
     </div>;
 }
