@@ -105,7 +105,7 @@ function ClassActivity_Teacher() {
     <Box sx={{ height: 1050 }}>
       <Link href="classroom" underline="none">
         <h1 className="classname" style={{ fontSize: 36 }}>
-          {classroomName}
+          ห้องเรียน {classroomName}
         </h1>
       </Link>
       <Stack
@@ -129,7 +129,6 @@ function ClassActivity_Teacher() {
             <AddIcon />
             <div className="createactivity">สร้างกิจกรรม</div>
           </Button>
-          {/* ----------------------------------------------------------------------------------------------------------------------- */}
           <Dialog open={open} onClose={handleClose}>
             <DialogTitle>
               <div className="titledialog">สร้างกิจกรรม</div>

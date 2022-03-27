@@ -218,6 +218,25 @@ function Activity() {
 
          setAssignedASN(
             assignedASNList.map(function (b, index) {
+               function toThaiDateString(date) {
+                  let monthNames = [
+                     "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
+                     "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม.",
+                     "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+                  ];
+   
+                  let year = date.getFullYear() + 543;
+                  let month = monthNames[date.getMonth()];
+                  let numOfDay = date.getDate();
+                  let hour = date.getHours().toString().padStart(2, "0");
+                  let minutes = date.getMinutes().toString().padStart(2, "0");
+                  let second = date.getSeconds().toString().padStart(2, "0");
+   
+                  return `${numOfDay} ${month} ${year} ` +
+                     `${hour}:${minutes}:${second} น.`;
+               }
+               let date1 = new Date(b.deadline);
+               var date = toThaiDateString(date1);
                return (
                   <Button
                      sx={{
@@ -239,7 +258,7 @@ function Activity() {
                         <div>ห้องเรียน {b.classroomName}</div>
                         <div type="time-activity">
                            <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
-                           {b.timeup ? <div>หมดเวลาแล้ว</div> : <div>กำหนดส่ง {b.deadline}</div>}
+                           {b.timeup ? <div>หมดเวลาแล้ว</div> : <div>กำหนดส่ง {date}</div>}
                         </div>
                      </div>
                   </Button >)
