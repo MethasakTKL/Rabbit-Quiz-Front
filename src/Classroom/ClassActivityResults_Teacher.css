@@ -15,3 +15,15 @@
     font-family: "Prompt";
     color: #df4c58;
 }
+
+.griddetail {
+    height: 30em;
+    width: auto
+}
+
+@media (max-width: 42em) {
+    .griddetail {
+        width: auto;
+
+    }
+}

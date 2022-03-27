@@ -36,8 +36,9 @@ import { useNavigate } from "react-router-dom";
 function ClassActivity_Teacher() {
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
-
-  const handleClickOpen = () => {
+  let id = localStorage.getItem("classid");
+  const handleClickOpen = async () => {
+    console.log(await ax.get(`AssignmentResult/6`))
     setOpen(true);
   };
 
@@ -57,7 +58,7 @@ function ClassActivity_Teacher() {
 
   const [classroomName, setClassroomName] = React.useState(null);
 
-  let id = localStorage.getItem("classid");
+
   React.useEffect(() => {
     async function fetchClassroom() {
       let res = await ax.get(`/classroom/${id}`);

@@ -741,7 +741,7 @@ function ClassActivityResults_Teacher() {
    }
    const columns = [
       { field: "col1", headerName: "ชื่อ-นามสกุล", width: 180 },
-      { field: "col2", headerName: "สถานะ", width: 120 },
+      { field: "col2", headerName: "คำตอบ", width: 120 },
       { field: "col3", headerName: "คะแนน", width: 100 },
    ];
 
@@ -754,7 +754,7 @@ function ClassActivityResults_Teacher() {
                </DialogTitle>
                <DialogContent>
                   <div className="allstudent">ทั้งหมด 5 คน</div>
-                  <div style={{ height: 500, width: "auto" }}>
+                  <div className="griddetail">
                      <DataGrid
                         rows={rowsList}
                         columns={columns}

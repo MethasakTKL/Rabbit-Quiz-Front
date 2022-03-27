@@ -86,7 +86,9 @@ function MyPointsPage() {
             // vvvvvvvvvvvvvvvvv ALL OF ASSIGNMENT IS vvvvvvvvvvvvvvvvvvVVVVVVVVVVVVVV
 
             const res = await ax.get(`assignments/`)
+            const rec = await ax.get(`getUserClassroom`)
             let r = res.data.results
+            let idc = rec.data
             let assignments = []; let n = 0;
             for (var a in r) {
                let title = r[n].title
@@ -98,7 +100,13 @@ function MyPointsPage() {
                let id = r[n].id
                let classroom_id = r[n].classroom_id
                let current_id = localStorage.getItem("classid")
-               assignments.push({ title, description, posted_date, deadline, choice_true, choice_false, id, classroom_id })
+               let q = 0
+               for (var room in idc) {
+                  if (idc[q].id === classroom_id) {
+                     assignments.push({ title, description, posted_date, deadline, choice_true, choice_false, id, classroom_id })
+                  }
+                  q++
+               }
                n++
             }
             if (assignments.length === 0) { setIsEmpty(true) }

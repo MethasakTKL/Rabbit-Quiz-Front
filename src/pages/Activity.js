@@ -70,7 +70,6 @@ function Activity() {
          const classR = respon.data.results
 
          let c = check.data.results; let m = 0
-         console.log("ASN_Status", c)
          let ASNList = []
          for (var a in c) {
             let CUR_student_id = localStorage.getItem("student_id")
@@ -82,7 +81,6 @@ function Activity() {
             }
             m++
          }
-         console.log("List of your ASN", ASNList)
          // ^^^^^^^^^^^^^^^^^ CHECKING USER HAS FINISH ASSIGNMENT YET? ^^^^^^^^^^^^^^^^^
 
 
@@ -90,8 +88,9 @@ function Activity() {
          // vvvvvvvvvvvvvvvvv ALL OF ASSIGNMENT IS vvvvvvvvvvvvvvvvvvVVVVVVVVVVVVVV
 
          const res = await ax.get(`assignments/`)
+         const rec = await ax.get(`getUserClassroom`)
          let r = res.data.results
-         console.log("Assignments", r)
+         let idc = rec.data
          let assignments = []; let n = 0;
          for (var a in r) {
             let title = r[n].title
@@ -103,13 +102,18 @@ function Activity() {
             let id = r[n].id
             let classroom_id = r[n].classroom_id
             let current_id = localStorage.getItem("classid")
-            assignments.push({ title, description, posted_date, deadline, choice_true, choice_false, id, classroom_id })
+            let q = 0
+            for (var room in idc) {
+               if (idc[q].id === classroom_id) {
+                  assignments.push({ title, description, posted_date, deadline, choice_true, choice_false, id, classroom_id })
+               }
+               q++
+            }
             n++
          }
          if (assignments.length === 0) { setIsEmpty(true) }
 
          assignments.map(function (a, index) {
-            console.log(a)
             function toThaiDateString(date) {
                let monthNames = [
                   "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
@@ -120,7 +124,6 @@ function Activity() {
                let year = date.getFullYear() + 543;
                let month = monthNames[date.getMonth()];
                let numOfDay = date.getDate();
-
                let hour = date.getHours().toString().padStart(2, "0");
                let minutes = date.getMinutes().toString().padStart(2, "0");
                let second = date.getSeconds().toString().padStart(2, "0");
@@ -215,7 +218,6 @@ function Activity() {
 
          setAssignedASN(
             assignedASNList.map(function (b, index) {
-               console.log(b.timeup)
                return (
                   <Button
                      sx={{
