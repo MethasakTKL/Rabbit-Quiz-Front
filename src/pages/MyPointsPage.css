@@ -1,23 +1,43 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
 
 .title{
-    font-family: "Prompt", sans-serif; 
-    color: rgb(119, 99, 11);
+    padding-top: 0.5em;
+    font-family: "Prompt", sans-serif;
+    font-size: 24pt;
+    color: rgb(153, 129, 18);
+
 }
 .titlescore{
     font-family: "Prompt", sans-serif; 
-    text-align: center;
+    text-align: left;
     font-size: 20pt;
     font-weight: 600;
     color: rgb(101, 54, 144);
-    padding-top: 50px;
-    padding-bottom: 25px;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    margin-left: 3%;
+}
+
+.score-summary {
+    font-family: 'Prompt';
+    font-size: 16pt;
+    font-weight: 500;
+    color: rgb(138, 116, 18);
 }
 
 .score{
     font-family: "Prompt", sans-serif;
-    text-align: center;
+    text-align: left;
     font-size: 12pt;
+    /* border: 1px solid red; */
+    margin-left: 1em;
+}
+.score-asn{
+    font-family: "Prompt", sans-serif;
+    font-size: 12pt;
+    margin-left: auto;
+    margin-right: auto;
+    /* border: 1px solid red; */
 }
 
 .scorevector{
@@ -27,9 +47,37 @@
     
 }
 
+.score-header {
+    font-family: 'Prompt';
+    font-size: 14pt;
+    font-weight: 600;
+    margin-left: 1em;
+}
+.score-asn-header {
+    font-family: 'Prompt';
+    font-size: 14pt;
+    font-weight: 600;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @media (max-width: 41em) { 
     .score {
-        font-size: 11pt;
+        font-size: 10pt;
+        margin-left: 0;
     }
+    .score-header {
+        font-size: 10pt;
+        margin-left: 0;
+    }
+    .score-asn{
+        font-size: 10pt;
+        margin-left: 1em;
+    }
+    .score-asn-header{
+        font-size: 10pt;
+        margin-left: 1em;
+    }
+
     
 }

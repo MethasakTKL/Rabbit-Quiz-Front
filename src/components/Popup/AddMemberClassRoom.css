@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
+
+.AddMemberButton {
+    text-align: center;
+}
+
+.buttonADD {
+    padding-left: auto;
+    width: fit-content;
+    margin-left: 10px;
+    font-family: "Prompt";
+}
+
+.saveButton {
+    font-size: 16px;
+}

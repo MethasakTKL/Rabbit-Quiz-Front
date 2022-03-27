@@ -61,7 +61,7 @@ function ClassMemberList() {
                                         spacing={4}
                                     >
                                         <Grid>
-                                            <FaceIcon sx={{ fontSize: 26, color: "#F19528" }} />
+                                            <FaceIcon sx={{ fontSize: 26, color: "#EC9D11 " }} />
                                         </Grid>
                                         <Grid>
                                             <div className="namestudent" key={i}>{m.name}</div>
@@ -118,7 +118,7 @@ function ClassMemberList() {
                 spacing={4}
             >
                 <Grid>
-                    <AccountCircleIcon sx={{ fontSize: 32, color: "#F19528" }} />
+                    <AccountCircleIcon sx={{ fontSize: 32, color: "#ff9c19" }} />
                 </Grid>
                 <Grid>
                     <div className="nameteacher">{teacher}</div>

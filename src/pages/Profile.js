@@ -23,9 +23,21 @@ function Profile() {
   //เรียกข้อมูลหริอ fetch data มาใช้
   let userFirstname = localStorage.getItem('user_first_name')
   let userLastname = localStorage.getItem('user_last_name')
-
   let userEmail = localStorage.getItem('user_email')
   let userIsStaff = JSON.parse(localStorage.getItem('user_is_staff'))
+
+
+  const [score, setScore] = useState()
+
+
+  useEffect(() => {
+    async function fetchClassroom() {
+      let res = await ax.get('MyScore')
+      console.log(res)
+      setScore(res.data.score)
+    } fetchClassroom();
+  }, [])
+
 
   console.log('Profile has loaded ')
   return (
@@ -39,7 +51,7 @@ function Profile() {
         >
           <Grid spacing={2} paddingBottom={5}>
             <div className="centerIcon">
-              <FaceIcon sx={{ fontSize: 100, color: "#F19528" }} />
+              <FaceIcon sx={{ fontSize: 80, color: "#F19528", marginTop: 3 }} />
             </div>
             <div className="centerName">
               {userFirstname + " " + userLastname}
@@ -48,7 +60,6 @@ function Profile() {
               ประเภทบัญชี : {userIsStaff ? "คุณครู" : "นักเรียน"}
             </div>
           </Grid>
-          <div className="allact">กิจกรรมที่ทำไปแล้วทั้งหมด</div>
         </Paper>
       </Grid>
       <Grid paddingTop={2}>
@@ -96,8 +107,9 @@ function Profile() {
               </Grid>
             </Grid>
           </Box>
-          <Grid paddingBottom={2} sx={{ marginLeft: "42%" }}>
-            <EditProfilePopup />
+          <Grid >
+            <div className="EditButtonProfile"><EditProfilePopup /></div>
+            
           </Grid>
         </Paper>
       </Grid>
@@ -131,8 +143,9 @@ function Profile() {
               </Grid>
             </Grid>
           </Box>
-          <Grid paddingBottom={2} sx={{ marginLeft: "42%" }}>
-            <EditEmailPopup />
+          <Grid>
+            <div className="EditButtonProfile"><EditEmailPopup /></div>
+            
           </Grid>
         </Paper>
       </Grid>

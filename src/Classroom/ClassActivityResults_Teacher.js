@@ -554,7 +554,7 @@ function ClassActivityResults_Teacher() {
       setEditASNDescription(description);
       setEditASNChoiceTrue(choice_true);
       setEditASNChoiceFalse(choice_false);
-      setEditASNDeadline(moment(deadline).format("YYYY-MM-DDTkk:mm"));
+      setEditASNDeadline(moment(deadline).format("YYYY-MM-DDTkk:mm:ss"));
       setOpenEdit(true);
    };
 
@@ -570,7 +570,7 @@ function ClassActivityResults_Teacher() {
          description: EditASNDescription,
          choice_true: EditASNChoiceTrue,
          choice_false: EditASNChoiceFalse,
-         deadline: moment(EditASNDeadline).format("YYYY-MM-DD HH:mm:ss"),
+         deadline: EditASNDeadline
       });
       message.loading({
          content: `กำลังแก้ไข ${EditASNText}...`,

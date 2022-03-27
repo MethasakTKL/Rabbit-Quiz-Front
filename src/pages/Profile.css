@@ -98,8 +98,19 @@
     padding-bottom: 3em;
     max-width: fit-content;
     font-family: "Prompt";
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
 }
 
+.EditButtonProfile {
+    margin-left: auto;
+    max-width: fit-content;
+    margin-right: 15%;
+    /* border: 1px solid red; */
+    padding-bottom: 25px;
+    padding-top: 5px;
+}
 
 @media only screen and (min-width: 1200px) {
     .screenpaper{
