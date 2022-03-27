@@ -33,6 +33,9 @@ import { useAuth, ax } from "../auth/auth";
 //import list result
 import ClassActivityResults from "../Classroom/ClassActivityResults";
 import ClassActivity_Teacher from "../Classroom/ClassActivity_Teacher";
+import { useNavigate } from "react-router";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function ClassActivity() {
   const [open, setOpen] = React.useState(false);
@@ -48,7 +51,7 @@ function ClassActivity() {
 
   let id = localStorage.getItem("classid")
   const [classroomName, setClassroomName] = useState(null);
-
+  const navigate = useNavigate()
   useEffect(() => {
     async function fetchClassroom() {
       let res = await ax.get(`classroom/${id}`);
@@ -80,11 +83,13 @@ function ClassActivity() {
               alignItems="center"
               paddingBottom={1}
             >
-
               <Grid>
                 <Button
                   variant="contained"
-                  style={{ background: "#f5df4d", width: 180 }}
+                  style={{
+                    background: "#f5df4d", width: 180,
+                    textAlign: "center"
+                  }}
                   to="/mypoints"
                   component={Link}
                 >
@@ -113,9 +118,9 @@ function ClassActivity() {
             >
               <ClassActivityResults />
             </Box>
-            <Box sx={{height:100}}></Box>
+            <Box sx={{ height: 100 }}></Box>
           </Box>
-          
+
         )}
       <div className="spacebot" />
     </div>

@@ -135,10 +135,12 @@ function MyPointsPage() {
 
                   for (var t in classR) {
                      if (a.classroom_id === classR[j].id) {
-                        a.classroom_id = classR[j].classroomName
+                        className = classR[j].classroomName
                      }
                      j++
                   }
+
+                  let id = a.classroom_id
 
                   return (
                      <Box>
@@ -165,12 +167,12 @@ function MyPointsPage() {
                                              columnSpacing={{ xs: 1, sm: 2, md: 3 }}
                                           >
                                              <Grid item xs={3.5}>
-                                                <div className="score" key={a.title}>
+                                                <button className="score-click" onClick={() => handleClickASN(id)} key={a.title}>
                                                    {a.title}
-                                                </div>
+                                                </button>
                                              </Grid>
                                              <Grid item xs={4}>
-                                                <div className="score" key={a.classroom_id}>{a.classroom_id}</div>
+                                                <button className="score-click" onClick={() => handleClickRoom(id)} key={a.classroom_id}>{className}</button>
                                              </Grid>
                                              <Grid item xs={2.4}>
                                                 <div className="score">{asn_status}</div>
@@ -182,8 +184,8 @@ function MyPointsPage() {
                                        </Grid>
                                     </Paper>
                                  </Box>
-                              </Grid>
-                           </Stack>
+                              </Grid >
+                           </Stack >
                         </Grid >
                      </Box >
                   )
@@ -216,6 +218,18 @@ function MyPointsPage() {
       }
       fetchActivity();
    }, []);
+
+
+   const handleClickASN = (id) => {
+      localStorage.setItem('classid', id)
+      navigate("/classroom-activity")
+   }
+
+
+   const handleClickRoom = (id) => {
+      localStorage.setItem('classid', id)
+      navigate("/classroom")
+   }
 
 
    return (

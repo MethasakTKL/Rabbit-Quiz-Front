@@ -21,8 +21,8 @@ function ClassMember() {
 
   useEffect(() => {
     async function fetchClassroom() {
-      let res = await ax.get(`classroom/${id}}`)
-      console.log(res.data.classroomName)
+      let res = await ax.get(`classroom/${id}`)
+      console.log(res)
       setClassroomName(res.data.classroomName)
     } fetchClassroom();
   }, [])
@@ -35,7 +35,7 @@ function ClassMember() {
         ห้องเรียน {classroomName}
       </h1>
 
-      
+
       <AddMemberClassRoom />
 
 

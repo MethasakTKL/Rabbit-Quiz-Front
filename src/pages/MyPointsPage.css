@@ -22,7 +22,7 @@
     font-family: 'Prompt';
     font-size: 16pt;
     font-weight: 500;
-    color: rgb(138, 116, 18);
+    color: rgb(158, 139, 51);
 }
 
 .score{
@@ -31,6 +31,7 @@
     font-size: 12pt;
     /* border: 1px solid red; */
     margin-left: 1em;
+    font-weight: 400;
 }
 .score-asn{
     font-family: "Prompt", sans-serif;
@@ -60,6 +61,19 @@
     margin-left: auto;
     margin-right: auto;
 }
+.score-click {
+    text-align: left;
+    font-family: "Prompt";
+    font-size: 12pt;
+    width: fit-content;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    font-weight: 400;
+}
 
 @media (max-width: 41em) { 
     .score {
@@ -77,6 +91,9 @@
     .score-asn-header{
         font-size: 10pt;
         margin-left: 1em;
+    }
+    .score-click {
+        font-size: 10pt;
     }
 
     
