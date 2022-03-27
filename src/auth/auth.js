@@ -4,7 +4,7 @@ import axios from "axios";
 import { Navigate, Outlet } from "react-router";
 import config from "./config";
 const ax = axios.create({
-   baseURL: config.UrlPrefix,
+   baseURL: "http://localhost:8000",
 })
 
 

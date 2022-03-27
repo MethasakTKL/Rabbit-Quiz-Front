@@ -55,7 +55,6 @@ function MyPointsPage() {
    const [title, setTitle] = React.useState(null);
    const [description, setDescription] = React.useState(null);
 
-   ///////////////////////CARD ASSIGNMENT SECTION ///////////////////////
    const [checkACT, setCheckACT] = React.useState(false)
    const [assignmentList, setAssignmentList] = React.useState(null)
    const [assignmentSummary, setAssignmentSummary] = React.useState(null)

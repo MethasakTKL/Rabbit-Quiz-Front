@@ -28,15 +28,6 @@
     font-size: 15pt;
     font-weight: 600;
 }
-.assignment-detail {
-    justify-content: center;
-    display: flex;
-    font-family: 'Prompt', sans-serif;
-    color: rgb(110, 110, 110);
-}
-.assignment-detail div[type="duetime"] {
-    margin-left: 10px;
-}
 
 .activity{
     font-family: 'Prompt', sans-serif;
@@ -45,6 +36,17 @@
     margin-left: 1rem;
     text-align: center;
 }
+
+.assignment-detail {
+    text-align: center;
+    font-family: 'Prompt', sans-serif;
+    color: rgb(110, 110, 110);
+}
+
+.assignment-detail div[type="duetime"] {
+    margin-left: 10px;
+}
+
 .assignment-detail div[type="time-activity"] {
     display: flex;
     justify-content: center;

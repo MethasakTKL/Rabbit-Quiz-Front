@@ -20,7 +20,6 @@ import AddClassRoomPopup from "../components/Popup/AddClassRoomPopup";
 import CreateClassRoomPopup from "../components/Popup/CreateClassRoomPopup";
 import UserClassRoomCard from "../components/User/UserClassRoomCard";
 import UserTeacherClassRoomCard from "../components/User/UserTeacherClassRoomCard";
-import TestApiButton from "../components/TestApiButton";
 import { FiPlus } from "react-icons/fi";
 
 function Home() {
@@ -32,7 +31,6 @@ function Home() {
         <div>
             <h4 className="hello">สวัสดี, {userFirstName}</h4>
             {/* ADD AND CREATE CLASSROOM SECTION USER*/}
-            <TestApiButton />
             {userIsStaff ? <CreateClassRoomPopup /> : <AddClassRoomPopup />}
             <Box
                 sx={{
