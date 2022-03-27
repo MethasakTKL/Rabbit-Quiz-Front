@@ -65,7 +65,7 @@
 
 .login-error {
     font-family: "Prompt";
-    font-size: 13pt;
+    font-size: 11pt;
     color: rgba(220, 0, 0, 0.9);
     border: 2px solid rgba(220, 0, 0, 0.9);
     background-color: rgb(255, 244, 249);

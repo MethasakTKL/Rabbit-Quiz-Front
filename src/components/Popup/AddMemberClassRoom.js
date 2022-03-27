@@ -26,6 +26,7 @@ function AddMemberClassRoom() {
 
 
     const handleEditEmail = async () => {
+        console.log(await ax.get('ClassMembers/7'))
         setOpen(false)
         try {
             var result = await ax.post(`addUser/${localStorage.getItem('classid')}`, {
@@ -48,7 +49,7 @@ function AddMemberClassRoom() {
                     content: "ไม่สามารถเพิ่มผู้ใช้ด้วยอีเมลนี้ได้",
                     style: { fontFamily: "Prompt", marginTop: 20, fontSize: "20px" },
                     duration: 3
-                  });
+                });
                 console.log(error)
             }
         }
