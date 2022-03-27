@@ -76,6 +76,7 @@ function Classroom() {
 
       </Stack>
       <ClassAnnoucement />
+      <Box sx={{height:100}}></Box>
     </div>
   );
 }
