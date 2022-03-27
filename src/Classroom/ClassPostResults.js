@@ -138,8 +138,11 @@ function ClassPostResult() {
                 )
             } catch (err) {
                 if (err.response.data.detail) {
-                    navigate("/reload");
-                    navigate("/classroom", { replace: true })
+                    message.warn({
+                        content: "มีปัญหาบางอย่างเกิดขึ้นกรุณาลองใหม่..",
+                        style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+                    })
+                    navigate("/")
                 }
             }
         }

@@ -74,6 +74,51 @@ function ClassActivity_Teacher() {
   const [choice_false, setChoiceFalse] = React.useState("ไม่ใช่");
   const [deadline, setDeadline] = React.useState("");
   const handleCreateAssignment = async () => {
+    if (title === '') {
+      message.error({
+        content: "กรุณากรอกชื่อกิจกรรม",
+        style: { fontFamily: "Prompt", marginTop: 20, fontSize: "20px" },
+        duration: 3,
+      });
+      setOpen(false)
+      return
+    }
+    if (description === '') {
+      message.error({
+        content: "กรุณากรอกคำถาม",
+        style: { fontFamily: "Prompt", marginTop: 20, fontSize: "20px" },
+        duration: 3,
+      });
+      setOpen(false)
+      return
+    }
+    if (choice_true === '') {
+      message.error({
+        content: "กรุณากรอกตัวเลือกที่1",
+        style: { fontFamily: "Prompt", marginTop: 20, fontSize: "20px" },
+        duration: 3,
+      });
+      setOpen(false)
+      return
+    }
+    if (choice_false === '') {
+      message.error({
+        content: "กรุณากรอกตัวเลือกที่2",
+        style: { fontFamily: "Prompt", marginTop: 20, fontSize: "20px" },
+        duration: 3,
+      });
+      setOpen(false)
+      return
+    }
+    if (deadline === '') {
+      message.error({
+        content: "กรุณาเลือกวันกำหนดส่ง",
+        style: { fontFamily: "Prompt", marginTop: 20, fontSize: "20px" },
+        duration: 3,
+      });
+      setOpen(false)
+      return
+    }
     try {
       let id = localStorage.getItem("classid");
       var result = await ax.post(`createAssignment/${id}`, {

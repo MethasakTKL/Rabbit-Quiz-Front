@@ -221,7 +221,13 @@ function MyPointsPage() {
                </Box>
             )
          } catch (err) {
-            console.log(err.response)
+            if (err.response.data.detail) {
+               message.warn({
+                  content: "มีปัญหาบางอย่างเกิดขึ้นกรุณาลองใหม่..",
+                  style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+               })
+               navigate("/")
+            }
          }
       }
       fetchActivity();

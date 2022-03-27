@@ -376,8 +376,11 @@ function ClassActivityResults_Teacher() {
          } catch (err) {
             console.error(err.response)
             if (err.response.data.detail) {
-               navigate("/reload", { replace: true });
-               setTimeout(navigate("/classroom-activity", { replace: true }), 1000);
+               message.warn({
+                  content: "มีปัญหาบางอย่างเกิดขึ้นกรุณาลองใหม่..",
+                  style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+               })
+               navigate("/")
             }
          }
       }
@@ -753,7 +756,7 @@ function ClassActivityResults_Teacher() {
                   <div className="detialtitle">สรุปผลกิจกรรม</div>
                </DialogTitle>
                <DialogContent>
-                  <div className="allstudent">ทั้งหมด 5 คน</div>
+                  <div className="allstudent">ทั้งหมด {memberSize} คน</div>
                   <div className="griddetail">
                      <DataGrid
                         rows={rowsList}
