@@ -38,7 +38,7 @@ function ClassActivity_Teacher() {
   const [fullWidth, setFullWidth] = React.useState(true);
   let id = localStorage.getItem("classid");
   const handleClickOpen = async () => {
-    console.log(await ax.get(`AssignmentResult/6`))
+    console.log(await ax.get(`AssignmentResult/`))
     setOpen(true);
   };
 
