@@ -26,7 +26,6 @@ function AddMemberClassRoom() {
 
 
     const handleEditEmail = async () => {
-        console.log(await ax.get('ClassMembers/7'))
         setOpen(false)
         try {
             var result = await ax.post(`addUser/${localStorage.getItem('classid')}`, {

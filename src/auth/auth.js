@@ -28,14 +28,13 @@ const appAuthProvider = {
 
          }
 
-         console.log(userdata.username); console.log(userdata.password);
          var result = await ax.post('auth/login/', {
             username: userdata.username,
             password: userdata.password,
          })
 
          if (result.status === 200 && result.data) {
-            console.log("Login Success!!!")
+            console.log("Login Success...")
             appAuthProvider.isAuthenticated = true;
             appAuthProvider.accessToken = result.data.access;
             appAuthProvider.refreshToken = result.data.refresh;
@@ -46,7 +45,6 @@ const appAuthProvider = {
                return config;
             }))
             let user_detail = await ax.get('userdetail')
-            console.log(user_detail)
             localStorage.setItem("student_id", user_detail.data.id)
             localStorage.setItem("user_first_name", user_detail.data.first_name)
             localStorage.setItem("user_last_name", user_detail.data.last_name)

@@ -104,7 +104,6 @@ function Register() {
           last_name: lastnamefill,
         });
         console.log("Register success");
-        console.log(RegistResult.data);
         setShowError(false)
         setRegDone(true)
         message.success({

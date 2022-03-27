@@ -7,7 +7,7 @@ function TeacherGuard() {
 
     let isStaff = JSON.parse(localStorage.getItem("user_is_staff"))
     if (!isStaff) {
-        console.log("Hey")
+        console.log("Hey! What're you doing!!")
         return <Navigate to="/false-page" state={{ from: location }} />;
     }
     return <Outlet />;

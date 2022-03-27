@@ -76,7 +76,6 @@ function ClassActivityResults() {
             try {
                 const check = await ax.get(`assignment_status/`)
                 let c = check.data.results; let m = 0
-                console.log("ASN_Status", c)
                 let ASNList = []
                 for (var a in c) {
                     let CUR_student_id = localStorage.getItem("student_id")
@@ -88,7 +87,6 @@ function ClassActivityResults() {
                     }
                     m++
                 }
-                console.log("List of your ASN", ASNList)
                 // ^^^^^^^^^^^^^^^^^ CHECKING USER HAS FINISH ASSIGNMENT YET? ^^^^^^^^^^^^^^^^^
 
 
@@ -97,7 +95,6 @@ function ClassActivityResults() {
 
                 const res = await ax.get(`assignments/`)
                 let r = res.data.results
-                console.log("Assignments", r)
                 let assignments = []; let n = 0;
                 for (var a in r) {
                     let title = r[n].title
@@ -140,7 +137,6 @@ function ClassActivityResults() {
                                 `${hour}:${minutes}:${second} น.`;
                         }
                         let date1 = new Date(a.deadline);
-                        console.log(date1)
                         var date = toThaiDateString(date1);
 
                         let thisASN_status = false

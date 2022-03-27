@@ -38,7 +38,6 @@ function ClassActivity_Teacher() {
   const [fullWidth, setFullWidth] = React.useState(true);
   let id = localStorage.getItem("classid");
   const handleClickOpen = async () => {
-    console.log(await ax.get(`AssignmentResult/`))
     setOpen(true);
   };
 
@@ -128,7 +127,6 @@ function ClassActivity_Teacher() {
         choice_true,
         choice_false,
       });
-      console.log(result);
       if (result.status === 200 && result.data) {
         handleClose();
 

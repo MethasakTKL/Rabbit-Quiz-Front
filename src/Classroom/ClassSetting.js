@@ -45,7 +45,6 @@ function ClassSetting() {
   useEffect(() => {
     async function fetchClassroom() {
       let res = await ax.get(`classroom/${id}`);
-      console.log(res.data);
       setOldCode(res.data.classCode)
       setOldName(res.data.classroomName)
       setClassroomName(res.data.classroomName);

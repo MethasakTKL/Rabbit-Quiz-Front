@@ -49,7 +49,6 @@ function CreateClassRoomPopup() {
     const [className, setClassName] = useState('')
     const [classCode, setClassCode] = useState('')
     const handleCreateClass = async () => {
-        console.log("teacher", teacher)
         try {
             var existClass = await ax.get('classroom')
             var res = existClass.data.results

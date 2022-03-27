@@ -16,7 +16,6 @@ import { Link } from "react-router-dom";
 function ClassMember() {
   let auth = useAuth()
   let id = localStorage.getItem("classid")
-  console.log(id)
 
   const [classroomName, setClassroomName] = useState(null)
   const [memberList, setMemberList] = useState([])
@@ -24,7 +23,6 @@ function ClassMember() {
   useEffect(() => {
     async function fetchClassroom() {
       let res = await ax.get(`classroom/${id}`)
-      console.log(res)
       setClassroomName(res.data.classroomName)
     } fetchClassroom();
   }, [])

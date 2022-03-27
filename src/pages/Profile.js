@@ -27,18 +27,6 @@ function Profile() {
   let userIsStaff = JSON.parse(localStorage.getItem('user_is_staff'))
 
 
-  const [score, setScore] = useState()
-
-
-  useEffect(() => {
-    async function fetchClassroom() {
-      let res = await ax.get('MyScore')
-      console.log(res)
-      setScore(res.data.score)
-    } fetchClassroom();
-  }, [])
-
-
   console.log('Profile has loaded ')
   return (
     <div>
@@ -109,7 +97,7 @@ function Profile() {
           </Box>
           <Grid >
             <div className="EditButtonProfile"><EditProfilePopup /></div>
-            
+
           </Grid>
         </Paper>
       </Grid>
@@ -145,7 +133,7 @@ function Profile() {
           </Box>
           <Grid>
             <div className="EditButtonProfile"><EditEmailPopup /></div>
-            
+
           </Grid>
         </Paper>
       </Grid>

@@ -138,7 +138,6 @@ function ClassActivityResults_Teacher() {
 
 
             if (assignments.length === 0) {
-               console.log("ASN is Empty")
                setEmptyASN(true)
             }
 
@@ -708,9 +707,7 @@ function ClassActivityResults_Teacher() {
          let memFull = ''
          if (c[s] != undefined) {
             memFull = c[s].student_firstname + ' ' + c[s].student_lastname
-            console.log(memFull)
             if (c[s].assignment === title) {
-               console.log(c[s].student_firstname, choice_true)
                if (c[s].status === true) {
                   rows.push({ id: c[s].id, col1: memFull, col2: choice_true, col3: 1, })
                   memList.push(memFull)
@@ -723,8 +720,6 @@ function ClassActivityResults_Teacher() {
          } if (c[s] == undefined) { console.log(`c[${s}] is undefiend`, c) }
       }
 
-      console.log(m)
-      console.log(memList)
       let q = 0
       let memberClass = [];
       for (var i in m) {
@@ -740,7 +735,6 @@ function ClassActivityResults_Teacher() {
 
    const detailClose = () => {
       setOpenDetail(false)
-      console.log("Close")
    }
    const columns = [
       { field: "col1", headerName: "ชื่อ-นามสกุล", width: 180 },

@@ -31,14 +31,11 @@ function ClassMemberList() {
                 let classMember = await ax.get(`ClassMembers/${id}`)
                 let members = classMember.data
                 let memberlist = []; let n = 0
-                console.log(classMember)
                 for (var i in members) {
                     let name = members[n].firstname + " " + members[n].lastname
                     memberlist.push({ name })
                     n++
-                    console.log(name)
                 }
-                console.log(memberlist)
                 setMemberList(
                     memberlist.map(function (m, i) {
                         return (

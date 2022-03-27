@@ -34,7 +34,6 @@ function UserTeacherClassRoomCard() {
         async function fetchClassroom() {
             try {
                 const userRoom = await ax.get('classroom')
-                console.log(userRoom)
                 let classroom = [];
                 let rooms = userRoom.data.results
                 let n = 0;
