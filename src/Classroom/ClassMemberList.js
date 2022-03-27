@@ -9,6 +9,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useAuth } from "../auth/auth";
 import { Link, useNavigate } from "react-router-dom";
 import "./ClassMemberList.css";
+import { message } from 'antd';
 
 
 function ClassMemberList() {
@@ -76,8 +77,11 @@ function ClassMemberList() {
             }
             catch (err) {
                 if (err.response.data.detail) {
-                    navigate("/reload")
-                    navigate("/classroom-member")
+                    message.warn({
+                        content: "มีปัญหาบางอย่างเกิดขึ้นกรุณาลองใหม่..",
+                        style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+                    })
+                    navigate("/")
                 }
             }
         }
