@@ -20,7 +20,7 @@ import moment from "moment";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-
+import AlarmOffIcon from '@mui/icons-material/AlarmOff';
 
 function Activity() {
    const [open, setOpen] = React.useState(false);
@@ -176,7 +176,7 @@ function Activity() {
             }
 
             if (thisASN_status === "1" || thisASN_status === "2") {
-               completeASNList.push({ title, deadline, classroomName, classroom_id, description, timeup })
+               completeASNList.push({ title, deadline, classroomName, classroom_id, description, timeup, thisASN_status })
             }
 
 
@@ -208,7 +208,7 @@ function Activity() {
                      <div className="assignment-detail">
                         <div>ห้องเรียน {b.classroomName}</div>
                         <div type="time-activity">
-                           <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
+                           <CheckCircleOutlineIcon sx={{ mr: 1 }} />
                            <div>เสร็จสิ้นแล้ว</div>
                         </div>
                      </div>
@@ -224,14 +224,14 @@ function Activity() {
                      "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม.",
                      "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
                   ];
-   
+
                   let year = date.getFullYear() + 543;
                   let month = monthNames[date.getMonth()];
                   let numOfDay = date.getDate();
                   let hour = date.getHours().toString().padStart(2, "0");
                   let minutes = date.getMinutes().toString().padStart(2, "0");
                   let second = date.getSeconds().toString().padStart(2, "0");
-   
+
                   return `${numOfDay} ${month} ${year} ` +
                      `${hour}:${minutes}:${second} น.`;
                }
@@ -257,8 +257,8 @@ function Activity() {
                      <div className="assignment-detail">
                         <div>ห้องเรียน {b.classroomName}</div>
                         <div type="time-activity">
-                           <AccessTimeIcon sx={{ ml: 1, mr: 1 }} />
-                           {b.timeup ? <div>หมดเวลาแล้ว</div> : <div>กำหนดส่ง {date}</div>}
+
+                           {b.timeup ? <div type="time-activity"><AlarmOffIcon sx={{ mr: 0.6 }} /> หมดเวลาแล้ว</div> : <div type="time-activity"><AccessTimeIcon sx={{ mr: 0.6 }} /> กำหนดส่ง {date}</div>}
                         </div>
                      </div>
                   </Button >)

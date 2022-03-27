@@ -259,8 +259,13 @@ function ClassActivityResults() {
                     })
                 )
             } catch (err) {
-                navigate('/reload', { replace: true })
-                navigate('/classroom-activity', { replace: true })
+                if (err.response.data.detail) {
+                    message.warn({
+                        content: "มีปัญหาบางอย่างเกิดขึ้นกรุณาลองใหม่..",
+                        style: { fontFamily: "Prompt", marginTop: 50, fontSize: "20px" },
+                    })
+                    navigate("/")
+                }
             }
         }
         fetchActivity();
@@ -317,7 +322,7 @@ function ClassActivityResults() {
 
     const renderPopup = () => {
         return (
-            <Dialog open={open} onClose={handleClose} fullWidth={fullWidth}>
+            <Dialog open={open} onClose={handleClose} fullWidth>
                 <DialogTitle>
                     <Grid paddingLeft={"90%"}>
                         <IconButton onClick={handleClose}>
@@ -336,39 +341,35 @@ function ClassActivityResults() {
                 </DialogContent>
                 <Grid paddingTop={2} paddingBottom={2}>
                     <DialogActions>
-                        <Stack
-                            marginLeft={"auto"}
-                            marginRight={"auto"}
-                            direction="row"
-                            spacing={1}
-                        >
-                            <Grid>
-                                <Button
+                        <div className="choiceselect">
+                            <div className="buttonyes">
+                                <Button className="choiceselectpc"
                                     variant="contained"
                                     onClick={handleSendAPITrue}
                                     style={{
-                                        width: 150,
-                                        height: 50,
+                                        width: "10em",
+                                        height: 60,
                                         background: "#5BC0DE",
                                     }}
                                 >
-                                    <div className="buttonyes">{choice_true}</div>
+                                    <div className="buttonchoice">{choice_true}</div>
                                 </Button>
-                            </Grid>
-                            <Grid>
-                                <Button
+                            </div>
+
+                            <div className="buttonno">
+                                <Button className="choiceselectpc"
                                     variant="contained"
                                     onClick={handleSendAPIFalse}
                                     style={{
-                                        width: 150,
-                                        height: 50,
+                                        width: "10em",
+                                        height: 60,
                                         background: "#D9534F",
                                     }}
                                 >
-                                    <div className="buttonno">{choice_false}</div>
+                                    <div className="buttonchoice">{choice_false}</div>
                                 </Button>
-                            </Grid>
-                        </Stack>
+                            </div>
+                        </div>
                     </DialogActions>
                 </Grid>
             </Dialog>

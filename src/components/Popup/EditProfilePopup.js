@@ -92,7 +92,7 @@ function EditProfilePopup() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ fontFamily: "Prompt", color: "#231F20" }}>
-            {" "}ชื่อและนามสกุลต้องเป็นภาษาไทยเท่านั้น
+            {" "}กรอกชื่อและนามสกุลที่ต้องการจะเปลี่ยนจะต้องเป็นภาษาไทยเท่านั้น
           </DialogContentText>
           <p />
           <RegexTextField
@@ -124,9 +124,6 @@ function EditProfilePopup() {
 
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} sx={{ fontFamily: "Prompt" }}>
-            ยกเลิก
-          </Button>
           <Button
             variant="contained"
             onClick={handleEditName}
@@ -135,6 +132,9 @@ function EditProfilePopup() {
 
             <div className="saveButtonIcon"><SaveIcon /></div>
             <div className="saveButton">บันทึก</div>
+          </Button>
+          <Button onClick={handleClose} sx={{ fontFamily: "Prompt" }}>
+            ยกเลิก
           </Button>
         </DialogActions>
       </Dialog>

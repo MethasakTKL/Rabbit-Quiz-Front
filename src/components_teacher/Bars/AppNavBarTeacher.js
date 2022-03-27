@@ -21,7 +21,7 @@ function AppNavBarTeacher() {
   return (
     <Box sx={{ justifyContent: "center" }}>
       <AppBar
-        style={{ background: "#4b327e" }}
+        style={{ background: "#5f498c" }}
         sx={{
           top: "auto",
           bottom: 15,
