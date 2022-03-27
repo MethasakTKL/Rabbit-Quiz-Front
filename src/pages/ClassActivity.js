@@ -113,7 +113,9 @@ function ClassActivity() {
             >
               <ClassActivityResults />
             </Box>
+            <Box sx={{height:100}}></Box>
           </Box>
+          
         )}
       <div className="spacebot" />
     </div>
