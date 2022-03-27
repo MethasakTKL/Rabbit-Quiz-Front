@@ -3,8 +3,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Navigate, Outlet } from "react-router";
 import config from "./config";
+
 const ax = axios.create({
-   baseURL: "http://localhost:8000",
+   baseURL: config.UrlPrefix,
+   withCredentials: true,
 })
 
 
