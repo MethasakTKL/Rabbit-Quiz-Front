@@ -10,18 +10,30 @@ import DialogTitle from "@mui/material/DialogTitle";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ConfirmDeleteClass from "../components/Popup/ConfirmDeleteClass";
 import { useAuth, ax } from "../auth/auth";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
 
 
 function ClassSetting() {
   const [open, setOpen] = React.useState(false);
+  const [openSetting, setOpenSetting] = React.useState(false);
+  const [openDelete, setOpenDelete] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
+    setOpenSetting(false)
   };
+  const handleOpenSetting = () => {
+    setOpenSetting(true);
+  };
+  const handleOpenDelete = () => {
+    setOpenDelete(true);
+  };
+
+
   let id = localStorage.getItem("classid");
   const [classroomName, setClassroomName] = useState(null);
   const [classroomID, setClassroomID] = useState(null)
@@ -36,13 +48,67 @@ function ClassSetting() {
     fetchClassroom();
   }, []);
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const openMenu = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+  };
 
+
+  const handleChangeRoom = () => {
+    ax.post('changeClass', {
+      className: classroomName,
+      teacher: localStorage.getItem("id_username"),
+      classCode: classroomID
+    })
+  }
   return (
     <div>
-      <IconButton onClick={handleClickOpen}>
-        <SettingsIcon />
-      </IconButton>
-      <Dialog open={open} onClose={handleClose}>
+      <Button
+        id="demo-positioned-button"
+        aria-controls={open ? 'demo-positioned-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        style={{ fontFamily: "Prompt", color: "grey" }}
+      >
+
+        <SettingsIcon style={{ color: "#fffffhh" }} /> แก้ไข
+      </Button>
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        anchorEl={anchorEl}
+        open={openMenu}
+        onClose={handleCloseMenu}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        style={{ margin: "-20px 0 0 20px" }}
+      >
+        <MenuItem onClick={handleOpenSetting}>
+          <Button variant="contained" onClick={handleOpenSetting} style={{ background: "#5F498C", width: 120 }}>
+            <div>
+              <div className="buttonaction">ตั้งค่าห้องเรียน</div>
+            </div>
+          </Button>
+        </MenuItem>
+        <MenuItem onClick={handleOpenDelete}>
+          <Grid>
+            <ConfirmDeleteClass />
+          </Grid>
+        </MenuItem>
+      </Menu>
+
+      <Dialog open={openSetting} onClose={handleClose}>
         <DialogTitle>
           <div className="Titlesetting">ตั้งค่าห้องเรียน</div>
         </DialogTitle>
@@ -59,8 +125,8 @@ function ClassSetting() {
             onChange={(e) => setClassroomName(e.target.value)}
             fullWidth
             variant="standard"
-            inputProps={{ style: { fontFamily: "Prompt" } }}
-            InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+            inputProps={{ style: { fontFamily: "Prompt", color: "black" } }}
+            InputLabelProps={{ style: { fontFamily: "Prompt", color: "grey" } }}
           />
           <TextField
             autoFocus
@@ -71,8 +137,8 @@ function ClassSetting() {
             onChange={(e) => setClassroomID(e.target.value)}
             fullWidth
             variant="standard"
-            inputProps={{ style: { fontFamily: "Prompt" } }}
-            InputLabelProps={{ style: { fontFamily: "Prompt" } }}
+            inputProps={{ style: { fontFamily: "Prompt", color: "black" } }}
+            InputLabelProps={{ style: { fontFamily: "Prompt", color: "grey" } }}
           />
         </DialogContent>
         <Stack
@@ -85,20 +151,26 @@ function ClassSetting() {
           }}
         >
           <Grid>
-            <ConfirmDeleteClass />
+            <Button
+              variant="contained"
+              onClick={handleChangeRoom}
+              style={{ width: 120, background: "#5F498C" }}
+            >
+              <div className="buttonaction">บันทึก</div>
+            </Button>
           </Grid>
           <Grid>
             <Button
               variant="contained"
               onClick={handleClose}
-              style={{ width: 120, background: "#1976D2" }}
+              style={{ width: 120, background: "grey" }}
             >
-              <div className="buttonaction">บันทึก</div>
+              <div className="buttonaction">ยกเลิก</div>
             </Button>
           </Grid>
         </Stack>
       </Dialog>
-    </div>
+    </div >
   );
 }
 

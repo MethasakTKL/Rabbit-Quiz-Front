@@ -117,7 +117,7 @@ function ClassActivity_Teacher() {
         paddingBottom={1}
       >
         <Grid>
-          <ClassScore />
+          {/* <ClassScore /> */}
         </Grid>
         <Grid>
           <Button

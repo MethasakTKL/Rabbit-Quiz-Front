@@ -69,11 +69,11 @@ function ClassActivity() {
       {isstaff ? (<ClassActivity_Teacher />) :
         (
           <Box height={800}>
-            <Linkform href="classroom" underline="none">
+            <Link to="/classroom" underline="none">
               <h1 className="classname" style={{ fontSize: 36 }}>
                 ห้องเรียน {classroomName}
               </h1>
-            </Linkform>
+            </Link>
             <Stack
               marginLeft={"auto"}
               marginRight={"auto"}

@@ -9,6 +9,8 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useAuth, ax } from "../auth/auth";
 import ClassMemberList from "../Classroom/ClassMemberList";
 import AddMemberClassRoom from "../components/Popup/AddMemberClassRoom";
+import Linkform from "@mui/material/Link";
+import { Link } from "react-router-dom";
 
 
 function ClassMember() {
@@ -31,9 +33,11 @@ function ClassMember() {
 
   return (
     <div>
-      <h1 className="classname" style={{ fontSize: 36 }}>
-        ห้องเรียน {classroomName}
-      </h1>
+      <Link to="/classroom" replace sx={{ textDecoration: "none" }}>
+        <h1 className="classname" style={{ fontSize: 36 }}>
+          ห้องเรียน {classroomName}
+        </h1>
+      </Link>
 
 
       <AddMemberClassRoom />
@@ -42,7 +46,7 @@ function ClassMember() {
       <ClassMemberList />
 
 
-    </div>
+    </div >
   );
 }
 
