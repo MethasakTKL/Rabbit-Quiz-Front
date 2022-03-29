@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.c3f5e529.css",
-    "main.js": "/static/js/main.8650c362.js",
+    "main.css": "/static/css/main.9b660491.css",
+    "main.js": "/static/js/main.bc7f2d75.js",
     "static/js/787.8d9db845.chunk.js": "/static/js/787.8d9db845.chunk.js",
     "static/media/Classroomimg.jpg": "/static/media/Classroomimg.f69e21e5f7f1cbcc9a2f.jpg",
     "static/media/waterplant.png": "/static/media/waterplant.428dc4dfbd0af050308d.png",
@@ -11,12 +11,12 @@
     "static/media/Rabbitquiz_04.png": "/static/media/Rabbitquiz_04.6a03bc67b602d1a9cf06.png",
     "static/media/rabbiterror.png": "/static/media/rabbiterror.34162a6000df59f4190e.png",
     "index.html": "/index.html",
-    "main.c3f5e529.css.map": "/static/css/main.c3f5e529.css.map",
-    "main.8650c362.js.map": "/static/js/main.8650c362.js.map",
+    "main.9b660491.css.map": "/static/css/main.9b660491.css.map",
+    "main.bc7f2d75.js.map": "/static/js/main.bc7f2d75.js.map",
     "787.8d9db845.chunk.js.map": "/static/js/787.8d9db845.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c3f5e529.css",
-    "static/js/main.8650c362.js"
+    "static/css/main.9b660491.css",
+    "static/js/main.bc7f2d75.js"
   ]
 }
