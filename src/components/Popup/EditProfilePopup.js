@@ -234,9 +234,6 @@ function EditEmailPopup() {
 
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} sx={{ fontFamily: "Prompt" }}>
-            ยกเลิก
-          </Button>
           <Button
             variant="contained"
             onClick={handleEditEmail}
@@ -245,6 +242,9 @@ function EditEmailPopup() {
           >
             <div className="saveButtonIcon"><SaveIcon /></div>
             <div className="saveButton">บันทึก</div>
+          </Button>
+          <Button onClick={handleClose} sx={{ fontFamily: "Prompt" }}>
+            ยกเลิก
           </Button>
         </DialogActions>
       </Dialog>

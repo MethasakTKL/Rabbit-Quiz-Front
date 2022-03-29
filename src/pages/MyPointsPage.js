@@ -212,7 +212,7 @@ function MyPointsPage() {
                      marginBottom: "1%"
                   }}
                >
-                  <Paper elevation={2} sx={{ paddingLeft: 3, paddingBottom: 2, background: '#f5df4d' }}>
+                  <Paper elevation={2} sx={{ paddingLeft: 2, paddingBottom: 2, background: '#f5df4d', paddingRight: 2 }}>
                      <Box style={{ textAlign: "center" }}>
                         <h1 className="title">คะแนนรวม <EmojiEvents /></h1>
                         <div className="score-summary">คุณมีทั้งหมด {sumScore} คะแนน จากทั้งหมด {sumAsn} กิจกรรม </div>
