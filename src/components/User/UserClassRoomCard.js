@@ -27,7 +27,6 @@ function UserClassRoomCard() {
     let auth = useAuth()
     const handleClick = function (id) {
         localStorage.setItem("classid", id)
-        console.log('You Clicked Class ID:', id);
     }
 
 
